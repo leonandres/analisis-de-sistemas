@@ -15,3 +15,21 @@ button {
 button:active {
     transform: scale(0.98);
 }
+
+html {
+    scroll-behavior: smooth;
+}
+
+.transition-colors {
+    transition-property: background-color, border-color, text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 200ms;
+}
+
+#chat-box::-webkit-scrollbar {
+    width: 6px;
+}
+#chat-box::-webkit-scrollbar-thumb {
+    background-color: rgba(156, 163, 175, 0.2);
+    border-radius: 9999px;
+}
