@@ -70,6 +70,31 @@ const itemsClasificacion = [
         texto: '"El sistema debe registrar todos los intentos fallidos de login para auditoría."',
         tipo: 'funcional',
         justificacion: 'Es un <strong>Requerimiento Funcional</strong>. Describe la acción de registrar intentos. Entrada: login fallido → Acción: guardar registro → Salida: bitácora actualizada.'
+    },
+    {
+        texto: ' "El sistema debe implementarse en Python 3.11 o superior. "',
+        tipo: 'no-funcional',
+        justificacion: 'Es un <strong>Requerimiento No Funcional ORGANIZACIONAL</strong>. Según Sommerville (Cap. 4), restringe el lenguaje/entorno de desarrollo por políticas internas o estándares del equipo. No describe QUÉ hace el sistema, sino CON QUÉ se debe construir.'
+    },
+    {
+        texto: ' "El sistema debe exportar datos a CSV y PDF para análisis posterior. "',
+        tipo: 'funcional',
+        justificacion: 'Es un <strong>Requerimiento Funcional</strong>. Describe transformación: entrada (solicitud) → acción (exportar) → salida (archicos).'
+    },
+    {
+        texto: ' "El sistema debe operar correctamente en Chrome, Firefox y Edge versiones actuales. "',
+        tipo: 'no-funcional',
+        justificacion: 'Es un <strong>Requerimiento No Funcional de Producto (Compatibilidad)</strong>. Restringe el entorno de ejecución, no la lógica de negocio.'
+    },
+    {
+        texto: ' "El código debe documentarse con Javadoc y tener pruebas unitarias que cubran el 85% de líneas. "',
+        tipo: 'no-funcional',
+        justificacion: 'Es un <strong>Requerimiento No Funcional Organizacional</strong>. Establece estándares internos de desarrollo y calidad, no una funcionalidad observable.'
+    },
+    {
+        texto: ' "La plataforma debe cumplir con las pautas de accesibilidad WCAG 2.1 nivel AA. "',
+        tipo: 'no-funcional',
+        justificacion: 'Es un <strong>Requerimiento No Funcional Externo</strong>. Deriva de un estándar regulatorio externo que impone restricciones de diseño ajenas a la empresa.'
     }
 ];
 
@@ -243,6 +268,60 @@ const bancoPreguntasExamen = [
             { texto: "Porque ocupa demasiado espacio en el documento", correcta: false, feedback: "Incorrecto. El tamaño no es el problema." },
             { texto: "Porque crea ambigüedad y el desarrollador implementa algo diferente a lo esperado", correcta: true, feedback: "¡Correcto! Si faltan detalles, cada desarrollador interpreta diferente. Ejemplo: 'generar reportes' sin especificar formato, periodicidad o filtros." },
             { texto: "Porque es imposible de programar", correcta: false, feedback: "Incorrecto. Es programable, pero probablemente incorrecto." }
+        ]
+    },
+    {
+        id: 11,
+        enunciado: "¿Por qué Sommerville recomienda separar 'Requerimientos del Usuario' de 'Requerimientos del Sistema'?",
+        opciones: [
+            { texto: "Porque los del usuario son técnicos y los del sistema son de marketing", correcta: false, feedback: "Incorrecto. Es al revés." },
+            { texto: "Porque tienen distintos lectores: gerentes/usuarios necesitan abstracción de negocio, y desarrolladores necesitan precisión técnica para implementación y contrato", correcta: true, feedback: "¡Correcto! Los del usuario usan lenguaje natural. Los del sistema detallan funciones, restricciones y criterios de aceptación para servir como base técnica y legal." },
+            { texto: "Porque los requerimientos del sistema se eliminan al empezar a programar", correcta: false, feedback: "Incorrecto. La SRS es referencia durante todo el desarrollo y testing." }
+        ]
+    },
+    {
+        id: 12,
+        enunciado: "Según ISO/IEC 9126, ¿a qué característica principal pertenece la subcaracterística 'Facilidad de Aprendizaje' (Learnability)?",
+        opciones: [
+            { texto: "Eficiencia", correcta: false, feedback: "Incorrecto. La eficiencia mide tiempos y uso de recursos." },
+            { texto: "Usabilidad", correcta: true, feedback: "¡Correcto! La Usabilidad en ISO 9126 incluye: Entendimiento, Aprendizaje, Operabilidad, Atractivo y Cumplimiento." },
+            { texto: "Mantenibilidad", correcta: false, feedback: "Incorrecto. La mantenibilidad se enfoca en código/desarrollo, no en experiencia del usuario final." }
+        ]
+    },
+    {
+        id: 13,
+        enunciado: "Durante el relevamiento, se observa que los operadores omiten un paso del manual oficial para trabajar más rápido. ¿Qué técnica de elicitación hubiera revelado esto mejor que una entrevista?",
+        opciones: [
+            { texto: "Encuesta cerrada con escala Likert", correcta: false, feedback: "Incorrecto. Las encuestas no capturan comportamiento real vs declarado." },
+            { texto: "Etnografía / Observación directa en el entorno laboral", correcta: true, feedback: "¡Correcto! Según Goguen y Sommerville, la etnografía descubre 'conocimiento tácito' y prácticas reales que los usuarios no mencionan en entrevistas." },
+            { texto: "Diagrama de Casos de Uso UML", correcta: false, feedback: "Incorrecto. Los casos de uso modelan interacciones esperadas, no desviaciones operativas reales." }
+        ]
+    },
+    {
+        id: 14,
+        enunciado: "Analice: 'El sistema debe proteger los datos personales'. ¿Qué característica de un requerimiento bien definido falla principalmente?",
+        opciones: [
+            { texto: "Consistencia", correcta: false, feedback: "Incorrecto. No hay contradicción cruzada, el problema es la vaguedad." },
+            { texto: "Verificabilidad y No Ambigüedad", correcta: true, feedback: "¡Correcto! 'Proteger' es subjetivo. Sin especificar cómo (cifrado, roles, norma Ley 25.326), Testing no puede validar su cumplimiento." },
+            { texto: "Completitud", correcta: false, feedback: "Incorrecto. El defecto raíz es la ambigüedad que impide la verificación." }
+        ]
+    },
+    {
+        id: 15,
+        enunciado: "Un cliente exige 'disponibilidad 24/7', pero esto duplica el presupuesto por servidores redundantes. ¿Qué actividad de IR debe gestionarse?",
+        opciones: [
+            { texto: "Especificación técnica del código", correcta: false, feedback: "Incorrecto. Esto ocurre antes del desarrollo." },
+            { texto: "Negociación y Validación de Requerimientos", correcta: true, feedback: "¡Correcto! Los NF suelen entrar en conflicto con costos/tecnología. Se debe negociar un SLA realista y documentar el trade-off." },
+            { texto: "Programación Ágil con Scrum", correcta: false, feedback: "Incorrecto. El conflicto debe resolverse en la fase de IR, no durante la implementación." }
+        ]
+    },
+    {
+        id: 16,
+        enunciado: "Según ISO/IEC 9126, ¿cuál de estas NO es una subcaracterística de 'Mantenibilidad'?",
+        opciones: [
+            { texto: "Analizabilidad, Cambiabilidad, Estabilidad", correcta: false, feedback: "Incorrecto. Estas sí pertenecen a Mantenibilidad." },
+            { texto: "Testabilidad", correcta: false, feedback: "Incorrecto. Testabilidad es parte de Mantenibilidad." },
+            { texto: "Tolerancia a Fallas (Fault Tolerance)", correcta: true, feedback: "¡Correcto! Pertenece a FIABILIDAD (Reliability), no a Mantenibilidad." }
         ]
     }
 ];
