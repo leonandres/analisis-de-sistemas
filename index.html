@@ -16,8 +16,19 @@
                 <h1 class="text-2xl font-bold mt-1 text-slate-100">Ingeniería de Requerimientos</h1>
             </div>
             <div class="flex items-center gap-3">
-                <button id="btn-tema" class="px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-xs font-medium rounded-lg border border-slate-700 transition-colors cursor-pointer text-slate-200">
-                    🌓 Alternar Tema
+                <button id="btn-tema" class="px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-sm font-medium rounded-lg border border-slate-700 transition-colors cursor-pointer text-slate-200 flex items-center gap-2">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition-transform">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    Tema
                 </button>
                 <div class="bg-slate-800 px-4 py-2 rounded-lg border border-slate-700 text-sm">
                     <span class="text-slate-400">Contenido base:</span> <strong class="text-sky-400">UTN.BA</strong>
@@ -46,6 +57,9 @@
                     </a>
                     <a href="#examen-autoevaluacion" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
                         📋 Autoevaluación Teórica
+                    </a>
+                    <a href="#materiales" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
+                        📚 Materiales
                     </a>
                     <a href="#asistente-ia" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link text-emerald-600 dark:text-emerald-400">
                         🤖 Consultas de IA
@@ -111,9 +125,9 @@
                         <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">
                             Describen las funcionalidades, servicios o transformaciones que el sistema realiza sobre las entradas para producir salidas. Representan el comportamiento específico del software.
                         </p>
-                        <div class="bg-white dark:bg-slate-900 p-3 rounded-lg border border-slate-200 dark:border-slate-800 text-xs">
-                            <strong class="text-sky-700 dark:text-sky-400 block mb-1">Ejemplos de la cátedra:</strong>
-                            <ul class="list-disc pl-4 space-y-1 text-slate-600 dark:text-slate-400">
+                        <div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800 text-sm">
+                            <strong class="text-sky-700 dark:text-sky-400 block mb-2 text-base">Ejemplos de la cátedra:</strong>
+                            <ul class="list-disc pl-5 space-y-2 text-slate-700 dark:text-slate-300 text-base leading-relaxed">
                                 <li>El sistema debe asignar alumnos en los cursos.</li>
                                 <li>El sistema debe controlar la superposición de horarios.</li>
                                 <li>El sistema debe generar el comprobante de inscripción.</li>
@@ -128,28 +142,34 @@
                         </p>
                         
                         <div class="space-y-3">
-                            <div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800 text-sm">
-                                <strong class="text-purple-700 dark:text-purple-400 block text-xs font-bold uppercase tracking-wider mb-1">📂 De Producto o Calidad:</strong>
-                                <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">
+                            <div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800">
+                                <strong class="text-purple-700 dark:text-purple-400 block text-sm font-bold uppercase tracking-wider mb-2">📂 De Producto o Calidad:</strong>
+                                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-2">
                                     <strong>Definición:</strong> Restricciones impuestas directamente al comportamiento dinámico y operativo del sistema en ejecución. Especifican atributos medibles de rendimiento, usabilidad, confiabilidad o seguridad.
                                 </p>
-                                <span class="text-[11px] text-slate-400 mt-1 block">Ejemplo: Ante un fallo, el sistema no deberá tardar más de 5 minutos en restaurar los datos, o procesar respuestas en menos de 2 segundos.</span>
+                                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                                    <strong>Ejemplo:</strong> Ante un fallo, el sistema no deberá tardar más de 5 minutos en restaurar los datos, o procesar respuestas en menos de 2 segundos.
+                                </p>
                             </div>
 
-                            <div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800 text-sm">
-                                <strong class="text-purple-700 dark:text-purple-400 block text-xs font-bold uppercase tracking-wider mb-1">📂 Organizacionales:</strong>
-                                <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">
+                            <div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800">
+                                <strong class="text-purple-700 dark:text-purple-400 block text-sm font-bold uppercase tracking-wider mb-2">📂 Organizacionales:</strong>
+                                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-2">
                                     <strong>Definición:</strong> Limitaciones operacionales derivadas directamente de las políticas internas, estándares del proceso o infraestructura tecnológica preexistente en la organización del cliente o desarrollador.
                                 </p>
-                                <span class="text-[11px] text-slate-400 mt-1 block">Ejemplo: Obligación de utilizar una Base de Datos Oracle, implementar Interfaz Web o programar bajo un lenguaje específico.</span>
+                                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                                    <strong>Ejemplo:</strong> Obligación de utilizar una Base de Datos Oracle, implementar Interfaz Web o programar bajo un lenguaje específico.
+                                </p>
                             </div>
 
-                            <div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800 text-sm">
-                                <strong class="text-purple-700 dark:text-purple-400 block text-xs font-bold uppercase tracking-wider mb-1">📂 Externos:</strong>
-                                <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">
+                            <div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800">
+                                <strong class="text-purple-700 dark:text-purple-400 block text-sm font-bold uppercase tracking-wider mb-2">📂 Externos:</strong>
+                                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-2">
                                     <strong>Definición:</strong> Restricciones impuestas por factores totalmente exógenos ajenos al sistema y a la propia empresa de desarrollo, tales como marcos regulatorios, legislaciones estatales o reglamentos institucionales.
                                 </p>
-                                <span class="text-[11px] text-slate-400 mt-1 block">Ejemplo: Cumplir de forma estricta con los reglamentos internos de la Facultad, normativas fiscales o leyes de protección de datos personales.</span>
+                                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                                    <strong>Ejemplo:</strong> Cumplir de forma estricta con los reglamentos internos de la Facultad, normativas fiscales o leyes de protección de datos personales.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -232,6 +252,66 @@
                 
                 <div id="contenedor-examen-teorico" class="bg-slate-50 dark:bg-slate-800/30 border border-slate-200 dark:border-slate-800 rounded-xl p-5 max-w-2xl mx-auto">
                     </div>
+            </section>
+
+            <section id="materiales" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-6">
+                <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-300 uppercase tracking-wide">Recursos</span>
+                    <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">📚 Materiales de Apoyo</h2>
+                    <p class="text-sm text-slate-500 mt-1">Documentación oficial y apuntes de la cátedra para profundizar en la teoría.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <a href="https://raw.githubusercontent.com/leonandres/analisis-de-sistemas/main/clases/06-requerimientos-funcionales-y-no-funcionales/1-presentacion-requerimientos.pdf" target="_blank" class="p-4 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950/30 dark:to-blue-900/30 border border-blue-200 dark:border-blue-800 rounded-lg hover:shadow-md transition-all cursor-pointer">
+                        <div class="flex items-start gap-3">
+                            <span class="text-2xl">📊</span>
+                            <div>
+                                <h3 class="font-bold text-slate-800 dark:text-slate-100">Presentación de Requerimientos</h3>
+                                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Introducción a conceptos fundamentales y clasificación.</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="https://raw.githubusercontent.com/leonandres/analisis-de-sistemas/main/clases/06-requerimientos-funcionales-y-no-funcionales/2-ingenieria-de-requerimientos-cap-4.pdf" target="_blank" class="p-4 bg-gradient-to-br from-emerald-50 to-emerald-100 dark:from-emerald-950/30 dark:to-emerald-900/30 border border-emerald-200 dark:border-emerald-800 rounded-lg hover:shadow-md transition-all cursor-pointer">
+                        <div class="flex items-start gap-3">
+                            <span class="text-2xl">📖</span>
+                            <div>
+                                <h3 class="font-bold text-slate-800 dark:text-slate-100">Ingeniería de Requerimientos - Capítulo 4</h3>
+                                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Análisis profundo según Sommerville.</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="https://raw.githubusercontent.com/leonandres/analisis-de-sistemas/main/clases/06-requerimientos-funcionales-y-no-funcionales/3-norma-ISO-IEC-9126-1-2001.pdf" target="_blank" class="p-4 bg-gradient-to-br from-amber-50 to-amber-100 dark:from-amber-950/30 dark:to-amber-900/30 border border-amber-200 dark:border-amber-800 rounded-lg hover:shadow-md transition-all cursor-pointer">
+                        <div class="flex items-start gap-3">
+                            <span class="text-2xl">⚙️</span>
+                            <div>
+                                <h3 class="font-bold text-slate-800 dark:text-slate-100">Norma ISO/IEC 9126-1:2001</h3>
+                                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Estándares de calidad de software.</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="https://raw.githubusercontent.com/leonandres/analisis-de-sistemas/main/clases/06-requerimientos-funcionales-y-no-funcionales/4-tecnicas-de-elicitacion-de-goguen.pdf" target="_blank" class="p-4 bg-gradient-to-br from-rose-50 to-rose-100 dark:from-rose-950/30 dark:to-rose-900/30 border border-rose-200 dark:border-rose-800 rounded-lg hover:shadow-md transition-all cursor-pointer">
+                        <div class="flex items-start gap-3">
+                            <span class="text-2xl">🎯</span>
+                            <div>
+                                <h3 class="font-bold text-slate-800 dark:text-slate-100">Técnicas de Elicitación (Goguen)</h3>
+                                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Metodología para recopilación de requerimientos.</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="https://raw.githubusercontent.com/leonandres/analisis-de-sistemas/main/clases/06-requerimientos-funcionales-y-no-funcionales/5-requerimientos-requisitos.pdf" target="_blank" class="p-4 bg-gradient-to-br from-violet-50 to-violet-100 dark:from-violet-950/30 dark:to-violet-900/30 border border-violet-200 dark:border-violet-800 rounded-lg hover:shadow-md transition-all cursor-pointer">
+                        <div class="flex items-start gap-3">
+                            <span class="text-2xl">🔑</span>
+                            <div>
+                                <h3 class="font-bold text-slate-800 dark:text-slate-100">Requerimientos y Requisitos</h3>
+                                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Distinción y relación entre conceptos clave.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </section>
 
             <section id="asistente-ia" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-6">
