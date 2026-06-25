@@ -365,5 +365,217 @@
         <p>© 2026 - Análisis de sistemas - Procesos de negocio</p>
     </footer>
     
+    <!-- LÓGICA INTERACTIVA -->
+    <script>
+        // ==========================================
+        // LABORATORIO DE CLASIFICACIÓN
+        // ==========================================
+        const procesosData = [
+            { nombre: "Planeación Estratégica", tipo: "estrategico", feedback: "¡Correcto! Define el rumbo a largo plazo." },
+            { nombre: "Análisis de Mercado", tipo: "estrategico", feedback: "¡Bien! Detecta oportunidades de negocio." },
+            { nombre: "Producción", tipo: "operativo", feedback: "¡Exacto! Fabrica el producto (el termo)." },
+            { nombre: "Venta", tipo: "operativo", feedback: "¡Correcto! Procesa los pedidos y genera ingresos." },
+            { nombre: "Distribución", tipo: "operativo", feedback: "¡Bien! Entrega el producto al cliente." },
+            { nombre: "Gestión de RRHH", tipo: "soporte", feedback: "¡Correcto! Gestiona el recurso humano." },
+            { nombre: "Compras", tipo: "soporte", feedback: "¡Bien! Adquiere materias primas." },
+            { nombre: "Control de Calidad", tipo: "soporte", feedback: "¡Correcto! Verifica estándares." },
+            { nombre: "Mantenimiento", tipo: "soporte", feedback: "¡Bien! Repara maquinaria." }
+        ];
+
+        let selectedProcess = null;
+
+        function initProcessLab() {
+            const pool = document.getElementById('process-pool');
+            if (!pool) return;
+            
+            const shuffled = [...procesosData].sort(() => 0.5 - Math.random());
+            
+            shuffled.forEach((p, index) => {
+                const card = document.createElement('div');
+                card.className = 'process-card px-3 py-2 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-md text-sm font-medium cursor-pointer transition-all hover:shadow-md';
+                card.textContent = p.nombre;
+                card.dataset.tipo = p.tipo;
+                card.dataset.index = index;
+                card.onclick = () => selectProcess(card);
+                pool.appendChild(card);
+            });
+
+            document.querySelectorAll('.drop-zone').forEach(zone => {
+                zone.onclick = () => dropProcess(zone);
+            });
+        }
+
+        function selectProcess(card) {
+            document.querySelectorAll('.process-card').forEach(c => {
+                c.classList.remove('ring-2', 'ring-sky-500', 'bg-sky-50', 'dark:bg-sky-900/30');
+            });
+            card.classList.add('ring-2', 'ring-sky-500', 'bg-sky-50', 'dark:bg-sky-900/30');
+            selectedProcess = card;
+        }
+
+        function dropProcess(zone) {
+            if (!selectedProcess) {
+                showLabFeedback("⚠️ Primero haz clic en un proceso de la lista.", "amber");
+                return;
+            }
+
+            const correctType = selectedProcess.dataset.tipo;
+            const zoneType = zone.id.replace('zone-', '');
+            const processData = procesosData.find(p => p.nombre === selectedProcess.textContent);
+
+            if (zoneType === correctType) {
+                showLabFeedback("✅ " + processData.feedback, "emerald");
+                const droppedCards = zone.querySelector('.dropped-cards');
+                selectedProcess.classList.remove('cursor-pointer', 'hover:shadow-md');
+                selectedProcess.classList.add('bg-emerald-100', 'dark:bg-emerald-900/40', 'border-emerald-500', 'cursor-default');
+                selectedProcess.onclick = null;
+                droppedCards.appendChild(selectedProcess);
+                selectedProcess = null;
+            } else {
+                showLabFeedback("❌ Incorrecto. Piensa: ¿Genera valor directo o es apoyo interno?", "red");
+                selectedProcess.classList.remove('ring-2', 'ring-sky-500', 'bg-sky-50', 'dark:bg-sky-900/30');
+                selectedProcess = null;
+            }
+        }
+
+        function showLabFeedback(msg, color) {
+            const fb = document.getElementById('lab-feedback');
+            fb.textContent = msg;
+            fb.className = `mt-4 p-3 text-sm rounded-lg text-center font-medium transition-all ${
+                color === 'emerald' ? 'bg-emerald-50 dark:bg-emerald-950/30 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-900/50' :
+                color === 'red' ? 'bg-red-50 dark:bg-red-950/30 text-red-800 dark:text-red-300 border border-red-200 dark:border-red-900/50' :
+                'bg-amber-50 dark:bg-amber-950/30 text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-amber-900/50'
+            }`;
+            fb.classList.remove('hidden');
+        }
+
+        // ==========================================
+        // TRIVIA DE AUTOEVALUACIÓN
+        // ==========================================
+        const quizProcesos = [
+            {
+                q: "Según ISO 9000, ¿qué es un proceso?",
+                options: [
+                    "Un conjunto de departamentos con responsabilidades propias",
+                    "Una serie de actividades mutuamente relacionadas que transforman entradas en salidas",
+                    "La cadena de valor de Porter",
+                    "La estructura orgánica de Mintzberg"
+                ],
+                correct: 1,
+                explanation: "Correcto. ISO 9000 define un proceso como actividades relacionadas que transforman entradas en salidas."
+            },
+            {
+                q: "¿Cuál es la principal diferencia entre Macroproceso y Proceso?",
+                options: [
+                    "El macroproceso tiene actividades concretas",
+                    "El macroproceso es una agrupación sin actividades concretas; el proceso SÍ las tiene",
+                    "No hay diferencia, son sinónimos",
+                    "El proceso es estratégico y el macroproceso es operativo"
+                ],
+                correct: 1,
+                explanation: "¡Exacto! El macroproceso agrupa procesos sin tener actividades concretas, mientras que el proceso sí las define."
+            },
+            {
+                q: "En Termilagro, el proceso 'Liquidación de sueldos' (RRHH) es de tipo:",
+                options: [
+                    "Estratégico",
+                    "Operativo",
+                    "Soporte/Apoyo",
+                    "Declaración organizacional"
+                ],
+                correct: 2,
+                explanation: "Correcto. RRHH es un proceso de soporte porque gestiona recursos internos y apoya a los operativos."
+            },
+            {
+                q: "La visión que observa la organización desde departamentos aislados se denomina:",
+                options: [
+                    "Visión por procesos",
+                    "Cadena de valor",
+                    "Visión funcional o departamental",
+                    "Modelo de gestión industrial"
+                ],
+                correct: 2,
+                explanation: "¡Bien! La visión funcional (Henry Fayol) mira los 'silos' departamentales."
+            }
+        ];
+
+        let currentQuiz = 0;
+        let score = 0;
+
+        function loadQuiz() {
+            const container = document.getElementById('quiz-container');
+            if (!container) return;
+
+            if (currentQuiz >= quizProcesos.length) {
+                container.innerHTML = `
+                    <div class="text-center py-8">
+                        <h3 class="text-2xl font-bold text-emerald-600 dark:text-emerald-400 mb-3">🎉 ¡Trivia Completada!</h3>
+                        <p class="text-lg text-slate-700 dark:text-slate-300">Puntuación: ${score} de ${quizProcesos.length}</p>
+                        <button onclick="location.reload()" class="mt-4 px-4 py-2 bg-sky-600 hover:bg-sky-700 text-white text-sm font-medium rounded-lg cursor-pointer">Reiniciar</button>
+                    </div>
+                `;
+                return;
+            }
+
+            const data = quizProcesos[currentQuiz];
+            document.getElementById('quiz-question').textContent = `${currentQuiz + 1}. ${data.q}`;
+            
+            const optsContainer = document.getElementById('quiz-options');
+            optsContainer.innerHTML = '';
+            document.getElementById('quiz-feedback').className = "mt-4 p-3 text-sm rounded-lg hidden";
+            document.getElementById('quiz-next').classList.add('hidden');
+
+            data.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.textContent = opt;
+                btn.className = "w-full p-3 bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 rounded-lg text-left text-sm font-medium text-slate-700 dark:text-slate-200 transition-all cursor-pointer";
+                btn.onclick = () => checkAnswer(idx, btn);
+                optsContainer.appendChild(btn);
+            });
+        }
+
+        function checkAnswer(selected, btn) {
+            const data = quizProcesos[currentQuiz];
+            const fb = document.getElementById('quiz-feedback');
+            const btns = document.getElementById('quiz-options').children;
+            
+            for (let b of btns) b.disabled = true;
+
+            if (selected === data.correct) {
+                score++;
+                btn.classList.add('bg-emerald-100', 'dark:bg-emerald-900/40', 'border-emerald-500');
+                fb.className = "mt-4 p-3 text-sm rounded-lg bg-emerald-50 dark:bg-emerald-950/30 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-900/50";
+                fb.textContent = "✅ " + data.explanation;
+            } else {
+                btn.classList.add('bg-red-100', 'dark:bg-red-900/40', 'border-red-500');
+                btns[data.correct].classList.add('bg-emerald-100', 'dark:bg-emerald-900/40', 'border-emerald-500');
+                fb.className = "mt-4 p-3 text-sm rounded-lg bg-red-50 dark:bg-red-950/30 text-red-800 dark:text-red-300 border border-red-200 dark:border-red-900/50";
+                fb.textContent = "❌ Incorrecto. " + data.explanation;
+            }
+            document.getElementById('quiz-next').classList.remove('hidden');
+        }
+
+        document.getElementById('quiz-next')?.addEventListener('click', () => {
+            currentQuiz++;
+            loadQuiz();
+        });
+
+        // Tema oscuro/claro (compatibilidad con el script principal)
+        document.getElementById('btn-tema')?.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        });
+
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', () => {
+            // Aplicar tema guardado
+            if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            }
+            initProcessLab();
+            loadQuiz();
+        });
+    </script>
+
 </body>
 </html>
