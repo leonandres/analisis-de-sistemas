@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bitácora de Ingeniería de Requerimientos</title>
+    <meta name="description" content="Clase de Ingeniería de Requerimientos - Análisis de Sistemas de Información">
+    <title>Ingeniería de Requerimientos | Análisis de Sistemas</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="../../styles.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-200">
@@ -12,7 +14,7 @@
     <header class="bg-slate-900 text-white p-6 shadow-md border-b border-slate-800">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
             <div>
-                <span class="text-xs font-semibold tracking-wider text-sky-400 uppercase">Análisis de Sistemas</span>
+                <a href="../../index.html" class="text-xs font-semibold tracking-wider text-sky-400 uppercase hover:text-sky-300 transition-colors">← Volver al inicio</a>
                 <h1 class="text-2xl font-bold mt-1 text-slate-100">Ingeniería de Requerimientos</h1>
             </div>
             <div class="flex items-center gap-3">
@@ -31,7 +33,7 @@
                     Tema
                 </button>
                 <div class="bg-slate-800 px-4 py-2 rounded-lg border border-slate-700 text-sm">
-                    <span class="text-slate-400">Contenido base:</span> <strong class="text-sky-400">UTN.BA</strong>
+                    <span class="text-slate-400">Contenido base:</span> <strong class="text-sky-400">Cátedra</strong>
                 </div>
             </div>
         </div>
@@ -49,6 +51,12 @@
                     <a href="#clasificacion" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-100 border-l-4 border-transparent transition-all navigation-link">
                         2. Funcionales y no funcionales
                     </a>
+                    <a href="#elicitation" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
+                        3. Técnicas de elicitación
+                    </a>
+                    <a href="#calidad" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
+                        4. Calidad de requerimientos
+                    </a>
                     <a href="#practica-clasificacion" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
                         ⚡ Laboratorio: Clasificación
                     </a>
@@ -60,9 +68,6 @@
                     </a>
                     <a href="#materiales" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
                         📚 Materiales
-                    </a>
-                    <a href="#asistente-ia" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link text-emerald-600 dark:text-emerald-400">
-                        🤖 Consultas de IA
                     </a>
                 </div>
             </div>
@@ -176,6 +181,93 @@
                 </div>
             </section>
 
+            <section id="elicitation" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-6">
+                <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                    <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100">3. Técnicas de elicitación</h2>
+                    <p class="text-sm text-slate-500 mt-1">Métodos para descubrir y recopilar requerimientos del usuario.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="p-5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-800">
+                        <span class="text-xs font-bold px-2.5 py-1 rounded-md bg-blue-100 dark:bg-blue-950/50 text-blue-800 dark:text-blue-300 uppercase tracking-wide">Entrevistas</span>
+                        <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200 mt-3 mb-2">Conversación directa</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                            Diálogo estructurado o semi-estructurado con stakeholders para obtener información detallada sobre sus necesidades y expectativas.
+                        </p>
+                    </div>
+
+                    <div class="p-5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-800">
+                        <span class="text-xs font-bold px-2.5 py-1 rounded-md bg-emerald-100 dark:bg-emerald-950/50 text-emerald-800 dark:text-emerald-300 uppercase tracking-wide">Cuestionarios</span>
+                        <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200 mt-3 mb-2">Encuestas estructuradas</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                            Formularios con preguntas cerradas o abiertas distribuidos a múltiples usuarios para recopilar datos de forma masiva.
+                        </p>
+                    </div>
+
+                    <div class="p-5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-800">
+                        <span class="text-xs font-bold px-2.5 py-1 rounded-md bg-amber-100 dark:bg-amber-950/50 text-amber-800 dark:text-amber-300 uppercase tracking-wide">Observación</span>
+                        <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200 mt-3 mb-2">Análisis del contexto</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                            Observación directa de los usuarios en su entorno de trabajo para identificar tareas, problemas y necesidades no expresadas verbalmente.
+                        </p>
+                    </div>
+
+                    <div class="p-5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-800">
+                        <span class="text-xs font-bold px-2.5 py-1 rounded-md bg-purple-100 dark:bg-purple-950/50 text-purple-800 dark:text-purple-300 uppercase tracking-wide">Prototipado</span>
+                        <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200 mt-3 mb-2">Modelos preliminares</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                            Construcción de versiones preliminares del sistema para validar requerimientos con los usuarios antes del desarrollo completo.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="calidad" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-6">
+                <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                    <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100">4. Calidad de requerimientos</h2>
+                    <p class="text-sm text-slate-500 mt-1">Características que debe cumplir un buen requerimiento según ISO/IEC 9126.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="p-4 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800">
+                        <h4 class="font-bold text-slate-800 dark:text-slate-200 mb-2">✅ Verificable</h4>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Debe poder comprobarse mediante pruebas o inspección si el sistema lo cumple.</p>
+                    </div>
+                    <div class="p-4 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800">
+                        <h4 class="font-bold text-slate-800 dark:text-slate-200 mb-2">✅ Completo</h4>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Debe contener toda la información necesaria, sin omitir detalles importantes.</p>
+                    </div>
+                    <div class="p-4 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800">
+                        <h4 class="font-bold text-slate-800 dark:text-slate-200 mb-2">✅ Consistente</h4>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">No debe contradecir otros requerimientos del sistema.</p>
+                    </div>
+                    <div class="p-4 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800">
+                        <h4 class="font-bold text-slate-800 dark:text-slate-200 mb-2">✅ Claro</h4>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Debe ser comprensible sin ambigüedades para todos los stakeholders.</p>
+                    </div>
+                    <div class="p-4 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800">
+                        <h4 class="font-bold text-slate-800 dark:text-slate-200 mb-2">✅ Correcto</h4>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Debe reflejar fielmente la necesidad real del usuario.</p>
+                    </div>
+                    <div class="p-4 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800">
+                        <h4 class="font-bold text-slate-800 dark:text-slate-200 mb-2">✅ Trazable</h4>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Debe poder rastrearse su origen y relación con otros requerimientos.</p>
+                    </div>
+                </div>
+
+                <div class="mt-6 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50 rounded-lg p-4">
+                    <div class="flex items-start gap-3">
+                        <span class="text-2xl">️</span>
+                        <div>
+                            <strong class="text-amber-900 dark:text-amber-200 block mb-1">Error común:</strong>
+                            <p class="text-sm text-amber-800 dark:text-amber-300 leading-relaxed">
+                                Usar adjetivos subjetivos como "amigable", "rápido", "fácil" hace que el requerimiento <strong>no sea verificable</strong>. Siempre especificar métricas concretas.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <section id="practica-clasificacion" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-6">
                 <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
                     <span class="text-xs font-bold px-2 py-0.5 rounded bg-sky-100 dark:bg-sky-950 text-sky-800 dark:text-sky-300 uppercase tracking-wide">Interactivo</span>
@@ -186,7 +278,7 @@
                 <div class="bg-slate-50 dark:bg-slate-800/30 border border-slate-200 dark:border-slate-800 rounded-xl p-6 text-center max-w-xl mx-auto relative">
                     <span class="text-xs text-slate-400 font-mono uppercase tracking-wider">Caso de estudio</span>
                     <div id="texto-enunciado" class="text-base font-medium text-slate-800 dark:text-slate-200 my-4 min-h-[3rem] flex items-center justify-center px-4">
-                        </div>
+                    </div>
                     
                     <div class="flex flex-wrap justify-center gap-3 mt-6">
                         <button id="btn-funcional" class="px-4 py-2 bg-sky-600 hover:bg-sky-700 text-white text-sm font-medium rounded-lg shadow-xs transition-colors cursor-pointer">
@@ -198,10 +290,10 @@
                     </div>
 
                     <div id="feedback-clasificacion" class="mt-5 p-4 text-sm rounded-lg hidden text-left leading-relaxed relative border">
-                        <button id="close-feedback-clasificacion" class="absolute top-2 right-3 font-bold text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 cursor-pointer">✕</button>
+                        <button id="close-feedback-clasificacion" class="absolute top-2 right-3 font-bold text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 cursor-pointer"></button>
                         <div id="text-feedback-clasificacion" class="pr-5"></div>
                         <div class="mt-3 flex justify-end">
-                            <button id="btn-siguiente-clasificacion" class="px-3 py-1 bg-slate-800 dark:bg-slate-700 text-white text-xs font-semibold rounded-md shadow-xs hover:bg-slate-700 dark:hover:bg-slate-600 cursor-pointer">Siguiente enunciado ➔</button>
+                            <button id="btn-siguiente-clasificacion" class="px-3 py-1 bg-slate-800 dark:bg-slate-700 text-white text-xs font-semibold rounded-md shadow-xs hover:bg-slate-700 dark:hover:bg-slate-600 cursor-pointer">Siguiente enunciado </button>
                         </div>
                     </div>
                 </div>
@@ -246,23 +338,23 @@
             <section id="examen-autoevaluacion" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-6">
                 <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
                     <span class="text-xs font-bold px-2 py-0.5 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 uppercase tracking-wide">Examen</span>
-                    <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">📋 Trivia de autoevaluación teórica</h2>
+                    <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2"> Trivia de autoevaluación teórica</h2>
                     <p class="text-sm text-slate-500 mt-1">Simula las condiciones conceptuales fijadas por la cátedra sin temporizadores molestos.</p>
                 </div>
                 
                 <div id="contenedor-examen-teorico" class="bg-slate-50 dark:bg-slate-800/30 border border-slate-200 dark:border-slate-800 rounded-xl p-5 max-w-2xl mx-auto">
-                    </div>
+                </div>
             </section>
 
             <section id="materiales" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-6">
                 <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
                     <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-300 uppercase tracking-wide">Recursos</span>
-                    <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">📚 Materiales de Apoyo</h2>
+                    <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2"> Materiales de Apoyo</h2>
                     <p class="text-sm text-slate-500 mt-1">Documentación oficial y apuntes de la cátedra para profundizar en la teoría.</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <a href="https://raw.githubusercontent.com/leonandres/analisis-de-sistemas/main/clases/06-requerimientos-funcionales-y-no-funcionales/1-presentacion-requerimientos.pdf" target="_blank" class="p-4 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950/30 dark:to-blue-900/30 border border-blue-200 dark:border-blue-800 rounded-lg hover:shadow-md transition-all cursor-pointer">
+                    <a href="1-presentacion-requerimientos.pdf" target="_blank" class="p-4 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950/30 dark:to-blue-900/30 border border-blue-200 dark:border-blue-800 rounded-lg hover:shadow-md transition-all cursor-pointer">
                         <div class="flex items-start gap-3">
                             <span class="text-2xl">📊</span>
                             <div>
@@ -272,7 +364,7 @@
                         </div>
                     </a>
 
-                    <a href="https://raw.githubusercontent.com/leonandres/analisis-de-sistemas/main/clases/06-requerimientos-funcionales-y-no-funcionales/2-ingenieria-de-requerimientos-cap-4.pdf" target="_blank" class="p-4 bg-gradient-to-br from-emerald-50 to-emerald-100 dark:from-emerald-950/30 dark:to-emerald-900/30 border border-emerald-200 dark:border-emerald-800 rounded-lg hover:shadow-md transition-all cursor-pointer">
+                    <a href="2-ingenieria-de-requerimientos-cap-4.pdf" target="_blank" class="p-4 bg-gradient-to-br from-emerald-50 to-emerald-100 dark:from-emerald-950/30 dark:to-emerald-900/30 border border-emerald-200 dark:border-emerald-800 rounded-lg hover:shadow-md transition-all cursor-pointer">
                         <div class="flex items-start gap-3">
                             <span class="text-2xl">📖</span>
                             <div>
@@ -282,7 +374,7 @@
                         </div>
                     </a>
 
-                    <a href="https://raw.githubusercontent.com/leonandres/analisis-de-sistemas/main/clases/06-requerimientos-funcionales-y-no-funcionales/3-norma-ISO-IEC-9126-1-2001.pdf" target="_blank" class="p-4 bg-gradient-to-br from-amber-50 to-amber-100 dark:from-amber-950/30 dark:to-amber-900/30 border border-amber-200 dark:border-amber-800 rounded-lg hover:shadow-md transition-all cursor-pointer">
+                    <a href="3-norma-ISO-IEC-9126-1-2001.pdf" target="_blank" class="p-4 bg-gradient-to-br from-amber-50 to-amber-100 dark:from-amber-950/30 dark:to-amber-900/30 border border-amber-200 dark:border-amber-800 rounded-lg hover:shadow-md transition-all cursor-pointer">
                         <div class="flex items-start gap-3">
                             <span class="text-2xl">⚙️</span>
                             <div>
@@ -292,7 +384,7 @@
                         </div>
                     </a>
 
-                    <a href="https://raw.githubusercontent.com/leonandres/analisis-de-sistemas/main/clases/06-requerimientos-funcionales-y-no-funcionales/4-tecnicas-de-elicitacion-de-goguen.pdf" target="_blank" class="p-4 bg-gradient-to-br from-rose-50 to-rose-100 dark:from-rose-950/30 dark:to-rose-900/30 border border-rose-200 dark:border-rose-800 rounded-lg hover:shadow-md transition-all cursor-pointer">
+                    <a href="4-tecnicas-de-elicitacion-de-goguen.pdf" target="_blank" class="p-4 bg-gradient-to-br from-rose-50 to-rose-100 dark:from-rose-950/30 dark:to-rose-900/30 border border-rose-200 dark:border-rose-800 rounded-lg hover:shadow-md transition-all cursor-pointer">
                         <div class="flex items-start gap-3">
                             <span class="text-2xl">🎯</span>
                             <div>
@@ -302,7 +394,7 @@
                         </div>
                     </a>
 
-                    <a href="https://raw.githubusercontent.com/leonandres/analisis-de-sistemas/main/clases/06-requerimientos-funcionales-y-no-funcionales/5-requerimientos-requisitos.pdf" target="_blank" class="p-4 bg-gradient-to-br from-violet-50 to-violet-100 dark:from-violet-950/30 dark:to-violet-900/30 border border-violet-200 dark:border-violet-800 rounded-lg hover:shadow-md transition-all cursor-pointer">
+                    <a href="5-requerimientos-requisitos.pdf" target="_blank" class="p-4 bg-gradient-to-br from-violet-50 to-violet-100 dark:from-violet-950/30 dark:to-violet-900/30 border border-violet-200 dark:border-violet-800 rounded-lg hover:shadow-md transition-all cursor-pointer">
                         <div class="flex items-start gap-3">
                             <span class="text-2xl">🔑</span>
                             <div>
@@ -314,35 +406,14 @@
                 </div>
             </section>
 
-            <section id="asistente-ia" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-6">
-                <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
-                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 uppercase tracking-wide">Sandbox IA</span>
-                    <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">🤖 Asistente IA Consultor de Requerimientos</h2>
-                    <p class="text-sm text-slate-500 mt-1">Prueba tus dudas teóricas sobre la metodología y taxonomías de Sommerville.</p>
-                </div>
-
-                <div class="border border-slate-200 dark:border-slate-800 rounded-xl bg-slate-50 dark:bg-slate-900/60 overflow-hidden flex flex-col max-w-2xl mx-auto h-80 shadow-inner">
-                    <div id="chat-box" class="p-4 flex-1 overflow-y-auto space-y-3 text-sm flex flex-col">
-                        <div class="bg-sky-50 dark:bg-sky-950/40 p-3 rounded-xl border border-sky-100 dark:border-sky-900/60 text-slate-700 dark:text-slate-300 max-w-[85%] self-start">
-                            <strong>Asistente IA:</strong> ¡Hola! Estoy parametrizado de forma estricta para responder tus dudas sobre <strong>Ingeniería de Requerimientos</strong>. Puedes consultarme definiciones o pedirme clasificar un requisito confuso. ¿Qué deseas estudiar hoy?
-                        </div>
-                    </div>
-                    <div class="p-3 bg-white dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700 flex gap-2">
-                        <input id="input-chat" type="text" placeholder="Ej: ¿Qué es un requerimiento externo?..." class="flex-1 bg-slate-50 dark:bg-slate-900 px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg text-sm text-slate-800 dark:text-slate-100 outline-none focus:border-sky-500 transition-all">
-                        <button id="btn-enviar-chat" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium rounded-lg cursor-pointer transition-colors shadow-xs">
-                            Preguntar
-                        </button>
-                    </div>
-                </div>
-            </section>
-
         </main>
     </div>
 
     <footer class="bg-slate-900 text-slate-400 text-xs text-center p-4 mt-auto border-t border-slate-800">
-        <p>© 2026 - Análisis de sistemas - Práctica.</p>
+        <p>© 2026 - Análisis de Sistemas - Ingeniería de Requerimientos</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="../../script.js"></script>
+    <script src="requerimientos.js"></script>
 </body>
 </html>
