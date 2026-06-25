@@ -1,174 +1,247 @@
 // ==========================================
-// CLASE 02: PROCESOS DE NEGOCIO
-// Laboratorio de clasificación + Trivia
+// CLASE 06: INGENIERÍA DE REQUERIMIENTOS
+// Laboratorios + Trivia
 // ==========================================
 
 // ==========================================
-// LABORATORIO: CLASIFICACIÓN DE PROCESOS
+// BOTÓN DE CAMBIO DE TEMA (global)
+// Solo se ejecuta si no fue inicializado antes
 // ==========================================
-const procesosData = [
-    { nombre: "Planeación Estratégica", tipo: "estrategico", feedback: "¡Correcto! Define el rumbo a largo plazo." },
-    { nombre: "Análisis de Mercado", tipo: "estrategico", feedback: "¡Bien! Detecta oportunidades de negocio." },
-    { nombre: "Producción", tipo: "operativo", feedback: "¡Exacto! Fabrica el producto (el termo)." },
-    { nombre: "Venta", tipo: "operativo", feedback: "¡Correcto! Procesa los pedidos y genera ingresos." },
-    { nombre: "Distribución", tipo: "operativo", feedback: "¡Bien! Entrega el producto al cliente." },
-    { nombre: "Gestión de RRHH", tipo: "soporte", feedback: "¡Correcto! Gestiona el recurso humano." },
-    { nombre: "Compras", tipo: "soporte", feedback: "¡Bien! Adquiere materias primas." },
-    { nombre: "Control de Calidad", tipo: "soporte", feedback: "¡Correcto! Verifica estándares." },
-    { nombre: "Mantenimiento", tipo: "soporte", feedback: "¡Bien! Repara maquinaria." }
+if (!window._temaInicializado) {
+    const btnTema = document.getElementById('btn-tema');
+    const html = document.documentElement;
+    
+    if (localStorage.getItem('theme') === 'dark' || 
+        (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        html.classList.add('dark');
+    }
+    
+    if (btnTema) {
+        btnTema.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        });
+    }
+    
+    window._temaInicializado = true;
+}
+
+// ==========================================
+// LABORATORIO 1: CLASIFICACIÓN DE ENUNCIADOS
+// ==========================================
+const enunciados = [
+    {
+        texto: "El sistema debe permitir al usuario registrar un nuevo alumno ingresando nombre, DNI y correo electrónico.",
+        tipo: "funcional",
+        explicacion: "Describe una acción concreta que el sistema debe realizar (registrar alumno)."
+    },
+    {
+        texto: "El sistema debe responder a cualquier consulta en menos de 2 segundos.",
+        tipo: "no-funcional",
+        explicacion: "Define una restricción de rendimiento (tiempo de respuesta), no una funcionalidad."
+    },
+    {
+        texto: "El sistema debe generar un comprobante de inscripción en formato PDF al finalizar el proceso.",
+        tipo: "funcional",
+        explicacion: "Describe una funcionalidad específica: generar un PDF."
+    },
+    {
+        texto: "El sistema debe estar disponible el 99.9% del tiempo durante el horario de clases.",
+        tipo: "no-funcional",
+        explicacion: "Define un atributo de calidad (disponibilidad), no una función del sistema."
+    },
+    {
+        texto: "El sistema debe validar que el DNI ingresado tenga exactamente 8 dígitos numéricos.",
+        tipo: "funcional",
+        explicacion: "Describe una regla de negocio concreta que el sistema debe ejecutar."
+    },
+    {
+        texto: "Los datos personales de los alumnos deben estar encriptados según la Ley 25.326 de Protección de Datos.",
+        tipo: "no-funcional",
+        explicacion: "Es una restricción externa/legal sobre cómo se deben manejar los datos."
+    },
+    {
+        texto: "El sistema debe permitir al administrador aprobar o rechazar solicitudes de inscripción.",
+        tipo: "funcional",
+        explicacion: "Describe una acción concreta del administrador sobre el sistema."
+    },
+    {
+        texto: "El sistema debe ser compatible con los navegadores Chrome, Firefox y Edge en sus últimas 2 versiones.",
+        tipo: "no-funcional",
+        explicacion: "Define una restricción de compatibilidad/tecnología, no una funcionalidad."
+    }
 ];
 
-let selectedProcess = null;
+let enunciadoActual = 0;
 
-function initProcessLab() {
-    const pool = document.getElementById('process-pool');
-    if (!pool) return;
+function cargarEnunciado() {
+    const textoEl = document.getElementById('texto-enunciado');
+    const feedbackEl = document.getElementById('feedback-clasificacion');
     
-    const shuffled = [...procesosData].sort(() => 0.5 - Math.random());
+    if (!textoEl) return;
     
-    shuffled.forEach((p, index) => {
-        const card = document.createElement('div');
-        card.className = 'process-card';
-        card.textContent = p.nombre;
-        card.dataset.tipo = p.tipo;
-        card.dataset.index = index;
-        card.style.cssText = "background: white; color: #1e293b; padding: 8px 14px; border-radius: 6px; border: 2px solid #cbd5e1; cursor: pointer; transition: all 0.3s; font-size: 13px; font-weight: 500;";
-        card.onclick = () => selectProcess(card);
-        pool.appendChild(card);
-    });
-
-    document.querySelectorAll('.drop-zone').forEach(zone => {
-        zone.onclick = () => dropProcess(zone);
-    });
-}
-
-function selectProcess(card) {
-    document.querySelectorAll('.process-card').forEach(c => {
-        c.style.border = "2px solid #cbd5e1";
-        c.style.background = "white";
-        c.style.color = "#1e293b";
-        c.classList.remove('selected');
-    });
-    
-    card.style.border = "3px solid #0ea5e9";
-    card.style.background = "#e0f2fe";
-    card.style.color = "#0c4a6e";
-    card.classList.add('selected');
-    selectedProcess = card;
-}
-
-function dropProcess(zone) {
-    if (!selectedProcess) {
-        const feedback = document.getElementById('lab-feedback');
-        if (!feedback) return;
-        feedback.textContent = "⚠️ Primero hacé clic en un proceso de la lista.";
-        feedback.className = "mt-4 p-3 text-sm rounded-lg bg-amber-50 dark:bg-amber-950/30 text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-amber-900/50 text-center font-medium";
-        feedback.classList.add('error-animation');
-        setTimeout(() => feedback.classList.remove('error-animation'), 500);
+    if (enunciadoActual >= enunciados.length) {
+        textoEl.innerHTML = '<span class="text-emerald-600 dark:text-emerald-400 font-bold">¡Laboratorio completado! 🎉</span>';
         return;
     }
+    
+    textoEl.textContent = enunciados[enunciadoActual].texto;
+    if (feedbackEl) feedbackEl.classList.add('hidden');
+}
 
-    const feedback = document.getElementById('lab-feedback');
-    const correctType = selectedProcess.dataset.tipo;
-    const zoneType = zone.id.replace('zone-', '');
-    const processData = procesosData.find(p => p.nombre === selectedProcess.textContent);
+function verificarClasificacion(tipoSeleccionado) {
+    const enunciado = enunciados[enunciadoActual];
+    const feedbackEl = document.getElementById('feedback-clasificacion');
+    const textoFeedbackEl = document.getElementById('text-feedback-clasificacion');
+    
+    if (!feedbackEl || !textoFeedbackEl) return;
+    
+    const esCorrecto = tipoSeleccionado === enunciado.tipo;
+    
+    textoFeedbackEl.innerHTML = `
+        <div class="mb-2">
+            <strong class="${esCorrecto ? 'text-emerald-600 dark:text-emerald-400' : 'text-red-600 dark:text-red-400'}">
+                ${esCorrecto ? '✅ ¡Correcto!' : '❌ Incorrecto'}
+            </strong>
+        </div>
+        <p class="text-slate-700 dark:text-slate-300">${enunciado.explicacion}</p>
+    `;
+    
+    feedbackEl.classList.remove('hidden');
+    feedbackEl.className = `mt-5 p-4 text-sm rounded-lg text-left leading-relaxed relative border ${
+        esCorrecto 
+            ? 'bg-emerald-50 dark:bg-emerald-950/30 border-emerald-200 dark:border-emerald-900/50' 
+            : 'bg-red-50 dark:bg-red-950/30 border-red-200 dark:border-red-900/50'
+    }`;
+}
 
-    if (zoneType === correctType) {
-        feedback.textContent = "✅ " + processData.feedback;
-        feedback.className = "mt-4 p-3 text-sm rounded-lg bg-emerald-50 dark:bg-emerald-950/30 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-900/50 text-center font-medium";
-        
-        const droppedCards = zone.querySelector('.dropped-cards');
-        selectedProcess.style.background = "#d1fae5";
-        selectedProcess.style.borderColor = "#10b981";
-        selectedProcess.style.color = "#065f46";
-        selectedProcess.style.cursor = "default";
-        selectedProcess.onclick = null;
-        selectedProcess.classList.add('success-animation');
-        droppedCards.appendChild(selectedProcess);
-        selectedProcess = null;
-    } else {
-        feedback.textContent = "❌ Incorrecto. Pensá: ¿Genera el producto directamente o es apoyo interno?";
-        feedback.className = "mt-4 p-3 text-sm rounded-lg bg-red-50 dark:bg-red-950/30 text-red-800 dark:text-red-300 border border-red-200 dark:border-red-900/50 text-center font-medium";
-        feedback.classList.add('error-animation');
-        setTimeout(() => feedback.classList.remove('error-animation'), 500);
-        
-        selectedProcess.style.border = "2px solid #cbd5e1";
-        selectedProcess.style.background = "white";
-        selectedProcess.style.color = "#1e293b";
-        selectedProcess.classList.remove('selected');
-        selectedProcess = null;
+// ==========================================
+// LABORATORIO 2: CONTROL DE CALIDAD
+// ==========================================
+const caracteristicasData = {
+    verificable: {
+        correcta: true,
+        explicacion: "¡Exacto! Palabras como 'amigable', 'rápida' y 'fácil' son subjetivas y no permiten verificar objetivamente si el sistema cumple el requerimiento. Debería especificar métricas concretas (ej: 'tiempo de carga menor a 2 segundos')."
+    },
+    completo: {
+        correcta: false,
+        explicacion: "No es la principal falla. Aunque podría faltar información, el problema más grave es la falta de verificabilidad por los adjetivos subjetivos."
+    },
+    consistente: {
+        correcta: false,
+        explicacion: "No hay contradicción con otros requerimientos en este enunciado aislado. El problema es la subjetividad."
+    },
+    ambiguo: {
+        correcta: false,
+        explicacion: "Si bien es ambiguo, la característica que falla MÁS gravemente es la verificabilidad, porque no se puede comprobar objetivamente."
     }
+};
+
+function verificarCaracteristica(tipo) {
+    const feedbackCaracteristica = document.getElementById('feedback-caracteristica');
+    const textoFeedbackCaracteristica = document.getElementById('text-feedback-caracteristica');
+    
+    if (!feedbackCaracteristica || !textoFeedbackCaracteristica) return;
+    
+    const data = caracteristicasData[tipo];
+    
+    textoFeedbackCaracteristica.innerHTML = `
+        <div class="mb-2">
+            <strong class="${data.correcta ? 'text-emerald-600 dark:text-emerald-400' : 'text-red-600 dark:text-red-400'}">
+                ${data.correcta ? '✅ ¡Correcto!' : '❌ No es la principal falla'}
+            </strong>
+        </div>
+        <p class="text-slate-700 dark:text-slate-300">${data.explicacion}</p>
+    `;
+    
+    feedbackCaracteristica.classList.remove('hidden');
+    feedbackCaracteristica.className = `mt-4 p-4 text-sm rounded-lg leading-relaxed border relative ${
+         data.correcta 
+            ? 'bg-emerald-50 dark:bg-emerald-950/30 border-emerald-200 dark:border-emerald-900/50' 
+            : 'bg-amber-50 dark:bg-amber-950/30 border-amber-200 dark:border-amber-900/50'
+    }`;
 }
 
 // ==========================================
 // TRIVIA DE AUTOEVALUACIÓN
 // ==========================================
-const triviaProcesos = [
+const triviaRequerimientos = [
     {
-        q: "Según ISO 9000, ¿qué es un proceso?",
+        q: "¿Cuál es la diferencia principal entre un Requerimiento y un Requisito?",
         options: [
-            "Un conjunto de departamentos con responsabilidades propias",
-            "Una serie de actividades mutuamente relacionadas que transforman entradas en salidas",
-            "La cadena de valor de Porter",
-            "La estructura orgánica de Mintzberg"
+            "Son exactamente lo mismo, solo cambia el nombre según el autor",
+            "El Requerimiento es la necesidad del usuario; el Requisito es la capacidad técnica del sistema",
+            "El Requisito es la necesidad del usuario; el Requerimiento es la capacidad técnica",
+            "El Requerimiento es técnico y el Requisito es de negocio"
         ],
         correct: 1,
-        explanation: "Correcto. ISO 9000 define un proceso como actividades relacionadas que transforman elementos de entrada en elementos de salida."
+        explanation: "Correcto. El Requerimiento expresa la necesidad del usuario (enfoque de negocio), mientras que el Requisito es la condición técnica que debe cumplir el sistema."
     },
     {
-        q: "¿Cuál es la principal diferencia entre Macroproceso y Proceso?",
+        q: "'El sistema debe procesar 1000 transacciones por segundo' es un requerimiento:",
         options: [
-            "El macroproceso tiene actividades concretas",
-            "El macroproceso es una agrupación sin actividades concretas; el proceso SÍ las tiene",
-            "No hay diferencia, son sinónimos",
-            "El proceso es estratégico y el macroproceso es operativo"
+            "Funcional",
+            "No funcional de producto/calidad",
+            "No funcional organizacional",
+            "No funcional externo"
         ],
         correct: 1,
-        explanation: "¡Exacto! El macroproceso agrupa procesos sin tener actividades concretas (ej: 'Gestión de Ventas'), mientras que el proceso sí las define (ej: 'Realizar una venta')."
+        explanation: "Es un requerimiento no funcional de producto/calidad, específicamente de rendimiento. Define una métrica medible sobre el comportamiento del sistema."
     },
     {
-        q: "En Termilagro, el proceso 'Liquidación de sueldos' (RRHH) es de tipo:",
+        q: "'El sistema debe utilizar una base de datos Oracle' es un requerimiento:",
         options: [
-            "Estratégico",
-            "Operativo",
-            "Soporte/Apoyo",
-            "Declaración organizacional"
+            "Funcional",
+            "No funcional de producto",
+            "No funcional organizacional",
+            "No funcional externo"
         ],
         correct: 2,
-        explanation: "Correcto. RRHH es un proceso de soporte porque gestiona recursos internos y apoya a los operativos, pero no genera valor directamente."
+        explanation: "Es organizacional porque deriva de políticas internas o infraestructura tecnológica preexistente de la organización."
     },
     {
-        q: "La visión que observa la organización desde departamentos aislados se denomina:",
+        q: "¿Cuál de las siguientes NO es una característica de un buen requerimiento?",
         options: [
-            "Visión por procesos",
-            "Cadena de valor",
-            "Visión funcional o departamental",
-            "Modelo de gestión industrial"
+            "Verificable",
+            "Consistente",
+            "Subjetivo",
+            "Trazable"
         ],
         correct: 2,
-        explanation: "¡Bien! La visión funcional (Henry Fayol) mira los 'silos' departamentales."
+        explanation: "Un requerimiento NUNCA debe ser subjetivo. Debe ser objetivo y medible para poder verificarse."
     },
     {
-        q: "¿Qué significa SIPOC?",
+        q: "La técnica de elicitación que implica observar a los usuarios en su entorno de trabajo se llama:",
         options: [
-            "Sistemas, Inputs, Procesos, Outputs, Clientes",
-            "Suppliers, Inputs, Process, Outputs, Customers",
-            "Strategies, Ideas, Plans, Operations, Controls",
-            "Standards, Implementation, Procedures, Operations, Quality"
+            "Entrevista",
+            "Cuestionario",
+            "Observación",
+            "Prototipado"
+        ],
+        correct: 2,
+        explanation: "La observación permite identificar tareas y necesidades que los usuarios no expresan verbalmente."
+    },
+    {
+        q: "'El sistema debe cumplir con la Ley 25.326 de Protección de Datos Personales' es un requerimiento:",
+        options: [
+            "Funcional",
+            "No funcional de producto",
+            "No funcional organizacional",
+            "No funcional externo"
+        ],
+        correct: 3,
+        explanation: "Es externo porque deriva de un marco regulatorio/legal ajeno al sistema y a la organización."
+    },
+    {
+        q: "¿En qué etapa de la metodología se definen los Requerimientos del Sistema?",
+        options: [
+            "Relevamiento / Reconocimiento",
+            "Análisis de requisitos",
+            "Diseño",
+            "Implementación"
         ],
         correct: 1,
-        explanation: "Exacto. SIPOC: Suppliers (Proveedores), Inputs (Entradas), Process (Proceso), Outputs (Salidas), Customers (Clientes)."
-    },
-    {
-        q: "¿En qué etapa de la Metodología de Sistemas se identifican las declaraciones, macroprocesos y procesos?",
-        options: [
-            "Etapa de Relevamiento",
-            "Etapa de Análisis",
-            "Etapa de Reconocimiento",
-            "Etapa de Diseño"
-        ],
-        correct: 2,
-        explanation: "Correcto. El reconocimiento es la primera aproximación a la organización, donde se identifican declaraciones, macroprocesos y procesos."
+        explanation: "En el Análisis de requisitos se transforman las necesidades del usuario (requerimientos) en capacidades técnicas del sistema (requisitos)."
     }
 ];
 
@@ -179,18 +252,18 @@ function loadTriviaQuestion() {
     const container = document.getElementById('contenedor-examen-teorico');
     if (!container) return;
 
-    if (currentTrivia >= triviaProcesos.length) {
-        const percentage = Math.round((scoreTrivia / triviaProcesos.length) * 100);
+    if (currentTrivia >= triviaRequerimientos.length) {
+        const percentage = Math.round((scoreTrivia / triviaRequerimientos.length) * 100);
         let message = '';
         let color = '';
         let emoji = '';
         
         if (percentage === 100) {
-            message = '¡Perfecto! Dominás completamente el tema de Procesos de Negocio.';
+            message = '¡Perfecto! Dominas completamente el tema de Requerimientos.';
             color = 'text-emerald-600 dark:text-emerald-400';
             emoji = '🏆';
         } else if (percentage >= 80) {
-            message = '¡Muy bien! Tenés un buen entendimiento del tema.';
+            message = '¡Muy bien! Tienes un buen entendimiento del tema.';
             color = 'text-sky-600 dark:text-sky-400';
             emoji = '👏';
         } else if (percentage >= 60) {
@@ -207,7 +280,7 @@ function loadTriviaQuestion() {
             <div class="text-center py-8">
                 <div class="text-6xl mb-4">${emoji}</div>
                 <h3 class="text-2xl font-bold ${color} mb-3">Trivia Completada</h3>
-                <p class="text-lg text-slate-700 dark:text-slate-300 mb-2">Puntuación: ${scoreTrivia} de ${triviaProcesos.length} (${percentage}%)</p>
+                <p class="text-lg text-slate-700 dark:text-slate-300 mb-2">Puntuación: ${scoreTrivia} de ${triviaRequerimientos.length} (${percentage}%)</p>
                 <p class="text-sm text-slate-600 dark:text-slate-400 mb-6">${message}</p>
                 <button onclick="resetTrivia()" class="px-4 py-2 bg-sky-600 hover:bg-sky-700 text-white text-sm font-medium rounded-lg cursor-pointer transition-colors">Reiniciar Trivia</button>
             </div>
@@ -215,10 +288,10 @@ function loadTriviaQuestion() {
         return;
     }
 
-    const data = triviaProcesos[currentTrivia];
+    const data = triviaRequerimientos[currentTrivia];
     container.innerHTML = `
         <div class="mb-4">
-            <span class="text-xs text-slate-400 font-mono uppercase tracking-wider">Pregunta ${currentTrivia + 1} de ${triviaProcesos.length}</span>
+            <span class="text-xs text-slate-400 font-mono uppercase tracking-wider">Pregunta ${currentTrivia + 1} de ${triviaRequerimientos.length}</span>
             <h3 class="text-base font-bold text-slate-800 dark:text-slate-200 mt-1">${data.q}</h3>
         </div>
         <div id="trivia-options" class="space-y-2"></div>
@@ -239,7 +312,7 @@ function loadTriviaQuestion() {
 }
 
 function checkTriviaAnswer(selectedIndex, btn) {
-    const data = triviaProcesos[currentTrivia];
+    const data = triviaRequerimientos[currentTrivia];
     const feedback = document.getElementById('trivia-feedback');
     const buttons = document.getElementById('trivia-options').children;
     
@@ -262,13 +335,6 @@ function checkTriviaAnswer(selectedIndex, btn) {
     
     document.getElementById('btn-siguiente-trivia').classList.remove('hidden');
 }
-
-document.addEventListener('click', (e) => {
-    if (e.target && e.target.id === 'btn-siguiente-trivia') {
-        currentTrivia++;
-        loadTriviaQuestion();
-    }
-});
 
 function resetTrivia() {
     currentTrivia = 0;
@@ -298,9 +364,52 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // ==========================================
-// INICIALIZACIÓN
+// INICIALIZACIÓN - Todo dentro de DOMContentLoaded
 // ==========================================
 document.addEventListener('DOMContentLoaded', () => {
-    initProcessLab();
+    console.log('Clase 06: DOM cargado, inicializando...');
+    
+    // Laboratorio 1: Clasificación
+    cargarEnunciado();
+    
+    const btnFuncional = document.getElementById('btn-funcional');
+    const btnNoFuncional = document.getElementById('btn-no-funcional');
+    const btnSiguienteClasificacion = document.getElementById('btn-siguiente-clasificacion');
+    const btnCerrarClasificacion = document.getElementById('close-feedback-clasificacion');
+    
+    if (btnFuncional) btnFuncional.addEventListener('click', () => verificarClasificacion('funcional'));
+    if (btnNoFuncional) btnNoFuncional.addEventListener('click', () => verificarClasificacion('no-funcional'));
+    if (btnSiguienteClasificacion) {
+        btnSiguienteClasificacion.addEventListener('click', () => {
+            enunciadoActual++;
+            cargarEnunciado();
+        });
+    }
+    if (btnCerrarClasificacion) {
+        btnCerrarClasificacion.addEventListener('click', () => {
+            document.getElementById('feedback-clasificacion').classList.add('hidden');
+        });
+    }
+    
+    // Laboratorio 2: Características
+    const botonesCaracteristica = document.querySelectorAll('.btn-caracteristica');
+    const btnCerrarCaracteristica = document.getElementById('close-feedback-caracteristica');
+    
+    botonesCaracteristica.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const tipo = btn.dataset.tipo;
+            verificarCaracteristica(tipo);
+        });
+    });
+    
+    if (btnCerrarCaracteristica) {
+        btnCerrarCaracteristica.addEventListener('click', () => {
+            document.getElementById('feedback-caracteristica').classList.add('hidden');
+        });
+    }
+    
+    // Trivia
     loadTriviaQuestion();
+    
+    console.log('Clase 06: Inicialización completada');
 });
