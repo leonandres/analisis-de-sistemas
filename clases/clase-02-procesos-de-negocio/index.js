@@ -2,23 +2,27 @@
 // CLASE 02: PROCESOS DE NEGOCIO
 // Laboratorio de clasificación + Trivia + Examen Final
 // ==========================================
-
 // ==========================================
-// BOTÓN DE CAMBIO DE TEMA
+// BOTÓN DE CAMBIO DE TEMA (global)
+// Solo se ejecuta si no fue inicializado antes
 // ==========================================
-const btnTema = document.getElementById('btn-tema');
-const html = document.documentElement;
-
-if (localStorage.getItem('theme') === 'dark' || 
-    (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    html.classList.add('dark');
-}
-
-if (btnTema) {
-    btnTema.addEventListener('click', () => {
-        html.classList.toggle('dark');
-        localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
-    });
+if (!window._temaInicializado) {
+    const btnTema = document.getElementById('btn-tema');
+    const html = document.documentElement;
+    
+    if (localStorage.getItem('theme') === 'dark' || 
+        (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        html.classList.add('dark');
+    }
+    
+    if (btnTema) {
+        btnTema.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        });
+    }
+    
+    window._temaInicializado = true;
 }
 
 // ==========================================
