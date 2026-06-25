@@ -1,20 +1,26 @@
 // ==========================================
 // SCRIPT GLOBAL - Portal Principal
-// Solo maneja el botón de tema claro/oscuro
+// Manejo de tema claro/oscuro
 // ==========================================
 
-const btnTema = document.getElementById('btn-tema');
-const html = document.documentElement;
-
-// Cargar preferencia guardada o detectar preferencia del sistema
-if (localStorage.getItem('theme') === 'dark' || 
-    (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    html.classList.add('dark');
-}
-
-if (btnTema) {
-    btnTema.addEventListener('click', () => {
-        html.classList.toggle('dark');
-        localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
-    });
-}
+document.addEventListener('DOMContentLoaded', () => {
+    const btnTema = document.getElementById('btn-tema');
+    const html = document.documentElement;
+    
+    // Cargar preferencia guardada o detectar preferencia del sistema
+    if (localStorage.getItem('theme') === 'dark' || 
+        (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        html.classList.add('dark');
+    }
+    
+    // Solo agregar el listener si el botón existe
+    if (btnTema) {
+        btnTema.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        });
+        console.log('✅ Botón de tema inicializado correctamente');
+    } else {
+        console.warn('⚠️ No se encontró el botón de tema (btn-tema)');
+    }
+});
