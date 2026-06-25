@@ -113,11 +113,11 @@
                 <h3 class  ="text-lg font-bold text-slate-800 dark:text-slate-200">📊 Niveles del Modelo de Gestión</h3>
                 <div class = "space-y-3">
                     <div class  ="p-5 border-l-4 border-sky-600 bg-slate-50 dark:bg-slate-800/40 rounded-r-xl">
-                        <h4 class = "font-bold text-base text-slate-800 dark:text-slate-200 mb-2">1️ Declaraciones</h4>
+                        <h4 class = "font-bold text-base text-slate-800 dark:text-slate-200 mb-2">1️⃣ Declaraciones</h4>
                         <p class = "text-sm text-slate-600 dark:text-slate-400">Misión, visión, alcance, stakeholders y sectores de operación. Definen el <em>"qué"</em> y <em>"por qué"</em> de la organización.</p>
                     </div>
                     <div class = "p-5 border-l-4 border-purple-600 bg-slate-50 dark:bg-slate-800/40 rounded-r-xl">
-                        <h4 class = "font-bold text-base text-slate-800 dark:text-slate-200 mb-2">2️ Macroprocesos</h4>
+                        <h4 class = "font-bold text-base text-slate-800 dark:text-slate-200 mb-2">2️⃣ Macroprocesos</h4>
                         <p class = "text-sm text-slate-600 dark:text-slate-400">Agrupación de procesos con objetivo común. <strong class="text-red-600 dark:text-red-400">NO tiene actividades concretas</strong>. Ej: "Gestión de Ventas".</p>
                     </div>
                     <div class = "p-5 border-l-4 border-emerald-600 bg-slate-50 dark:bg-slate-800/40 rounded-r-xl">
@@ -144,7 +144,7 @@
         <section id = "termilagro" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-6">
             <div class = "border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
                 <span class = "text-xs font-bold px-2 py-0.5 rounded bg-sky-100 dark:bg-sky-950 text-sky-800 dark:text-sky-300 uppercase tracking-wide">Caso Práctico</span>
-                <h2 class = "text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">2. Caso Termilagro S.A.</h2>
+                <h2 class = "text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">2 - Termilagro S.A.</h2>
                 <p class = "text-sm text-slate-500 mt-1">Empresa dedicada a la producción y comercialización de termos plásticos de alta calidad.</p>
             </div>
 
@@ -261,14 +261,103 @@
             </div>
         </section>
 
-        <!-- Seccion 3-->
-        <section id = "" class = "bg-white">
+        <!-- Sección 3: LABORATORIO INTERACTIVO -->
+        <section id = "laboratorio" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-6">
+            <div class = "border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                <span class = "text-xs font-bold px-2 py-0.5 rounded bg-sky-100 dark:bg-sky-950 text-sky-800 dark:text-sky-300 uppercase tracking-wide">Interactivo</span>
+                <h2 class = "text-xl font-bold text-slate-800 dark:text-slate-100 mt-2"> Laboratorio: Clasificación de Procesos</h2>
+                <p class = "text-sm text-slate-500 mt-1">Haz clic en un proceso de la lista y luego en la categoría correcta para asignarlo.</p>
+            </div>
 
+            <div class="bg-slate-50 dark:bg-slate-800/30 border border-slate-200 dark:border-slate-800 rounded-xl p-5 max-w-4xl mx-auto">
+                <div class="mb-6">
+                    <strong class="text-sm text-slate-700 dark:text-slate-300 block mb-3">📦 Procesos disponibles:</strong>
+                    <div id="process-pool" class="flex flex-wrap gap-2">
+                        <!-- Se genera dinámicamente con JS -->
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div id="zone-estrategico" class="drop-zone p-4 bg-red-50 dark:bg-red-950/30 border-2 border-dashed border-red-300 dark:border-red-800 rounded-lg min-h-[120px] cursor-pointer transition-all hover:border-red-500">
+                        <h4 class="text-sm font-bold text-red-900 dark:text-red-300 mb-2 text-center"> Estratégicos</h4>
+                        <div class="dropped-cards flex flex-col gap-2"></div>
+                    </div>
+                    <div id="zone-operativo" class="drop-zone p-4 bg-emerald-50 dark:bg-emerald-950/30 border-2 border-dashed border-emerald-300 dark:border-emerald-800 rounded-lg min-h-[120px] cursor-pointer transition-all hover:border-emerald-500">
+                        <h4 class="text-sm font-bold text-emerald-900 dark:text-emerald-300 mb-2 text-center">⚙️ Operativos</h4>
+                        <div class="dropped-cards flex flex-col gap-2"></div>
+                    </div>
+                    <div id="zone-soporte" class="drop-zone p-4 bg-amber-50 dark:bg-amber-950/30 border-2 border-dashed border-amber-300 dark:border-amber-800 rounded-lg min-h-[120px] cursor-pointer transition-all hover:border-amber-500">
+                        <h4 class="text-sm font-bold text-amber-900 dark:text-amber-300 mb-2 text-center">️ Soporte</h4>
+                        <div class="dropped-cards flex flex-col gap-2"></div>
+                    </div>
+                </div>
+
+                <div id="lab-feedback" class="mt-4 p-3 text-sm rounded-lg hidden text-center font-medium transition-all"></div>
+            </div>
         </section>
 
-        <!-- Seccion 4:-->
-        <section id = "" class = "bg-white">
+        <!-- Sección 4: TRIVIA -->
+        <section id="trivia" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-6">
+            <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                <span class="text-xs font-bold px-2 py-0.5 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 uppercase tracking-wide">Examen</span>
+                <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2"> Trivia de Autoevaluación</h2>
+                <p class="text-sm text-slate-500 mt-1">Pon a prueba tu comprensión teórica y práctica.</p>
+            </div>
 
+            <div id="quiz-container" class="bg-slate-50 dark:bg-slate-800/30 border border-slate-200 dark:border-slate-800 rounded-xl p-5 max-w-2xl mx-auto">
+                <div id="quiz-question" class="text-base font-bold text-slate-800 dark:text-slate-200 mb-4"></div>
+                <div id="quiz-options" class="space-y-2"></div>
+                <div id="quiz-feedback" class="mt-4 p-3 text-sm rounded-lg hidden"></div>
+                <button id="quiz-next" class="mt-4 px-4 py-2 bg-sky-600 hover:bg-sky-700 text-white text-sm font-medium rounded-lg cursor-pointer transition-colors hidden">
+                    Siguiente ➔
+                </button>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 5: RECURSOS -->
+        <section id="recursos" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-6">
+            <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-300 uppercase tracking-wide">Recursos</span>
+                <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">📚 Material de la Cátedra</h2>
+                <p class="text-sm text-slate-500 mt-1">Documentación oficial y presentaciones utilizadas en esta unidad.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <a href="https://raw.githubusercontent.com/leonandres/analisis-de-sistemas/main/clases/clase-02-procesos-de-negocio/APUNTE%20-%20Introducción%20a%20Procesos%20de%20Negocios.pdf" target="_blank" class="p-4 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950/30 dark:to-blue-900/30 border border-blue-200 dark:border-blue-800 rounded-lg hover:shadow-md transition-all cursor-pointer">
+                    <div class="flex items-start gap-3">
+                        <span class="text-2xl">📘</span>
+                        <div>
+                            <h3 class="font-bold text-slate-800 dark:text-slate-100">Apunte: Introducción a Procesos de Negocios</h3>
+                            <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Teoría completa, clasificación ISO 9001 y modelo de gestión.</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://raw.githubusercontent.com/leonandres/analisis-de-sistemas/main/clases/clase-02-procesos-de-negocio/3%20-%20Presentación%20resolución%20Termilagro.pdf" target="_blank" class="p-4 bg-gradient-to-br from-emerald-50 to-emerald-100 dark:from-emerald-950/30 dark:to-emerald-900/30 border border-emerald-200 dark:border-emerald-800 rounded-lg hover:shadow-md transition-all cursor-pointer">
+                    <div class="flex items-start gap-3">
+                        <span class="text-2xl">📊</span>
+                        <div>
+                            <h3 class="font-bold text-slate-800 dark:text-slate-100">Resolución Termilagro</h3>
+                            <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Paso a paso del ejercicio integrador de la clase.</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://raw.githubusercontent.com/leonandres/analisis-de-sistemas/main/clases/clase-02-procesos-de-negocio/Procesos%20de%20Negocios.pdf" target="_blank" class="p-4 bg-gradient-to-br from-amber-50 to-amber-100 dark:from-amber-950/30 dark:to-amber-900/30 border border-amber-200 dark:border-amber-800 rounded-lg hover:shadow-md transition-all cursor-pointer">
+                    <div class="flex items-start gap-3">
+                        <span class="text-2xl">📑</span>
+                        <div>
+                            <h3 class="font-bold text-slate-800 dark:text-slate-100">Presentación: Procesos de Negocios</h3>
+                            <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Diapositivas de cátedra con ejemplos y diagramas.</p>
+                        </div>
+                    </div>
+                </a>
+                <div class="p-4 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 rounded-lg flex items-start gap-3">
+                    <span class="text-2xl">🤖</span>
+                    <div>
+                        <h3 class="font-bold text-slate-800 dark:text-slate-100">¿Dudas con el tema?</h3>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Utiliza el asistente de IA en la página principal para consultar definiciones o verificar clasificaciones.</p>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
     
