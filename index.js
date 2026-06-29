@@ -23,4 +23,16 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         console.warn('⚠️ No se encontró el botón de tema (btn-tema)');
     }
+
+    // Botón flotante "volver arriba"
+    const btnTop = document.getElementById('btn-top');
+    if (btnTop) {
+        window.addEventListener('scroll', () => {
+            btnTop.classList.toggle('visible', window.scrollY > 400);
+        });
+        btnTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
 });
+

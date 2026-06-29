@@ -67,3 +67,12 @@ html.dark ::-webkit-scrollbar-thumb:hover {
     background-color: rgba(156, 163, 175, 0.4);
     border-radius: 4px;
 }
+
+#btn-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+#btn-top {
+    transform: translateY(20px);
+}
