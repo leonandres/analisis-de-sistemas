@@ -583,3 +583,14 @@ document.addEventListener('DOMContentLoaded', () => {
     loadTriviaQuestion();
     loadExamenFinal();
 });
+
+// Menú desplegable de clases
+const btnMenu = document.getElementById('btn-menu-clases');
+const menuClases = document.getElementById('menu-clases');
+if (btnMenu && menuClases) {
+    btnMenu.addEventListener('click', (e) => {
+        e.stopPropagation();
+        menuClases.classList.toggle('hidden');
+    });
+    document.addEventListener('click', () => menuClases.classList.add('hidden'));
+}
