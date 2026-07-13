@@ -1,10 +1,24 @@
-// components.js - Header con botón de inicio integrado y diseño premium
-const headerHTML = `
+// components.js - Header con navegación dinámica, inicio integrado y diseño premium
+function getRelativePaths() {
+    const path = window.location.pathname;
+    // Detectar si estamos dentro de la carpeta clases (por ejemplo, /clases/clase-xx/)
+    const isSubPage = path.includes('/clases/');
+    
+    return {
+        home: isSubPage ? '../../index.html' : './index.html',
+        clase02: isSubPage ? '../clase-02-procesos-de-negocio/index.html' : './clases/clase-02-procesos-de-negocio/index.html',
+        clase06: isSubPage ? '../clase-06-requerimientos-funcionales-y-no-funcionales/index.html' : './clases/clase-06-requerimientos-funcionales-y-no-funcionales/index.html',
+        examen: isSubPage ? '../examen/index.html' : './clases/examen/index.html'
+    };
+}
+
+function getHeaderHTML(paths) {
+    return `
 <header class="fixed top-0 left-0 right-0 z-40 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md shadow-xs transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
         <div class="flex items-center gap-3">
             <!-- BOTÓN DE INICIO (Casita) -->
-            <a href="../../index.html" class="flex items-center justify-center w-10 h-10 bg-slate-100 dark:bg-slate-800 hover:bg-sky-100 dark:hover:bg-sky-950/40 text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-sky-200 dark:hover:border-sky-900/50 shadow-xs transition-all duration-300 hover:scale-105" title="Volver al inicio">
+            <a href="${paths.home}" class="flex items-center justify-center w-10 h-10 bg-slate-100 dark:bg-slate-800 hover:bg-sky-100 dark:hover:bg-sky-950/40 text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-sky-200 dark:hover:border-sky-900/50 shadow-xs transition-all duration-300 hover:scale-105" title="Volver al inicio">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                     <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                     <polyline points="9 22 9 12 15 12 15 22"></polyline>
@@ -16,7 +30,7 @@ const headerHTML = `
 
             <!-- MENÚ DE CLASES -->
             <div class="relative">
-                <button id="btn-menu-clases" class="flex items-center gap-2 px-3.5 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-semibold transition-all duration-300 shadow-xs text-slate-700 dark:text-slate-200">
+                <button id="btn-menu-clases" class="flex items-center gap-2 px-3.5 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-semibold transition-all duration-300 shadow-xs text-slate-700 dark:text-slate-200" title="Ver clases">
                     <span class="text-base leading-none">📚</span>
                     <span class="hidden sm:inline">Clases</span>
                     <svg id="menu-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="transition-transform duration-300">
@@ -24,11 +38,11 @@ const headerHTML = `
                     </svg>
                 </button>
                 
-                <div id="menu-clases" class="hidden absolute top-full left-0 mt-2 w-80 bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-800 overflow-hidden transition-all duration-300 origin-top-left scale-95 opacity-0 z-50">
+                <div id="menu-clases" class="hidden absolute top-full left-0 mt-2 w-85 bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-800 overflow-hidden transition-all duration-300 origin-top-left scale-95 opacity-0 z-50">
                     <div class="p-2">
                         <div class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider px-3 py-2">Ir a otra clase</div>
                         
-                        <a href="../clase-02-procesos-de-negocio/index.html" class="flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
+                        <a href="${paths.clase02}" class="flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
                             <span class="text-2xl group-hover:scale-110 transition-transform duration-200">🔄</span>
                             <div class="flex-1">
                                 <div class="text-[10px] font-bold text-sky-600 dark:text-sky-400 uppercase tracking-wider">Clase 02</div>
@@ -38,12 +52,23 @@ const headerHTML = `
                             <span class="text-slate-400 group-hover:translate-x-1 transition-transform duration-200">→</span>
                         </a>
                         
-                        <a href="../clase-06-requerimientos-funcionales-y-no-funcionales/index.html" class="flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
+                        <a href="${paths.clase06}" class="flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
                             <span class="text-2xl group-hover:scale-110 transition-transform duration-200">📋</span>
                             <div class="flex-1">
                                 <div class="text-[10px] font-bold text-sky-600 dark:text-sky-400 uppercase tracking-wider">Clase 06</div>
                                 <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">Ingeniería de Requerimientos</div>
                                 <div class="text-xs text-slate-500 dark:text-slate-400">Funcionales, No funcionales</div>
+                            </div>
+                            <span class="text-slate-400 group-hover:translate-x-1 transition-transform duration-200">→</span>
+                        </a>
+
+                        <!-- NUEVA CLASE: REPASO EXAMEN -->
+                        <a href="${paths.examen}" class="flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
+                            <span class="text-2xl group-hover:scale-110 transition-transform duration-200">🎓</span>
+                            <div class="flex-1">
+                                <div class="text-[10px] font-bold text-sky-600 dark:text-sky-400 uppercase tracking-wider">Repaso</div>
+                                <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">Conceptos de Examen</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">Machete de Parciales UTN</div>
                             </div>
                             <span class="text-slate-400 group-hover:translate-x-1 transition-transform duration-200">→</span>
                         </a>
@@ -90,11 +115,13 @@ const headerHTML = `
     <div class="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-sky-400 via-indigo-500 to-emerald-400 opacity-95"></div>
 </header>
 `;
+}
 
 function loadHeader() {
     const headerContainer = document.getElementById('header-container');
     if (headerContainer) {
-        headerContainer.innerHTML = headerHTML;
+        const paths = getRelativePaths();
+        headerContainer.innerHTML = getHeaderHTML(paths);
         initializeMenu();
     }
 }
