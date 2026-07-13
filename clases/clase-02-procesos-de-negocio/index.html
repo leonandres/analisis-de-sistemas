@@ -17,48 +17,9 @@
 </head>
 <body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-200">
 
-    <header class = "sticky top-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm">
-        <div class = "max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
-            <div class = "flex items-center gap-3">
-                <a href = "../../index.html" class="text-slate-600 dark:text-slate-400 hover:text-sky-600 dark:hover:text-sky-400 transition-colors" title="Volver al inicio">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                </a>
-                <div class = "relative">
-                    <button id = "btn-menu-clases" class="flex items-center gap-2 px-3 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg text-sm font-medium transition-colors">
-                        <span>📚</span>
-                        <span class="hidden sm:inline">Clases</span>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                    </button>
-                    <div id="menu-clases" class="hidden absolute top-full left-0 mt-2 w-72 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-200 dark:border-slate-800 overflow-hidden">
-                        <a href = "../clase-02-procesos-de-negocio/index.html" class="flex items-center gap-3 p-3 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors border-b border-slate-100 dark:border-slate-800">
-                            <span class="text-xl">🔄</span>
-                            <div>
-                                <div class = "text-xs text-slate-400">Clase 02</div>
-                                <div class = "text-sm font-medium">Procesos de negocio</div>
-                            </div>
-                        </a>
-                        <a href = "../clase-06-requerimientos-funcionales-y-no-funcionales/index.html" class="flex items-center gap-3 p-3 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors border-b border-slate-100 dark:border-slate-800">
-                            <span class = "text-xl">📋</span>
-                            <div>
-                                <div class = "text-xs text-slate-400">Clase 06</div>
-                                <div class = "text-sm font-medium">Ingeniería de requerimientos</div>
-                            </div>
-                        </a>
-                        <div class = "flex items-center gap-3 p-3 opacity-50">
-                            <span class="text-xl grayscale">📅</span>
-                            <div>
-                                <div class = "text-xs text-slate-400">Clase 07</div>
-                                <div class = "text-sm font-medium">Planificación</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div id = "header-container"></div>
 
-            <div>
-                <h1 class = "text-2xl font-bold mt-1 text-slate-100">Procesos de negocio</h1>
-            </div>
-
+            <!-- Botón copado que no quiero borrar 
             <button id = "btn-tema" class="px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-sm font-medium rounded-lg border border-slate-700 transition-colors cursor-pointer text-slate-200 flex items-center gap-2">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition-transform">
                     <circle cx="12" cy="12" r="5"></circle>
@@ -73,838 +34,842 @@
                 </svg>
                 Tema
             </button>
-        </div>
-    </header>
+            -->
 
-    <div class="max-w-7xl mx-auto w-full p-4 md:p-6 grid grid-cols-1 lg:grid-cols-4 gap-6 flex-1">
+    <!-- En cada clase, en el contenedor principal -->
+    <div class = "main-content-wrapper flex-1 w-full">
         
-        <nav class="lg:col-span-1 space-y-2">
-            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 sticky top-6">
-                <h2 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-3 px-2">Unidades de estudio</h2>
-                <div class="space-y-1">
-                    <a href="#fundamentos" class="block px-3 py-2.5 text-sm font-medium rounded-lg bg-sky-50 dark:bg-slate-800 text-sky-700 dark:text-sky-400 border-l-4 border-sky-600 navigation-link active">
-                        1. Fundamentos y conceptos
-                    </a>
-                    <a href="#vision-procesos" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-100 border-l-4 border-transparent transition-all navigation-link">
-                        2. Visión funcional vs. procesos
-                    </a>
-                    <a href="#clasificacion" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
-                        3. Clasificación (ISO 9001)
-                    </a>
-                    <a href="#modelo-gestion" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
-                        4. Modelo de gestión
-                    </a>
-                    <a href="#fases" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
-                        5. Fases de gestión
-                    </a>
-                    <a href="#modelado" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
-                        6. Modelado (SIPOC / BPMN)
-                    </a>
-                    <a href="#caso-termilagro" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
-                        🏭 Caso Termilagro
-                    </a>
-                    <a href="#practica-clasificacion" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
-                        ⚡ Laboratorio: Clasificación
-                    </a>
-                    <a href="#examen-autoevaluacion" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
-                        📋 Autoevaluación
-                    </a>
-                    <a href="#examen-final" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
-                        🎓 Examen Final
-                    </a>
-                    <a href="#materiales" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
-                        📚 Materiales
-                    </a>
-                </div>
-            </div>
-        </nav>
-
-        <main class="lg:col-span-3 space-y-8">
-            
-            <!-- SECCIÓN 1: FUNDAMENTOS -->
-            <section id="fundamentos" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-6">
-                <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
-                    <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100">1. Fundamentos y conceptos</h2>
-                    <p class="text-sm text-slate-500 mt-1">Definiciones base de proceso y proceso de negocio según estándares internacionales.</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                    <div class="p-5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-800">
-                        <span class="text-xs font-bold px-2.5 py-1 rounded-md bg-amber-100 dark:bg-amber-950/50 text-amber-800 dark:text-amber-300 uppercase tracking-wide">ISO 9000</span>
-                        <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200 mt-3 mb-2">Proceso</h3>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                            "Serie de actividades mutuamente relacionadas o que interactúan entre ellas, las cuales transforman elementos de entrada en elementos de salida".
-                        </p>
-                    </div>
-
-                    <div class="p-5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-800">
-                        <span class="text-xs font-bold px-2.5 py-1 rounded-md bg-emerald-100 dark:bg-emerald-950/50 text-emerald-800 dark:text-emerald-300 uppercase tracking-wide">ISO 19510</span>
-                        <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200 mt-3 mb-2">Proceso de Negocio</h3>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                            "Secuencia o flujo de actividades en una organización con el objetivo de realizar un trabajo".
-                        </p>
+        <div class="max-w-7xl mx-auto w-full p-4 md:p-6 grid grid-cols-1 lg:grid-cols-4 gap-6 flex-1">        
+            <nav class="lg:col-span-1 space-y-2">
+                <div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 sticky top-6">
+                    <h2 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-3 px-2">Unidades de estudio</h2>
+                    <div class="space-y-1">
+                        <a href="#fundamentos" class="block px-3 py-2.5 text-sm font-medium rounded-lg bg-sky-50 dark:bg-slate-800 text-sky-700 dark:text-sky-400 border-l-4 border-sky-600 navigation-link active">
+                            1. Fundamentos y conceptos
+                        </a>
+                        <a href="#vision-procesos" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-100 border-l-4 border-transparent transition-all navigation-link">
+                            2. Visión funcional vs. procesos
+                        </a>
+                        <a href="#clasificacion" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
+                            3. Clasificación (ISO 9001)
+                        </a>
+                        <a href="#modelo-gestion" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
+                            4. Modelo de gestión
+                        </a>
+                        <a href="#fases" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
+                            5. Fases de gestión
+                        </a>
+                        <a href="#modelado" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
+                            6. Modelado (SIPOC / BPMN)
+                        </a>
+                        <a href="#caso-termilagro" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
+                            🏭 Caso Termilagro
+                        </a>
+                        <a href="#practica-clasificacion" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
+                            ⚡ Laboratorio: Clasificación
+                        </a>
+                        <a href="#examen-autoevaluacion" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
+                            📋 Autoevaluación
+                        </a>
+                        <a href="#examen-final" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
+                            🎓 Examen Final
+                        </a>
+                        <a href="#materiales" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
+                            📚 Materiales
+                        </a>
                     </div>
                 </div>
+            </nav>
 
-                <div class="mt-6 bg-slate-900 text-slate-100 p-5 rounded-xl border border-slate-800">
-                    <h4 class="text-sm font-bold uppercase tracking-wider text-sky-400 mb-4">Otras definiciones de referencia</h4>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                        <div class="bg-slate-800 p-4 rounded-lg border border-slate-700">
-                            <strong class="block text-white mb-1">Laudon y Laudon (2018)</strong>
-                            "Conjunto de tareas y comportamientos relacionados en forma lógica, que las organizaciones desarrollan con el tiempo para producir resultados de negocios específicos".
-                        </div>
-                        <div class="bg-slate-800 p-4 rounded-lg border border-slate-700">
-                            <strong class="block text-white mb-1">Briano y otros (2011)</strong>
-                            "Conjunto de tareas o actividades que tienen como objetivo el cumplimiento de una meta. Las tareas son realizadas por distintos departamentos o áreas funcionales".
-                        </div>
+            <main class="lg:col-span-3 space-y-8">
+                
+                <!-- SECCIÓN 1: FUNDAMENTOS -->
+                <section id="fundamentos" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-6">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100">1. Fundamentos y conceptos</h2>
+                        <p class="text-sm text-slate-500 mt-1">Definiciones base de proceso y proceso de negocio según estándares internacionales.</p>
                     </div>
-                </div>
 
-                <div class="mt-4 bg-sky-50 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-900/50 rounded-lg p-4">
-                    <div class="flex items-start gap-3">
-                        <span class="text-2xl">💡</span>
-                        <div>
-                            <strong class="text-sky-900 dark:text-sky-200 block mb-1">Concepto clave:</strong>
-                            <p class="text-sm text-sky-800 dark:text-sky-300 leading-relaxed">
-                                La diferencia entre <strong>actividad</strong> y <strong>proceso</strong> no es nítida. Más que de diferencia, se habla de <strong>niveles de agregación</strong>: el proceso se ve como un conjunto de actividades.
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        <div class="p-5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-800">
+                            <span class="text-xs font-bold px-2.5 py-1 rounded-md bg-amber-100 dark:bg-amber-950/50 text-amber-800 dark:text-amber-300 uppercase tracking-wide">ISO 9000</span>
+                            <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200 mt-3 mb-2">Proceso</h3>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                                "Serie de actividades mutuamente relacionadas o que interactúan entre ellas, las cuales transforman elementos de entrada en elementos de salida".
                             </p>
                         </div>
-                    </div>
-                </div>
-            </section>
 
-            <!-- SECCIÓN 2: VISIÓN FUNCIONAL VS. PROCESOS -->
-            <section id="vision-procesos" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-6">
-                <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
-                    <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100">2. Visión funcional vs. Visión por procesos</h2>
-                    <p class="text-sm text-slate-500 mt-1">Dos formas de observar la organización: desde los departamentos o desde el flujo transversal.</p>
-                </div>
-
-                <div class="space-y-6">
-                    <div class="p-5 border-l-4 border-slate-500 bg-slate-50 dark:bg-slate-800/40 rounded-r-xl">
-                        <h3 class="font-bold text-lg text-slate-800 dark:text-slate-200 mb-2">🏢 Visión Funcional / Departamental</h3>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">
-                            Observa la organización desde la perspectiva de las funciones que se llevan a cabo y la estructura que la dirige. Proviene de los conceptos de <strong>Henry Fayol</strong>. Cada área tiene sus propias responsabilidades e incluso sus propios sistemas de información.
-                        </p>
-                        <div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800 text-sm">
-                            <strong class="text-slate-700 dark:text-slate-300 block mb-2">Limitaciones:</strong>
-                            <ul class="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300">
-                                <li>Trabaja en "silos" o departamentos aislados</li>
-                                <li>Dificulta la visión integral del flujo de valor</li>
-                                <li>Genera duplicación de esfuerzos entre áreas</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="p-5 border-l-4 border-sky-600 bg-slate-50 dark:bg-slate-800/40 rounded-r-xl">
-                        <h3 class="font-bold text-lg text-slate-800 dark:text-slate-200 mb-2">🔄 Visión por Procesos</h3>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">
-                            Observa la organización de forma transversal. Los procesos cruzan departamentos para generar valor. Se basa en modelos superadores como la <strong>Cadena de Valor de Porter</strong>, la <strong>Estructura Orgánica de Mintzberg</strong> y los modelos de gestión industrial basados en mejora continua.
-                        </p>
-                        
-                        <div class="space-y-3">
-                            <div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800">
-                                <strong class="text-sky-700 dark:text-sky-400 block text-sm font-bold uppercase tracking-wider mb-2"> Cadena de Valor (Porter, 1985)</strong>
-                                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-2">
-                                    Identifica un conjunto de actividades que realiza la empresa con el objetivo de generar valor para su cliente. Clasifica las actividades en <strong>primarias</strong> (efecto inmediato sobre producción/venta) y de <strong>apoyo</strong> (complementan a las primarias).
-                                </p>
-                            </div>
-
-                            <div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800">
-                                <strong class="text-sky-700 dark:text-sky-400 block text-sm font-bold uppercase tracking-wider mb-2">🏗️ Estructura Orgánica (Mintzberg, 1979)</strong>
-                                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-2">
-                                    Desacopla la <strong>tecnoestructura</strong> y el <strong>personal de apoyo</strong> como elementos diferenciales a la estructura central (cumbre estratégica, línea media y núcleo de operaciones). Plantea actividades transversales.
-                                </p>
-                            </div>
-
-                            <div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800">
-                                <strong class="text-sky-700 dark:text-sky-400 block text-sm font-bold uppercase tracking-wider mb-2">🎯 Gestión por Procesos (USAID / ISO 9001)</strong>
-                                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
-                                    "Administrar los recursos de la institución considerándola como una unidad en la que cada parte tiene su participación en el resultado final". Aspecto fundamental del Sistema de Gestión de Calidad ISO 9001.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mt-6 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900/50 rounded-lg p-4">
-                    <div class="flex items-start gap-3">
-                        <span class="text-2xl">📌</span>
-                        <div>
-                            <strong class="text-emerald-900 dark:text-emerald-200 block mb-1">Relevancia (Laudon y Laudon):</strong>
-                            <p class="text-sm text-emerald-800 dark:text-emerald-300 leading-relaxed italic">
-                                "El desempeño de una empresa depende de qué tan bien están diseñados y coordinados sus procesos de negocios, los cuales pueden ser una fuente de solidez competitiva si le permiten innovar o desempeñarse mejor que sus rivales".
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- SECCIÓN 3: CLASIFICACIÓN -->
-            <section id="clasificacion" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-6">
-                <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
-                    <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100">3. Clasificación de los procesos (ISO 9001)</h2>
-                    <p class="text-sm text-slate-500 mt-1">Tres categorías fundamentales basadas en las propuestas de Porter.</p>
-                </div>
-
-                <div class="space-y-6">
-                    <div class="p-5 border-l-4 border-red-600 bg-slate-50 dark:bg-slate-800/40 rounded-r-xl">
-                        <h3 class="font-bold text-lg text-slate-800 dark:text-slate-200 mb-2">🎯 Procesos Estratégicos</h3>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">
-                            Vinculados al ámbito de las responsabilidades de la <strong>dirección</strong> y, principalmente, a <strong>largo plazo</strong>. Definen el rumbo de la organización.
-                        </p>
-                        <div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800 text-sm">
-                            <strong class="text-red-700 dark:text-red-400 block mb-2">Características:</strong>
-                            <ul class="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300">
-                                <li>Procesos de planificación</li>
-                                <li>Ligados a factores clave y estratégicos</li>
-                                <li>Guían a los operativos mediante pautas de gestión</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="p-5 border-l-4 border-emerald-600 bg-slate-50 dark:bg-slate-800/40 rounded-r-xl">
-                        <h3 class="font-bold text-lg text-slate-800 dark:text-slate-200 mb-2">⚙️ Procesos Operativos</h3>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">
-                            Ligados de forma directa con la <strong>realización del producto o servicio</strong>. Son esenciales para cumplir con la misión de la organización y <strong>generan valor</strong>.
-                        </p>
-                        <div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800 text-sm">
-                            <strong class="text-emerald-700 dark:text-emerald-400 block mb-2">Características:</strong>
-                            <ul class="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300">
-                                <li>Visión completa del cliente (desde requisitos hasta satisfacción)</li>
-                                <li>Esenciales para cumplir la misión</li>
-                                <li>Generan valor directo</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="p-5 border-l-4 border-amber-600 bg-slate-50 dark:bg-slate-800/40 rounded-r-xl">
-                        <h3 class="font-bold text-lg text-slate-800 dark:text-slate-200 mb-2">🛠️ Procesos de Soporte / Apoyo</h3>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">
-                            Brindan apoyo a los procesos operativos. Aunque <strong>no generan valor directamente</strong>, son indispensables para el funcionamiento eficaz del sistema organizacional.
-                        </p>
-                        <div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800 text-sm">
-                            <strong class="text-amber-700 dark:text-amber-400 block mb-2">Características:</strong>
-                            <ul class="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300">
-                                <li>Relacionados con recursos utilizados y mediciones realizadas</li>
-                                <li>Pueden ser fácilmente <strong>tercerizados</strong></li>
-                                <li>Indispensables para la operación diaria</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- SECCIÓN 4: MODELO DE GESTIÓN -->
-            <section id="modelo-gestion" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-6">
-                <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
-                    <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100">4. Modelo de gestión de procesos</h2>
-                    <p class="text-sm text-slate-500 mt-1">Estructura de 3 niveles superiores basada en ISO 9001, Alarcón et al. (2019) y USAID.</p>
-                </div>
-
-                <div class="space-y-4">
-                    <div class="p-5 border-l-4 border-sky-600 bg-slate-50 dark:bg-slate-800/40 rounded-r-xl">
-                        <h3 class="font-bold text-lg text-slate-800 dark:text-slate-200 mb-2">1️⃣ Declaraciones</h3>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">
-                            Representan las definiciones generales de la organización: <strong>misión, visión, alcance de actividades</strong> y toda información asociada a los actores con los cuales se vincula y los sectores donde opera.
-                        </p>
-                        <div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800 text-sm">
-                            <strong class="text-sky-700 dark:text-sky-400 block mb-2">Según Universidad de Cádiz (2007):</strong>
-                            <ul class="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300">
-                                <li>Identificación de misión y visión organizacional</li>
-                                <li>Identificación de grupos de interés, clientes y usuarios</li>
-                                <li>Definición de necesidades y expectativas</li>
-                                <li>Servicios que se prestan</li>
-                            </ul>
-                            <p class="mt-2 text-slate-600 dark:text-slate-400">
-                                <strong>Stakeholders (ISO 9000):</strong> "Persona u organización que puede afectar, verse afectada o percibirse como afectada por una decisión o actividad".
+                        <div class="p-5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-800">
+                            <span class="text-xs font-bold px-2.5 py-1 rounded-md bg-emerald-100 dark:bg-emerald-950/50 text-emerald-800 dark:text-emerald-300 uppercase tracking-wide">ISO 19510</span>
+                            <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200 mt-3 mb-2">Proceso de Negocio</h3>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                                "Secuencia o flujo de actividades en una organización con el objetivo de realizar un trabajo".
                             </p>
                         </div>
                     </div>
 
-                    <div class="p-5 border-l-4 border-purple-600 bg-slate-50 dark:bg-slate-800/40 rounded-r-xl">
-                        <h3 class="font-bold text-lg text-slate-800 dark:text-slate-200 mb-2">2️⃣ Macroprocesos</h3>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">
-                            Agrupan a los procesos que comparten un <strong>objetivo común</strong>. Cada macroproceso debe tener un objetivo claro y definido y estar vinculado a los objetivos organizacionales.
-                        </p>
-                        <div class="bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-900/50 rounded-lg p-3 text-sm">
-                            <strong class="text-red-900 dark:text-red-300">⚠️ Importante:</strong>
-                            <span class="text-red-800 dark:text-red-200"> El macroproceso <strong>NO posee actividades concretas</strong>, resulta exclusivamente una agrupación de procesos.</span>
-                        </div>
-                        <div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800 text-sm mt-3">
-                            <strong class="text-purple-700 dark:text-purple-400 block mb-2">Ejemplos:</strong>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded text-xs">Gestión financiera</span>
-                                <span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded text-xs">Gestión administrativa</span>
-                                <span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded text-xs">Seguridad informática</span>
-                                <span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded text-xs">Aseguramiento de calidad</span>
-                                <span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded text-xs">Gestión de RRHH</span>
-                                <span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded text-xs">Gestión de ventas</span>
+                    <div class="mt-6 bg-slate-900 text-slate-100 p-5 rounded-xl border border-slate-800">
+                        <h4 class="text-sm font-bold uppercase tracking-wider text-sky-400 mb-4">Otras definiciones de referencia</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                            <div class="bg-slate-800 p-4 rounded-lg border border-slate-700">
+                                <strong class="block text-white mb-1">Laudon y Laudon (2018)</strong>
+                                "Conjunto de tareas y comportamientos relacionados en forma lógica, que las organizaciones desarrollan con el tiempo para producir resultados de negocios específicos".
+                            </div>
+                            <div class="bg-slate-800 p-4 rounded-lg border border-slate-700">
+                                <strong class="block text-white mb-1">Briano y otros (2011)</strong>
+                                "Conjunto de tareas o actividades que tienen como objetivo el cumplimiento de una meta. Las tareas son realizadas por distintos departamentos o áreas funcionales".
                             </div>
                         </div>
                     </div>
 
-                    <div class="p-5 border-l-4 border-emerald-600 bg-slate-50 dark:bg-slate-800/40 rounded-r-xl">
-                        <h3 class="font-bold text-lg text-slate-800 dark:text-slate-200 mb-2">3️⃣ Procesos</h3>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">
-                            Conjunto de <strong>actividades y tareas concretas</strong> para llegar al resultado. Mientras el macroproceso es un concepto genérico, los procesos tienen acciones concretamente definidas.
-                        </p>
-                        <div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800 text-sm">
-                            <strong class="text-emerald-700 dark:text-emerald-400 block mb-2">Ejemplo dentro de "Gestión de Ventas":</strong>
-                            <ul class="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300">
-                                <li>Ejecución de una venta</li>
-                                <li>Cancelación de una venta</li>
-                                <li>Pago</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mt-6 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50 rounded-lg p-4">
-                    <div class="flex items-start gap-3">
-                        <span class="text-2xl">💡</span>
-                        <div>
-                            <strong class="text-amber-900 dark:text-amber-200 block mb-1">Tip para el examen:</strong>
-                            <p class="text-sm text-amber-800 dark:text-amber-300 leading-relaxed">
-                                La diferencia clave entre <strong>Macroproceso</strong> y <strong>Proceso</strong>: el macroproceso es un concepto genérico (sustantivo abstracto como "Gestión de Ventas"), mientras que el proceso tiene acciones concretas (generalmente empieza con verbo en infinitivo como "Realizar una venta").
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- SECCIÓN 5: FASES -->
-            <section id="fases" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-6">
-                <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
-                    <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100">5. Fases de la gestión por procesos</h2>
-                    <p class="text-sm text-slate-500 mt-1">Cuatro fases secuenciales para documentar la gestión por procesos.</p>
-                </div>
-
-                <div class="space-y-4">
-                    <div class="flex gap-4 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-200 dark:border-slate-800">
-                        <div class="flex-shrink-0 w-10 h-10 bg-sky-600 text-white rounded-full flex items-center justify-center font-bold">1</div>
-                        <div>
-                            <h4 class="font-bold text-slate-800 dark:text-slate-200">Identificar las declaraciones de la organización</h4>
-                            <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Identificar, obtener y conocer todo el material que permite la caracterización de la organización para entender los macroprocesos y procesos que requiere.</p>
-                        </div>
-                    </div>
-
-                    <div class="flex gap-4 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-200 dark:border-slate-800">
-                        <div class="flex-shrink-0 w-10 h-10 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold">2</div>
-                        <div>
-                            <h4 class="font-bold text-slate-800 dark:text-slate-200">Identificar los macroprocesos</h4>
-                            <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Deriva de las declaraciones. Para cada macroproceso se debe identificar claramente el <strong>objetivo</strong> que persigue (según USAID).</p>
-                        </div>
-                    </div>
-
-                    <div class="flex gap-4 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-200 dark:border-slate-800">
-                        <div class="flex-shrink-0 w-10 h-10 bg-emerald-600 text-white rounded-full flex items-center justify-center font-bold">3</div>
-                        <div>
-                            <h4 class="font-bold text-slate-800 dark:text-slate-200">Identificar los procesos</h4>
-                            <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Para cada macroproceso, identificar los procesos asociados con: <strong>nombre, macroproceso asociado, tipo (estratégico/operativo/soporte) y área responsable</strong>.</p>
-                            <p class="text-xs text-slate-500 dark:text-slate-500 mt-2 italic">El área responsable es el "Process Owner" o dueño del proceso (Six Sigma / ISO 9001).</p>
-                        </div>
-                    </div>
-
-                    <div class="flex gap-4 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-200 dark:border-slate-800">
-                        <div class="flex-shrink-0 w-10 h-10 bg-amber-600 text-white rounded-full flex items-center justify-center font-bold">4</div>
-                        <div>
-                            <h4 class="font-bold text-slate-800 dark:text-slate-200">Detallar los procesos</h4>
-                            <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Definición concreta de cada proceso mediante modelado (ver sección siguiente).</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mt-6 bg-slate-900 text-slate-100 p-5 rounded-xl border border-slate-800">
-                    <h4 class="text-sm font-bold uppercase tracking-wider text-sky-400 mb-3">Relación con la Metodología de Sistemas</h4>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                        <div class="bg-slate-800 p-4 rounded-lg border border-slate-700">
-                            <strong class="block text-white mb-1">Etapa de Reconocimiento</strong>
-                            Identificar declaraciones, macroprocesos y procesos (primera aproximación a la organización).
-                        </div>
-                        <div class="bg-slate-800 p-4 rounded-lg border border-slate-700">
-                            <strong class="block text-white mb-1">Etapa de Relevamiento</strong>
-                            Detalle de los procesos (análisis más detallado, no solo aproximación inicial).
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- SECCIÓN 6: MODELADO -->
-            <section id="modelado" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-6">
-                <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
-                    <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100">6. Modelado de procesos</h2>
-                    <p class="text-sm text-slate-500 mt-1">Herramientas para documentar los diferentes niveles de procesos.</p>
-                </div>
-
-                <div class="space-y-6">
-                    <div class="p-5 border-l-4 border-purple-600 bg-slate-50 dark:bg-slate-800/40 rounded-r-xl">
-                        <h3 class="font-bold text-lg text-slate-800 dark:text-slate-200 mb-2">🗺️ Mapa de Macroprocesos</h3>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">
-                            Presenta los diferentes procesos de la organización organizados en torno a una categorización o tipología. El primer nivel de análisis es el macroproceso.
-                        </p>
-                        <div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800 text-sm">
-                            <strong class="text-purple-700 dark:text-purple-400 block mb-2">Debe incluir:</strong>
-                            <ul class="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300">
-                                <li>Procesos estratégicos</li>
-                                <li>Procesos operativos clave</li>
-                                <li>Procesos de soporte y apoyo</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="p-5 border-l-4 border-emerald-600 bg-slate-50 dark:bg-slate-800/40 rounded-r-xl">
-                        <h3 class="font-bold text-lg text-slate-800 dark:text-slate-200 mb-2">📋 Identificación de Procesos</h3>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">
-                            Para cada macroproceso se identifican los procesos asociados con los siguientes datos:
-                        </p>
-                        <div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800 text-sm">
-                            <ul class="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300">
-                                <li><strong>Nombre del proceso</strong></li>
-                                <li><strong>Nombre del macroproceso asociado</strong></li>
-                                <li><strong>Tipo de proceso</strong> (estratégico, operativo o de soporte)</li>
-                                <li><strong>Área responsable del proceso</strong> (Process Owner)</li>
-                            </ul>
-                            <p class="mt-2 text-xs text-slate-500 dark:text-slate-500 italic">El área responsable no es la única ejecutora; un proceso es transversal e incluye muchas áreas.</p>
-                        </div>
-                    </div>
-
-                    <div class="p-5 border-l-4 border-sky-600 bg-slate-50 dark:bg-slate-800/40 rounded-r-xl">
-                        <h3 class="font-bold text-lg text-slate-800 dark:text-slate-200 mb-2">🔍 Detalle de Procesos</h3>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">
-                            Documentación concreta de las actividades que se llevan a cabo dentro de un proceso. Se pueden usar diferentes notaciones:
-                        </p>
-                        
-                        <div class="space-y-3">
-                            <div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800">
-                                <strong class="text-sky-700 dark:text-sky-400 block text-sm font-bold uppercase tracking-wider mb-2">📊 SIPOC (ISO 9001:2015)</strong>
-                                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-2">
-                                    Acrónimo en inglés de <strong>Suppliers, Inputs, Process, Output, Customers</strong> (también conocida como COPIS). Herramienta en formato tabular para caracterizar un proceso identificando:
+                    <div class="mt-4 bg-sky-50 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-900/50 rounded-lg p-4">
+                        <div class="flex items-start gap-3">
+                            <span class="text-2xl">💡</span>
+                            <div>
+                                <strong class="text-sky-900 dark:text-sky-200 block mb-1">Concepto clave:</strong>
+                                <p class="text-sm text-sky-800 dark:text-sky-300 leading-relaxed">
+                                    La diferencia entre <strong>actividad</strong> y <strong>proceso</strong> no es nítida. Más que de diferencia, se habla de <strong>niveles de agregación</strong>: el proceso se ve como un conjunto de actividades.
                                 </p>
-                                <ul class="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300 text-sm">
-                                    <li><strong>Proveedores</strong> (Suppliers)</li>
-                                    <li><strong>Entradas</strong> (Inputs)</li>
-                                    <li><strong>Procesos / Subprocesos</strong> (Process)</li>
-                                    <li><strong>Salidas</strong> (Output)</li>
-                                    <li><strong>Clientes</strong> u otras partes interesadas (Customers)</li>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 2: VISIÓN FUNCIONAL VS. PROCESOS -->
+                <section id="vision-procesos" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-6">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100">2. Visión funcional vs. Visión por procesos</h2>
+                        <p class="text-sm text-slate-500 mt-1">Dos formas de observar la organización: desde los departamentos o desde el flujo transversal.</p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="p-5 border-l-4 border-slate-500 bg-slate-50 dark:bg-slate-800/40 rounded-r-xl">
+                            <h3 class="font-bold text-lg text-slate-800 dark:text-slate-200 mb-2">🏢 Visión Funcional / Departamental</h3>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">
+                                Observa la organización desde la perspectiva de las funciones que se llevan a cabo y la estructura que la dirige. Proviene de los conceptos de <strong>Henry Fayol</strong>. Cada área tiene sus propias responsabilidades e incluso sus propios sistemas de información.
+                            </p>
+                            <div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800 text-sm">
+                                <strong class="text-slate-700 dark:text-slate-300 block mb-2">Limitaciones:</strong>
+                                <ul class="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300">
+                                    <li>Trabaja en "silos" o departamentos aislados</li>
+                                    <li>Dificulta la visión integral del flujo de valor</li>
+                                    <li>Genera duplicación de esfuerzos entre áreas</li>
                                 </ul>
                             </div>
+                        </div>
+                        
+                        <div class="p-5 border-l-4 border-sky-600 bg-slate-50 dark:bg-slate-800/40 rounded-r-xl">
+                            <h3 class="font-bold text-lg text-slate-800 dark:text-slate-200 mb-2">🔄 Visión por Procesos</h3>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">
+                                Observa la organización de forma transversal. Los procesos cruzan departamentos para generar valor. Se basa en modelos superadores como la <strong>Cadena de Valor de Porter</strong>, la <strong>Estructura Orgánica de Mintzberg</strong> y los modelos de gestión industrial basados en mejora continua.
+                            </p>
+                            
+                            <div class="space-y-3">
+                                <div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800">
+                                    <strong class="text-sky-700 dark:text-sky-400 block text-sm font-bold uppercase tracking-wider mb-2"> Cadena de Valor (Porter, 1985)</strong>
+                                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-2">
+                                        Identifica un conjunto de actividades que realiza la empresa con el objetivo de generar valor para su cliente. Clasifica las actividades en <strong>primarias</strong> (efecto inmediato sobre producción/venta) y de <strong>apoyo</strong> (complementan a las primarias).
+                                    </p>
+                                </div>
 
-                            <div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800">
-                                <strong class="text-sky-700 dark:text-sky-400 block text-sm font-bold uppercase tracking-wider mb-2">🔷 BPMN</strong>
-                                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
-                                    <strong>Business Process Model and Notation</strong> (Notación de Modelado de Procesos de Negocio). Cuenta con guías que proponen simbologías y reglas de construcción específicas (ISO 19510).
+                                <div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800">
+                                    <strong class="text-sky-700 dark:text-sky-400 block text-sm font-bold uppercase tracking-wider mb-2">🏗️ Estructura Orgánica (Mintzberg, 1979)</strong>
+                                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-2">
+                                        Desacopla la <strong>tecnoestructura</strong> y el <strong>personal de apoyo</strong> como elementos diferenciales a la estructura central (cumbre estratégica, línea media y núcleo de operaciones). Plantea actividades transversales.
+                                    </p>
+                                </div>
+
+                                <div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800">
+                                    <strong class="text-sky-700 dark:text-sky-400 block text-sm font-bold uppercase tracking-wider mb-2">🎯 Gestión por Procesos (USAID / ISO 9001)</strong>
+                                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                                        "Administrar los recursos de la institución considerándola como una unidad en la que cada parte tiene su participación en el resultado final". Aspecto fundamental del Sistema de Gestión de Calidad ISO 9001.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900/50 rounded-lg p-4">
+                        <div class="flex items-start gap-3">
+                            <span class="text-2xl">📌</span>
+                            <div>
+                                <strong class="text-emerald-900 dark:text-emerald-200 block mb-1">Relevancia (Laudon y Laudon):</strong>
+                                <p class="text-sm text-emerald-800 dark:text-emerald-300 leading-relaxed italic">
+                                    "El desempeño de una empresa depende de qué tan bien están diseñados y coordinados sus procesos de negocios, los cuales pueden ser una fuente de solidez competitiva si le permiten innovar o desempeñarse mejor que sus rivales".
                                 </p>
                             </div>
-
-                            <div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800">
-                                <strong class="text-sky-700 dark:text-sky-400 block text-sm font-bold uppercase tracking-wider mb-2">📝 Cursogramas</strong>
-                                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
-                                    Herramientas provenientes de disciplinas administrativas para describir procesos.
-                                </p>
-                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            <!-- SECCIÓN 7: CASO TERMILAGRO -->
-            <section id="caso-termilagro" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-6">
-                <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
-                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 uppercase tracking-wide">Caso Práctico</span>
-                    <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">🏭 Caso Termilagro S.A.</h2>
-                    <p class="text-sm text-slate-500 mt-1">Resolución paso a paso del ejercicio de la cátedra.</p>
-                </div>
+                <!-- SECCIÓN 3: CLASIFICACIÓN -->
+                <section id="clasificacion" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-6">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100">3. Clasificación de los procesos (ISO 9001)</h2>
+                        <p class="text-sm text-slate-500 mt-1">Tres categorías fundamentales basadas en las propuestas de Porter.</p>
+                    </div>
 
-                <!-- Enunciado -->
-                <div class="mb-6 bg-slate-50 dark:bg-slate-800/50 p-5 rounded-lg border border-slate-200 dark:border-slate-800">
-                    <h3 class="text-base font-bold text-slate-800 dark:text-slate-200 mb-3">📖 Enunciado</h3>
-                    <div class="space-y-2 text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-                        <p><strong>Termilagro S.A.</strong> se dedica a la producción y comercialización de termos plásticos de alta calidad. Con una fuerte presencia en el mercado nacional, su misión es brindar soluciones prácticas y confiables para el consumo cotidiano de bebidas, a través de productos duraderos, eficientes y accesibles.</p>
-                        <p>La dirección de la empresa realiza periódicamente análisis del mercado para detectar nuevas oportunidades de negocio, y formula planes de mediano y largo plazo orientados a diversificar su oferta y captar nuevos segmentos de clientes.</p>
-                        <p>Sus actividades principales incluyen la <strong>fabricación, venta y distribución</strong> de termos. En condiciones normales, la empresa produce termos de acuerdo con un plan de stock predeterminado. No obstante, cuando un cliente realiza un pedido de un producto que no se encuentra disponible, se activa un circuito de producción bajo demanda, gestionado por la planta de producción.</p>
-                        <p>La gestión de ventas contempla dos circuitos diferenciados: el área comercial procesa los pedidos individuales y mantiene relaciones especiales con comercios y distribuidores.</p>
-                        <p>La distribución de los productos es responsabilidad del área de logística. Además, Termilagro lleva adelante procesos de soporte: gestión de RRHH, compras, control de calidad y mantenimiento.</p>
-                    </div>
-                </div>
-
-                <!-- Paso 1: Declaraciones -->
-                <div class="mb-6">
-                    <div class="flex items-center gap-3 mb-3">
-                        <span class="flex-shrink-0 w-8 h-8 bg-sky-600 text-white rounded-full flex items-center justify-center font-bold text-sm">1</span>
-                        <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200">Identificar las declaraciones de la organización</h3>
-                    </div>
-                    <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-200 dark:border-slate-800">
-                        <strong class="text-sky-700 dark:text-sky-400 block mb-2">Misión:</strong>
-                        <p class="text-sm text-slate-700 dark:text-slate-300 italic leading-relaxed">
-                            "Brindar soluciones prácticas y confiables para el consumo de bebidas, a través de la producción y comercialización de termos plásticos de alta calidad, utilizando materiales duraderos y procesos eficientes que respondan a las necesidades del mercado argentino."
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Paso 2: Macroprocesos -->
-                <div class="mb-6">
-                    <div class="flex items-center gap-3 mb-3">
-                        <span class="flex-shrink-0 w-8 h-8 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold text-sm">2</span>
-                        <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200">Identificar los macroprocesos</h3>
-                    </div>
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-sm border-collapse">
-                            <thead>
-                                <tr class="bg-slate-200 dark:bg-slate-700">
-                                    <th class="px-3 py-2 text-left text-xs font-bold text-slate-700 dark:text-slate-300 uppercase border border-slate-300 dark:border-slate-600">Macroproceso</th>
-                                    <th class="px-3 py-2 text-left text-xs font-bold text-slate-700 dark:text-slate-300 uppercase border border-slate-300 dark:border-slate-600">Tipo</th>
-                                    <th class="px-3 py-2 text-left text-xs font-bold text-slate-700 dark:text-slate-300 uppercase border border-slate-300 dark:border-slate-600">Objetivo</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
-                                <tr class="bg-white dark:bg-slate-900">
-                                    <td class="px-3 py-2 text-slate-800 dark:text-slate-200 font-medium border border-slate-200 dark:border-slate-700">Planeación estratégica</td>
-                                    <td class="px-3 py-2 border border-slate-200 dark:border-slate-700"><span class="px-2 py-0.5 bg-red-100 dark:bg-red-950 text-red-800 dark:text-red-300 rounded text-xs font-medium">Estratégico</span></td>
-                                    <td class="px-3 py-2 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700">Formular planes de mediano y largo plazo orientados a diversificar la oferta y captar nuevos segmentos.</td>
-                                </tr>
-                                <tr class="bg-white dark:bg-slate-900">
-                                    <td class="px-3 py-2 text-slate-800 dark:text-slate-200 font-medium border border-slate-200 dark:border-slate-700">Análisis de mercado</td>
-                                    <td class="px-3 py-2 border border-slate-200 dark:border-slate-700"><span class="px-2 py-0.5 bg-red-100 dark:bg-red-950 text-red-800 dark:text-red-300 rounded text-xs font-medium">Estratégico</span></td>
-                                    <td class="px-3 py-2 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700">Detectar nuevas oportunidades de negocio mediante análisis periódicos del mercado.</td>
-                                </tr>
-                                <tr class="bg-white dark:bg-slate-900">
-                                    <td class="px-3 py-2 text-slate-800 dark:text-slate-200 font-medium border border-slate-200 dark:border-slate-700">Producción</td>
-                                    <td class="px-3 py-2 border border-slate-200 dark:border-slate-700"><span class="px-2 py-0.5 bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 rounded text-xs font-medium">Operativo</span></td>
-                                    <td class="px-3 py-2 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700">Fabricar termos según plan de stock o mediante circuito de producción bajo demanda.</td>
-                                </tr>
-                                <tr class="bg-white dark:bg-slate-900">
-                                    <td class="px-3 py-2 text-slate-800 dark:text-slate-200 font-medium border border-slate-200 dark:border-slate-700">Venta</td>
-                                    <td class="px-3 py-2 border border-slate-200 dark:border-slate-700"><span class="px-2 py-0.5 bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 rounded text-xs font-medium">Operativo</span></td>
-                                    <td class="px-3 py-2 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700">Procesar pedidos individuales y mantener relaciones especiales con comercios y distribuidores.</td>
-                                </tr>
-                                <tr class="bg-white dark:bg-slate-900">
-                                    <td class="px-3 py-2 text-slate-800 dark:text-slate-200 font-medium border border-slate-200 dark:border-slate-700">Distribución</td>
-                                    <td class="px-3 py-2 border border-slate-200 dark:border-slate-700"><span class="px-2 py-0.5 bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 rounded text-xs font-medium">Operativo</span></td>
-                                    <td class="px-3 py-2 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700">Coordinar transporte, asignar rutas y organizar carga para cumplir plazos pactados.</td>
-                                </tr>
-                                <tr class="bg-white dark:bg-slate-900">
-                                    <td class="px-3 py-2 text-slate-800 dark:text-slate-200 font-medium border border-slate-200 dark:border-slate-700">Gestión de RRHH</td>
-                                    <td class="px-3 py-2 border border-slate-200 dark:border-slate-700"><span class="px-2 py-0.5 bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 rounded text-xs font-medium">Soporte</span></td>
-                                    <td class="px-3 py-2 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700">Control horario, planificación del personal y liquidación de sueldos.</td>
-                                </tr>
-                                <tr class="bg-white dark:bg-slate-900">
-                                    <td class="px-3 py-2 text-slate-800 dark:text-slate-200 font-medium border border-slate-200 dark:border-slate-700">Compras</td>
-                                    <td class="px-3 py-2 border border-slate-200 dark:border-slate-700"><span class="px-2 py-0.5 bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 rounded text-xs font-medium">Soporte</span></td>
-                                    <td class="px-3 py-2 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700">Adquirir materias primas y materiales operativos.</td>
-                                </tr>
-                                <tr class="bg-white dark:bg-slate-900">
-                                    <td class="px-3 py-2 text-slate-800 dark:text-slate-200 font-medium border border-slate-200 dark:border-slate-700">Control de calidad</td>
-                                    <td class="px-3 py-2 border border-slate-200 dark:border-slate-700"><span class="px-2 py-0.5 bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 rounded text-xs font-medium">Soporte</span></td>
-                                    <td class="px-3 py-2 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700">Verificar que insumos y productos terminados cumplan con los estándares establecidos.</td>
-                                </tr>
-                                <tr class="bg-white dark:bg-slate-900">
-                                    <td class="px-3 py-2 text-slate-800 dark:text-slate-200 font-medium border border-slate-200 dark:border-slate-700">Mantenimiento</td>
-                                    <td class="px-3 py-2 border border-slate-200 dark:border-slate-700"><span class="px-2 py-0.5 bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 rounded text-xs font-medium">Soporte</span></td>
-                                    <td class="px-3 py-2 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700">Atender fallas en maquinaria y decidir su reparación o reemplazo.</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- Paso 3: Mapa de macroprocesos -->
-                <div class="mb-6">
-                    <div class="flex items-center gap-3 mb-3">
-                        <span class="flex-shrink-0 w-8 h-8 bg-emerald-600 text-white rounded-full flex items-center justify-center font-bold text-sm">3</span>
-                        <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200">Elaborar mapa de macroprocesos</h3>
-                    </div>
-                    
-                    <div class="space-y-4">
-                        <div class="p-4 bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-900/50 rounded-lg">
-                            <strong class="text-red-900 dark:text-red-300 block mb-2 text-sm font-bold uppercase">🎯 Procesos Estratégicos</strong>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-white dark:bg-slate-800 border border-red-300 dark:border-red-800 rounded-md text-xs font-medium text-slate-700 dark:text-slate-300">Planeación estratégica</span>
-                                <span class="px-3 py-1 bg-white dark:bg-slate-800 border border-red-300 dark:border-red-800 rounded-md text-xs font-medium text-slate-700 dark:text-slate-300">Análisis de Mercado</span>
+                    <div class="space-y-6">
+                        <div class="p-5 border-l-4 border-red-600 bg-slate-50 dark:bg-slate-800/40 rounded-r-xl">
+                            <h3 class="font-bold text-lg text-slate-800 dark:text-slate-200 mb-2">🎯 Procesos Estratégicos</h3>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">
+                                Vinculados al ámbito de las responsabilidades de la <strong>dirección</strong> y, principalmente, a <strong>largo plazo</strong>. Definen el rumbo de la organización.
+                            </p>
+                            <div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800 text-sm">
+                                <strong class="text-red-700 dark:text-red-400 block mb-2">Características:</strong>
+                                <ul class="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300">
+                                    <li>Procesos de planificación</li>
+                                    <li>Ligados a factores clave y estratégicos</li>
+                                    <li>Guían a los operativos mediante pautas de gestión</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="p-5 border-l-4 border-emerald-600 bg-slate-50 dark:bg-slate-800/40 rounded-r-xl">
+                            <h3 class="font-bold text-lg text-slate-800 dark:text-slate-200 mb-2">⚙️ Procesos Operativos</h3>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">
+                                Ligados de forma directa con la <strong>realización del producto o servicio</strong>. Son esenciales para cumplir con la misión de la organización y <strong>generan valor</strong>.
+                            </p>
+                            <div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800 text-sm">
+                                <strong class="text-emerald-700 dark:text-emerald-400 block mb-2">Características:</strong>
+                                <ul class="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300">
+                                    <li>Visión completa del cliente (desde requisitos hasta satisfacción)</li>
+                                    <li>Esenciales para cumplir la misión</li>
+                                    <li>Generan valor directo</li>
+                                </ul>
                             </div>
                         </div>
 
-                        <div class="p-4 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900/50 rounded-lg">
-                            <strong class="text-emerald-900 dark:text-emerald-300 block mb-2 text-sm font-bold uppercase">⚙️ Procesos Operativos</strong>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-white dark:bg-slate-800 border border-emerald-300 dark:border-emerald-800 rounded-md text-xs font-medium text-slate-700 dark:text-slate-300">Producción</span>
-                                <span class="px-3 py-1 bg-white dark:bg-slate-800 border border-emerald-300 dark:border-emerald-800 rounded-md text-xs font-medium text-slate-700 dark:text-slate-300">Venta</span>
-                                <span class="px-3 py-1 bg-white dark:bg-slate-800 border border-emerald-300 dark:border-emerald-800 rounded-md text-xs font-medium text-slate-700 dark:text-slate-300">Distribución</span>
-                            </div>
-                        </div>
-
-                        <div class="p-4 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50 rounded-lg">
-                            <strong class="text-amber-900 dark:text-amber-300 block mb-2 text-sm font-bold uppercase">️ Procesos de Soporte / Apoyo</strong>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-white dark:bg-slate-800 border border-amber-300 dark:border-amber-800 rounded-md text-xs font-medium text-slate-700 dark:text-slate-300">Gestión de RRHH</span>
-                                <span class="px-3 py-1 bg-white dark:bg-slate-800 border border-amber-300 dark:border-amber-800 rounded-md text-xs font-medium text-slate-700 dark:text-slate-300">Compras</span>
-                                <span class="px-3 py-1 bg-white dark:bg-slate-800 border border-amber-300 dark:border-amber-800 rounded-md text-xs font-medium text-slate-700 dark:text-slate-300">Control de Calidad</span>
-                                <span class="px-3 py-1 bg-white dark:bg-slate-800 border border-amber-300 dark:border-amber-800 rounded-md text-xs font-medium text-slate-700 dark:text-slate-300">Mantenimiento</span>
+                        <div class="p-5 border-l-4 border-amber-600 bg-slate-50 dark:bg-slate-800/40 rounded-r-xl">
+                            <h3 class="font-bold text-lg text-slate-800 dark:text-slate-200 mb-2">🛠️ Procesos de Soporte / Apoyo</h3>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">
+                                Brindan apoyo a los procesos operativos. Aunque <strong>no generan valor directamente</strong>, son indispensables para el funcionamiento eficaz del sistema organizacional.
+                            </p>
+                            <div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800 text-sm">
+                                <strong class="text-amber-700 dark:text-amber-400 block mb-2">Características:</strong>
+                                <ul class="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300">
+                                    <li>Relacionados con recursos utilizados y mediciones realizadas</li>
+                                    <li>Pueden ser fácilmente <strong>tercerizados</strong></li>
+                                    <li>Indispensables para la operación diaria</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                </div>
+                </section>
 
-                <!-- Paso 4: Identificar procesos operativos -->
-                <div class="mb-6">
-                    <div class="flex items-center gap-3 mb-3">
-                        <span class="flex-shrink-0 w-8 h-8 bg-amber-600 text-white rounded-full flex items-center justify-center font-bold text-sm">4</span>
-                        <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200">Identificar los procesos operativos</h3>
+                <!-- SECCIÓN 4: MODELO DE GESTIÓN -->
+                <section id="modelo-gestion" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-6">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100">4. Modelo de gestión de procesos</h2>
+                        <p class="text-sm text-slate-500 mt-1">Estructura de 3 niveles superiores basada en ISO 9001, Alarcón et al. (2019) y USAID.</p>
                     </div>
 
                     <div class="space-y-4">
-                        <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-lg border border-slate-200 dark:border-slate-800">
-                            <div class="flex flex-wrap gap-2 mb-3">
-                                <span class="px-2 py-1 bg-sky-100 dark:bg-sky-950 text-sky-800 dark:text-sky-300 rounded text-xs font-bold uppercase">Macroproceso: Producción</span>
-                                <span class="px-2 py-1 bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 rounded text-xs font-bold uppercase">Tipo: Operativo</span>
-                            </div>
-                            <div class="overflow-x-auto">
-                                <table class="w-full text-sm">
-                                    <thead class="bg-slate-200 dark:bg-slate-700">
-                                        <tr>
-                                            <th class="px-3 py-2 text-left text-xs font-bold text-slate-700 dark:text-slate-300 uppercase">Nombre del proceso</th>
-                                            <th class="px-3 py-2 text-left text-xs font-bold text-slate-700 dark:text-slate-300 uppercase">Descripción</th>
-                                            <th class="px-3 py-2 text-left text-xs font-bold text-slate-700 dark:text-slate-300 uppercase">Área responsable</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
-                                        <tr class="bg-white dark:bg-slate-900">
-                                            <td class="px-3 py-2 text-slate-800 dark:text-slate-200 font-medium">Producción en stock</td>
-                                            <td class="px-3 py-2 text-slate-600 dark:text-slate-400">Fabricación regular de termos plásticos según planificación de stocks.</td>
-                                            <td class="px-3 py-2 text-slate-600 dark:text-slate-400">Planta de Producción</td>
-                                        </tr>
-                                        <tr class="bg-white dark:bg-slate-900">
-                                            <td class="px-3 py-2 text-slate-800 dark:text-slate-200 font-medium">Producción bajo demanda</td>
-                                            <td class="px-3 py-2 text-slate-600 dark:text-slate-400">Fabricación de termos en respuesta a pedidos específicos por falta de stocks.</td>
-                                            <td class="px-3 py-2 text-slate-600 dark:text-slate-400">Planta de Producción</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                        <div class="p-5 border-l-4 border-sky-600 bg-slate-50 dark:bg-slate-800/40 rounded-r-xl">
+                            <h3 class="font-bold text-lg text-slate-800 dark:text-slate-200 mb-2">1️⃣ Declaraciones</h3>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">
+                                Representan las definiciones generales de la organización: <strong>misión, visión, alcance de actividades</strong> y toda información asociada a los actores con los cuales se vincula y los sectores donde opera.
+                            </p>
+                            <div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800 text-sm">
+                                <strong class="text-sky-700 dark:text-sky-400 block mb-2">Según Universidad de Cádiz (2007):</strong>
+                                <ul class="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300">
+                                    <li>Identificación de misión y visión organizacional</li>
+                                    <li>Identificación de grupos de interés, clientes y usuarios</li>
+                                    <li>Definición de necesidades y expectativas</li>
+                                    <li>Servicios que se prestan</li>
+                                </ul>
+                                <p class="mt-2 text-slate-600 dark:text-slate-400">
+                                    <strong>Stakeholders (ISO 9000):</strong> "Persona u organización que puede afectar, verse afectada o percibirse como afectada por una decisión o actividad".
+                                </p>
                             </div>
                         </div>
 
-                        <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-lg border border-slate-200 dark:border-slate-800">
-                            <div class="flex flex-wrap gap-2 mb-3">
-                                <span class="px-2 py-1 bg-sky-100 dark:bg-sky-950 text-sky-800 dark:text-sky-300 rounded text-xs font-bold uppercase">Macroproceso: Ventas</span>
-                                <span class="px-2 py-1 bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 rounded text-xs font-bold uppercase">Tipo: Operativo</span>
+                        <div class="p-5 border-l-4 border-purple-600 bg-slate-50 dark:bg-slate-800/40 rounded-r-xl">
+                            <h3 class="font-bold text-lg text-slate-800 dark:text-slate-200 mb-2">2️⃣ Macroprocesos</h3>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">
+                                Agrupan a los procesos que comparten un <strong>objetivo común</strong>. Cada macroproceso debe tener un objetivo claro y definido y estar vinculado a los objetivos organizacionales.
+                            </p>
+                            <div class="bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-900/50 rounded-lg p-3 text-sm">
+                                <strong class="text-red-900 dark:text-red-300">⚠️ Importante:</strong>
+                                <span class="text-red-800 dark:text-red-200"> El macroproceso <strong>NO posee actividades concretas</strong>, resulta exclusivamente una agrupación de procesos.</span>
                             </div>
-                            <div class="overflow-x-auto">
-                                <table class="w-full text-sm">
-                                    <thead class="bg-slate-200 dark:bg-slate-700">
-                                        <tr>
-                                            <th class="px-3 py-2 text-left text-xs font-bold text-slate-700 dark:text-slate-300 uppercase">Nombre del proceso</th>
-                                            <th class="px-3 py-2 text-left text-xs font-bold text-slate-700 dark:text-slate-300 uppercase">Descripción</th>
-                                            <th class="px-3 py-2 text-left text-xs font-bold text-slate-700 dark:text-slate-300 uppercase">Área responsable</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
-                                        <tr class="bg-white dark:bg-slate-900">
-                                            <td class="px-3 py-2 text-slate-800 dark:text-slate-200 font-medium">Gestión de pedidos</td>
-                                            <td class="px-3 py-2 text-slate-600 dark:text-slate-400">Recepción, registro y confirmación de órdenes de compra de clientes.</td>
-                                            <td class="px-3 py-2 text-slate-600 dark:text-slate-400">Departamento Comercial</td>
-                                        </tr>
-                                        <tr class="bg-white dark:bg-slate-900">
-                                            <td class="px-3 py-2 text-slate-800 dark:text-slate-200 font-medium">Atención a comercios</td>
-                                            <td class="px-3 py-2 text-slate-600 dark:text-slate-400">Coordinación con comercios que compran por volumen o con convenios especiales.</td>
-                                            <td class="px-3 py-2 text-slate-600 dark:text-slate-400">Departamento Comercial</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800 text-sm mt-3">
+                                <strong class="text-purple-700 dark:text-purple-400 block mb-2">Ejemplos:</strong>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded text-xs">Gestión financiera</span>
+                                    <span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded text-xs">Gestión administrativa</span>
+                                    <span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded text-xs">Seguridad informática</span>
+                                    <span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded text-xs">Aseguramiento de calidad</span>
+                                    <span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded text-xs">Gestión de RRHH</span>
+                                    <span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded text-xs">Gestión de ventas</span>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-lg border border-slate-200 dark:border-slate-800">
-                            <div class="flex flex-wrap gap-2 mb-3">
-                                <span class="px-2 py-1 bg-sky-100 dark:bg-sky-950 text-sky-800 dark:text-sky-300 rounded text-xs font-bold uppercase">Macroproceso: Distribución</span>
-                                <span class="px-2 py-1 bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 rounded text-xs font-bold uppercase">Tipo: Operativo</span>
-                            </div>
-                            <div class="overflow-x-auto">
-                                <table class="w-full text-sm">
-                                    <thead class="bg-slate-200 dark:bg-slate-700">
-                                        <tr>
-                                            <th class="px-3 py-2 text-left text-xs font-bold text-slate-700 dark:text-slate-300 uppercase">Nombre del proceso</th>
-                                            <th class="px-3 py-2 text-left text-xs font-bold text-slate-700 dark:text-slate-300 uppercase">Descripción</th>
-                                            <th class="px-3 py-2 text-left text-xs font-bold text-slate-700 dark:text-slate-300 uppercase">Área responsable</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
-                                        <tr class="bg-white dark:bg-slate-900">
-                                            <td class="px-3 py-2 text-slate-800 dark:text-slate-200 font-medium">Organización del transporte</td>
-                                            <td class="px-3 py-2 text-slate-600 dark:text-slate-400">Organización del transporte y asignación de rutas de entrega.</td>
-                                            <td class="px-3 py-2 text-slate-600 dark:text-slate-400">Logística</td>
-                                        </tr>
-                                        <tr class="bg-white dark:bg-slate-900">
-                                            <td class="px-3 py-2 text-slate-800 dark:text-slate-200 font-medium">Distribución física</td>
-                                            <td class="px-3 py-2 text-slate-600 dark:text-slate-400">Distribución física de los productos en el lugar y tiempo pactados.</td>
-                                            <td class="px-3 py-2 text-slate-600 dark:text-slate-400">Logística</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                        <div class="p-5 border-l-4 border-emerald-600 bg-slate-50 dark:bg-slate-800/40 rounded-r-xl">
+                            <h3 class="font-bold text-lg text-slate-800 dark:text-slate-200 mb-2">3️⃣ Procesos</h3>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">
+                                Conjunto de <strong>actividades y tareas concretas</strong> para llegar al resultado. Mientras el macroproceso es un concepto genérico, los procesos tienen acciones concretamente definidas.
+                            </p>
+                            <div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800 text-sm">
+                                <strong class="text-emerald-700 dark:text-emerald-400 block mb-2">Ejemplo dentro de "Gestión de Ventas":</strong>
+                                <ul class="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300">
+                                    <li>Ejecución de una venta</li>
+                                    <li>Cancelación de una venta</li>
+                                    <li>Pago</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Paso 5: Detallar procesos -->
-                <div>
-                    <div class="flex items-center gap-3 mb-3">
-                        <span class="flex-shrink-0 w-8 h-8 bg-red-600 text-white rounded-full flex items-center justify-center font-bold text-sm">5</span>
-                        <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200">Detallar los procesos operativos de Producción</h3>
+                    <div class="mt-6 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50 rounded-lg p-4">
+                        <div class="flex items-start gap-3">
+                            <span class="text-2xl">💡</span>
+                            <div>
+                                <strong class="text-amber-900 dark:text-amber-200 block mb-1">Tip para el examen:</strong>
+                                <p class="text-sm text-amber-800 dark:text-amber-300 leading-relaxed">
+                                    La diferencia clave entre <strong>Macroproceso</strong> y <strong>Proceso</strong>: el macroproceso es un concepto genérico (sustantivo abstracto como "Gestión de Ventas"), mientras que el proceso tiene acciones concretas (generalmente empieza con verbo en infinitivo como "Realizar una venta").
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">Modelado mediante herramienta SIPOC (entradas, actividades, salidas y valor para el cliente):</p>
-                    
-                    <div class="overflow-x-auto bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-200 dark:border-slate-800">
-                        <table class="w-full text-sm">
-                            <thead class="bg-slate-200 dark:bg-slate-700">
-                                <tr>
-                                    <th class="px-3 py-2 text-left text-xs font-bold text-slate-700 dark:text-slate-300 uppercase">Proceso</th>
-                                    <th class="px-3 py-2 text-left text-xs font-bold text-slate-700 dark:text-slate-300 uppercase">Entradas</th>
-                                    <th class="px-3 py-2 text-left text-xs font-bold text-slate-700 dark:text-slate-300 uppercase">Actividades</th>
-                                    <th class="px-3 py-2 text-left text-xs font-bold text-slate-700 dark:text-slate-300 uppercase">Salidas</th>
-                                    <th class="px-3 py-2 text-left text-xs font-bold text-slate-700 dark:text-slate-300 uppercase">Valor para el cliente</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
-                                <tr class="bg-white dark:bg-slate-900">
-                                    <td class="px-3 py-2 text-slate-800 dark:text-slate-200 font-medium">Producción en stock</td>
-                                    <td class="px-3 py-2 text-slate-600 dark:text-slate-400 text-xs">Plan de producción, stock de materia prima</td>
-                                    <td class="px-3 py-2 text-slate-600 dark:text-slate-400 text-xs">Preparación de máquinas, fabricación de termos, embalado y almacenamiento</td>
-                                    <td class="px-3 py-2 text-slate-600 dark:text-slate-400 text-xs">Termos producidos y almacenados en stock</td>
-                                    <td class="px-3 py-2 text-slate-600 dark:text-slate-400 text-xs">Disponibilidad inmediata del producto y entrega más ágil</td>
-                                </tr>
-                                <tr class="bg-white dark:bg-slate-900">
-                                    <td class="px-3 py-2 text-slate-800 dark:text-slate-200 font-medium">Producción bajo demanda</td>
-                                    <td class="px-3 py-2 text-slate-600 dark:text-slate-400 text-xs">Pedido del cliente, diseño de producto, materia prima</td>
-                                    <td class="px-3 py-2 text-slate-600 dark:text-slate-400 text-xs">Programación de la orden, fabricación personalizada, control de calidad</td>
-                                    <td class="px-3 py-2 text-slate-600 dark:text-slate-400 text-xs">Termo personalizado listo para entrega</td>
-                                    <td class="px-3 py-2 text-slate-600 dark:text-slate-400 text-xs">Producto fabricado según requerimientos específicos</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                </section>
+
+                <!-- SECCIÓN 5: FASES -->
+                <section id="fases" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-6">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100">5. Fases de la gestión por procesos</h2>
+                        <p class="text-sm text-slate-500 mt-1">Cuatro fases secuenciales para documentar la gestión por procesos.</p>
                     </div>
-                </div>
-            </section>
 
-            <!-- LABORATORIO: CLASIFICACIÓN -->
-            <section id="practica-clasificacion" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-6">
-                <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
-                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-sky-100 dark:bg-sky-950 text-sky-800 dark:text-sky-300 uppercase tracking-wide">Interactivo</span>
-                    <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">⚡ Laboratorio: Clasificación de Procesos</h2>
-                    <p class="text-sm text-slate-500 mt-1">Haz clic en un proceso y luego en la categoría correcta para clasificarlo.</p>
-                </div>
+                    <div class="space-y-4">
+                        <div class="flex gap-4 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-200 dark:border-slate-800">
+                            <div class="flex-shrink-0 w-10 h-10 bg-sky-600 text-white rounded-full flex items-center justify-center font-bold">1</div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 dark:text-slate-200">Identificar las declaraciones de la organización</h4>
+                                <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Identificar, obtener y conocer todo el material que permite la caracterización de la organización para entender los macroprocesos y procesos que requiere.</p>
+                            </div>
+                        </div>
 
-                <div class="bg-slate-50 dark:bg-slate-800/30 border border-slate-200 dark:border-slate-800 rounded-xl p-5 max-w-4xl mx-auto">
-                    <!-- Pool de procesos -->
+                        <div class="flex gap-4 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-200 dark:border-slate-800">
+                            <div class="flex-shrink-0 w-10 h-10 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold">2</div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 dark:text-slate-200">Identificar los macroprocesos</h4>
+                                <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Deriva de las declaraciones. Para cada macroproceso se debe identificar claramente el <strong>objetivo</strong> que persigue (según USAID).</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-200 dark:border-slate-800">
+                            <div class="flex-shrink-0 w-10 h-10 bg-emerald-600 text-white rounded-full flex items-center justify-center font-bold">3</div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 dark:text-slate-200">Identificar los procesos</h4>
+                                <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Para cada macroproceso, identificar los procesos asociados con: <strong>nombre, macroproceso asociado, tipo (estratégico/operativo/soporte) y área responsable</strong>.</p>
+                                <p class="text-xs text-slate-500 dark:text-slate-500 mt-2 italic">El área responsable es el "Process Owner" o dueño del proceso (Six Sigma / ISO 9001).</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-200 dark:border-slate-800">
+                            <div class="flex-shrink-0 w-10 h-10 bg-amber-600 text-white rounded-full flex items-center justify-center font-bold">4</div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 dark:text-slate-200">Detallar los procesos</h4>
+                                <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Definición concreta de cada proceso mediante modelado (ver sección siguiente).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 bg-slate-900 text-slate-100 p-5 rounded-xl border border-slate-800">
+                        <h4 class="text-sm font-bold uppercase tracking-wider text-sky-400 mb-3">Relación con la Metodología de Sistemas</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                            <div class="bg-slate-800 p-4 rounded-lg border border-slate-700">
+                                <strong class="block text-white mb-1">Etapa de Reconocimiento</strong>
+                                Identificar declaraciones, macroprocesos y procesos (primera aproximación a la organización).
+                            </div>
+                            <div class="bg-slate-800 p-4 rounded-lg border border-slate-700">
+                                <strong class="block text-white mb-1">Etapa de Relevamiento</strong>
+                                Detalle de los procesos (análisis más detallado, no solo aproximación inicial).
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 6: MODELADO -->
+                <section id="modelado" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-6">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100">6. Modelado de procesos</h2>
+                        <p class="text-sm text-slate-500 mt-1">Herramientas para documentar los diferentes niveles de procesos.</p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="p-5 border-l-4 border-purple-600 bg-slate-50 dark:bg-slate-800/40 rounded-r-xl">
+                            <h3 class="font-bold text-lg text-slate-800 dark:text-slate-200 mb-2">🗺️ Mapa de Macroprocesos</h3>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">
+                                Presenta los diferentes procesos de la organización organizados en torno a una categorización o tipología. El primer nivel de análisis es el macroproceso.
+                            </p>
+                            <div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800 text-sm">
+                                <strong class="text-purple-700 dark:text-purple-400 block mb-2">Debe incluir:</strong>
+                                <ul class="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300">
+                                    <li>Procesos estratégicos</li>
+                                    <li>Procesos operativos clave</li>
+                                    <li>Procesos de soporte y apoyo</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="p-5 border-l-4 border-emerald-600 bg-slate-50 dark:bg-slate-800/40 rounded-r-xl">
+                            <h3 class="font-bold text-lg text-slate-800 dark:text-slate-200 mb-2">📋 Identificación de Procesos</h3>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">
+                                Para cada macroproceso se identifican los procesos asociados con los siguientes datos:
+                            </p>
+                            <div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800 text-sm">
+                                <ul class="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300">
+                                    <li><strong>Nombre del proceso</strong></li>
+                                    <li><strong>Nombre del macroproceso asociado</strong></li>
+                                    <li><strong>Tipo de proceso</strong> (estratégico, operativo o de soporte)</li>
+                                    <li><strong>Área responsable del proceso</strong> (Process Owner)</li>
+                                </ul>
+                                <p class="mt-2 text-xs text-slate-500 dark:text-slate-500 italic">El área responsable no es la única ejecutora; un proceso es transversal e incluye muchas áreas.</p>
+                            </div>
+                        </div>
+
+                        <div class="p-5 border-l-4 border-sky-600 bg-slate-50 dark:bg-slate-800/40 rounded-r-xl">
+                            <h3 class="font-bold text-lg text-slate-800 dark:text-slate-200 mb-2">🔍 Detalle de Procesos</h3>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">
+                                Documentación concreta de las actividades que se llevan a cabo dentro de un proceso. Se pueden usar diferentes notaciones:
+                            </p>
+                            
+                            <div class="space-y-3">
+                                <div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800">
+                                    <strong class="text-sky-700 dark:text-sky-400 block text-sm font-bold uppercase tracking-wider mb-2">📊 SIPOC (ISO 9001:2015)</strong>
+                                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-2">
+                                        Acrónimo en inglés de <strong>Suppliers, Inputs, Process, Output, Customers</strong> (también conocida como COPIS). Herramienta en formato tabular para caracterizar un proceso identificando:
+                                    </p>
+                                    <ul class="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300 text-sm">
+                                        <li><strong>Proveedores</strong> (Suppliers)</li>
+                                        <li><strong>Entradas</strong> (Inputs)</li>
+                                        <li><strong>Procesos / Subprocesos</strong> (Process)</li>
+                                        <li><strong>Salidas</strong> (Output)</li>
+                                        <li><strong>Clientes</strong> u otras partes interesadas (Customers)</li>
+                                    </ul>
+                                </div>
+
+                                <div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800">
+                                    <strong class="text-sky-700 dark:text-sky-400 block text-sm font-bold uppercase tracking-wider mb-2">🔷 BPMN</strong>
+                                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                                        <strong>Business Process Model and Notation</strong> (Notación de Modelado de Procesos de Negocio). Cuenta con guías que proponen simbologías y reglas de construcción específicas (ISO 19510).
+                                    </p>
+                                </div>
+
+                                <div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800">
+                                    <strong class="text-sky-700 dark:text-sky-400 block text-sm font-bold uppercase tracking-wider mb-2">📝 Cursogramas</strong>
+                                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                                        Herramientas provenientes de disciplinas administrativas para describir procesos.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 7: CASO TERMILAGRO -->
+                <section id="caso-termilagro" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-6">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                        <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 uppercase tracking-wide">Caso Práctico</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">🏭 Caso Termilagro S.A.</h2>
+                        <p class="text-sm text-slate-500 mt-1">Resolución paso a paso del ejercicio de la cátedra.</p>
+                    </div>
+
+                    <!-- Enunciado -->
+                    <div class="mb-6 bg-slate-50 dark:bg-slate-800/50 p-5 rounded-lg border border-slate-200 dark:border-slate-800">
+                        <h3 class="text-base font-bold text-slate-800 dark:text-slate-200 mb-3">📖 Enunciado</h3>
+                        <div class="space-y-2 text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                            <p><strong>Termilagro S.A.</strong> se dedica a la producción y comercialización de termos plásticos de alta calidad. Con una fuerte presencia en el mercado nacional, su misión es brindar soluciones prácticas y confiables para el consumo cotidiano de bebidas, a través de productos duraderos, eficientes y accesibles.</p>
+                            <p>La dirección de la empresa realiza periódicamente análisis del mercado para detectar nuevas oportunidades de negocio, y formula planes de mediano y largo plazo orientados a diversificar su oferta y captar nuevos segmentos de clientes.</p>
+                            <p>Sus actividades principales incluyen la <strong>fabricación, venta y distribución</strong> de termos. En condiciones normales, la empresa produce termos de acuerdo con un plan de stock predeterminado. No obstante, cuando un cliente realiza un pedido de un producto que no se encuentra disponible, se activa un circuito de producción bajo demanda, gestionado por la planta de producción.</p>
+                            <p>La gestión de ventas contempla dos circuitos diferenciados: el área comercial procesa los pedidos individuales y mantiene relaciones especiales con comercios y distribuidores.</p>
+                            <p>La distribución de los productos es responsabilidad del área de logística. Además, Termilagro lleva adelante procesos de soporte: gestión de RRHH, compras, control de calidad y mantenimiento.</p>
+                        </div>
+                    </div>
+
+                    <!-- Paso 1: Declaraciones -->
                     <div class="mb-6">
-                        <strong class="text-sm text-slate-700 dark:text-slate-300 block mb-3">Procesos disponibles:</strong>
-                        <div id="process-pool" class="flex flex-wrap gap-2 min-h-[40px]">
-                            <!-- Se genera con JavaScript -->
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="flex-shrink-0 w-8 h-8 bg-sky-600 text-white rounded-full flex items-center justify-center font-bold text-sm">1</span>
+                            <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200">Identificar las declaraciones de la organización</h3>
+                        </div>
+                        <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-200 dark:border-slate-800">
+                            <strong class="text-sky-700 dark:text-sky-400 block mb-2">Misión:</strong>
+                            <p class="text-sm text-slate-700 dark:text-slate-300 italic leading-relaxed">
+                                "Brindar soluciones prácticas y confiables para el consumo de bebidas, a través de la producción y comercialización de termos plásticos de alta calidad, utilizando materiales duraderos y procesos eficientes que respondan a las necesidades del mercado argentino."
+                            </p>
                         </div>
                     </div>
 
-                    <!-- Zonas de clasificación -->
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div id="zone-estrategico" class="drop-zone p-4 bg-red-50 dark:bg-red-950/30 border-2 border-dashed border-red-300 dark:border-red-800 rounded-lg min-h-[120px] cursor-pointer transition-all hover:border-red-500">
-                            <h4 class="text-sm font-bold text-red-900 dark:text-red-300 mb-2 text-center"> Estratégicos</h4>
-                            <div class="dropped-cards flex flex-col gap-2"></div>
+                    <!-- Paso 2: Macroprocesos -->
+                    <div class="mb-6">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="flex-shrink-0 w-8 h-8 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold text-sm">2</span>
+                            <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200">Identificar los macroprocesos</h3>
                         </div>
-                        <div id="zone-operativo" class="drop-zone p-4 bg-emerald-50 dark:bg-emerald-950/30 border-2 border-dashed border-emerald-300 dark:border-emerald-800 rounded-lg min-h-[120px] cursor-pointer transition-all hover:border-emerald-500">
-                            <h4 class="text-sm font-bold text-emerald-900 dark:text-emerald-300 mb-2 text-center">⚙️ Operativos</h4>
-                            <div class="dropped-cards flex flex-col gap-2"></div>
-                        </div>
-                        <div id="zone-soporte" class="drop-zone p-4 bg-amber-50 dark:bg-amber-950/30 border-2 border-dashed border-amber-300 dark:border-amber-800 rounded-lg min-h-[120px] cursor-pointer transition-all hover:border-amber-500">
-                            <h4 class="text-sm font-bold text-amber-900 dark:text-amber-300 mb-2 text-center">️ Soporte</h4>
-                            <div class="dropped-cards flex flex-col gap-2"></div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm border-collapse">
+                                <thead>
+                                    <tr class="bg-slate-200 dark:bg-slate-700">
+                                        <th class="px-3 py-2 text-left text-xs font-bold text-slate-700 dark:text-slate-300 uppercase border border-slate-300 dark:border-slate-600">Macroproceso</th>
+                                        <th class="px-3 py-2 text-left text-xs font-bold text-slate-700 dark:text-slate-300 uppercase border border-slate-300 dark:border-slate-600">Tipo</th>
+                                        <th class="px-3 py-2 text-left text-xs font-bold text-slate-700 dark:text-slate-300 uppercase border border-slate-300 dark:border-slate-600">Objetivo</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+                                    <tr class="bg-white dark:bg-slate-900">
+                                        <td class="px-3 py-2 text-slate-800 dark:text-slate-200 font-medium border border-slate-200 dark:border-slate-700">Planeación estratégica</td>
+                                        <td class="px-3 py-2 border border-slate-200 dark:border-slate-700"><span class="px-2 py-0.5 bg-red-100 dark:bg-red-950 text-red-800 dark:text-red-300 rounded text-xs font-medium">Estratégico</span></td>
+                                        <td class="px-3 py-2 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700">Formular planes de mediano y largo plazo orientados a diversificar la oferta y captar nuevos segmentos.</td>
+                                    </tr>
+                                    <tr class="bg-white dark:bg-slate-900">
+                                        <td class="px-3 py-2 text-slate-800 dark:text-slate-200 font-medium border border-slate-200 dark:border-slate-700">Análisis de mercado</td>
+                                        <td class="px-3 py-2 border border-slate-200 dark:border-slate-700"><span class="px-2 py-0.5 bg-red-100 dark:bg-red-950 text-red-800 dark:text-red-300 rounded text-xs font-medium">Estratégico</span></td>
+                                        <td class="px-3 py-2 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700">Detectar nuevas oportunidades de negocio mediante análisis periódicos del mercado.</td>
+                                    </tr>
+                                    <tr class="bg-white dark:bg-slate-900">
+                                        <td class="px-3 py-2 text-slate-800 dark:text-slate-200 font-medium border border-slate-200 dark:border-slate-700">Producción</td>
+                                        <td class="px-3 py-2 border border-slate-200 dark:border-slate-700"><span class="px-2 py-0.5 bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 rounded text-xs font-medium">Operativo</span></td>
+                                        <td class="px-3 py-2 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700">Fabricar termos según plan de stock o mediante circuito de producción bajo demanda.</td>
+                                    </tr>
+                                    <tr class="bg-white dark:bg-slate-900">
+                                        <td class="px-3 py-2 text-slate-800 dark:text-slate-200 font-medium border border-slate-200 dark:border-slate-700">Venta</td>
+                                        <td class="px-3 py-2 border border-slate-200 dark:border-slate-700"><span class="px-2 py-0.5 bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 rounded text-xs font-medium">Operativo</span></td>
+                                        <td class="px-3 py-2 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700">Procesar pedidos individuales y mantener relaciones especiales con comercios y distribuidores.</td>
+                                    </tr>
+                                    <tr class="bg-white dark:bg-slate-900">
+                                        <td class="px-3 py-2 text-slate-800 dark:text-slate-200 font-medium border border-slate-200 dark:border-slate-700">Distribución</td>
+                                        <td class="px-3 py-2 border border-slate-200 dark:border-slate-700"><span class="px-2 py-0.5 bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 rounded text-xs font-medium">Operativo</span></td>
+                                        <td class="px-3 py-2 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700">Coordinar transporte, asignar rutas y organizar carga para cumplir plazos pactados.</td>
+                                    </tr>
+                                    <tr class="bg-white dark:bg-slate-900">
+                                        <td class="px-3 py-2 text-slate-800 dark:text-slate-200 font-medium border border-slate-200 dark:border-slate-700">Gestión de RRHH</td>
+                                        <td class="px-3 py-2 border border-slate-200 dark:border-slate-700"><span class="px-2 py-0.5 bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 rounded text-xs font-medium">Soporte</span></td>
+                                        <td class="px-3 py-2 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700">Control horario, planificación del personal y liquidación de sueldos.</td>
+                                    </tr>
+                                    <tr class="bg-white dark:bg-slate-900">
+                                        <td class="px-3 py-2 text-slate-800 dark:text-slate-200 font-medium border border-slate-200 dark:border-slate-700">Compras</td>
+                                        <td class="px-3 py-2 border border-slate-200 dark:border-slate-700"><span class="px-2 py-0.5 bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 rounded text-xs font-medium">Soporte</span></td>
+                                        <td class="px-3 py-2 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700">Adquirir materias primas y materiales operativos.</td>
+                                    </tr>
+                                    <tr class="bg-white dark:bg-slate-900">
+                                        <td class="px-3 py-2 text-slate-800 dark:text-slate-200 font-medium border border-slate-200 dark:border-slate-700">Control de calidad</td>
+                                        <td class="px-3 py-2 border border-slate-200 dark:border-slate-700"><span class="px-2 py-0.5 bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 rounded text-xs font-medium">Soporte</span></td>
+                                        <td class="px-3 py-2 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700">Verificar que insumos y productos terminados cumplan con los estándares establecidos.</td>
+                                    </tr>
+                                    <tr class="bg-white dark:bg-slate-900">
+                                        <td class="px-3 py-2 text-slate-800 dark:text-slate-200 font-medium border border-slate-200 dark:border-slate-700">Mantenimiento</td>
+                                        <td class="px-3 py-2 border border-slate-200 dark:border-slate-700"><span class="px-2 py-0.5 bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 rounded text-xs font-medium">Soporte</span></td>
+                                        <td class="px-3 py-2 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700">Atender fallas en maquinaria y decidir su reparación o reemplazo.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
 
-                    <div id="lab-feedback" class="mt-4 p-3 text-sm rounded-lg hidden text-center font-medium"></div>
-                </div>
-            </section>
+                    <!-- Paso 3: Mapa de macroprocesos -->
+                    <div class="mb-6">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="flex-shrink-0 w-8 h-8 bg-emerald-600 text-white rounded-full flex items-center justify-center font-bold text-sm">3</span>
+                            <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200">Elaborar mapa de macroprocesos</h3>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="p-4 bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-900/50 rounded-lg">
+                                <strong class="text-red-900 dark:text-red-300 block mb-2 text-sm font-bold uppercase">🎯 Procesos Estratégicos</strong>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-white dark:bg-slate-800 border border-red-300 dark:border-red-800 rounded-md text-xs font-medium text-slate-700 dark:text-slate-300">Planeación estratégica</span>
+                                    <span class="px-3 py-1 bg-white dark:bg-slate-800 border border-red-300 dark:border-red-800 rounded-md text-xs font-medium text-slate-700 dark:text-slate-300">Análisis de Mercado</span>
+                                </div>
+                            </div>
 
-            <!-- TRIVIA -->
-            <section id="examen-autoevaluacion" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-6">
-                <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
-                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 uppercase tracking-wide">Examen</span>
-                    <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">📋 Trivia de autoevaluación teórica</h2>
-                    <p class="text-sm text-slate-500 mt-1">Simula las condiciones conceptuales fijadas por la cátedra sin temporizadores molestos.</p>
-                </div>
-                
-                <div id="contenedor-examen-teorico" class="bg-slate-50 dark:bg-slate-800/30 border border-slate-200 dark:border-slate-800 rounded-xl p-5 max-w-2xl mx-auto">
-                </div>
-            </section>
+                            <div class="p-4 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900/50 rounded-lg">
+                                <strong class="text-emerald-900 dark:text-emerald-300 block mb-2 text-sm font-bold uppercase">⚙️ Procesos Operativos</strong>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-white dark:bg-slate-800 border border-emerald-300 dark:border-emerald-800 rounded-md text-xs font-medium text-slate-700 dark:text-slate-300">Producción</span>
+                                    <span class="px-3 py-1 bg-white dark:bg-slate-800 border border-emerald-300 dark:border-emerald-800 rounded-md text-xs font-medium text-slate-700 dark:text-slate-300">Venta</span>
+                                    <span class="px-3 py-1 bg-white dark:bg-slate-800 border border-emerald-300 dark:border-emerald-800 rounded-md text-xs font-medium text-slate-700 dark:text-slate-300">Distribución</span>
+                                </div>
+                            </div>
 
-            <!-- EXAMEN FINAL -->
-            <section id="examen-final" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-6">
-                <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
-                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-rose-100 dark:bg-rose-950 text-rose-800 dark:text-rose-300 uppercase tracking-wide">Evaluación</span>
-                    <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">🎓 Examen Final de Procesos de Negocio</h2>
-                    <p class="text-sm text-slate-500 mt-1">Pon a prueba todos tus conocimientos sobre procesos de negocio. ¡Éxitos!</p>
-                </div>
-                
-                <div id="examen-final-container" class="bg-slate-50 dark:bg-slate-800/30 border border-slate-200 dark:border-slate-800 rounded-xl p-5 max-w-3xl mx-auto">
-                    <!-- Contenido generado por JavaScript -->
-                </div>
-            </section>
-
-            <!-- MATERIALES -->
-            <section id="materiales" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-6">
-                <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
-                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-300 uppercase tracking-wide">Recursos</span>
-                    <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">📚 Materiales de Apoyo</h2>
-                    <p class="text-sm text-slate-500 mt-1">Documentación oficial y apuntes de la cátedra para profundizar en la teoría.</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <a href="https://raw.githubusercontent.com/leonandres/analisis-de-sistemas/main/clases/clase-02-procesos-de-negocio/APUNTE%20-%20Introducci%C3%B3n%20a%20Procesos%20de%20Negocios.pdf" target="_blank" class="p-4 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950/30 dark:to-blue-900/30 border border-blue-200 dark:border-blue-800 rounded-lg hover:shadow-md transition-all cursor-pointer">
-                        <div class="flex items-start gap-3">
-                            <span class="text-2xl">📖</span>
-                            <div>
-                                <h3 class="font-bold text-slate-800 dark:text-slate-100">Apunte: Introducción a Procesos de Negocios</h3>
-                                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Material teórico completo de la cátedra.</p>
+                            <div class="p-4 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50 rounded-lg">
+                                <strong class="text-amber-900 dark:text-amber-300 block mb-2 text-sm font-bold uppercase">️ Procesos de Soporte / Apoyo</strong>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-white dark:bg-slate-800 border border-amber-300 dark:border-amber-800 rounded-md text-xs font-medium text-slate-700 dark:text-slate-300">Gestión de RRHH</span>
+                                    <span class="px-3 py-1 bg-white dark:bg-slate-800 border border-amber-300 dark:border-amber-800 rounded-md text-xs font-medium text-slate-700 dark:text-slate-300">Compras</span>
+                                    <span class="px-3 py-1 bg-white dark:bg-slate-800 border border-amber-300 dark:border-amber-800 rounded-md text-xs font-medium text-slate-700 dark:text-slate-300">Control de Calidad</span>
+                                    <span class="px-3 py-1 bg-white dark:bg-slate-800 border border-amber-300 dark:border-amber-800 rounded-md text-xs font-medium text-slate-700 dark:text-slate-300">Mantenimiento</span>
+                                </div>
                             </div>
                         </div>
-                    </a>
+                    </div>
 
-                    <a href="https://raw.githubusercontent.com/leonandres/analisis-de-sistemas/main/clases/clase-02-procesos-de-negocio/3%20-%20Presentaci%C3%B3n%20resoluci%C3%B3n%20Termilagro.pdf" target="_blank" class="p-4 bg-gradient-to-br from-emerald-50 to-emerald-100 dark:from-emerald-950/30 dark:to-emerald-900/30 border border-emerald-200 dark:border-emerald-800 rounded-lg hover:shadow-md transition-all cursor-pointer">
-                        <div class="flex items-start gap-3">
-                            <span class="text-2xl"></span>
-                            <div>
-                                <h3 class="font-bold text-slate-800 dark:text-slate-100">Presentación: Resolución Termilagro</h3>
-                                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Caso práctico resuelto paso a paso.</p>
+                    <!-- Paso 4: Identificar procesos operativos -->
+                    <div class="mb-6">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="flex-shrink-0 w-8 h-8 bg-amber-600 text-white rounded-full flex items-center justify-center font-bold text-sm">4</span>
+                            <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200">Identificar los procesos operativos</h3>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-lg border border-slate-200 dark:border-slate-800">
+                                <div class="flex flex-wrap gap-2 mb-3">
+                                    <span class="px-2 py-1 bg-sky-100 dark:bg-sky-950 text-sky-800 dark:text-sky-300 rounded text-xs font-bold uppercase">Macroproceso: Producción</span>
+                                    <span class="px-2 py-1 bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 rounded text-xs font-bold uppercase">Tipo: Operativo</span>
+                                </div>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-sm">
+                                        <thead class="bg-slate-200 dark:bg-slate-700">
+                                            <tr>
+                                                <th class="px-3 py-2 text-left text-xs font-bold text-slate-700 dark:text-slate-300 uppercase">Nombre del proceso</th>
+                                                <th class="px-3 py-2 text-left text-xs font-bold text-slate-700 dark:text-slate-300 uppercase">Descripción</th>
+                                                <th class="px-3 py-2 text-left text-xs font-bold text-slate-700 dark:text-slate-300 uppercase">Área responsable</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+                                            <tr class="bg-white dark:bg-slate-900">
+                                                <td class="px-3 py-2 text-slate-800 dark:text-slate-200 font-medium">Producción en stock</td>
+                                                <td class="px-3 py-2 text-slate-600 dark:text-slate-400">Fabricación regular de termos plásticos según planificación de stocks.</td>
+                                                <td class="px-3 py-2 text-slate-600 dark:text-slate-400">Planta de Producción</td>
+                                            </tr>
+                                            <tr class="bg-white dark:bg-slate-900">
+                                                <td class="px-3 py-2 text-slate-800 dark:text-slate-200 font-medium">Producción bajo demanda</td>
+                                                <td class="px-3 py-2 text-slate-600 dark:text-slate-400">Fabricación de termos en respuesta a pedidos específicos por falta de stocks.</td>
+                                                <td class="px-3 py-2 text-slate-600 dark:text-slate-400">Planta de Producción</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-lg border border-slate-200 dark:border-slate-800">
+                                <div class="flex flex-wrap gap-2 mb-3">
+                                    <span class="px-2 py-1 bg-sky-100 dark:bg-sky-950 text-sky-800 dark:text-sky-300 rounded text-xs font-bold uppercase">Macroproceso: Ventas</span>
+                                    <span class="px-2 py-1 bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 rounded text-xs font-bold uppercase">Tipo: Operativo</span>
+                                </div>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-sm">
+                                        <thead class="bg-slate-200 dark:bg-slate-700">
+                                            <tr>
+                                                <th class="px-3 py-2 text-left text-xs font-bold text-slate-700 dark:text-slate-300 uppercase">Nombre del proceso</th>
+                                                <th class="px-3 py-2 text-left text-xs font-bold text-slate-700 dark:text-slate-300 uppercase">Descripción</th>
+                                                <th class="px-3 py-2 text-left text-xs font-bold text-slate-700 dark:text-slate-300 uppercase">Área responsable</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+                                            <tr class="bg-white dark:bg-slate-900">
+                                                <td class="px-3 py-2 text-slate-800 dark:text-slate-200 font-medium">Gestión de pedidos</td>
+                                                <td class="px-3 py-2 text-slate-600 dark:text-slate-400">Recepción, registro y confirmación de órdenes de compra de clientes.</td>
+                                                <td class="px-3 py-2 text-slate-600 dark:text-slate-400">Departamento Comercial</td>
+                                            </tr>
+                                            <tr class="bg-white dark:bg-slate-900">
+                                                <td class="px-3 py-2 text-slate-800 dark:text-slate-200 font-medium">Atención a comercios</td>
+                                                <td class="px-3 py-2 text-slate-600 dark:text-slate-400">Coordinación con comercios que compran por volumen o con convenios especiales.</td>
+                                                <td class="px-3 py-2 text-slate-600 dark:text-slate-400">Departamento Comercial</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-lg border border-slate-200 dark:border-slate-800">
+                                <div class="flex flex-wrap gap-2 mb-3">
+                                    <span class="px-2 py-1 bg-sky-100 dark:bg-sky-950 text-sky-800 dark:text-sky-300 rounded text-xs font-bold uppercase">Macroproceso: Distribución</span>
+                                    <span class="px-2 py-1 bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 rounded text-xs font-bold uppercase">Tipo: Operativo</span>
+                                </div>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-sm">
+                                        <thead class="bg-slate-200 dark:bg-slate-700">
+                                            <tr>
+                                                <th class="px-3 py-2 text-left text-xs font-bold text-slate-700 dark:text-slate-300 uppercase">Nombre del proceso</th>
+                                                <th class="px-3 py-2 text-left text-xs font-bold text-slate-700 dark:text-slate-300 uppercase">Descripción</th>
+                                                <th class="px-3 py-2 text-left text-xs font-bold text-slate-700 dark:text-slate-300 uppercase">Área responsable</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+                                            <tr class="bg-white dark:bg-slate-900">
+                                                <td class="px-3 py-2 text-slate-800 dark:text-slate-200 font-medium">Organización del transporte</td>
+                                                <td class="px-3 py-2 text-slate-600 dark:text-slate-400">Organización del transporte y asignación de rutas de entrega.</td>
+                                                <td class="px-3 py-2 text-slate-600 dark:text-slate-400">Logística</td>
+                                            </tr>
+                                            <tr class="bg-white dark:bg-slate-900">
+                                                <td class="px-3 py-2 text-slate-800 dark:text-slate-200 font-medium">Distribución física</td>
+                                                <td class="px-3 py-2 text-slate-600 dark:text-slate-400">Distribución física de los productos en el lugar y tiempo pactados.</td>
+                                                <td class="px-3 py-2 text-slate-600 dark:text-slate-400">Logística</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
-                    </a>
+                    </div>
 
-                    <a href="https://raw.githubusercontent.com/leonandres/analisis-de-sistemas/main/clases/clase-02-procesos-de-negocio/rocesos%20de%20Negocios.pdf" target="_blank" class="p-4 bg-gradient-to-br from-amber-50 to-amber-100 dark:from-amber-950/30 dark:to-amber-900/30 border border-amber-200 dark:border-amber-800 rounded-lg hover:shadow-md transition-all cursor-pointer">
-                        <div class="flex items-start gap-3">
-                            <span class="text-2xl">📊</span>
-                            <div>
-                                <h3 class="font-bold text-slate-800 dark:text-slate-100">Presentación: Procesos de Negocios</h3>
-                                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Slides de la clase teórica.</p>
+                    <!-- Paso 5: Detallar procesos -->
+                    <div>
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="flex-shrink-0 w-8 h-8 bg-red-600 text-white rounded-full flex items-center justify-center font-bold text-sm">5</span>
+                            <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200">Detallar los procesos operativos de Producción</h3>
+                        </div>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">Modelado mediante herramienta SIPOC (entradas, actividades, salidas y valor para el cliente):</p>
+                        
+                        <div class="overflow-x-auto bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-200 dark:border-slate-800">
+                            <table class="w-full text-sm">
+                                <thead class="bg-slate-200 dark:bg-slate-700">
+                                    <tr>
+                                        <th class="px-3 py-2 text-left text-xs font-bold text-slate-700 dark:text-slate-300 uppercase">Proceso</th>
+                                        <th class="px-3 py-2 text-left text-xs font-bold text-slate-700 dark:text-slate-300 uppercase">Entradas</th>
+                                        <th class="px-3 py-2 text-left text-xs font-bold text-slate-700 dark:text-slate-300 uppercase">Actividades</th>
+                                        <th class="px-3 py-2 text-left text-xs font-bold text-slate-700 dark:text-slate-300 uppercase">Salidas</th>
+                                        <th class="px-3 py-2 text-left text-xs font-bold text-slate-700 dark:text-slate-300 uppercase">Valor para el cliente</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+                                    <tr class="bg-white dark:bg-slate-900">
+                                        <td class="px-3 py-2 text-slate-800 dark:text-slate-200 font-medium">Producción en stock</td>
+                                        <td class="px-3 py-2 text-slate-600 dark:text-slate-400 text-xs">Plan de producción, stock de materia prima</td>
+                                        <td class="px-3 py-2 text-slate-600 dark:text-slate-400 text-xs">Preparación de máquinas, fabricación de termos, embalado y almacenamiento</td>
+                                        <td class="px-3 py-2 text-slate-600 dark:text-slate-400 text-xs">Termos producidos y almacenados en stock</td>
+                                        <td class="px-3 py-2 text-slate-600 dark:text-slate-400 text-xs">Disponibilidad inmediata del producto y entrega más ágil</td>
+                                    </tr>
+                                    <tr class="bg-white dark:bg-slate-900">
+                                        <td class="px-3 py-2 text-slate-800 dark:text-slate-200 font-medium">Producción bajo demanda</td>
+                                        <td class="px-3 py-2 text-slate-600 dark:text-slate-400 text-xs">Pedido del cliente, diseño de producto, materia prima</td>
+                                        <td class="px-3 py-2 text-slate-600 dark:text-slate-400 text-xs">Programación de la orden, fabricación personalizada, control de calidad</td>
+                                        <td class="px-3 py-2 text-slate-600 dark:text-slate-400 text-xs">Termo personalizado listo para entrega</td>
+                                        <td class="px-3 py-2 text-slate-600 dark:text-slate-400 text-xs">Producto fabricado según requerimientos específicos</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- LABORATORIO: CLASIFICACIÓN -->
+                <section id="practica-clasificacion" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-6">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                        <span class="text-xs font-bold px-2 py-0.5 rounded bg-sky-100 dark:bg-sky-950 text-sky-800 dark:text-sky-300 uppercase tracking-wide">Interactivo</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">⚡ Laboratorio: Clasificación de Procesos</h2>
+                        <p class="text-sm text-slate-500 mt-1">Haz clic en un proceso y luego en la categoría correcta para clasificarlo.</p>
+                    </div>
+
+                    <div class="bg-slate-50 dark:bg-slate-800/30 border border-slate-200 dark:border-slate-800 rounded-xl p-5 max-w-4xl mx-auto">
+                        <!-- Pool de procesos -->
+                        <div class="mb-6">
+                            <strong class="text-sm text-slate-700 dark:text-slate-300 block mb-3">Procesos disponibles:</strong>
+                            <div id="process-pool" class="flex flex-wrap gap-2 min-h-[40px]">
+                                <!-- Se genera con JavaScript -->
                             </div>
                         </div>
-                    </a>
 
-                    <a href="https://www.iso.org/obp/ui/#iso:std:iso:9000:ed-3:v1:es" target="_blank" class="p-4 bg-gradient-to-br from-rose-50 to-rose-100 dark:from-rose-950/30 dark:to-rose-900/30 border border-rose-200 dark:border-rose-800 rounded-lg hover:shadow-md transition-all cursor-pointer">
-                        <div class="flex items-start gap-3">
-                            <span class="text-2xl">⚙️</span>
-                            <div>
-                                <h3 class="font-bold text-slate-800 dark:text-slate-100">Norma ISO 9000</h3>
-                                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Sistemas de gestión de la calidad - Fundamentos y vocabulario.</p>
+                        <!-- Zonas de clasificación -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div id="zone-estrategico" class="drop-zone p-4 bg-red-50 dark:bg-red-950/30 border-2 border-dashed border-red-300 dark:border-red-800 rounded-lg min-h-[120px] cursor-pointer transition-all hover:border-red-500">
+                                <h4 class="text-sm font-bold text-red-900 dark:text-red-300 mb-2 text-center"> Estratégicos</h4>
+                                <div class="dropped-cards flex flex-col gap-2"></div>
+                            </div>
+                            <div id="zone-operativo" class="drop-zone p-4 bg-emerald-50 dark:bg-emerald-950/30 border-2 border-dashed border-emerald-300 dark:border-emerald-800 rounded-lg min-h-[120px] cursor-pointer transition-all hover:border-emerald-500">
+                                <h4 class="text-sm font-bold text-emerald-900 dark:text-emerald-300 mb-2 text-center">⚙️ Operativos</h4>
+                                <div class="dropped-cards flex flex-col gap-2"></div>
+                            </div>
+                            <div id="zone-soporte" class="drop-zone p-4 bg-amber-50 dark:bg-amber-950/30 border-2 border-dashed border-amber-300 dark:border-amber-800 rounded-lg min-h-[120px] cursor-pointer transition-all hover:border-amber-500">
+                                <h4 class="text-sm font-bold text-amber-900 dark:text-amber-300 mb-2 text-center">️ Soporte</h4>
+                                <div class="dropped-cards flex flex-col gap-2"></div>
                             </div>
                         </div>
-                    </a>
-                </div>
-            </section>
 
-        </main>
+                        <div id="lab-feedback" class="mt-4 p-3 text-sm rounded-lg hidden text-center font-medium"></div>
+                    </div>
+                </section>
+
+                <!-- TRIVIA -->
+                <section id="examen-autoevaluacion" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-6">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                        <span class="text-xs font-bold px-2 py-0.5 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 uppercase tracking-wide">Examen</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">📋 Trivia de autoevaluación teórica</h2>
+                        <p class="text-sm text-slate-500 mt-1">Simula las condiciones conceptuales fijadas por la cátedra sin temporizadores molestos.</p>
+                    </div>
+                    
+                    <div id="contenedor-examen-teorico" class="bg-slate-50 dark:bg-slate-800/30 border border-slate-200 dark:border-slate-800 rounded-xl p-5 max-w-2xl mx-auto">
+                    </div>
+                </section>
+
+                <!-- EXAMEN FINAL -->
+                <section id="examen-final" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-6">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                        <span class="text-xs font-bold px-2 py-0.5 rounded bg-rose-100 dark:bg-rose-950 text-rose-800 dark:text-rose-300 uppercase tracking-wide">Evaluación</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">🎓 Examen Final de Procesos de Negocio</h2>
+                        <p class="text-sm text-slate-500 mt-1">Pon a prueba todos tus conocimientos sobre procesos de negocio. ¡Éxitos!</p>
+                    </div>
+                    
+                    <div id="examen-final-container" class="bg-slate-50 dark:bg-slate-800/30 border border-slate-200 dark:border-slate-800 rounded-xl p-5 max-w-3xl mx-auto">
+                        <!-- Contenido generado por JavaScript -->
+                    </div>
+                </section>
+
+                <!-- MATERIALES -->
+                <section id="materiales" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-6">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                        <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-300 uppercase tracking-wide">Recursos</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">📚 Materiales de Apoyo</h2>
+                        <p class="text-sm text-slate-500 mt-1">Documentación oficial y apuntes de la cátedra para profundizar en la teoría.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <a href="https://raw.githubusercontent.com/leonandres/analisis-de-sistemas/main/clases/clase-02-procesos-de-negocio/APUNTE%20-%20Introducci%C3%B3n%20a%20Procesos%20de%20Negocios.pdf" target="_blank" class="p-4 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950/30 dark:to-blue-900/30 border border-blue-200 dark:border-blue-800 rounded-lg hover:shadow-md transition-all cursor-pointer">
+                            <div class="flex items-start gap-3">
+                                <span class="text-2xl">📖</span>
+                                <div>
+                                    <h3 class="font-bold text-slate-800 dark:text-slate-100">Apunte: Introducción a Procesos de Negocios</h3>
+                                    <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Material teórico completo de la cátedra.</p>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="https://raw.githubusercontent.com/leonandres/analisis-de-sistemas/main/clases/clase-02-procesos-de-negocio/3%20-%20Presentaci%C3%B3n%20resoluci%C3%B3n%20Termilagro.pdf" target="_blank" class="p-4 bg-gradient-to-br from-emerald-50 to-emerald-100 dark:from-emerald-950/30 dark:to-emerald-900/30 border border-emerald-200 dark:border-emerald-800 rounded-lg hover:shadow-md transition-all cursor-pointer">
+                            <div class="flex items-start gap-3">
+                                <span class="text-2xl"></span>
+                                <div>
+                                    <h3 class="font-bold text-slate-800 dark:text-slate-100">Presentación: Resolución Termilagro</h3>
+                                    <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Caso práctico resuelto paso a paso.</p>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="https://raw.githubusercontent.com/leonandres/analisis-de-sistemas/main/clases/clase-02-procesos-de-negocio/rocesos%20de%20Negocios.pdf" target="_blank" class="p-4 bg-gradient-to-br from-amber-50 to-amber-100 dark:from-amber-950/30 dark:to-amber-900/30 border border-amber-200 dark:border-amber-800 rounded-lg hover:shadow-md transition-all cursor-pointer">
+                            <div class="flex items-start gap-3">
+                                <span class="text-2xl">📊</span>
+                                <div>
+                                    <h3 class="font-bold text-slate-800 dark:text-slate-100">Presentación: Procesos de Negocios</h3>
+                                    <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Slides de la clase teórica.</p>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="https://www.iso.org/obp/ui/#iso:std:iso:9000:ed-3:v1:es" target="_blank" class="p-4 bg-gradient-to-br from-rose-50 to-rose-100 dark:from-rose-950/30 dark:to-rose-900/30 border border-rose-200 dark:border-rose-800 rounded-lg hover:shadow-md transition-all cursor-pointer">
+                            <div class="flex items-start gap-3">
+                                <span class="text-2xl">⚙️</span>
+                                <div>
+                                    <h3 class="font-bold text-slate-800 dark:text-slate-100">Norma ISO 9000</h3>
+                                    <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Sistemas de gestión de la calidad - Fundamentos y vocabulario.</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+
+            </main>
+        </div>
     </div>
+    
 
     <footer class="bg-slate-900 text-slate-400 text-xs text-center p-4 mt-auto border-t border-slate-800">
         <p>© 2026 - Análisis de Sistemas - Procesos de negocio</p>
     </footer>
 
+    <script src="../../component.js"></script>
     <script src="../../index.js"></script>
     <script src="index.js"></script>
 

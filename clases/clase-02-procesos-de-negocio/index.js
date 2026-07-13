@@ -3,6 +3,48 @@
 // Laboratorio de clasificación + Trivia + Examen Final
 // ==========================================
 
+// Este script se encarga solo de la lógica específica de esta clase
+// ==========================================
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    console.log('🚀 Clase 02: Inicializando...');
+    
+    // ==========================================
+    // 1. HEADER DINÁMICO (Cargado globalmente por index.js)
+    // ==========================================
+    // La carga del header y la configuración de eventos se realiza en el index.js raíz.
+    
+    // ==========================================
+    // 2. AJUSTAR PADDING DESPUÉS DE CARGAR EL HEADER
+    // ==========================================
+    setTimeout(() => {
+        const header = document.querySelector('header');
+        const mainContent = document.querySelector('.main-content-wrapper');
+        
+        if (header && mainContent) {
+            const headerHeight = header.offsetHeight;
+            mainContent.style.paddingTop = headerHeight + 'px';
+            console.log(`✅ Padding ajustado a ${headerHeight}px`);
+        } else {
+            console.warn('⚠️ No se encontró header o main-content-wrapper');
+        }
+    }, 50);
+    
+    // ==========================================
+    // 3. ACTUALIZAR TÍTULO DE LA CLASE
+    // ==========================================
+    const tituloElement = document.getElementById('titulo-clase');
+    if (tituloElement) {
+        tituloElement.textContent = 'Procesos de negocio';
+    }
+    
+    // Inicializar las funcionalidades de la clase
+    initProcessLab();
+    loadTriviaQuestion();
+    loadExamenFinal();
+});
+
 // ==========================================
 // LABORATORIO: CLASIFICACIÓN DE PROCESOS
 // ==========================================
@@ -573,24 +615,3 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
-
-// ==========================================
-// INICIALIZACIÓN
-// ==========================================
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOM cargado, inicializando...');
-    initProcessLab();
-    loadTriviaQuestion();
-    loadExamenFinal();
-});
-
-// Menú desplegable de clases
-const btnMenu = document.getElementById('btn-menu-clases');
-const menuClases = document.getElementById('menu-clases');
-if (btnMenu && menuClases) {
-    btnMenu.addEventListener('click', (e) => {
-        e.stopPropagation();
-        menuClases.classList.toggle('hidden');
-    });
-    document.addEventListener('click', () => menuClases.classList.add('hidden'));
-}
