@@ -344,6 +344,30 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Clase 06: DOM cargado, inicializando...');
     
+    // ==========================================
+    // 1. AJUSTAR PADDING DESPUÉS DE CARGAR EL HEADER
+    // ==========================================
+    setTimeout(() => {
+        const header = document.querySelector('header');
+        const mainContent = document.querySelector('.main-content-wrapper');
+        
+        if (header && mainContent) {
+            const headerHeight = header.offsetHeight;
+            mainContent.style.paddingTop = headerHeight + 'px';
+            console.log(`✅ Padding ajustado a ${headerHeight}px`);
+        } else {
+            console.warn('⚠️ No se encontró header o main-content-wrapper');
+        }
+    }, 50);
+    
+    // ==========================================
+    // 2. ACTUALIZAR TÍTULO DE LA CLASE
+    // ==========================================
+    const tituloElement = document.getElementById('titulo-clase');
+    if (tituloElement) {
+        tituloElement.textContent = 'Ingeniería de Requerimientos';
+    }
+
     // Laboratorio 1: Clasificación
     cargarEnunciado();
     
