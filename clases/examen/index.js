@@ -57,3 +57,67 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+// ==========================================
+// FUNCIONES DE INTERACTIVIDAD PARA EL SIMULADOR DE EXAMEN
+// ==========================================
+
+function toggleRespuestaCatedra(id) {
+    const el = document.getElementById(id);
+    if (el) {
+        el.classList.toggle('hidden');
+    }
+}
+
+function verificarRespuestaSimple(btn, esCorrecto, idExplicacion) {
+    const parent = btn.parentElement;
+    const buttons = parent.querySelectorAll('button');
+    
+    buttons.forEach(b => {
+        b.disabled = true;
+    });
+
+    if (esCorrecto) {
+        btn.style.background = "#d1fae5";
+        btn.style.borderColor = "#10b981";
+        btn.classList.add("text-emerald-950", "dark:text-emerald-300");
+    } else {
+        btn.style.background = "#fee2e2";
+        btn.style.borderColor = "#ef4444";
+        btn.classList.add("text-red-950", "dark:text-red-300");
+    }
+
+    const exp = document.getElementById(idExplicacion);
+    if (exp) {
+        exp.classList.remove('hidden');
+    }
+}
+
+function verificarVF(btn, esCorrecto, idJustificacion) {
+    const parent = btn.parentElement;
+    const buttons = parent.querySelectorAll('button');
+    
+    buttons.forEach(b => {
+        b.disabled = true;
+    });
+
+    if (esCorrecto) {
+        btn.style.background = "#d1fae5";
+        btn.style.borderColor = "#10b981";
+        btn.classList.add("text-emerald-950", "dark:text-emerald-300");
+    } else {
+        btn.style.background = "#fee2e2";
+        btn.style.borderColor = "#ef4444";
+        btn.classList.add("text-red-950", "dark:text-red-300");
+    }
+
+    const just = document.getElementById(idJustificacion);
+    if (just) {
+        just.classList.remove('hidden');
+    }
+}
+
+// Hacer funciones disponibles en window para los event listeners inline
+window.toggleRespuestaCatedra = toggleRespuestaCatedra;
+window.verificarRespuestaSimple = verificarRespuestaSimple;
+window.verificarVF = verificarVF;

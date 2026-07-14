@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Clase de Casos de Uso - Análisis de Sistemas de Información - UTN.BA">
+    <title>Casos de Uso | Análisis de Sistemas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { darkMode: 'class' }
+    </script>
+    <!-- Incluir Mermaid para diagramas interactivos -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default', securityLevel: 'loose' });
+    </script>
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-200">
+
+    <div id="header-container"></div>
+
+    <div class="main-content-wrapper flex-1 w-full">
+        
+        <div class="max-w-7xl mx-auto w-full p-4 md:p-6 grid grid-cols-1 lg:grid-cols-4 gap-6 flex-1">        
+            
+            <!-- NAVEGACIÓN LATERAL -->
+            <nav class="lg:col-span-1 space-y-2">
+                <div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 sticky top-24">
+                    <h2 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-3 px-2">Temario</h2>
+                    <div class="space-y-1">
+                        <a href="#conceptos" class="block px-3 py-2.5 text-sm font-medium rounded-lg bg-indigo-50 dark:bg-slate-800 text-indigo-700 dark:text-indigo-400 border-l-4 border-indigo-600 navigation-link active">
+                            1. ¿Qué es un Caso de Uso?
+                        </a>
+                        <a href="#actores" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-100 border-l-4 border-transparent transition-all navigation-link">
+                            2. Actores y Roles
+                        </a>
+                        <a href="#relaciones" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
+                            3. Relaciones (Include/Extend)
+                        </a>
+                        <a href="#especificacion" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
+                            4. Plantilla de Especificación
+                        </a>
+                        <a href="#caso-cajero" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
+                            🏦 Caso de Estudio: Cajero
+                        </a>
+                        <a href="#obra-teatro" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
+                            🎬 Guión: Acceso Denegado
+                        </a>
+                        <a href="#laboratorio" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
+                            ⚡ Juego: Include vs. Extend
+                        </a>
+                        <a href="#trivia" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
+                            📋 Trivia de Autoevaluación
+                        </a>
+                        <a href="#materiales" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
+                            📚 Materiales de Apoyo
+                        </a>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- CONTENIDO PRINCIPAL -->
+            <main class="lg:col-span-3 space-y-8">
+                
+                <!-- SECCIÓN 1: CONCEPTOS -->
+                <section id="conceptos" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-indigo-100 dark:bg-indigo-950 text-indigo-800 dark:text-indigo-300 uppercase tracking-wider">Conceptos Fundamentales</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">1. ¿Qué es un Caso de Uso?</h2>
+                        <p class="text-sm text-slate-500 mt-1">Definición conceptual según los estándares de la cátedra de UTN.BA.</p>
+                    </div>
+
+                    <!-- Banner visual generado -->
+                    <div class="relative overflow-hidden rounded-xl mb-6">
+                        <img src="../../assets/images/casos-uso-banner.jpg" class="w-full h-48 md:h-64 object-cover hover:scale-105 transition-transform duration-500" alt="Casos de Uso Banner">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent flex items-end p-6">
+                            <div>
+                                <h3 class="text-white text-lg font-bold">Modelando la Interacción</h3>
+                                <p class="text-slate-300 text-xs mt-1">Cómo se comunican los actores con el sistema para lograr sus metas.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                        <p>
+                            Un <strong>Caso de Uso</strong> es la descripción de un conjunto de secuencias de acciones o pasos, y sus variantes, que realiza un sistema para obtener un **resultado de valor** para el actor vinculado.
+                        </p>
+                        <p>
+                            Es decir, especifican el comportamiento deseado de un sistema desde el punto de vista del usuario, utilizando un lenguaje informal pero estructurado.
+                        </p>
+                        <div class="p-4 bg-indigo-50/50 dark:bg-indigo-950/20 border border-indigo-100 dark:border-indigo-900/50 rounded-xl space-y-2">
+                            <strong class="text-indigo-900 dark:text-indigo-200 block text-xs uppercase tracking-wider">Propiedades esenciales:</strong>
+                            <ul class="list-disc pl-5 text-xs text-slate-700 dark:text-slate-355 space-y-1.5">
+                                <li>Es iniciado por un <strong>elemento externo</strong> al sistema (el Actor).</li>
+                                <li>Debe proporcionar un <strong>resultado observable de valor</strong> para el actor.</li>
+                                <li>Se utiliza principalmente en la etapa de <strong>Análisis de Requisitos</strong> para documentar y contratar el alcance del sistema.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 2: ACTORES -->
+                <section id="actores" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-sky-100 dark:bg-sky-950 text-sky-800 dark:text-sky-300 uppercase tracking-wider">UML Símbolos</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">2. Actores y Roles</h2>
+                        <p class="text-sm text-slate-500 mt-1">El elemento externo clave que da inicio al flujo del sistema.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                        <div class="p-4 bg-slate-50 dark:bg-slate-800/30 rounded-xl border border-slate-200 dark:border-slate-800 text-center flex flex-col items-center">
+                            <span class="text-4xl mb-2">🎭</span>
+                            <strong class="text-xs uppercase text-slate-800 dark:text-slate-200">Corresponde a un Rol</strong>
+                            <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-2">
+                                Un actor no es una persona específica, sino un **rol** o papel que interactúa con el sistema.
+                            </p>
+                        </div>
+                        <div class="p-4 bg-slate-50 dark:bg-slate-800/30 rounded-xl border border-slate-200 dark:border-slate-800 text-center flex flex-col items-center">
+                            <span class="text-4xl mb-2">💻</span>
+                            <strong class="text-xs uppercase text-slate-800 dark:text-slate-200">Sistemas Externos</strong>
+                            <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-2">
+                                También pueden ser otros sistemas de información, bases de datos o dispositivos físicos.
+                            </p>
+                        </div>
+                        <div class="p-4 bg-slate-50 dark:bg-slate-800/30 rounded-xl border border-slate-200 dark:border-slate-800 text-center flex flex-col items-center">
+                            <span class="text-4xl mb-2">🔗</span>
+                            <strong class="text-xs uppercase text-slate-800 dark:text-slate-200">Multiplicidad de Roles</strong>
+                            <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-2">
+                                Una misma persona física puede ejecutar múltiples roles (ej: ser Cliente y también Administrador).
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 3: RELACIONES -->
+                <section id="relaciones" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 uppercase tracking-wider">UML Semántica</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">3. Tipos de Relaciones entre Casos de Uso</h2>
+                        <p class="text-sm text-slate-500 mt-1">Cómo se conectan y reutilizan los fragmentos de comportamiento del sistema.</p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- INCLUDE -->
+                        <div class="p-5 border-l-4 border-indigo-600 bg-slate-50 dark:bg-slate-800/40 rounded-r-xl">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="px-2 py-0.5 text-[10px] font-bold bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-400 rounded-md">&lt;&lt;include&gt;&gt;</span>
+                                <h3 class="font-bold text-base text-slate-850 dark:text-slate-200">Relación de Inclusión</h3>
+                            </div>
+                            <p class="text-xs text-slate-650 dark:text-slate-400 mb-3 leading-relaxed">
+                                El Caso de Uso base **incorpora obligatoriamente** el comportamiento del Caso de Uso incluido. Cada vez que se ejecuta el base, se ejecuta sí o sí el incluido. Se usa para **reutilizar** comportamiento común en varios casos de uso.
+                            </p>
+                            <div class="bg-white dark:bg-slate-900 p-3 rounded-lg border border-slate-200 dark:border-slate-850 text-xs font-mono">
+                                Generar Expediente &lt;&lt;include&gt;&gt; Iniciar Sesión.
+                            </div>
+                        </div>
+
+                        <!-- EXTEND -->
+                        <div class="p-5 border-l-4 border-purple-600 bg-slate-50 dark:bg-slate-800/40 rounded-r-xl">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="px-2 py-0.5 text-[10px] font-bold bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-400 rounded-md">&lt;&lt;extend&gt;&gt;</span>
+                                <h3 class="font-bold text-base text-slate-850 dark:text-slate-200">Relación de Extensión</h3>
+                            </div>
+                            <p class="text-xs text-slate-650 dark:text-slate-400 mb-3 leading-relaxed">
+                                El Caso de Uso base **incorpora de manera condicional u opcional** el comportamiento del Caso de Uso extendido. Solo ocurre si se cumple una condición específica.
+                            </p>
+                            <div class="bg-white dark:bg-slate-900 p-3 rounded-lg border border-slate-200 dark:border-slate-850 text-xs font-mono">
+                                Realizar Retiro &lt;&lt;extend&gt;&gt; Realizar Giro en descubierto (sSaldoInsuficiente).
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 4: ESPECIFICACIÓN -->
+                <section id="especificacion" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-violet-100 dark:bg-violet-950 text-violet-800 dark:text-violet-300 uppercase tracking-wider">Documentación</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">4. Plantilla de Especificación de Casos de Uso</h2>
+                        <p class="text-sm text-slate-500 mt-1">Estructura estricta para documentar el comportamiento.</p>
+                    </div>
+
+                    <p class="text-xs text-slate-600 dark:text-slate-400 mb-4 leading-relaxed font-sans">
+                        Un diagrama de Casos de Uso no es suficiente; debe complementarse con una **especificación narrativa** estructurada en formato de tabla (Curso Normal y Cursos Alternativos/Excepciones).
+                    </p>
+
+                    <div class="overflow-x-auto font-sans">
+                        <table class="w-full text-xs text-left border-collapse border border-slate-200 dark:border-slate-800 rounded-lg overflow-hidden">
+                            <thead>
+                                <tr class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-350">
+                                    <th class="p-3 border border-slate-200 dark:border-slate-800 font-bold w-1/4">Campo</th>
+                                    <th class="p-3 border border-slate-200 dark:border-slate-800 font-bold">Descripción</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-slate-600 dark:text-slate-400">
+                                <tr>
+                                    <td class="p-3 font-semibold bg-slate-50/50 dark:bg-slate-900/40">Caso de Uso</td>
+                                    <td class="p-3">Nombre descriptivo con verbo en infinitivo + sustantivo (UML 2.0).</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-semibold bg-slate-50/50 dark:bg-slate-900/40">Actor</td>
+                                    <td class="p-3">Rol que inicia la interacción.</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-semibold bg-slate-50/50 dark:bg-slate-900/40">Precondición</td>
+                                    <td class="p-3">Estado inicial del sistema antes de comenzar (ej: "Usuario autenticado").</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-semibold bg-slate-50/50 dark:bg-slate-900/40">Curso Normal / Básico</td>
+                                    <td class="p-3">Flujo feliz de pasos numerados entre el Actor y el Sistema (guión bidireccional).</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-semibold bg-slate-50/50 dark:bg-slate-900/40">Curso Alternativo / Excepciones</td>
+                                    <td class="p-3">Caminos de error o variantes del flujo numerados de forma asociada (ej: 3.1).</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-semibold bg-slate-50/50 dark:bg-slate-900/40">Postcondición</td>
+                                    <td class="p-3">Estado final del sistema al culminar el flujo exitosamente.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 5: CASO CAJERO -->
+                <section id="caso-cajero" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-teal-100 dark:bg-teal-950 text-teal-800 dark:text-teal-300 uppercase tracking-wider">Ejemplo Práctico</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">5. Caso de Estudio: Cajero Automático</h2>
+                        <p class="text-sm text-slate-500 mt-1">El ejemplo clásico del apunte oficial modelado de manera interactiva.</p>
+                    </div>
+
+                    <!-- Diagrama dinámico Mermaid.js -->
+                    <div class="p-4 bg-slate-50 dark:bg-slate-800/30 rounded-xl border border-slate-200 dark:border-slate-800 mb-6 flex flex-col items-center">
+                        <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4 font-sans">Diagrama de Casos de Uso (UML)</h4>
+                        <div class="mermaid w-full flex justify-center text-xs">
+                            graph TD
+                                actor1((Usuario))
+                                uc1(Realizar depósito)
+                                uc2(Realizar Retiro)
+                                uc3(Realizar Consulta)
+                                uc4(Autenticar usuario)
+                                uc5(Realizar Giro descubierto)
+
+                                actor1 --> uc1
+                                actor1 --> uc2
+                                actor1 --> uc3
+
+                                uc1 -.->|&lt;&lt;include&gt;&gt;| uc4
+                                uc2 -.->|&lt;&lt;include&gt;&gt;| uc4
+                                uc3 -.->|&lt;&lt;include&gt;&gt;| uc4
+
+                                uc5 -.->|&lt;&lt;extend&gt;&gt;| uc2
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h4 class="font-bold text-sm text-slate-800 dark:text-slate-200">Especificación: Autenticar usuario</h4>
+                        <div class="overflow-x-auto text-[11px] font-sans">
+                            <table class="w-full text-left border-collapse border border-slate-200 dark:border-slate-800 rounded-lg">
+                                <thead>
+                                    <tr class="bg-indigo-50 dark:bg-slate-800 text-indigo-900 dark:text-indigo-200">
+                                        <th class="p-2.5 border border-slate-200 dark:border-slate-800 font-bold w-1/2">Curso Normal / Básico</th>
+                                        <th class="p-2.5 border border-slate-200 dark:border-slate-800 font-bold w-1/2">Curso Alternativo / Excepciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-slate-650 dark:text-slate-400">
+                                    <tr>
+                                        <td class="p-2.5">1) El sistema solicita la clave de acceso.</td>
+                                        <td class="p-2.5"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2.5">2) El usuario ingresa su clave de acceso.</td>
+                                        <td class="p-2.5"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2.5">3) El sistema verifica que la clave ingresada sea correcta.</td>
+                                        <td class="p-2.5 bg-red-50/30 dark:bg-red-950/10">3.1) El sistema verifica que la clave es incorrecta.<br>3.2) El sistema informa el error de autenticación.<br>3.3) El flujo continúa en el paso 1.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2.5">4) El sistema muestra el menú principal de operaciones.</td>
+                                        <td class="p-2.5"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Advertencias pedagógicas -->
+                        <div class="mt-4 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50 rounded-lg p-4 text-xs space-y-2">
+                            <strong class="text-amber-955 dark:text-amber-200 block">⚠️ Evitar errores clásicos de examen:</strong>
+                            <ul class="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-350">
+                                <li><strong>Interacciones físicas:</strong> No escribir "El usuario ingresa la tarjeta". Esto es una interacción de hardware, el software solo recibe el evento. El primer paso del sistema de software es solicitar la clave.</li>
+                                <li><strong>Inclusiones:</strong> Al especificar un caso de uso que incluye a otro (ej: Realizar Retiro), el paso 1 del curso normal debe decir explícitamente: <em>"Se ejecuta con éxito el caso de uso Autenticar usuario"</em>.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 6: OBRA TEATRO -->
+                <section id="obra-teatro" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-fuchsia-100 dark:bg-fuchsia-950 text-fuchsia-800 dark:text-fuchsia-300 uppercase tracking-wider">Teatro del Analista</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">6. Diálogo Teatral: "Acceso Denegado... por ahora"</h2>
+                        <p class="text-sm text-slate-500 mt-1">Un concepto pedagógico para entender la interacción bidireccional como una obra de teatro.</p>
+                    </div>
+
+                    <div class="p-6 bg-slate-900 dark:bg-slate-950 text-slate-100 rounded-2xl border-4 border-slate-800 shadow-inner font-mono text-xs leading-relaxed max-w-2xl mx-auto space-y-4">
+                        <div class="text-center border-b border-slate-800 pb-3 flex justify-between items-center text-[10px] text-fuchsia-400">
+                            <strong>🎬 ESCENA ÚNICA: INTERIOR DEL CAJERO</strong>
+                            <span>DURACIÓN: 1 MINUTO</span>
+                        </div>
+                        
+                        <p class="italic text-slate-400 text-[11px] mb-4">
+                            (Ambiente silencioso, luz tenue. Pantalla de inicio parpadeando)
+                        </p>
+
+                        <div class="space-y-3">
+                            <div>
+                                <strong class="text-sky-400">SISTEMA:</strong> <span class="italic text-slate-400">(Voz neutra, firme; en pantalla aparece un cursor parpadeante)</span> "Ingrese su clave de acceso."
+                            </div>
+                            <div>
+                                <strong class="text-amber-400">USUARIO:</strong> <span class="italic text-slate-400">(Frunce el ceño, se apresura y teclea)</span> "Nadie mira?... creo que es esta." <span class="italic text-slate-400">(Presiona Enter)</span>
+                            </div>
+                            <div>
+                                <strong class="text-sky-400">SISTEMA:</strong> <span class="italic text-slate-400">(Pausa breve, tono mecánico)</span> "Verificando credenciales..." <span class="italic text-slate-400">(Pantalla parpadea en rojo)</span> "Clave incorrecta."
+                            </div>
+                            <div>
+                                <strong class="text-amber-400">USUARIO:</strong> <span class="italic text-slate-400">(Suspira molesto)</span> "No puede ser, seguro me equivoqué de clave..."
+                            </div>
+                            <div>
+                                <strong class="text-sky-400">SISTEMA:</strong> <span class="italic text-slate-400">(Vuelve al estado inicial)</span> "Ingrese su clave de acceso."
+                            </div>
+                            <div>
+                                <strong class="text-amber-400">USUARIO:</strong> <span class="italic text-slate-400">(Más concentrado, teclea con precisión)</span> "Vamos más despacio esta vez..." <span class="italic text-slate-400">(Presiona Enter)</span>
+                            </div>
+                            <div>
+                                <strong class="text-sky-400">SISTEMA:</strong> <span class="italic text-slate-400">(Pausa de procesamiento)</span> "Verificando credenciales..." <span class="italic text-slate-400">(Pantalla cambia a verde suave)</span> "Clave correcta." <span class="italic text-slate-400">(Aparece nueva interfaz)</span> "Mostrando menú principal."
+                            </div>
+                            <div>
+                                <strong class="text-amber-400">USUARIO:</strong> <span class="italic text-slate-400">(Se relaja, sonríe)</span> "Ahora sí... empezamos."
+                            </div>
+                        </div>
+
+                        <div class="text-center pt-3 border-t border-slate-800 text-[10px] text-slate-500">
+                            (Cae el telón)
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 7: LABORATORIO -->
+                <section id="laboratorio" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                        <span class="text-xs font-bold px-2.5 py-0.5 rounded bg-indigo-100 dark:bg-indigo-950 text-indigo-800 dark:text-indigo-300 uppercase tracking-wide">Interactivo</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">7. Laboratorio: ¿Include o Extend?</h2>
+                        <p class="text-sm text-slate-500 mt-1">Prueba tu capacidad para clasificar la relación correcta entre estos casos de uso.</p>
+                    </div>
+
+                    <div class="bg-slate-50 dark:bg-slate-850/50 border border-slate-200 dark:border-slate-855 rounded-xl p-5 max-w-xl mx-auto text-center relative font-sans">
+                        <span class="text-[10px] text-slate-400 font-mono uppercase tracking-wider">Estudio de Caso Relacional</span>
+                        <div id="enunciado-juego" class="text-sm font-semibold text-slate-850 dark:text-slate-250 my-5 min-h-[3rem] flex items-center justify-center px-4 leading-relaxed">
+                            Cargando...
+                        </div>
+                        
+                        <div class="flex justify-center gap-3">
+                            <button id="btn-include" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-xl shadow-md cursor-pointer transition-all">
+                                &lt;&lt;include&gt;&gt; (Obligatorio)
+                            </button>
+                            <button id="btn-extend" class="px-5 py-2.5 bg-purple-600 hover:bg-purple-700 text-white text-xs font-bold rounded-xl shadow-md cursor-pointer transition-all">
+                                &lt;&lt;extend&gt;&gt; (Condicional)
+                            </button>
+                        </div>
+
+                        <div id="feedback-juego" class="mt-5 p-4 text-xs rounded-xl hidden text-left leading-relaxed relative border">
+                            <div id="text-feedback-juego"></div>
+                            <div class="mt-3 flex justify-end">
+                                <button id="btn-siguiente-juego" class="px-3.5 py-1 bg-slate-850 dark:bg-slate-700 text-white text-[11px] font-bold rounded-lg hover:bg-slate-700 dark:hover:bg-slate-600 cursor-pointer">Siguiente ➔</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 8: TRIVIA -->
+                <section id="trivia" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                        <span class="text-xs font-bold px-2.5 py-0.5 rounded bg-indigo-100 dark:bg-indigo-950 text-indigo-800 dark:text-indigo-300 uppercase tracking-wide">Examen</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">Trivia de Autoevaluación</h2>
+                        <p class="text-sm text-slate-500 mt-1">Preguntas clave del apunte oficial para afianzar tus conocimientos antes del parcial.</p>
+                    </div>
+
+                    <div id="contenedor-trivia-casos" class="bg-slate-50 dark:bg-slate-800/30 border border-slate-200 dark:border-slate-800 rounded-xl p-5 max-w-2xl mx-auto font-sans">
+                        <!-- Cargado vía JS -->
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 9: MATERIALES -->
+                <section id="materiales" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                        <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-300 uppercase tracking-wide">Recursos</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">Materiales de Apoyo</h2>
+                        <p class="text-sm text-slate-500 mt-1">Accede a los PDFs oficiales y plantillas de casos de uso cargados en el repositorio.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 font-sans">
+                        <a href="Casos de Uso v202503.pdf" target="_blank" class="p-4 bg-gradient-to-br from-indigo-50 to-indigo-100 dark:from-indigo-950/30 dark:to-indigo-900/30 border border-indigo-200 dark:border-indigo-800 rounded-lg hover:shadow-md transition-all cursor-pointer">
+                            <div class="flex items-start gap-3">
+                                <span class="text-2xl">📖</span>
+                                <div>
+                                    <h3 class="font-bold text-slate-800 dark:text-slate-100 text-xs">Apunte: Casos de Uso</h3>
+                                    <p class="text-[10px] text-slate-650 dark:text-slate-400 mt-1">El apunte oficial completo de la cátedra de UTN.</p>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="PRESENTACIÓN - Casos de Uso.pdf" target="_blank" class="p-4 bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-950/30 dark:to-purple-900/30 border border-purple-200 dark:border-purple-800 rounded-lg hover:shadow-md transition-all cursor-pointer">
+                            <div class="flex items-start gap-3">
+                                <span class="text-2xl">📊</span>
+                                <div>
+                                    <h3 class="font-bold text-slate-800 dark:text-slate-100 text-xs">Presentación Diapositivas</h3>
+                                    <p class="text-[10px] text-slate-650 dark:text-slate-400 mt-1">Diapositivas explicativas e ilustrativas oficiales.</p>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="Template CU.docx" download class="p-4 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950/30 dark:to-blue-900/30 border border-blue-200 dark:border-blue-800 rounded-lg hover:shadow-md transition-all cursor-pointer">
+                            <div class="flex items-start gap-3">
+                                <span class="text-2xl">📝</span>
+                                <div>
+                                    <h3 class="font-bold text-slate-800 dark:text-slate-100 text-xs">Plantilla Word (.docx)</h3>
+                                    <p class="text-[10px] text-slate-650 dark:text-slate-400 mt-1">Template oficial de la UTN.BA para especificar Casos de Uso.</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <footer class="bg-slate-900 text-slate-400 text-xs text-center p-4 mt-auto border-t border-slate-800 font-sans">
+        <p>© 2026 - Análisis de Sistemas - Casos de Uso</p>
+    </footer>
+
+    <script src="../../component.js"></script>
+    <script src="../../index.js"></script>
+    <script src="index.js"></script>
+
+    <button id="btn-top" class="fixed bottom-6 right-6 z-40 w-12 h-12 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full shadow-lg opacity-0 invisible transition-all duration-300 flex items-center justify-center cursor-pointer" title="Volver al inicio">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
+    </button>
+</body>
+</html>
