@@ -318,6 +318,16 @@ function resetTrivia() {
 }
 
 // ==========================================
+// MANEJADOR DEL BOTÓN "SIGUIENTE" EN TRIVIA
+// ==========================================
+document.addEventListener('click', (e) => {
+    if (e.target && e.target.id === 'btn-siguiente-trivia') {
+        currentTrivia++;
+        loadTriviaQuestion();
+    }
+});
+
+// ==========================================
 // NAVEGACIÓN SUAVE
 // ==========================================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
