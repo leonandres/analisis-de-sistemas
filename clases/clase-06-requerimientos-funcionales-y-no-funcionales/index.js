@@ -328,7 +328,7 @@ document.addEventListener('click', (e) => {
 });
 
 // ==========================================
-// NAVEGACIÓN SUAVE
+// NAVEGACIÓN SUAVE Y SPYING DE SCROLL
 // ==========================================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -346,6 +346,30 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             this.classList.remove('text-slate-600', 'dark:text-slate-400', 'border-transparent');
         }
     });
+});
+
+const navLinks = document.querySelectorAll('.navigation-link');
+const sections = document.querySelectorAll('section');
+
+window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (window.scrollY >= sectionTop - 150) {
+            current = section.getAttribute('id');
+        }
+    });
+
+    if (current) {
+        navLinks.forEach(link => {
+            link.classList.remove('active', 'bg-sky-50', 'dark:bg-slate-800', 'text-sky-700', 'dark:text-sky-400', 'border-sky-600');
+            link.classList.add('text-slate-600', 'dark:text-slate-400', 'border-transparent');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active', 'bg-sky-50', 'dark:bg-slate-800', 'text-sky-700', 'dark:text-sky-400', 'border-sky-600');
+                link.classList.remove('text-slate-600', 'dark:text-slate-400', 'border-transparent');
+            }
+        });
+    }
 });
 
 // ==========================================

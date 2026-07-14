@@ -8,6 +8,7 @@ function getRelativePaths() {
         home: isSubPage ? '../../index.html' : './index.html',
         clase02: isSubPage ? '../clase-02-procesos-de-negocio/index.html' : './clases/clase-02-procesos-de-negocio/index.html',
         clase06: isSubPage ? '../clase-06-requerimientos-funcionales-y-no-funcionales/index.html' : './clases/clase-06-requerimientos-funcionales-y-no-funcionales/index.html',
+        clase10: isSubPage ? '../clase-10-casos-de-uso/index.html' : './clases/clase-10-casos-de-uso/index.html',
         examen: isSubPage ? '../examen/index.html' : './clases/examen/index.html'
     };
 }
@@ -58,6 +59,16 @@ function getHeaderHTML(paths) {
                                 <div class="text-[10px] font-bold text-sky-600 dark:text-sky-400 uppercase tracking-wider">Clase 06</div>
                                 <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">Ingeniería de Requerimientos</div>
                                 <div class="text-xs text-slate-500 dark:text-slate-400">Funcionales, No funcionales</div>
+                            </div>
+                            <span class="text-slate-400 group-hover:translate-x-1 transition-transform duration-200">→</span>
+                        </a>
+
+                        <a href="${paths.clase10}" class="flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
+                            <span class="text-2xl group-hover:scale-110 transition-transform duration-200">🎭</span>
+                            <div class="flex-1">
+                                <div class="text-[10px] font-bold text-sky-600 dark:text-sky-400 uppercase tracking-wider">Clase 10</div>
+                                <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">Casos de Uso</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">UML, Actores, Inclusiones/Extensiones</div>
                             </div>
                             <span class="text-slate-400 group-hover:translate-x-1 transition-transform duration-200">→</span>
                         </a>
