@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portal de estudio de Análisis de Sistemas">
+    <meta name="description" content="Portal de estudio de Análisis de Sistemas - UTN.BA">
     <title>Análisis de Sistemas | Portal de Estudio</title>
     
     <!-- Favicon SVG -->
@@ -17,7 +17,6 @@
 </head>
 <body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-200">
 
-    <!-- HEADER -->
     <!-- HEADER -->
     <header class="bg-white/80 dark:bg-slate-950/80 backdrop-blur-md sticky top-0 z-40 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
@@ -58,13 +57,33 @@
         <main class="flex-1 max-w-7xl mx-auto w-full p-4 md:p-8">
         
             <div class="mb-8">
-                <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mb-2">Unidades</h2>
+                <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mb-2">Unidades de Estudio</h2>
                 <p class="text-slate-500 text-sm">Hacé clic en cualquier tarjeta para acceder al contenido teórico, laboratorios y exámenes.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 
-                <!-- TARJETA 1: PROCESOS DE NEGOCIO -->
+                <!-- TARJETA 1: DEFINICIONES INICIALES -->
+                <a href="clases/clase-01-definiciones-iniciales/index.html" class="group block bg-white dark:bg-slate-900 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 hover:shadow-lg hover:border-sky-500 dark:hover:border-sky-500 transition-all duration-300 overflow-hidden">
+                    <div class="h-2 bg-gradient-to-r from-sky-400 to-indigo-600"></div>
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-4">
+                            <span class="p-3 bg-sky-50 dark:bg-sky-950/30 rounded-lg text-2xl">🌐</span>
+                            <span class="text-xs font-bold px-2 py-1 rounded bg-sky-100 dark:bg-sky-950 text-sky-800 dark:text-sky-300 uppercase">Clase 01</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors mb-2">
+                            Definiciones Iniciales
+                        </h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                            Teoría General de Sistemas (TGS), propiedades sistémicas, clasificación de SI y el rol del Analista.
+                        </p>
+                        <div class="mt-4 flex items-center text-xs font-medium text-sky-600 dark:text-sky-400 opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
+                            Ver contenido ➔
+                        </div>
+                    </div>
+                </a>
+
+                <!-- TARJETA 2: PROCESOS DE NEGOCIO -->
                 <a href="clases/clase-02-procesos-de-negocio/index.html" class="group block bg-white dark:bg-slate-900 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 hover:shadow-lg hover:border-emerald-500 dark:hover:border-emerald-500 transition-all duration-300 overflow-hidden">
                     <div class="h-2 bg-gradient-to-r from-emerald-500 to-teal-600"></div>
                     <div class="p-6">
@@ -84,7 +103,27 @@
                     </div>
                 </a>
 
-                <!-- TARJETA 2: REQUERIMIENTOS -->
+                <!-- TARJETA 3: INFORME DE RECONOCIMIENTO -->
+                <a href="clases/clase-03-informe-de-reconocimiento/index.html" class="group block bg-white dark:bg-slate-900 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 hover:shadow-lg hover:border-amber-500 dark:hover:border-amber-500 transition-all duration-300 overflow-hidden">
+                    <div class="h-2 bg-gradient-to-r from-amber-500 to-orange-600"></div>
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-4">
+                            <span class="p-3 bg-amber-50 dark:bg-amber-950/30 rounded-lg text-2xl">📋</span>
+                            <span class="text-xs font-bold px-2 py-1 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 uppercase">Clase 03</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors mb-2">
+                            Informe de Reconocimiento
+                        </h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                            Metodología de relevamiento, estructura formal UTN, técnicas de entrevistas y caso InfoLey Web.
+                        </p>
+                        <div class="mt-4 flex items-center text-xs font-medium text-amber-600 dark:text-amber-400 opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
+                            Ver contenido ➔
+                        </div>
+                    </div>
+                </a>
+
+                <!-- TARJETA 4: REQUERIMIENTOS -->
                 <a href="clases/clase-06-requerimientos-funcionales-y-no-funcionales/index.html" class="group block bg-white dark:bg-slate-900 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 hover:shadow-lg hover:border-sky-500 dark:hover:border-sky-500 transition-all duration-300 overflow-hidden">
                     <div class="h-2 bg-gradient-to-r from-sky-500 to-blue-600"></div>
                     <div class="p-6">
@@ -104,7 +143,7 @@
                     </div>
                 </a>
 
-                <!-- TARJETA 3: PLANIFICACIÓN (Placeholder) -->
+                <!-- TARJETA 5: PLANIFICACIÓN (Placeholder) -->
                 <div class="group block bg-white dark:bg-slate-900 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 opacity-60 cursor-not-allowed relative overflow-hidden">
                     <div class="h-2 bg-slate-300 dark:bg-slate-700"></div>
                     <div class="p-6">
@@ -124,7 +163,7 @@
                     </div>
                 </div>
 
-                <!-- TARJETA 4: CASOS DE USO -->
+                <!-- TARJETA 6: CASOS DE USO -->
                 <a href="clases/clase-10-casos-de-uso/index.html" class="group block bg-white dark:bg-slate-900 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 hover:shadow-lg hover:border-indigo-500 dark:hover:border-indigo-500 transition-all duration-300 overflow-hidden">
                     <div class="h-2 bg-gradient-to-r from-indigo-500 to-purple-600"></div>
                     <div class="p-6">
@@ -144,7 +183,27 @@
                     </div>
                 </a>
 
-                <!-- TARJETA 5: REPASO EXAMEN -->
+                <!-- TARJETA 7: HISTORIAS DE USUARIO -->
+                <a href="clases/clase-12-historias-de-usuario/index.html" class="group block bg-white dark:bg-slate-900 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 hover:shadow-lg hover:border-emerald-500 dark:hover:border-emerald-500 transition-all duration-300 overflow-hidden">
+                    <div class="h-2 bg-gradient-to-r from-emerald-500 to-teal-600"></div>
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-4">
+                            <span class="p-3 bg-emerald-50 dark:bg-emerald-950/30 rounded-lg text-2xl">📝</span>
+                            <span class="text-xs font-bold px-2 py-1 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 uppercase">Clase 12</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors mb-2">
+                            Historias de usuario
+                        </h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                            Agilidad, formato canónico (3 C), criterios INVEST, BDD (Dado-Cuando-Entonces) y Story Points.
+                        </p>
+                        <div class="mt-4 flex items-center text-xs font-medium text-emerald-600 dark:text-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
+                            Ver contenido ➔
+                        </div>
+                    </div>
+                </a>
+
+                <!-- TARJETA 8: REPASO EXAMEN -->
                 <a href="clases/examen/index.html" class="group block bg-white dark:bg-slate-900 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 hover:shadow-lg hover:border-violet-500 dark:hover:border-violet-500 transition-all duration-300 overflow-hidden">
                     <div class="h-2 bg-gradient-to-r from-violet-500 to-fuchsia-600"></div>
                     <div class="p-6">
@@ -153,10 +212,10 @@
                             <span class="text-xs font-bold px-2 py-1 rounded bg-violet-100 dark:bg-violet-950 text-violet-800 dark:text-violet-300 uppercase">Examen</span>
                         </div>
                         <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors mb-2">
-                            Examen
+                            Examen & Parciales
                         </h3>
                         <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                            Machete y repaso para parciales de la UTN.BA: Procesos (Ventas vs Compras), Informe de Reconocimiento y Casos de Uso.
+                            Machete y repaso para parciales de la UTN.BA: 1° y 2° Parcial Interactivo con resolución explicada.
                         </p>
                         <div class="mt-4 flex items-center text-xs font-medium text-violet-600 dark:text-violet-400 opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
                             Ver repaso ➔
