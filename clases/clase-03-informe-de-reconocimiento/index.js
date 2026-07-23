@@ -1,4 +1,4 @@
-// index.js - Clase 03: Informe de Reconocimiento
+// index.js - Clase 03: Informe de reconocimiento
 
 document.addEventListener('DOMContentLoaded', function() {
     console.log('🔄 Clase 03: Inicializando script...');
@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Configurar título en el header dinámico
     const tituloClase = document.getElementById('titulo-clase');
     if (tituloClase) {
-        tituloClase.textContent = 'Clase 03: Informe de Reconocimiento';
+        tituloClase.textContent = 'Clase 03: Informe de reconocimiento';
     }
 
     // Resaltado de navegación activa según scroll

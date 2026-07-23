@@ -1,7 +1,6 @@
-// components.js - Header con navegación dinámica, inicio integrado y diseño premium
+// component.js - Header con navegación dinámica y diseño premium
 function getRelativePaths() {
     const path = window.location.pathname;
-    // Detectar si estamos dentro de la carpeta clases (por ejemplo, /clases/clase-xx/)
     const isSubPage = path.includes('/clases/');
     
     return {
@@ -21,7 +20,7 @@ function getHeaderHTML(paths) {
 <header class="fixed top-0 left-0 right-0 z-40 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md shadow-xs transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
         <div class="flex items-center gap-3">
-            <!-- BOTÓN DE INICIO (Casita) -->
+            <!-- BOTÓN DE INICIO -->
             <a href="${paths.home}" class="flex items-center justify-center w-10 h-10 bg-slate-100 dark:bg-slate-800 hover:bg-sky-100 dark:hover:bg-sky-950/40 text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-sky-200 dark:hover:border-sky-900/50 shadow-xs transition-all duration-300 hover:scale-105" title="Volver al inicio">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                     <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
@@ -29,7 +28,6 @@ function getHeaderHTML(paths) {
                 </svg>
             </a>
             
-            <!-- Separador sutil -->
             <div class="h-6 w-px bg-slate-200 dark:bg-slate-800 hidden sm:block"></div>
 
             <!-- MENÚ DE CLASES -->
@@ -50,8 +48,8 @@ function getHeaderHTML(paths) {
                             <span class="text-2xl group-hover:scale-110 transition-transform duration-200">🌐</span>
                             <div class="flex-1">
                                 <div class="text-[10px] font-bold text-sky-600 dark:text-sky-400 uppercase tracking-wider">Clase 01</div>
-                                <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">Definiciones Iniciales</div>
-                                <div class="text-xs text-slate-500 dark:text-slate-400">TGS, SI, Rol del Analista</div>
+                                <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">Definiciones iniciales</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">TGS, SI, rol del analista</div>
                             </div>
                             <span class="text-slate-400 group-hover:translate-x-1 transition-transform duration-200">→</span>
                         </a>
@@ -60,7 +58,7 @@ function getHeaderHTML(paths) {
                             <span class="text-2xl group-hover:scale-110 transition-transform duration-200">🔄</span>
                             <div class="flex-1">
                                 <div class="text-[10px] font-bold text-sky-600 dark:text-sky-400 uppercase tracking-wider">Clase 02</div>
-                                <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">Procesos de Negocio</div>
+                                <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">Procesos de negocio</div>
                                 <div class="text-xs text-slate-500 dark:text-slate-400">ISO 9001, SIPOC, BPMN</div>
                             </div>
                             <span class="text-slate-400 group-hover:translate-x-1 transition-transform duration-200">→</span>
@@ -70,8 +68,8 @@ function getHeaderHTML(paths) {
                             <span class="text-2xl group-hover:scale-110 transition-transform duration-200">📋</span>
                             <div class="flex-1">
                                 <div class="text-[10px] font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider">Clase 03</div>
-                                <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">Informe de Reconocimiento</div>
-                                <div class="text-xs text-slate-500 dark:text-slate-400">Estructura UTN, InfoLey Web</div>
+                                <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">Informe de reconocimiento</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">Estructura UTN, carta al sponsor, datos faltantes</div>
                             </div>
                             <span class="text-slate-400 group-hover:translate-x-1 transition-transform duration-200">→</span>
                         </a>
@@ -80,8 +78,8 @@ function getHeaderHTML(paths) {
                             <span class="text-2xl group-hover:scale-110 transition-transform duration-200">📋</span>
                             <div class="flex-1">
                                 <div class="text-[10px] font-bold text-sky-600 dark:text-sky-400 uppercase tracking-wider">Clase 06</div>
-                                <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">Ingeniería de Requerimientos</div>
-                                <div class="text-xs text-slate-500 dark:text-slate-400">Funcionales, No funcionales</div>
+                                <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">Ingeniería de requerimientos</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">Funcionales y no funcionales</div>
                             </div>
                             <span class="text-slate-400 group-hover:translate-x-1 transition-transform duration-200">→</span>
                         </a>
@@ -90,8 +88,8 @@ function getHeaderHTML(paths) {
                             <span class="text-2xl group-hover:scale-110 transition-transform duration-200">🎭</span>
                             <div class="flex-1">
                                 <div class="text-[10px] font-bold text-sky-600 dark:text-sky-400 uppercase tracking-wider">Clase 10</div>
-                                <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">Casos de Uso</div>
-                                <div class="text-xs text-slate-500 dark:text-slate-400">UML, Actores, Inclusiones/Extensiones</div>
+                                <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">Casos de uso</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">UML, actores, relaciones</div>
                             </div>
                             <span class="text-slate-400 group-hover:translate-x-1 transition-transform duration-200">→</span>
                         </a>
@@ -100,8 +98,8 @@ function getHeaderHTML(paths) {
                             <span class="text-2xl group-hover:scale-110 transition-transform duration-200">📝</span>
                             <div class="flex-1">
                                 <div class="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Clase 12</div>
-                                <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Historias de Usuario</div>
-                                <div class="text-xs text-slate-500 dark:text-slate-400">INVEST, BDD, Story Points</div>
+                                <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Historias de usuario</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">INVEST, BDD, Story points</div>
                             </div>
                             <span class="text-slate-400 group-hover:translate-x-1 transition-transform duration-200">→</span>
                         </a>
@@ -110,8 +108,8 @@ function getHeaderHTML(paths) {
                             <span class="text-2xl group-hover:scale-110 transition-transform duration-200">🎓</span>
                             <div class="flex-1">
                                 <div class="text-[10px] font-bold text-sky-600 dark:text-sky-400 uppercase tracking-wider">Repaso</div>
-                                <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">Conceptos & Parciales</div>
-                                <div class="text-xs text-slate-500 dark:text-slate-400">Machete de Parciales UTN</div>
+                                <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">Conceptos & parciales</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">Machete de parciales UTN</div>
                             </div>
                             <span class="text-slate-400 group-hover:translate-x-1 transition-transform duration-200">→</span>
                         </a>
@@ -120,7 +118,7 @@ function getHeaderHTML(paths) {
             </div>
         </div>
         
-        <!-- TÍTULO CENTRAL CON BARRA DE COLOR -->
+        <!-- TÍTULO CENTRAL -->
         <div class="flex items-center gap-2.5">
             <span class="w-1 h-5 bg-gradient-to-b from-sky-400 to-blue-600 rounded-full hidden md:block"></span>
             <h1 class="text-sm font-extrabold text-slate-800 dark:text-slate-100 hidden md:block tracking-wider uppercase" id="titulo-clase">Clase</h1>
@@ -144,7 +142,6 @@ function getHeaderHTML(paths) {
             </svg>
         </button>
     </div>
-    <!-- Línea de degradado inferior decorativa -->
     <div class="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-sky-400 via-indigo-500 to-emerald-400 opacity-95"></div>
 </header>
 `;
