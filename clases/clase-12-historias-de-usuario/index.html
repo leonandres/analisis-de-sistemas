@@ -1,16 +1,215 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Análisis de sistemas</title>
-
+    <meta name="description" content="Clase 12: Historias de Usuario - Metodologías Ágiles UTN.BA">
+    <title>Clase 12: Historias de Usuario | Análisis de Sistemas</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = { darkMode: 'class' }
     </script>
+    <link rel="stylesheet" href="../../styles.css">
+    <!-- Favicon SVG -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
 </head>
-<body>
-    
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-200">
+
+    <div id="header-container"></div>
+
+    <div class="main-content-wrapper flex-1 w-full">
+        
+        <div class="max-w-7xl mx-auto w-full p-4 md:p-6 grid grid-cols-1 lg:grid-cols-4 gap-6 flex-1">        
+            
+            <!-- NAVEGACIÓN LATERAL -->
+            <nav class="lg:col-span-1 space-y-2">
+                <div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 sticky top-24">
+                    <h2 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-3 px-2">Contenido de la Clase</h2>
+                    <div class="space-y-1">
+                        <a href="#concepto" class="block px-3 py-2.5 text-sm font-medium rounded-lg bg-sky-50 dark:bg-slate-800 text-sky-700 dark:text-sky-400 border-l-4 border-sky-600 navigation-link active">
+                            1. Concepto y Filosofía Ágil
+                        </a>
+                        <a href="#formato" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
+                            2. Formato Canónico (3 C)
+                        </a>
+                        <a href="#invest" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
+                            3. Criterios INVEST
+                        </a>
+                        <a href="#criterios-aceptacion" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
+                            4. Criterios de Aceptación (BDD)
+                        </a>
+                        <a href="#estimacion" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
+                            5. Estimación & Story Points
+                        </a>
+                        <a href="#material-nuevo" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
+                            📥 Material Complementario
+                        </a>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- CONTENIDO PRINCIPAL -->
+            <main class="lg:col-span-3 space-y-8">
+                
+                <!-- HERO TITLE -->
+                <div class="bg-gradient-to-r from-emerald-600 to-teal-700 rounded-2xl p-6 text-white shadow-lg relative overflow-hidden">
+                    <div class="absolute -right-10 -bottom-10 opacity-15 text-9xl select-none">📝</div>
+                    <span class="px-2.5 py-1 text-[10px] font-black uppercase tracking-wider bg-white/20 rounded-md backdrop-blur-md">Unidad 12</span>
+                    <h1 class="text-2xl md:text-3xl font-extrabold mt-2">Historias de Usuario (User Stories)</h1>
+                    <p class="text-emerald-100 text-sm mt-2 max-w-2xl leading-relaxed">
+                        Técnica de elicitación y especificación de necesidades en entornos ágiles (Scrum, Kanban). Foco en el valor de negocio entregado al usuario final.
+                    </p>
+                </div>
+
+                <!-- SECCIÓN 1: CONCEPTO Y FILOSOFÍA -->
+                <section id="concepto" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 uppercase tracking-wider">Fundamento Ágil</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">1. Concepto y Filosofía Ágil</h2>
+                        <p class="text-sm text-slate-500 mt-1">Representación breve de un requerimiento desde la perspectiva del usuario final.</p>
+                    </div>
+
+                    <div class="space-y-4 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                        <p>
+                            Una <strong>Historia de Usuario (HU)</strong> es una descripción corta, clara y sencilla de una necesidad del usuario expresada en su propio lenguaje. A diferencia de las especificaciones tradicionales pesadas, la historia de usuario busca ser una <em>"invitación a la conversación"</em> entre el equipo de desarrollo y el Product Owner.
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                            <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
+                                <strong class="text-slate-900 dark:text-slate-100 text-sm">📋 Requerimiento Tradicional</strong>
+                                <p class="text-slate-600 dark:text-slate-400 mt-1">"El sistema deberá permitir la consulta de saldo mediante el protocolo HTTPS enviando un token JWT..."</p>
+                            </div>
+                            <div class="p-4 bg-emerald-50/50 dark:bg-emerald-950/20 rounded-xl border border-emerald-200 dark:border-emerald-900/40">
+                                <strong class="text-emerald-900 dark:text-emerald-300 text-sm">✨ Historia de Usuario (Ágil)</strong>
+                                <p class="text-slate-700 dark:text-slate-300 mt-1">"Como cliente bancario quiero consultar mi saldo desde el móvil para saber si me alcanza antes de pagar."</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 2: FORMATO CANÓNICO (3 C) -->
+                <section id="formato" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-sky-100 dark:bg-sky-950 text-sky-800 dark:text-sky-300 uppercase tracking-wider">Estructura Estándar</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">2. El Formato Canónico y las 3 C</h2>
+                        <p class="text-sm text-slate-500 mt-1">Estructura sintáctica y modelo de Card, Conversation, Confirmation por Ron Jeffries.</p>
+                    </div>
+
+                    <div class="space-y-4 text-xs">
+                        <div class="p-4 bg-slate-900 text-slate-100 font-mono rounded-xl shadow-inner space-y-2">
+                            <span class="text-sky-400 font-bold">COMO</span> [Rol de Usuario]<br>
+                            <span class="text-emerald-400 font-bold">QUIERO</span> [Acción / Funcionalidad]<br>
+                            <span class="text-amber-400 font-bold">PARA</span> [Beneficio de Negocio / Valor]
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800">
+                                <span class="font-bold text-slate-900 dark:text-slate-100 text-sm">🗂️ 1. Card (Tarjeta)</span>
+                                <p class="text-slate-600 dark:text-slate-400 mt-1">Resumen físico o digital de la intención funcional.</p>
+                            </div>
+                            <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800">
+                                <span class="font-bold text-slate-900 dark:text-slate-100 text-sm">💬 2. Conversation</span>
+                                <p class="text-slate-600 dark:text-slate-400 mt-1">Diálogo constante entre PO, analista y desarrolladores.</p>
+                            </div>
+                            <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800">
+                                <span class="font-bold text-slate-900 dark:text-slate-100 text-sm">✅ 3. Confirmation</span>
+                                <p class="text-slate-600 dark:text-slate-400 mt-1">Criterios de aceptación para validar su cumplimiento.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 3: CRITERIOS INVEST -->
+                <section id="invest" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-indigo-100 dark:bg-indigo-950 text-indigo-800 dark:text-indigo-300 uppercase tracking-wider">Calidad de Requisitos</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">3. Criterios de Calidad INVEST</h2>
+                        <p class="text-sm text-slate-500 mt-1">Principios creados por Bill Wake para evaluar la madurez de una Historia de Usuario.</p>
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-3 text-xs">
+                        <div class="p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
+                            <span class="font-black text-indigo-600 dark:text-indigo-400">I - Independent</span>
+                            <p class="text-slate-600 dark:text-slate-400 mt-1">Independiente de otras historias para facilitar la priorización.</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
+                            <span class="font-black text-indigo-600 dark:text-indigo-400">N - Negotiable</span>
+                            <p class="text-slate-600 dark:text-slate-400 mt-1">Negociable entre PO y equipo; no es un contrato cerrado.</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
+                            <span class="font-black text-indigo-600 dark:text-indigo-400">V - Valuable</span>
+                            <p class="text-slate-600 dark:text-slate-400 mt-1">Debe aportar un valor concreto para el usuario o negocio.</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
+                            <span class="font-black text-indigo-600 dark:text-indigo-400">E - Estimable</span>
+                            <p class="text-slate-600 dark:text-slate-400 mt-1">El equipo debe poder estimar su tamaño o esfuerzo.</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
+                            <span class="font-black text-indigo-600 dark:text-indigo-400">S - Small</span>
+                            <p class="text-slate-600 dark:text-slate-400 mt-1">Pequeña para ser completada en un único Sprint.</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
+                            <span class="font-black text-indigo-600 dark:text-indigo-400">T - Testable</span>
+                            <p class="text-slate-600 dark:text-slate-400 mt-1">Verificable mediante pruebas claras de aceptación.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 4: CRITERIOS DE ACEPTACIÓN -->
+                <section id="criterios-aceptacion" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-teal-100 dark:bg-teal-950 text-teal-800 dark:text-teal-300 uppercase tracking-wider">BDD & Escenarios</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">4. Criterios de Aceptación (Given - When - Then)</h2>
+                        <p class="text-sm text-slate-500 mt-1">Especificación mediante ejemplos orientados al comportamiento (BDD/Gherkin).</p>
+                    </div>
+
+                    <div class="p-4 bg-slate-50 dark:bg-slate-950 rounded-xl border border-slate-200 dark:border-slate-800 font-mono text-xs text-slate-700 dark:text-slate-300 space-y-2">
+                        <div><strong class="text-sky-500">Escenario 1:</strong> Pago exitoso con tarjeta de crédito</div>
+                        <div><span class="text-purple-400 font-bold">DADO</span> que el cliente tiene una tarjeta válida con saldo suficiente</div>
+                        <div><span class="text-amber-400 font-bold">CUANDO</span> hace clic en "Confirmar Compra"</div>
+                        <div><span class="text-emerald-400 font-bold">ENTONCES</span> el sistema emite el comprobante y envía un correo de confirmación.</div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 5: ESTIMACIÓN -->
+                <section id="estimacion" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-purple-100 dark:bg-purple-950 text-purple-800 dark:text-purple-300 uppercase tracking-wider">Métricas Ágiles</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">5. Estimación mediante Story Points</h2>
+                        <p class="text-sm text-slate-500 mt-1">Planning Poker y escala de Fibonacci (1, 2, 3, 5, 8, 13, 21).</p>
+                    </div>
+
+                    <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                        Los <strong>Story Points</strong> representan una medida relativa que combina complejidad, riesgo y esfuerzo. No equivalen a horas hombre absolutas, sino al tamaño relativo de la tarea comparada con una historia base de referencia.
+                    </p>
+                </section>
+
+                <!-- SECCIÓN 6: RECEPTÁCULO PARA MATERIAL FUTURO -->
+                <section id="material-nuevo" class="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-slate-900 dark:to-slate-900/90 p-6 rounded-xl border-2 border-dashed border-emerald-400 dark:border-emerald-800 scroll-mt-24">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-3xl">📂</span>
+                        <div>
+                            <h2 class="text-lg font-bold text-emerald-900 dark:text-emerald-300">Contenedor de Material Cátedra / Apuntes</h2>
+                            <p class="text-xs text-emerald-700 dark:text-emerald-400">Espacio reservado para incorporar las filminas, ejemplos de parcial y consignas adicionales cuando se provea el material.</p>
+                        </div>
+                    </div>
+
+                    <div id="contenedor-material-usuario" class="p-6 bg-white dark:bg-slate-950 rounded-xl border border-emerald-200 dark:border-emerald-900/50 text-center text-slate-500 dark:text-slate-400 text-xs">
+                        <p class="font-semibold text-slate-700 dark:text-slate-300 mb-1">⏳ Esperando Material Complementario</p>
+                        <p>Cuando compartas las notas, PDFs o ejercicios de Historias de Usuario, se integrarán en esta sección dinámicamente.</p>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <footer class="bg-slate-900 text-slate-400 text-xs text-center p-4 mt-auto border-t border-slate-800">
+        <p>© 2026 - Análisis de Sistemas - Clase 12: Historias de Usuario</p>
+    </footer>
+
+    <script src="../../component.js"></script>
+    <script src="../../index.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>

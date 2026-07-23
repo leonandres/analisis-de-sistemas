@@ -6,9 +6,12 @@ function getRelativePaths() {
     
     return {
         home: isSubPage ? '../../index.html' : './index.html',
+        clase01: isSubPage ? '../clase-01-definiciones-iniciales/index.html' : './clases/clase-01-definiciones-iniciales/index.html',
         clase02: isSubPage ? '../clase-02-procesos-de-negocio/index.html' : './clases/clase-02-procesos-de-negocio/index.html',
+        clase03: isSubPage ? '../clase-03-informe-de-reconocimiento/index.html' : './clases/clase-03-informe-de-reconocimiento/index.html',
         clase06: isSubPage ? '../clase-06-requerimientos-funcionales-y-no-funcionales/index.html' : './clases/clase-06-requerimientos-funcionales-y-no-funcionales/index.html',
         clase10: isSubPage ? '../clase-10-casos-de-uso/index.html' : './clases/clase-10-casos-de-uso/index.html',
+        clase12: isSubPage ? '../clase-12-historias-de-usuario/index.html' : './clases/clase-12-historias-de-usuario/index.html',
         examen: isSubPage ? '../examen/index.html' : './clases/examen/index.html'
     };
 }
@@ -40,15 +43,35 @@ function getHeaderHTML(paths) {
                 </button>
                 
                 <div id="menu-clases" class="hidden absolute top-full left-0 mt-2 w-85 bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-800 overflow-hidden transition-all duration-300 origin-top-left scale-95 opacity-0 z-50">
-                    <div class="p-2">
+                    <div class="p-2 max-h-[80vh] overflow-y-auto">
                         <div class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider px-3 py-2">Ir a otra clase</div>
                         
+                        <a href="${paths.clase01}" class="flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
+                            <span class="text-2xl group-hover:scale-110 transition-transform duration-200">🌐</span>
+                            <div class="flex-1">
+                                <div class="text-[10px] font-bold text-sky-600 dark:text-sky-400 uppercase tracking-wider">Clase 01</div>
+                                <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">Definiciones Iniciales</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">TGS, SI, Rol del Analista</div>
+                            </div>
+                            <span class="text-slate-400 group-hover:translate-x-1 transition-transform duration-200">→</span>
+                        </a>
+
                         <a href="${paths.clase02}" class="flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
                             <span class="text-2xl group-hover:scale-110 transition-transform duration-200">🔄</span>
                             <div class="flex-1">
                                 <div class="text-[10px] font-bold text-sky-600 dark:text-sky-400 uppercase tracking-wider">Clase 02</div>
                                 <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">Procesos de Negocio</div>
                                 <div class="text-xs text-slate-500 dark:text-slate-400">ISO 9001, SIPOC, BPMN</div>
+                            </div>
+                            <span class="text-slate-400 group-hover:translate-x-1 transition-transform duration-200">→</span>
+                        </a>
+
+                        <a href="${paths.clase03}" class="flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
+                            <span class="text-2xl group-hover:scale-110 transition-transform duration-200">📋</span>
+                            <div class="flex-1">
+                                <div class="text-[10px] font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider">Clase 03</div>
+                                <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">Informe de Reconocimiento</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">Estructura UTN, InfoLey Web</div>
                             </div>
                             <span class="text-slate-400 group-hover:translate-x-1 transition-transform duration-200">→</span>
                         </a>
@@ -73,26 +96,25 @@ function getHeaderHTML(paths) {
                             <span class="text-slate-400 group-hover:translate-x-1 transition-transform duration-200">→</span>
                         </a>
 
-                        <!-- NUEVA CLASE: REPASO EXAMEN -->
+                        <a href="${paths.clase12}" class="flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
+                            <span class="text-2xl group-hover:scale-110 transition-transform duration-200">📝</span>
+                            <div class="flex-1">
+                                <div class="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Clase 12</div>
+                                <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Historias de Usuario</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">INVEST, BDD, Story Points</div>
+                            </div>
+                            <span class="text-slate-400 group-hover:translate-x-1 transition-transform duration-200">→</span>
+                        </a>
+
                         <a href="${paths.examen}" class="flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
                             <span class="text-2xl group-hover:scale-110 transition-transform duration-200">🎓</span>
                             <div class="flex-1">
                                 <div class="text-[10px] font-bold text-sky-600 dark:text-sky-400 uppercase tracking-wider">Repaso</div>
-                                <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">Conceptos de Examen</div>
+                                <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">Conceptos & Parciales</div>
                                 <div class="text-xs text-slate-500 dark:text-slate-400">Machete de Parciales UTN</div>
                             </div>
                             <span class="text-slate-400 group-hover:translate-x-1 transition-transform duration-200">→</span>
                         </a>
-                        
-                        <div class="flex items-center gap-4 p-3 opacity-50 cursor-not-allowed rounded-xl bg-slate-50 dark:bg-slate-800/30">
-                            <span class="text-2xl grayscale">📅</span>
-                            <div class="flex-1">
-                                <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Clase 07</div>
-                                <div class="text-sm font-medium text-slate-500">Planificación</div>
-                                <div class="text-xs text-slate-400">Próximamente</div>
-                            </div>
-                            <span class="text-xs px-2 py-1 bg-slate-200 dark:bg-slate-700 text-slate-500 rounded-full">⏳</span>
-                        </div>
                     </div>
                 </div>
             </div>
