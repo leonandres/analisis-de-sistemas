@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Clase 01: Definiciones Iniciales y Teoría General de Sistemas - Análisis de Sistemas UTN.BA">
-    <title>Clase 01: Definiciones Iniciales | Análisis de Sistemas</title>
+    <meta name="description" content="Clase 01: Definiciones iniciales y Teoría general de sistemas - Análisis de sistemas UTN.BA">
+    <title>Clase 01: Definiciones iniciales | Análisis de sistemas</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = { darkMode: 'class' }
@@ -12,40 +12,59 @@
     <link rel="stylesheet" href="../../styles.css">
     <!-- Favicon SVG -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
+    <style>
+        .flip-card {
+            perspective: 1000px;
+        }
+        .flip-card-inner {
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
+    </style>
 </head>
 <body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-200">
 
     <div id="header-container"></div>
 
-    <div class="main-content-wrapper flex-1 w-full">
+    <div class="main-content-wrapper flex-1 w-full pt-20">
         
         <div class="max-w-7xl mx-auto w-full p-4 md:p-6 grid grid-cols-1 lg:grid-cols-4 gap-6 flex-1">        
             
             <!-- NAVEGACIÓN LATERAL -->
             <nav class="lg:col-span-1 space-y-2">
                 <div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 sticky top-24">
-                    <h2 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-3 px-2">Contenido de la Clase</h2>
+                    <h2 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-3 px-2">Contenido de la clase</h2>
                     <div class="space-y-1">
-                        <a href="#tgs" class="block px-3 py-2.5 text-sm font-medium rounded-lg bg-sky-50 dark:bg-slate-800 text-sky-700 dark:text-sky-400 border-l-4 border-sky-600 navigation-link active">
-                            1. Teoría General de Sistemas
+                        <a href="#tgs-carousel" class="block px-3 py-2 text-xs font-medium rounded-lg bg-sky-50 dark:bg-slate-800 text-sky-700 dark:text-sky-400 border-l-4 border-sky-600 navigation-link active">
+                            1. Teoría general de sistemas (Carrusel)
                         </a>
-                        <a href="#elementos" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
-                            2. Elementos de un Sistema
+                        <a href="#elementos-slider" class="block px-3 py-2 text-xs font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
+                            2. Elementos de un sistema (Tarjetas)
                         </a>
-                        <a href="#propiedades" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
-                            3. Propiedades Sistémicas
+                        <a href="#flashcards" class="block px-3 py-2 text-xs font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
+                            3. Tarjetas giratorias (Flashcards 3D)
                         </a>
-                        <a href="#sistemas-informacion" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
-                            4. Sistemas de Información (SI)
+                        <a href="#sistemas-informacion" class="block px-3 py-2 text-xs font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
+                            4. Sistemas de información
                         </a>
-                        <a href="#clasificacion-si" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
-                            5. Clasificación de SI (TPS, MIS, DSS, ESS)
+                        <a href="#piramide-si" class="block px-3 py-2 text-xs font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
+                            5. Pirámide de sistemas (TPS, MIS, DSS, ESS)
                         </a>
-                        <a href="#rol-analista" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
-                            6. El Rol del Analista
+                        <a href="#rol-analista" class="block px-3 py-2 text-xs font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
+                            6. El rol del analista
                         </a>
-                        <a href="#autoevaluacion" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
-                            🧪 Autoevaluación & Conceptos Parcial
+                        <a href="#autoevaluacion" class="block px-3 py-2 text-xs font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
+                            🧪 Autoevaluación interactiva
                         </a>
                     </div>
                 </div>
@@ -55,270 +74,494 @@
             <main class="lg:col-span-3 space-y-8">
                 
                 <!-- HERO TITLE -->
-                <div class="bg-gradient-to-r from-sky-600 to-indigo-700 rounded-2xl p-6 text-white shadow-lg relative overflow-hidden">
+                <div class="bg-gradient-to-r from-sky-600 via-indigo-600 to-blue-700 rounded-2xl p-6 text-white shadow-lg relative overflow-hidden">
                     <div class="absolute -right-10 -bottom-10 opacity-15 text-9xl select-none">🌐</div>
                     <span class="px-2.5 py-1 text-[10px] font-black uppercase tracking-wider bg-white/20 rounded-md backdrop-blur-md">Unidad 1</span>
-                    <h1 class="text-2xl md:text-3xl font-extrabold mt-2">Definiciones Iniciales y Teoría General de Sistemas</h1>
+                    <h1 class="text-2xl md:text-3xl font-extrabold mt-2">Definiciones iniciales y Teoría general de sistemas</h1>
                     <p class="text-sky-100 text-sm mt-2 max-w-2xl leading-relaxed">
-                        Fundamentos del pensamiento sistémico, estructura de los sistemas de información, clasificación según el nivel organizacional y el rol estratégico del Analista de Sistemas.
+                        Explorá los conceptos fundamentales mediante tarjetas interactivas, flashcards 3D y simuladores de autoevaluación.
                     </p>
                 </div>
 
-                <!-- SECCIÓN 1: TEORÍA GENERAL DE SISTEMAS -->
-                <section id="tgs" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
-                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
-                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-sky-100 dark:bg-sky-950 text-sky-800 dark:text-sky-300 uppercase tracking-wider">Concepto Base</span>
-                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">1. Teoría General de Sistemas (TGS)</h2>
-                        <p class="text-sm text-slate-500 mt-1">Formulada por Ludwig von Bertalanffy para estudiar los sistemas de forma holística e integral.</p>
+                <!-- SECCIÓN 1: CARRUSEL DE TEORÍA GENERAL DE SISTEMAS -->
+                <section id="tgs-carousel" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                        <div>
+                            <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-sky-100 dark:bg-sky-950 text-sky-800 dark:text-sky-300 uppercase tracking-wider">Módulo interactivo 1</span>
+                            <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-1">Teoría general de sistemas (TGS)</h2>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span id="tgs-counter" class="text-xs font-bold text-slate-500 dark:text-slate-400">1 / 4</span>
+                            <div class="flex gap-1">
+                                <button onclick="moverCarruselTgs(-1)" class="w-8 h-8 flex items-center justify-center bg-slate-100 dark:bg-slate-800 hover:bg-sky-500 hover:text-white rounded-lg transition-all text-slate-700 dark:text-slate-300 font-bold cursor-pointer" title="Anterior">←</button>
+                                <button onclick="moverCarruselTgs(1)" class="w-8 h-8 flex items-center justify-center bg-slate-100 dark:bg-slate-800 hover:bg-sky-500 hover:text-white rounded-lg transition-all text-slate-700 dark:text-slate-300 font-bold cursor-pointer" title="Siguiente">→</button>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="space-y-4 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                        <p>
-                            Un <strong>Sistema</strong> es un conjunto de elementos interrelacionados e interdependientes que interactúan entre sí bajo una estructura definida para alcanzar un <strong>objetivo común</strong>.
-                        </p>
+                    <!-- TARJETA DESLIZABLE TGS -->
+                    <div class="relative overflow-hidden min-h-[220px]">
                         
-                        <div class="p-4 bg-sky-50/50 dark:bg-sky-950/20 border-l-4 border-sky-500 rounded-r-xl text-xs space-y-1 text-sky-900 dark:text-sky-200">
-                            <strong>💡 Principio Clave del Enfoque Sistémico:</strong>
-                            <p>No se puede comprender el comportamiento de un sistema analizando únicamente sus partes por separado; es imprescindible estudiar la <strong>interacción y relaciones</strong> entre ellas.</p>
+                        <!-- SLIDE 1 -->
+                        <div id="tgs-slide-1" class="tgs-slide transition-all duration-500 transform translate-x-0 opacity-100">
+                            <div class="p-6 bg-gradient-to-br from-sky-50 to-indigo-50 dark:from-slate-800/80 dark:to-slate-900 border border-sky-200 dark:border-slate-700 rounded-2xl relative">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <span class="p-2.5 bg-sky-500 text-white rounded-xl text-xl font-bold">1</span>
+                                    <div>
+                                        <h3 class="font-extrabold text-base text-slate-800 dark:text-slate-100">¿Qué es un sistema?</h3>
+                                        <span class="text-xs text-sky-600 dark:text-sky-400 font-medium">Ludwig von Bertalanffy</span>
+                                    </div>
+                                </div>
+                                <p class="text-xs md:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                                    Un <strong>sistema</strong> es un conjunto de elementos interrelacionados e interdependientes que interactúan dentro de una estructura delimitada para alcanzar un <strong>objetivo común</strong>.
+                                </p>
+                                <div class="mt-4 p-3 bg-white/80 dark:bg-slate-950/60 rounded-xl text-xs border border-sky-100 dark:border-slate-800 text-slate-700 dark:text-slate-300">
+                                    💡 <strong>Visión holística:</strong> El comportamiento global del sistema no se deduce estudiando sus partes aisladas, sino analizando las relaciones e interacciones entre ellas.
+                                </div>
+                            </div>
                         </div>
+
+                        <!-- SLIDE 2 -->
+                        <div id="tgs-slide-2" class="tgs-slide hidden transition-all duration-500 transform translate-x-full opacity-0">
+                            <div class="p-6 bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-slate-800/80 dark:to-slate-900 border border-emerald-200 dark:border-slate-700 rounded-2xl relative">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <span class="p-2.5 bg-emerald-500 text-white rounded-xl text-xl font-bold">2</span>
+                                    <div>
+                                        <h3 class="font-extrabold text-base text-slate-800 dark:text-slate-100">Homeostasis y autorregulación</h3>
+                                        <span class="text-xs text-emerald-600 dark:text-emerald-400 font-medium">Equilibrio dinámico</span>
+                                    </div>
+                                </div>
+                                <p class="text-xs md:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                                    Es la propiedad que le permite al sistema autorregularse y mantener un equilibrio interno aceptable frente a las perturbaciones o cambios del entorno.
+                                </p>
+                                <div class="mt-4 p-3 bg-white/80 dark:bg-slate-950/60 rounded-xl text-xs border border-emerald-100 dark:border-slate-800 text-slate-700 dark:text-slate-300">
+                                    🔄 <strong>Ejemplo:</strong> Un termostato o una alerta automática en un sistema de stock cuando el inventario cae por debajo del mínimo de seguridad.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SLIDE 3 -->
+                        <div id="tgs-slide-3" class="tgs-slide hidden transition-all duration-500 transform translate-x-full opacity-0">
+                            <div class="p-6 bg-gradient-to-br from-amber-50 to-orange-50 dark:from-slate-800/80 dark:to-slate-900 border border-amber-200 dark:border-slate-700 rounded-2xl relative">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <span class="p-2.5 bg-amber-500 text-white rounded-xl text-xl font-bold">3</span>
+                                    <div>
+                                        <h3 class="font-extrabold text-base text-slate-800 dark:text-slate-100">Entropía vs. Neguentropía</h3>
+                                        <span class="text-xs text-amber-600 dark:text-amber-400 font-medium">Desgaste vs. Orden</span>
+                                    </div>
+                                </div>
+                                <p class="text-xs md:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                                    La <strong>Entropía</strong> es la tendencia natural de todo sistema cerrado hacia el desorden, caos o desintegración. La <strong>Neguentropía</strong> (entropía negativa) es la importación de energía e información del entorno para mantener el orden.
+                                </p>
+                                <div class="mt-4 p-3 bg-white/80 dark:bg-slate-950/60 rounded-xl text-xs border border-amber-100 dark:border-slate-800 text-slate-700 dark:text-slate-300">
+                                    ⚙️ <strong>En software:</strong> El mantenimiento preventivo y la refactorización introducen neguentropía para evitar que el código se degradar.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SLIDE 4 -->
+                        <div id="tgs-slide-4" class="tgs-slide hidden transition-all duration-500 transform translate-x-full opacity-0">
+                            <div class="p-6 bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-slate-800/80 dark:to-slate-900 border border-purple-200 dark:border-slate-700 rounded-2xl relative">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <span class="p-2.5 bg-purple-500 text-white rounded-xl text-xl font-bold">4</span>
+                                    <div>
+                                        <h3 class="font-extrabold text-base text-slate-800 dark:text-slate-100">Sinergia y jerarquía sistémica</h3>
+                                        <span class="text-xs text-purple-600 dark:text-purple-400 font-medium">El todo es más que las partes</span>
+                                    </div>
+                                </div>
+                                <p class="text-xs md:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                                    La <strong>Sinergia</strong> implica que la acción combinada de los subsistemas genera un resultado superior a la suma individual de sus partes. La <strong>Jerarquía sistémica</strong> ubica al sistema dentro de suprasistemas y compuesto por subsistemas.
+                                </p>
+                                <div class="mt-4 p-3 bg-white/80 dark:bg-slate-950/60 rounded-xl text-xs border border-purple-100 dark:border-slate-800 text-slate-700 dark:text-slate-300">
+                                    🎯 <strong>Regla de examen:</strong> La jerarquía sistémica es conceptual y no equivale obligatoriamente al organigrama de puestos administrativos.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- INDICADORES DE PUNTOS -->
+                    <div class="flex justify-center items-center gap-2 mt-4">
+                        <button onclick="irASlideTgs(0)" class="tgs-dot w-3 h-3 rounded-full bg-sky-500 transition-all cursor-pointer" title="Diapositiva 1"></button>
+                        <button onclick="irASlideTgs(1)" class="tgs-dot w-3 h-3 rounded-full bg-slate-300 dark:bg-slate-700 transition-all cursor-pointer" title="Diapositiva 2"></button>
+                        <button onclick="irASlideTgs(2)" class="tgs-dot w-3 h-3 rounded-full bg-slate-300 dark:bg-slate-700 transition-all cursor-pointer" title="Diapositiva 3"></button>
+                        <button onclick="irASlideTgs(3)" class="tgs-dot w-3 h-3 rounded-full bg-slate-300 dark:bg-slate-700 transition-all cursor-pointer" title="Diapositiva 4"></button>
                     </div>
                 </section>
 
-                <!-- SECCIÓN 2: ELEMENTOS DE UN SISTEMA -->
-                <section id="elementos" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                <!-- SECCIÓN 2: ELEMENTOS DE UN SISTEMA (CARRUSEL DE TARJETAS TIPO RED SOCIAL) -->
+                <section id="elementos-slider" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                        <div>
+                            <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-indigo-100 dark:bg-indigo-950 text-indigo-800 dark:text-indigo-300 uppercase tracking-wider">Módulo interactivo 2</span>
+                            <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-1">Elementos de un sistema (Deslizá con flechas)</h2>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span id="elem-counter" class="text-xs font-bold text-slate-500 dark:text-slate-400">1 / 6</span>
+                            <div class="flex gap-1">
+                                <button onclick="moverCarruselElem(-1)" class="w-8 h-8 flex items-center justify-center bg-slate-100 dark:bg-slate-800 hover:bg-indigo-500 hover:text-white rounded-lg transition-all text-slate-700 dark:text-slate-300 font-bold cursor-pointer" title="Anterior">←</button>
+                                <button onclick="moverCarruselElem(1)" class="w-8 h-8 flex items-center justify-center bg-slate-100 dark:bg-slate-800 hover:bg-indigo-500 hover:text-white rounded-lg transition-all text-slate-700 dark:text-slate-300 font-bold cursor-pointer" title="Siguiente">→</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TARJETAS DE ELEMENTOS -->
+                    <div class="relative overflow-hidden min-h-[190px]">
+                        
+                        <!-- ELEM 1 -->
+                        <div id="elem-slide-0" class="elem-slide transition-all duration-500 transform translate-x-0 opacity-100">
+                            <div class="p-6 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-2xl flex items-start gap-4">
+                                <span class="p-4 bg-sky-100 dark:bg-sky-950 text-sky-600 dark:text-sky-400 rounded-2xl text-3xl">📥</span>
+                                <div>
+                                    <span class="text-[10px] font-extrabold uppercase text-sky-600 dark:text-sky-400 tracking-wider">Elemento 1 de 6</span>
+                                    <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 mt-0.5">Entradas (Inputs)</h3>
+                                    <p class="text-xs md:text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+                                        Datos, materias primas, recursos, solicitudes o energía que ingresan al sistema provenientes del ambiente exterior para ser procesados.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ELEM 2 -->
+                        <div id="elem-slide-1" class="elem-slide hidden transition-all duration-500 transform translate-x-full opacity-0">
+                            <div class="p-6 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-2xl flex items-start gap-4">
+                                <span class="p-4 bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 rounded-2xl text-3xl">⚙️</span>
+                                <div>
+                                    <span class="text-[10px] font-extrabold uppercase text-indigo-600 dark:text-indigo-400 tracking-wider">Elemento 2 de 6</span>
+                                    <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 mt-0.5">Procesamiento (Transformación)</h3>
+                                    <p class="text-xs md:text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+                                        Procesos internos, algoritmos, reglas de negocio u operaciones que transforman las entradas en salidas con valor agregado.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ELEM 3 -->
+                        <div id="elem-slide-2" class="elem-slide hidden transition-all duration-500 transform translate-x-full opacity-0">
+                            <div class="p-6 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-2xl flex items-start gap-4">
+                                <span class="p-4 bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 rounded-2xl text-3xl">📤</span>
+                                <div>
+                                    <span class="text-[10px] font-extrabold uppercase text-emerald-600 dark:text-emerald-400 tracking-wider">Elemento 3 de 6</span>
+                                    <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 mt-0.5">Salidas (Outputs)</h3>
+                                    <p class="text-xs md:text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+                                        Resultados, información consolidada, reportes o productos terminados que el sistema entrega a su entorno.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ELEM 4 -->
+                        <div id="elem-slide-3" class="elem-slide hidden transition-all duration-500 transform translate-x-full opacity-0">
+                            <div class="p-6 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-2xl flex items-start gap-4">
+                                <span class="p-4 bg-amber-100 dark:bg-amber-950 text-amber-600 dark:text-amber-400 rounded-2xl text-3xl">🔄</span>
+                                <div>
+                                    <span class="text-[10px] font-extrabold uppercase text-amber-600 dark:text-amber-400 tracking-wider">Elemento 4 de 6</span>
+                                    <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 mt-0.5">Retroalimentación (Feedback)</h3>
+                                    <p class="text-xs md:text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+                                        Mecanismo de control que compara el desempeño real con el objetivo para realizar correcciones (feedback negativo) o potenciar variaciones (feedback positivo).
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ELEM 5 -->
+                        <div id="elem-slide-4" class="elem-slide hidden transition-all duration-500 transform translate-x-full opacity-0">
+                            <div class="p-6 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-2xl flex items-start gap-4">
+                                <span class="p-4 bg-purple-100 dark:bg-purple-950 text-purple-600 dark:text-purple-400 rounded-2xl text-3xl">🧱</span>
+                                <div>
+                                    <span class="text-[10px] font-extrabold uppercase text-purple-600 dark:text-purple-400 tracking-wider">Elemento 5 de 6</span>
+                                    <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 mt-0.5">Límite / Frontera</h3>
+                                    <p class="text-xs md:text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+                                        Demarcación física o conceptual que define qué elementos pertenecen estrictamente al sistema y cuáles quedan fuera.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ELEM 6 -->
+                        <div id="elem-slide-5" class="elem-slide hidden transition-all duration-500 transform translate-x-full opacity-0">
+                            <div class="p-6 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-2xl flex items-start gap-4">
+                                <span class="p-4 bg-teal-100 dark:bg-teal-950 text-teal-600 dark:text-teal-400 rounded-2xl text-3xl">🌍</span>
+                                <div>
+                                    <span class="text-[10px] font-extrabold uppercase text-teal-600 dark:text-teal-400 tracking-wider">Elemento 6 de 6</span>
+                                    <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 mt-0.5">Ambiente / Entorno</h3>
+                                    <p class="text-xs md:text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+                                        Todo lo que existe fuera del límite del sistema pero influye activamente sobre él o recibe sus efectos.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 3: TARJETAS GIRATORIAS 3D (FLASHCARDS) -->
+                <section id="flashcards" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
                     <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
-                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-indigo-100 dark:bg-indigo-950 text-indigo-800 dark:text-indigo-300 uppercase tracking-wider">Anatomía Sistémica</span>
-                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">2. Elementos de un Sistema</h2>
-                        <p class="text-sm text-slate-500 mt-1">Los componentes fundamentales de cualquier modelo sistémico.</p>
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 uppercase tracking-wider">Módulo interactivo 3</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-1">Tarjetas giratorias (Haz clic en cada tarjeta para ver la respuesta)</h2>
+                        <p class="text-xs text-slate-500 mt-1">Probá tu conocimiento girando las tarjetas de conceptos de parcial.</p>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-                        <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800 space-y-2">
-                            <div class="flex items-center gap-2">
-                                <span class="text-xl">📥</span>
-                                <strong class="text-slate-900 dark:text-slate-100 text-sm">Entradas (Inputs)</strong>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                        
+                        <!-- CARD 1 -->
+                        <div class="flip-card h-44 cursor-pointer" onclick="girarTarjeta(this)">
+                            <div class="flip-card-inner relative w-full h-full rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800">
+                                <!-- FRONT -->
+                                <div class="flip-card-front absolute inset-0 bg-gradient-to-br from-sky-50 to-indigo-50 dark:from-slate-800 dark:to-slate-900 rounded-2xl p-4 flex flex-col justify-between items-center text-center">
+                                    <span class="text-3xl">🔄</span>
+                                    <h3 class="font-extrabold text-sm text-slate-800 dark:text-slate-100">Homeostasis</h3>
+                                    <span class="text-[10px] text-sky-600 dark:text-sky-400 font-bold uppercase">Haz clic para girar ➔</span>
+                                </div>
+                                <!-- BACK -->
+                                <div class="flip-card-back absolute inset-0 bg-sky-600 text-white rounded-2xl p-4 flex flex-col justify-center items-center text-center text-xs space-y-2">
+                                    <strong class="font-bold text-sm">Respuesta:</strong>
+                                    <p>Propiedad de autorregulación para mantener un equilibrio interno dinámico frente a cambios externos.</p>
+                                </div>
                             </div>
-                            <p class="text-slate-600 dark:text-slate-400">Datos, materias primas, energía o solicitudes ingresadas desde el entorno al sistema.</p>
                         </div>
 
-                        <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800 space-y-2">
-                            <div class="flex items-center gap-2">
-                                <span class="text-xl">⚙️</span>
-                                <strong class="text-slate-900 dark:text-slate-100 text-sm">Procesamiento (Transformación)</strong>
+                        <!-- CARD 2 -->
+                        <div class="flip-card h-44 cursor-pointer" onclick="girarTarjeta(this)">
+                            <div class="flip-card-inner relative w-full h-full rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800">
+                                <!-- FRONT -->
+                                <div class="flip-card-front absolute inset-0 bg-gradient-to-br from-amber-50 to-orange-50 dark:from-slate-800 dark:to-slate-900 rounded-2xl p-4 flex flex-col justify-between items-center text-center">
+                                    <span class="text-3xl">📉</span>
+                                    <h3 class="font-extrabold text-sm text-slate-800 dark:text-slate-100">Entropía</h3>
+                                    <span class="text-[10px] text-amber-600 dark:text-amber-400 font-bold uppercase">Haz clic para girar ➔</span>
+                                </div>
+                                <!-- BACK -->
+                                <div class="flip-card-back absolute inset-0 bg-amber-600 text-white rounded-2xl p-4 flex flex-col justify-center items-center text-center text-xs space-y-2">
+                                    <strong class="font-bold text-sm">Respuesta:</strong>
+                                    <p>Tendencia natural del sistema al desorden y la desintegración por falta de información o mantenimiento.</p>
+                                </div>
                             </div>
-                            <p class="text-slate-600 dark:text-slate-400">Algoritmos, cálculos, operaciones o reglas de negocio que transforman las entradas en salidas.</p>
                         </div>
 
-                        <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800 space-y-2">
-                            <div class="flex items-center gap-2">
-                                <span class="text-xl">📤</span>
-                                <strong class="text-slate-900 dark:text-slate-100 text-sm">Salidas (Outputs)</strong>
+                        <!-- CARD 3 -->
+                        <div class="flip-card h-44 cursor-pointer" onclick="girarTarjeta(this)">
+                            <div class="flip-card-inner relative w-full h-full rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800">
+                                <!-- FRONT -->
+                                <div class="flip-card-front absolute inset-0 bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-slate-800 dark:to-slate-900 rounded-2xl p-4 flex flex-col justify-between items-center text-center">
+                                    <span class="text-3xl">✨</span>
+                                    <h3 class="font-extrabold text-sm text-slate-800 dark:text-slate-100">Sinergia</h3>
+                                    <span class="text-[10px] text-purple-600 dark:text-purple-400 font-bold uppercase">Haz clic para girar ➔</span>
+                                </div>
+                                <!-- BACK -->
+                                <div class="flip-card-back absolute inset-0 bg-purple-600 text-white rounded-2xl p-4 flex flex-col justify-center items-center text-center text-xs space-y-2">
+                                    <strong class="font-bold text-sm">Respuesta:</strong>
+                                    <p>El resultado del todo superando la simple suma aislada de sus partes (1 + 1 = 3).</p>
+                                </div>
                             </div>
-                            <p class="text-slate-600 dark:text-slate-400">Productos, reportes, información consolidada o acciones emitidas hacia el exterior.</p>
                         </div>
 
-                        <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800 space-y-2">
-                            <div class="flex items-center gap-2">
-                                <span class="text-xl">🔄</span>
-                                <strong class="text-slate-900 dark:text-slate-100 text-sm">Retroalimentación (Feedback)</strong>
-                            </div>
-                            <p class="text-slate-600 dark:text-slate-400">Mecanismo de control que reingresa información de las salidas para autorregular el sistema.</p>
-                        </div>
-
-                        <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800 space-y-2">
-                            <div class="flex items-center gap-2">
-                                <span class="text-xl">🧱</span>
-                                <strong class="text-slate-900 dark:text-slate-100 text-sm">Límite / Frontera</strong>
-                            </div>
-                            <p class="text-slate-600 dark:text-slate-400">Demarcación conceptual o física que delimita qué pertenece al sistema y qué queda afuera.</p>
-                        </div>
-
-                        <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800 space-y-2">
-                            <div class="flex items-center gap-2">
-                                <span class="text-xl">🌍</span>
-                                <strong class="text-slate-900 dark:text-slate-100 text-sm">Ambiente / Entorno</strong>
-                            </div>
-                            <p class="text-slate-600 dark:text-slate-400">Todo lo exterior al sistema que condiciona su funcionamiento o recibe sus efectos.</p>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- SECCIÓN 3: PROPIEDADES SISTÉMICAS -->
-                <section id="propiedades" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
-                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
-                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 uppercase tracking-wider">Conceptos Clave de Parcial</span>
-                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">3. Propiedades Emergentes y Sistémicas</h2>
-                        <p class="text-sm text-slate-500 mt-1">Propiedades indispensables evaluadas frecuentemente en exámenes.</p>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="p-4 bg-emerald-50/40 dark:bg-emerald-950/20 rounded-xl border border-emerald-200 dark:border-emerald-900/40">
-                            <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-200 dark:bg-emerald-900 text-emerald-900 dark:text-emerald-200 uppercase">Homeostasis</span>
-                            <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm mt-2">Autorregulación y Equilibrio</h3>
-                            <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
-                                Capacidad del sistema para mantener un equilibrio dinámico interno ajustando sus operaciones mediante retroalimentación negativa frente a cambios del entorno.
-                            </p>
-                        </div>
-
-                        <div class="p-4 bg-amber-50/40 dark:bg-amber-950/20 rounded-xl border border-amber-200 dark:border-amber-900/40">
-                            <span class="text-xs font-bold px-2 py-0.5 rounded bg-amber-200 dark:bg-amber-900 text-amber-900 dark:text-amber-200 uppercase">Entropía & Neguentropía</span>
-                            <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm mt-2">Tendencia al Desorden</h3>
-                            <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
-                                La <strong>Entropía</strong> es la tendencia natural al desgaste o desorganización. La <strong>Neguentropía</strong> es la entrada de energía e información externa para contrarrestar el desorden.
-                            </p>
-                        </div>
-
-                        <div class="p-4 bg-purple-50/40 dark:bg-purple-950/20 rounded-xl border border-purple-200 dark:border-purple-900/40">
-                            <span class="text-xs font-bold px-2 py-0.5 rounded bg-purple-200 dark:bg-purple-900 text-purple-900 dark:text-purple-200 uppercase">Sinergia</span>
-                            <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm mt-2">El todo es más que las partes</h3>
-                            <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
-                                El resultado conjunto del trabajo coordinado de los subsistemas supera con creces la suma de los resultados individuales producidos aisladamente ($1+1=3$).
-                            </p>
-                        </div>
-
-                        <div class="p-4 bg-sky-50/40 dark:bg-sky-950/20 rounded-xl border border-sky-200 dark:border-sky-900/40">
-                            <span class="text-xs font-bold px-2 py-0.5 rounded bg-sky-200 dark:bg-sky-900 text-sky-900 dark:text-sky-200 uppercase">Jerarquía Sistémica</span>
-                            <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm mt-2">Subsistemas y Suprasistemas</h3>
-                            <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
-                                Los sistemas se organizan en multiniveles de complejidad. <em>¡Ojo! La jerarquía sistémica no se corresponde directamente con el organigrama administrativo formal.</em>
-                            </p>
-                        </div>
                     </div>
                 </section>
 
-                <!-- SECCIÓN 4: SISTEMAS DE INFORMACIÓN (SI) -->
+                <!-- SECCIÓN 4: SISTEMAS DE INFORMACIÓN -->
                 <section id="sistemas-informacion" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
                     <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
-                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-300 uppercase tracking-wider">Definición de SI</span>
-                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">4. ¿Qué es un Sistema de Información?</h2>
-                        <p class="text-sm text-slate-500 mt-1">Definición formal y la tríada Dato - Información - Conocimiento.</p>
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-300 uppercase tracking-wider">Concepto sociotécnico</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-1">Sistemas de información</h2>
+                        <p class="text-sm text-slate-500 mt-1">Definición formal y la evolución Dato ➔ Información ➔ Conocimiento.</p>
                     </div>
 
-                    <div class="space-y-4 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                        <p>
-                            Un <strong>Sistema de Información (SI)</strong> es un conjunto sociotécnico compuesto por personas, procesos de negocio, datos e infraestructura tecnológica que interactúan para <strong>recolectar, procesar, almacenar y distribuir información</strong> orientada a la toma de decisiones y el control organizacional.
-                        </p>
+                    <p class="text-xs md:text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                        Un <strong>sistema de información (SI)</strong> es un conjunto formal de personas, procesos de negocio, datos e infraestructura tecnológica que interactúan para recolectar, procesar, almacenar y distribuir información para apoyar la toma de decisiones y el control organizacional.
+                    </p>
 
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-mono">
-                            <div class="p-3 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200 dark:border-slate-700">
-                                <span class="font-bold text-sky-600 dark:text-sky-400">1. DATO (Entrada)</span>
-                                <p class="text-slate-600 dark:text-slate-400 mt-1 font-sans">Hecho crudo sin procesar o contexto. Ej: <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">37.5</code></p>
-                            </div>
-                            <div class="p-3 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200 dark:border-slate-700">
-                                <span class="font-bold text-indigo-600 dark:text-indigo-400">2. INFORMACIÓN (Salida)</span>
-                                <p class="text-slate-600 dark:text-slate-400 mt-1 font-sans">Dato procesado con significado útil. Ej: <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">Temperatura Corporal = 37.5°C</code></p>
-                            </div>
-                            <div class="p-3 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200 dark:border-slate-700">
-                                <span class="font-bold text-emerald-600 dark:text-emerald-400">3. CONOCIMIENTO</span>
-                                <p class="text-slate-600 dark:text-slate-400 mt-1 font-sans">Comprensión aplicada para actuar. Ej: <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">Paciente presenta febrícula; aplicar protocolo</code></p>
-                            </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-mono">
+                        <div class="p-4 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200 dark:border-slate-700">
+                            <span class="font-bold text-sky-600 dark:text-sky-400">1. DATO (Entrada)</span>
+                            <p class="text-slate-600 dark:text-slate-400 mt-1 font-sans">Hecho crudo sin procesar o contexto. Ej: <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">37.5</code></p>
+                        </div>
+                        <div class="p-4 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200 dark:border-slate-700">
+                            <span class="font-bold text-indigo-600 dark:text-indigo-400">2. INFORMACIÓN (Salida)</span>
+                            <p class="text-slate-600 dark:text-slate-400 mt-1 font-sans">Dato procesado con significado útil. Ej: <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">Temperatura Corporal = 37.5°C</code></p>
+                        </div>
+                        <div class="p-4 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200 dark:border-slate-700">
+                            <span class="font-bold text-emerald-600 dark:text-emerald-400">3. CONOCIMIENTO</span>
+                            <p class="text-slate-600 dark:text-slate-400 mt-1 font-sans">Comprensión aplicada para actuar. Ej: <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">Paciente presenta febrícula; aplicar protocolo</code></p>
                         </div>
                     </div>
                 </section>
 
-                <!-- SECCIÓN 5: CLASIFICACIÓN DE SI -->
-                <section id="clasificacion-si" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                <!-- SECCIÓN 5: PIRÁMIDE DE SI INTERACTIVA -->
+                <section id="piramide-si" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
                     <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
-                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-violet-100 dark:bg-violet-950 text-violet-800 dark:text-violet-300 uppercase tracking-wider">Pirámide Organizacional</span>
-                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">5. Clasificación de los Sistemas de Información</h2>
-                        <p class="text-sm text-slate-500 mt-1">Sistemas según su nivel de soporte en la pirámide de gestión.</p>
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-violet-100 dark:bg-violet-950 text-violet-800 dark:text-violet-300 uppercase tracking-wider">Pirámide organizacional</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-1">Clasificación de los sistemas de información</h2>
+                        <p class="text-sm text-slate-500 mt-1">Seleccioná un nivel para explorar su función y ejemplos.</p>
                     </div>
 
-                    <div class="space-y-3 text-xs">
-                        <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border-l-4 border-slate-400 dark:border-slate-600 flex items-start gap-4">
+                    <!-- TAB SELECTOR DE NIVELES -->
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <button onclick="seleccionarNivelSi('tps')" id="tab-tps" class="tab-si px-4 py-2 bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 rounded-xl text-xs font-bold transition-all cursor-pointer">
+                            TPS (Operativo)
+                        </button>
+                        <button onclick="seleccionarNivelSi('mis')" id="tab-mis" class="tab-si px-4 py-2 bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 rounded-xl text-xs font-bold hover:bg-slate-200 transition-all cursor-pointer">
+                            MIS (Táctico)
+                        </button>
+                        <button onclick="seleccionarNivelSi('dss')" id="tab-dss" class="tab-si px-4 py-2 bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 rounded-xl text-xs font-bold hover:bg-slate-200 transition-all cursor-pointer">
+                            DSS (Gerencial)
+                        </button>
+                        <button onclick="seleccionarNivelSi('ess')" id="tab-ess" class="tab-si px-4 py-2 bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 rounded-xl text-xs font-bold hover:bg-slate-200 transition-all cursor-pointer">
+                            ESS / EIS (Estratégico)
+                        </button>
+                    </div>
+
+                    <!-- CONTENIDO DE NIVELES -->
+                    <div id="content-si-tps" class="content-si p-5 bg-slate-50 dark:bg-slate-800/40 rounded-2xl border border-slate-200 dark:border-slate-800">
+                        <div class="flex items-center gap-3 mb-2">
                             <span class="text-2xl">🖥️</span>
-                            <div>
-                                <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm">TPS (Transaction Processing System) - Nivel Operativo</h3>
-                                <p class="text-slate-600 dark:text-slate-400 mt-1">Procesa grandes volúmenes de transacciones rutinarias diarias. Eficiencia y exactitud. Ej: Punto de Venta (POS), Facturación, Control de Presentismo.</p>
-                            </div>
+                            <h3 class="font-bold text-slate-800 dark:text-slate-100 text-base">TPS (Transaction Processing System) - Nivel operativo</h3>
                         </div>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+                            Sistemas de procesamiento transaccional diario. Se caracterizan por manejar grandes volúmenes de datos rutinarios con alta velocidad y exactitud.
+                        </p>
+                        <div class="p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 text-xs">
+                            💡 <strong>Ejemplos típicos:</strong> Punto de Venta (POS), sistema de facturación, registro de asistencia, cobro por caja.
+                        </div>
+                    </div>
 
-                        <div class="p-4 bg-sky-50/50 dark:bg-sky-950/20 rounded-xl border-l-4 border-sky-500 flex items-start gap-4">
+                    <div id="content-si-mis" class="content-si hidden p-5 bg-slate-50 dark:bg-slate-800/40 rounded-2xl border border-slate-200 dark:border-slate-800">
+                        <div class="flex items-center gap-3 mb-2">
                             <span class="text-2xl">📊</span>
-                            <div>
-                                <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm">MIS (Management Information System) - Nivel Táctico</h3>
-                                <p class="text-slate-600 dark:text-slate-400 mt-1">Suministra informes periódicos estructurados y resúmenes para mandos medios y jefes de área. Ej: Reportes semanales de ventas por sucursal.</p>
-                            </div>
+                            <h3 class="font-bold text-slate-800 dark:text-slate-100 text-base">MIS (Management Information System) - Nivel táctico</h3>
                         </div>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+                            Sistemas de información gerencial para mandos medios y jefes de departamento. Suministran reportes periódicos estructurados a partir de los datos consolidados del TPS.
+                        </p>
+                        <div class="p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 text-xs">
+                            💡 <strong>Ejemplos típicos:</strong> Reportes semanales de ventas por sucursal, inventarios mensuales, análisis de desvíos presupuestarios.
+                        </div>
+                    </div>
 
-                        <div class="p-4 bg-indigo-50/50 dark:bg-indigo-950/20 rounded-xl border-l-4 border-indigo-500 flex items-start gap-4">
+                    <div id="content-si-dss" class="content-si hidden p-5 bg-slate-50 dark:bg-slate-800/40 rounded-2xl border border-slate-200 dark:border-slate-800">
+                        <div class="flex items-center gap-3 mb-2">
                             <span class="text-2xl">📈</span>
-                            <div>
-                                <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm">DSS (Decision Support System) - Nivel Gerencial</h3>
-                                <p class="text-slate-600 dark:text-slate-400 mt-1">Herramientas interactivas de análisis para decisiones semiestructuradas mediante simulación y modelos de datos (escenarios "qué pasa si...").</p>
-                            </div>
+                            <h3 class="font-bold text-slate-800 dark:text-slate-100 text-base">DSS (Decision Support System) - Nivel gerencial</h3>
                         </div>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+                            Sistemas de soporte a decisiones semiestructuradas. Permiten realizar simulaciones y modelos dinámicos (análisis del tipo "¿qué pasa si...?").
+                        </p>
+                        <div class="p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 text-xs">
+                            💡 <strong>Ejemplos típicos:</strong> Modelos de optimización de rutas de distribución, proyección de ventas ajustada a inflación y demanda.
+                        </div>
+                    </div>
 
-                        <div class="p-4 bg-purple-50/50 dark:bg-purple-950/20 rounded-xl border-l-4 border-purple-500 flex items-start gap-4">
+                    <div id="content-si-ess" class="content-si hidden p-5 bg-slate-50 dark:bg-slate-800/40 rounded-2xl border border-slate-200 dark:border-slate-800">
+                        <div class="flex items-center gap-3 mb-2">
                             <span class="text-2xl">👑</span>
-                            <div>
-                                <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm">ESS / EIS (Executive Support System) - Nivel Estratégico</h3>
-                                <p class="text-slate-600 dark:text-slate-400 mt-1">Sistemas para la alta dirección con gráficos consolidados, tableros de control (Dashboards) e indicadores clave de desempeño (KPIs).</p>
-                            </div>
+                            <h3 class="font-bold text-slate-800 dark:text-slate-100 text-base">ESS / EIS (Executive Support System) - Nivel estratégico</h3>
+                        </div>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+                            Sistemas de soporte para la alta dirección y directores. Presentan información resumida con gráficos intuitivos, tableros de control (dashboards) e indicadores clave de desempeño (KPIs).
+                        </p>
+                        <div class="p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 text-xs">
+                            💡 <strong>Ejemplos típicos:</strong> Dashboard gerencial con rentabilidad consolidada por país y nivel de satisfacción del cliente.
                         </div>
                     </div>
                 </section>
 
-                <!-- SECCIÓN 6: ROL DEL ANALISTA -->
+                <!-- SECCIÓN 6: ROL DEL ANALISTA DE SISTEMAS -->
                 <section id="rol-analista" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
                     <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
-                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-teal-100 dark:bg-teal-950 text-teal-800 dark:text-teal-300 uppercase tracking-wider">Profesión & Competencias</span>
-                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">6. El Rol del Analista de Sistemas</h2>
-                        <p class="text-sm text-slate-500 mt-1">Agente de cambio y puente entre los problemas de negocio y la tecnología.</p>
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-teal-100 dark:bg-teal-950 text-teal-800 dark:text-teal-300 uppercase tracking-wider">Profesión y competencias</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-1">El rol del analista de sistemas</h2>
+                        <p class="text-sm text-slate-500 mt-1">El puente estratégico entre el negocio y la tecnología.</p>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                         <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800">
-                            <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm mb-2">🎯 Responsabilidades Principales</h3>
+                            <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm mb-2">🎯 Responsabilidades principales</h3>
                             <ul class="list-disc list-inside space-y-1.5 text-slate-600 dark:text-slate-400">
-                                <li>Relevar necesidades con usuarios y stakeholders (Sponsors).</li>
+                                <li>Relevar necesidades con los usuarios y el sponsor.</li>
                                 <li>Diagnosticar problemas y oportunidades de mejora.</li>
                                 <li>Especificar requerimientos funcionales y no funcionales.</li>
                                 <li>Diseñar soluciones conceptuales y modelos de procesos/datos.</li>
-                                <li>Validar los entregables con el cliente formalmente.</li>
+                                <li>Validar formalmente los entregables con el cliente.</li>
                             </ul>
                         </div>
 
                         <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800">
-                            <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm mb-2">🤝 Habilidades Blandas e Interpersonales</h3>
+                            <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm mb-2">🤝 Habilidades interpersonales</h3>
                             <ul class="list-disc list-inside space-y-1.5 text-slate-600 dark:text-slate-400">
                                 <li>Escucha activa y capacidad de negociación.</li>
-                                <li>Empatía para comprender el dolor del usuario.</li>
-                                <li>Habilidad para comunicar conceptos técnicos de forma sencilla.</li>
+                                <li>Empatía para comprender la operativa diaria del usuario.</li>
+                                <li>Habilidad para traducir conceptos técnicos a lenguaje claro.</li>
                                 <li>Pensamiento crítico y capacidad de abstracción.</li>
                             </ul>
                         </div>
                     </div>
                 </section>
 
-                <!-- SECCIÓN 7: AUTOEVALUACIÓN -->
+                <!-- SECCIÓN 7: AUTOEVALUACIÓN INTERACTIVA CORREGIDA -->
                 <section id="autoevaluacion" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
-                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
-                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 uppercase tracking-wider">Práctica de Examen</span>
-                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">🧪 Autoevaluación de Conceptos</h2>
-                        <p class="text-sm text-slate-500 mt-1">Preguntas de Verdadero/Falso justificadas típicas de evaluación UTN.</p>
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                        <div>
+                            <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 uppercase tracking-wider">Simulador interactivo</span>
+                            <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-1">🧪 Autoevaluación de conceptos</h2>
+                            <p class="text-xs text-slate-500 mt-0.5">Respondé y comprobá tu resultado al instante.</p>
+                        </div>
+                        <div class="px-3 py-1.5 bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900 rounded-xl text-xs font-bold text-amber-700 dark:text-amber-300">
+                            Puntaje: <span id="score-counter">0</span> / 2
+                        </div>
                     </div>
 
-                    <div class="space-y-4 text-xs">
-                        <div class="p-4 bg-slate-50 dark:bg-slate-800/30 rounded-xl border border-slate-200 dark:border-slate-800">
-                            <p class="font-semibold text-slate-800 dark:text-slate-200">1. "La jerarquía sistémica se establece según el organigrama jerárquico administrativo de la empresa."</p>
-                            <div class="mt-2 flex items-center gap-2">
-                                <button onclick="toggleRespuesta('vf-1')" class="px-3 py-1 bg-amber-600 hover:bg-amber-700 text-white rounded-lg text-xs font-bold transition-all cursor-pointer">Ver Respuesta ➔</button>
+                    <div class="space-y-6 text-xs">
+                        
+                        <!-- PREGUNTA 1 -->
+                        <div class="p-5 bg-slate-50 dark:bg-slate-800/30 rounded-2xl border border-slate-200 dark:border-slate-800">
+                            <p class="font-bold text-slate-800 dark:text-slate-200 text-sm mb-3">
+                                1. "La jerarquía sistémica se establece estrictamente según el organigrama jerárquico de puestos administrativos de la empresa."
+                            </p>
+
+                            <div class="flex flex-wrap items-center gap-2 mb-3">
+                                <button onclick="evaluarRespuesta('q1', false, this)" class="px-4 py-2 bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl font-bold text-slate-800 dark:text-slate-200 transition-all cursor-pointer">
+                                    Falso
+                                </button>
+                                <button onclick="evaluarRespuesta('q1', true, this)" class="px-4 py-2 bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl font-bold text-slate-800 dark:text-slate-200 transition-all cursor-pointer">
+                                    Verdadero
+                                </button>
+                                <button onclick="toggleRespuesta('vf-1')" class="px-3 py-2 text-indigo-600 dark:text-indigo-400 font-bold hover:underline cursor-pointer ml-auto">
+                                    Ver explicación ➔
+                                </button>
                             </div>
-                            <div id="vf-1" class="hidden mt-3 p-3 bg-red-50 dark:bg-red-950/20 text-red-800 dark:text-red-300 border border-red-200 dark:border-red-900/40 rounded-xl">
-                                <strong>FALSO.</strong> La jerarquía sistémica refiere a la inclusión estructural de subsistemas en suprasistemas. No guarda relación directa con los cargos del organigrama empresarial.
+
+                            <div id="q1-feedback" class="hidden p-3 rounded-xl font-medium mb-2"></div>
+
+                            <div id="vf-1" class="hidden p-4 bg-amber-50 dark:bg-amber-950/20 text-amber-900 dark:text-amber-200 border border-amber-200 dark:border-amber-900/40 rounded-xl">
+                                <strong>Explicación cátedra:</strong> <strong>FALSO.</strong> La jerarquía sistémica se refiere a que los sistemas están compuestos por subsistemas interrelacionados y forman parte de un suprasistema. No guarda relación directa con el organigrama de jerarquía administrativa.
                             </div>
                         </div>
 
-                        <div class="p-4 bg-slate-50 dark:bg-slate-800/30 rounded-xl border border-slate-200 dark:border-slate-800">
-                            <p class="font-semibold text-slate-800 dark:text-slate-200">2. "Un sistema de información solo incluye los programas de computadora (software)."</p>
-                            <div class="mt-2 flex items-center gap-2">
-                                <button onclick="toggleRespuesta('vf-2')" class="px-3 py-1 bg-amber-600 hover:bg-amber-700 text-white rounded-lg text-xs font-bold transition-all cursor-pointer">Ver Respuesta ➔</button>
+                        <!-- PREGUNTA 2 -->
+                        <div class="p-5 bg-slate-50 dark:bg-slate-800/30 rounded-2xl border border-slate-200 dark:border-slate-800">
+                            <p class="font-bold text-slate-800 dark:text-slate-200 text-sm mb-3">
+                                2. "Un sistema de información solo abarca el software ejecutable y la base de datos."
+                            </p>
+
+                            <div class="flex flex-wrap items-center gap-2 mb-3">
+                                <button onclick="evaluarRespuesta('q2', false, this)" class="px-4 py-2 bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl font-bold text-slate-800 dark:text-slate-200 transition-all cursor-pointer">
+                                    Falso
+                                </button>
+                                <button onclick="evaluarRespuesta('q2', true, this)" class="px-4 py-2 bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl font-bold text-slate-800 dark:text-slate-200 transition-all cursor-pointer">
+                                    Verdadero
+                                </button>
+                                <button onclick="toggleRespuesta('vf-2')" class="px-3 py-2 text-indigo-600 dark:text-indigo-400 font-bold hover:underline cursor-pointer ml-auto">
+                                    Ver explicación ➔
+                                </button>
                             </div>
-                            <div id="vf-2" class="hidden mt-3 p-3 bg-red-50 dark:bg-red-950/20 text-red-800 dark:text-red-300 border border-red-200 dark:border-red-900/40 rounded-xl">
-                                <strong>FALSO.</strong> Un SI es un sistema sociotécnico que abarca personas, datos, procedimientos de trabajo y hardware, además del software.
+
+                            <div id="q2-feedback" class="hidden p-3 rounded-xl font-medium mb-2"></div>
+
+                            <div id="vf-2" class="hidden p-4 bg-amber-50 dark:bg-amber-950/20 text-amber-900 dark:text-amber-200 border border-amber-200 dark:border-amber-900/40 rounded-xl">
+                                <strong>Explicación cátedra:</strong> <strong>FALSO.</strong> Un SI es un sistema sociotécnico integral que abarca personas, procesos de negocio, procedimientos de trabajo e infraestructura de hardware, además del software.
                             </div>
                         </div>
+
                     </div>
                 </section>
 
@@ -327,7 +570,7 @@
     </div>
 
     <footer class="bg-slate-900 text-slate-400 text-xs text-center p-4 mt-auto border-t border-slate-800">
-        <p>© 2026 - Análisis de Sistemas - Clase 01: Definiciones Iniciales</p>
+        <p>© 2026 - Análisis de sistemas - Clase 01: Definiciones iniciales</p>
     </footer>
 
     <script src="../../component.js"></script>
