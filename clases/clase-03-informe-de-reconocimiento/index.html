@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Clase 03: Informe de Reconocimiento - Metodología de Relevamiento UTN.BA">
-    <title>Clase 03: Informe de Reconocimiento | Análisis de Sistemas</title>
+    <meta name="description" content="Clase 03: Informe de reconocimiento - Metodología de relevamiento UTN.BA">
+    <title>Clase 03: Informe de reconocimiento | Análisis de sistemas</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = { darkMode: 'class' }
@@ -24,22 +24,34 @@
             <!-- NAVEGACIÓN LATERAL -->
             <nav class="lg:col-span-1 space-y-2">
                 <div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 sticky top-24">
-                    <h2 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-3 px-2">Temario del Informe</h2>
+                    <h2 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-3 px-2">Temario del informe</h2>
                     <div class="space-y-1">
-                        <a href="#concepto" class="block px-3 py-2.5 text-sm font-medium rounded-lg bg-sky-50 dark:bg-slate-800 text-sky-700 dark:text-sky-400 border-l-4 border-sky-600 navigation-link active">
-                            1. Concepto y Propósito
+                        <a href="#concepto" class="block px-3 py-2 text-xs font-medium rounded-lg bg-sky-50 dark:bg-slate-800 text-sky-700 dark:text-sky-400 border-l-4 border-sky-600 navigation-link active">
+                            1. Concepto y propósito
                         </a>
-                        <a href="#estructura" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
-                            2. Estructura Estándar UTN
+                        <a href="#etapas-proceso" class="block px-3 py-2 text-xs font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
+                            2. Etapas del proceso de reconocimiento
                         </a>
-                        <a href="#caso-infoley" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
-                            📋 Caso Práctico: InfoLey Web
+                        <a href="#estructura" class="block px-3 py-2 text-xs font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
+                            3. Estructura estándar del informe (UTN)
                         </a>
-                        <a href="#tecnicas-relevamiento" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
-                            3. Técnicas de Relevamiento
+                        <a href="#carta-sponsor" class="block px-3 py-2 text-xs font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
+                            ✉️ Carta de presentación al sponsor
                         </a>
-                        <a href="#checklist" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
-                            ✅ Checklist de Validación
+                        <a href="#datos-faltantes" class="block px-3 py-2 text-xs font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
+                            🔍 Sección de datos faltantes
+                        </a>
+                        <a href="#tecnicas-relevamiento" class="block px-3 py-2 text-xs font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
+                            4. Técnicas de relevamiento
+                        </a>
+                        <a href="#caso-infoley" class="block px-3 py-2 text-xs font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
+                            📋 Caso práctico: InfoLey Web
+                        </a>
+                        <a href="#caso-juegos" class="block px-3 py-2 text-xs font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
+                            🎰 Caso práctico: Juegos del País S.H.
+                        </a>
+                        <a href="#checklist" class="block px-3 py-2 text-xs font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
+                            ✅ Checklist de validación
                         </a>
                     </div>
                 </div>
@@ -52,95 +64,235 @@
                 <div class="bg-gradient-to-r from-amber-600 to-orange-700 rounded-2xl p-6 text-white shadow-lg relative overflow-hidden">
                     <div class="absolute -right-10 -bottom-10 opacity-15 text-9xl select-none">📋</div>
                     <span class="px-2.5 py-1 text-[10px] font-black uppercase tracking-wider bg-white/20 rounded-md backdrop-blur-md">Unidad 3</span>
-                    <h1 class="text-2xl md:text-3xl font-extrabold mt-2">Informe de Reconocimiento</h1>
+                    <h1 class="text-2xl md:text-3xl font-extrabold mt-2">Informe de reconocimiento</h1>
                     <p class="text-amber-100 text-sm mt-2 max-w-2xl leading-relaxed">
-                        El entregable formal inicial del relevamiento. Define los límites, el sponsor, el objetivo del mandato y el diagnóstico primario de la organización.
+                        El primer entregable formal del estudio preliminar. Define los límites, la estructura organizacional, el sponsor, el objetivo del mandato y el diagnóstico primario del sistema de información.
                     </p>
                 </div>
 
                 <!-- SECCIÓN 1: CONCEPTO Y PROPÓSITO -->
                 <section id="concepto" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
                     <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
-                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 uppercase tracking-wider">Definición Metodológica</span>
-                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">1. Concepto y Propósito</h2>
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 uppercase tracking-wider">Definición metodológica</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">1. Concepto y propósito</h2>
                         <p class="text-sm text-slate-500 mt-1">Primer instrumento formal de validación entre el equipo de análisis y el sponsor del proyecto.</p>
                     </div>
 
                     <div class="space-y-4 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
                         <p>
-                            Tras realizar las primeras reuniones, entrevistas exploratorias o minutas de relevamiento, el Analista de Sistemas redacta el <strong>Informe de Reconocimiento</strong>. Este documento busca sintetizar el grado de entendimiento alcanzado sobre el problema, el contexto de la empresa y los objetivos fijados por el sponsor.
+                            El <strong>Informe de reconocimiento (IR)</strong> o informe preliminar es la técnica para documentar la información obtenida durante la primera etapa de la metodología de sistemas (estudio preliminar o reconocimiento).
+                        </p>
+                        <p>
+                            Es la primera aproximación a la organización, al problema y al sistema de información actual para validar el entendimiento alcanzado con el sponsor y delimitar el alcance del futuro desarrollo.
                         </p>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                             <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
-                                <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm mb-1">📌 Objetivos Principales</h3>
+                                <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm mb-1">📌 Objetivos del reconocimiento</h3>
                                 <ul class="list-disc list-inside space-y-1 text-slate-600 dark:text-slate-400">
-                                    <li>Formalizar el inicio del proyecto de análisis.</li>
-                                    <li>Validar el alcance y las fronteras iniciales del sistema.</li>
-                                    <li>Confirmar la jerarquía del sponsor y las áreas involucradas.</li>
-                                    <li>Evitar malentendidos y falsas expectativas tempranas.</li>
+                                    <li>Identificar a los actores clave de la organización.</li>
+                                    <li>Determinar con precisión para qué nos llamaron (mandato).</li>
+                                    <li>Conocer las necesidades y expectativas sobre el nuevo proyecto.</li>
+                                    <li>Establecer las restricciones y supuestos del proyecto.</li>
+                                    <li>Obtener un conocimiento general de las áreas afectadas.</li>
+                                    <li>Definir los límites y alcance del sistema a construir.</li>
                                 </ul>
                             </div>
 
                             <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
-                                <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm mb-1">⚠️ Errores Frecuentes</h3>
-                                <ul class="list-disc list-inside space-y-1 text-slate-600 dark:text-slate-400">
-                                    <li>Confundir el objetivo del mandato con requerimientos técnicos detallados.</li>
-                                    <li>Asumir funciones sin haber relevado formalmente el área.</li>
-                                    <li>Mezclar el organigrama administrativo con la jerarquía sistémica.</li>
-                                </ul>
+                                <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm mb-1">👑 El Rol del Sponsor</h3>
+                                <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                                    El <strong>Sponsor</strong> es el rol clave de nivel gerencial o directivo que promueve, financia e impulsa el proyecto. Posee la autoridad interna para facilitar los recursos y asegurar que el proyecto sea exitoso en la organización.
+                                </p>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- SECCIÓN 2: ESTRUCTURA ESTÁNDAR UTN -->
-                <section id="estructura" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                <!-- SECCIÓN 2: ETAPAS DEL PROCESO DE RECONOCIMIENTO -->
+                <section id="etapas-proceso" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
                     <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
-                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-orange-100 dark:bg-orange-950 text-orange-800 dark:text-orange-300 uppercase tracking-wider">Estándar Académico</span>
-                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">2. Estructura Estándar del Informe de Reconocimiento</h2>
-                        <p class="text-sm text-slate-500 mt-1">Los 6 apartados esenciales requeridos en la evaluación práctica.</p>
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-sky-100 dark:bg-sky-950 text-sky-800 dark:text-sky-300 uppercase tracking-wider">Flujo de trabajo sistémico</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">2. Etapas del proceso de reconocimiento</h2>
+                        <p class="text-sm text-slate-500 mt-1">Esquema funcional de Entradas, Procesamiento y Salidas en el relevamiento inicial.</p>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-                        <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800 space-y-1">
-                            <span class="font-extrabold text-amber-600 dark:text-amber-400 text-sm">1. Nombre y Descripción de la Organización</span>
-                            <p class="text-slate-600 dark:text-slate-400">Identificación formal de la institución o empresa, su rubro principal, misión y ámbito de operación.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                        <div class="p-4 bg-sky-50/50 dark:bg-sky-950/20 rounded-xl border border-sky-200 dark:border-sky-900/40 space-y-2">
+                            <span class="px-2 py-0.5 rounded bg-sky-200 dark:bg-sky-900 text-sky-900 dark:text-sky-200 font-bold uppercase">1. Entradas</span>
+                            <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm">Información inicial</h3>
+                            <ul class="list-disc list-inside space-y-1 text-slate-600 dark:text-slate-400">
+                                <li>Objetivos de la organización.</li>
+                                <li>Contexto y marco regulatorio.</li>
+                                <li>Procesos de negocio generales.</li>
+                                <li>Reglas de negocio primarias.</li>
+                                <li>Necesidades manifiestas del cliente.</li>
+                            </ul>
                         </div>
 
-                        <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800 space-y-1">
-                            <span class="font-extrabold text-amber-600 dark:text-amber-400 text-sm">2. Sponsor del Proyecto</span>
-                            <p class="text-slate-600 dark:text-slate-400">Persona o rol directivo de máxima jerarquía que impulsa, autoriza y financia la iniciativa.</p>
+                        <div class="p-4 bg-amber-50/50 dark:bg-amber-950/20 rounded-xl border border-amber-200 dark:border-amber-900/40 space-y-2">
+                            <span class="px-2 py-0.5 rounded bg-amber-200 dark:bg-amber-900 text-amber-900 dark:text-amber-200 font-bold uppercase">2. Proceso</span>
+                            <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm">Obtención de información</h3>
+                            <ul class="list-disc list-inside space-y-1 text-slate-600 dark:text-slate-400">
+                                <li>Entrevistas a la alta gerencia y sponsor.</li>
+                                <li>Relevamiento de la estructura formal (organigrama).</li>
+                                <li>Identificación de funciones y responsables por área.</li>
+                                <li>Detección de problemas y cuellos de botella.</li>
+                                <li>Observación directa del entorno de trabajo.</li>
+                            </ul>
                         </div>
 
-                        <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800 space-y-1">
-                            <span class="font-extrabold text-amber-600 dark:text-amber-400 text-sm">3. Objetivo del Mandato</span>
-                            <p class="text-slate-600 dark:text-slate-400">La meta estratégica principal encomendada al sistema de información a desarrollar o modificar.</p>
-                        </div>
-
-                        <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800 space-y-1">
-                            <span class="font-extrabold text-amber-600 dark:text-amber-400 text-sm">4. Estructura Formal y Funciones</span>
-                            <p class="text-slate-600 dark:text-slate-400">Mapeo de sectores involucrados, organigrama y responsabilidades de las áreas operativas y directivas.</p>
-                        </div>
-
-                        <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800 space-y-1">
-                            <span class="font-extrabold text-amber-600 dark:text-amber-400 text-sm">5. Problemas y Necesidades Detectados</span>
-                            <p class="text-slate-600 dark:text-slate-400">Cuellos de botella, demoras, errores recurrentes o cuellos de información que fundamentan la necesidad del cambio.</p>
-                        </div>
-
-                        <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800 space-y-1">
-                            <span class="font-extrabold text-amber-600 dark:text-amber-400 text-sm">6. Conclusión y Áreas a Relevar</span>
-                            <p class="text-slate-600 dark:text-slate-400">Síntesis diagnóstica e identificación de lagunas de información que se profundizarán en el relevamiento subsiguiente.</p>
+                        <div class="p-4 bg-emerald-50/50 dark:bg-emerald-950/20 rounded-xl border border-emerald-200 dark:border-emerald-900/40 space-y-2">
+                            <span class="px-2 py-0.5 rounded bg-emerald-200 dark:bg-emerald-900 text-emerald-900 dark:text-emerald-200 font-bold uppercase">3. Salida</span>
+                            <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm">Entregable formal</h3>
+                            <ul class="list-disc list-inside space-y-1 text-slate-600 dark:text-slate-400">
+                                <li><strong>Informe de reconocimiento</strong> redactado.</li>
+                                <li>Carta formal dirigida al sponsor.</li>
+                                <li>Anexo A: Organigrama formal firmado.</li>
+                                <li>Anexo B: Mapa de procesos de negocio.</li>
+                                <li>Definición de las próximas áreas a relevar.</li>
+                            </ul>
                         </div>
                     </div>
                 </section>
 
-                <!-- SECCIÓN 3: CASO PRÁCTICO INFOLEY WEB -->
+                <!-- SECCIÓN 3: ESTRUCTURA ESTÁNDAR UTN -->
+                <section id="estructura" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-orange-100 dark:bg-orange-950 text-orange-800 dark:text-orange-300 uppercase tracking-wider">Estándar académico</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">3. Estructura estándar del informe de reconocimiento</h2>
+                        <p class="text-sm text-slate-500 mt-1">Apartados requeridos según la cátedra de Análisis de Sistemas de Información UTN.BA.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                        <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800 space-y-1">
+                            <span class="font-extrabold text-amber-600 dark:text-amber-400 text-sm">1. Introducción (Carta al sponsor)</span>
+                            <p class="text-slate-600 dark:text-slate-400">Carta formal dirigida al sponsor con síntesis del objetivo y solicitud explícita de validación.</p>
+                        </div>
+
+                        <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800 space-y-1">
+                            <span class="font-extrabold text-amber-600 dark:text-amber-400 text-sm">2. Índice</span>
+                            <p class="text-slate-600 dark:text-slate-400">Numeración detallada de secciones y folios de cada apartado e impresos anexos.</p>
+                        </div>
+
+                        <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800 space-y-1">
+                            <span class="font-extrabold text-amber-600 dark:text-amber-400 text-sm">3. Nombre y objetivo de la organización</span>
+                            <p class="text-slate-600 dark:text-slate-400">Razón social, tipo de sociedad (S.A., S.R.L., S.H.), rubro comercial y alcance de distribución geográfica.</p>
+                        </div>
+
+                        <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800 space-y-1">
+                            <span class="font-extrabold text-amber-600 dark:text-amber-400 text-sm">4. Objetivo del mandato y sponsor</span>
+                            <p class="text-slate-600 dark:text-slate-400">Especificación concreta de para qué nos llamaron y quién ejerce la autoridad del proyecto.</p>
+                        </div>
+
+                        <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800 space-y-1">
+                            <span class="font-extrabold text-amber-600 dark:text-amber-400 text-sm">5. Estructura formal y funciones por área</span>
+                            <p class="text-slate-600 dark:text-slate-400">Referencia al organigrama (Anexo A) y detalle de las funciones desempeñadas por cada departamento.</p>
+                        </div>
+
+                        <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800 space-y-1">
+                            <span class="font-extrabold text-amber-600 dark:text-amber-400 text-sm">6. Procesos de negocio, problemas y conclusiones</span>
+                            <p class="text-slate-600 dark:text-slate-400">Referencia al mapa de procesos (Anexo B), lista de cuellos de botella y delimitación de áreas a relevar a continuación.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 4: CARTA AL SPONSOR -->
+                <section id="carta-sponsor" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-indigo-100 dark:bg-indigo-950 text-indigo-800 dark:text-indigo-300 uppercase tracking-wider">Plantilla formal</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">✉️ Carta de presentación al sponsor</h2>
+                        <p class="text-sm text-slate-500 mt-1">Estructura y redacción formal requerida en el encabezado del informe.</p>
+                    </div>
+
+                    <div class="bg-slate-50 dark:bg-slate-950 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 font-mono text-xs text-slate-700 dark:text-slate-300 space-y-3 shadow-inner">
+                        <div class="text-right text-slate-400">Buenos Aires, [Fecha]</div>
+                        <div><strong>A:</strong> [Nombre del Sponsor / Cargo Directivo]</div>
+                        <div><strong>De:</strong> Equipo de Análisis de Sistemas</div>
+                        <div><strong>Asunto:</strong> Presentación del Informe de Reconocimiento del Proyecto [Nombre]</div>
+                        <hr class="border-slate-200 dark:border-slate-800 my-2">
+                        <p>De nuestra mayor consideración:</p>
+                        <p>
+                            Nos dirigimos a usted con el objeto de hacerle entrega del <strong>Informe de reconocimiento</strong> correspondiente a la etapa de estudio preliminar del proyecto encomendado.
+                        </p>
+                        <p>
+                            El presente documento consolida la estructura formal de la organización, las funciones de las áreas involucradas, los procesos de negocio observados y la lista de problemas y necesidades detectados en las primeras reuniones.
+                        </p>
+                        <p>
+                            Solicitamos a usted tenga a bien revisar el contenido expuesto a fin de otorgar su <strong>validación formal</strong> o hacernos llegar sus observaciones antes de dar inicio al relevamiento detallado.
+                        </p>
+                        <p class="pt-2">Sin otro particular, lo saludamos muy atentamente.</p>
+                        <div class="pt-2 text-slate-400 italic">Equipo de Análisis de Sistemas</div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 5: SECCIÓN DE DATOS FALTANTES -->
+                <section id="datos-faltantes" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 uppercase tracking-wider">Recurso didáctico</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">🔍 Sección de datos faltantes</h2>
+                        <p class="text-sm text-slate-500 mt-1">Cómo explicitar las lagunas de información en enunciados de exámenes o prácticos.</p>
+                    </div>
+
+                    <div class="space-y-4 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                        <div class="p-4 bg-amber-50/40 dark:bg-amber-950/20 border-l-4 border-amber-500 rounded-r-xl space-y-2">
+                            <strong class="text-amber-900 dark:text-amber-200 text-sm">💡 Uso didáctico de "Datos Faltantes"</strong>
+                            <p>
+                                Este ítem <strong>no se incluye en un informe profesional real</strong> remitido a la empresa. Sin embargo, en el ámbito académico (exámenes y trabajos prácticos), se utiliza para marcar que el analista identificó un vacío de información en el enunciado y debe regresar al cliente para relevarlo.
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800">
+                                <span class="font-bold text-slate-800 dark:text-slate-200 text-sm">Ejemplos de datos faltantes típicos:</span>
+                                <ul class="list-disc list-inside space-y-1.5 mt-2">
+                                    <li>"Falta especificar la función del Departamento de Recursos Humanos."</li>
+                                    <li>"No se indica claramente la dependencia jerárquica del Sector Publicaciones."</li>
+                                    <li>"Faltan los horarios de atención y el volumen diario de solicitudes procesadas."</li>
+                                </ul>
+                            </div>
+
+                            <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800">
+                                <span class="font-bold text-slate-800 dark:text-slate-200 text-sm">Acción del analista:</span>
+                                <p class="mt-2 leading-relaxed">
+                                    Registrar el punto y programar una entrevista complementaria con el responsable del área correspondiente para completar el relevamiento antes de avanzar a la etapa de diseño.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 6: TÉCNICAS DE RELEVAMIENTO -->
+                <section id="tecnicas-relevamiento" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-teal-100 dark:bg-teal-950 text-teal-800 dark:text-teal-300 uppercase tracking-wider">Herramientas de trabajo</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">4. Técnicas de relevamiento</h2>
+                        <p class="text-sm text-slate-500 mt-1">Cómo recopilar información fidedigna durante las fases tempranas.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                        <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800 space-y-2">
+                            <strong class="text-slate-900 dark:text-slate-100 text-sm">🗣️ Entrevistas (Abiertas vs Cerradas)</strong>
+                            <p class="text-slate-600 dark:text-slate-400">
+                                Las <strong>preguntas abiertas</strong> son ideales en la etapa inicial de reconocimiento para obtener un panorama general del contexto. Las <strong>preguntas cerradas</strong> se emplean posteriormente para confirmar datos cuantitativos o reglas de negocio precisas.
+                            </p>
+                        </div>
+
+                        <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800 space-y-2">
+                            <strong class="text-slate-900 dark:text-slate-100 text-sm">📄 Lectura documental & observación directa</strong>
+                            <p class="text-slate-600 dark:text-slate-400">
+                                La revisión de formularios, planillas, manuales de procedimiento y la observación in situ permiten contrastar el proceso formal decretado contra la operativa real diaria.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 7: CASO INFOLEY WEB -->
                 <section id="caso-infoley" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
                     <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
-                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-violet-100 dark:bg-violet-950 text-violet-800 dark:text-violet-300 uppercase tracking-wider">Ejemplo Real de Parcial</span>
-                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">Caso Práctico: Informe de Reconocimiento InfoLey Web</h2>
-                        <p class="text-sm text-slate-500 mt-1">Ejemplo redactado conforme a la minuta de reunión del parcial K2001.</p>
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-violet-100 dark:bg-violet-950 text-violet-800 dark:text-violet-300 uppercase tracking-wider">Caso de estudio 1</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">Caso práctico: InfoLey Web</h2>
+                        <p class="text-sm text-slate-500 mt-1">Informe redactado con base en la minuta de reunión del parcial K2001.</p>
                     </div>
 
                     <div class="bg-slate-50 dark:bg-slate-950 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 font-mono text-xs text-slate-700 dark:text-slate-300 space-y-4 shadow-inner">
@@ -161,61 +313,98 @@
 
                         <div>
                             <strong class="text-slate-900 dark:text-slate-200 block mb-1">3. OBJETIVO DEL MANDATO:</strong>
-                            Desarrollar e implementar la integración gradual del Sistema Integrado de Gestión (SIG) con InfoLey Web para dar acceso seguro y ágil a toda la información jurídica en una única plataforma, optimizando recursos del Estado y mejorando las consultas ciudadanas.
+                            Desarrollar e implementar la integración gradual del Sistema Integrado de Gestión (SIG) con InfoLey Web para dar acceso seguro y ágil a toda la información jurídica en una única plataforma.
                         </div>
 
                         <div>
                             <strong class="text-slate-900 dark:text-slate-200 block mb-1">4. ESTRUCTURA FORMAL Y FUNCIONES:</strong>
-                            - <strong>Dirección General de InfoLey:</strong> Coordina las áreas. Dependen jerárquicamente:<br>
-                            &nbsp;&nbsp;&bull; <em>Secretaría de Derecho Penal</em>, <em>S. de Derecho Administrativo</em> y <em>S. de Derecho Procesal</em>: Encargadas de recibir y procesar consultas, y de cargar y publicar información jurídica en la web.<br>
-                            &nbsp;&nbsp;&bull; <em>Oficina de Jurisprudencia:</em> Busca y registra fallos de la Corte Suprema.<br>
-                            &nbsp;&nbsp;&bull; <em>Gerencia de Infraestructura:</em> Administra los servidores y la red del organismo.
+                            - <strong>Dirección General de InfoLey:</strong> Coordina las áreas.<br>
+                            &nbsp;&nbsp;&bull; <em>Secretaría de Derecho Penal, Administrativo y Procesal:</em> Recibir y publicar información jurídica.<br>
+                            &nbsp;&nbsp;&bull; <em>Oficina de Jurisprudencia:</em> Registrar fallos de la Corte Suprema.<br>
+                            &nbsp;&nbsp;&bull; <em>Gerencia de Infraestructura:</em> Administrar servidores y red.
                         </div>
 
                         <div>
                             <strong class="text-slate-900 dark:text-slate-200 block mb-1">5. PROBLEMAS Y NECESIDADES DETECTADOS:</strong>
-                            - Alto tiempo de respuesta de los servidores locales ante picos de demanda (más de 500,000 usuarios únicos diarios).<br>
-                            - Falta de consistencia en el contenido de la web por desorganización en la carga legislativa.<br>
-                            - Omisiones en los procedimientos de validación del Manual de Técnica Legislativa por parte de los operadores.
+                            - Alto tiempo de respuesta de los servidores ante picos de demanda.<br>
+                            - Falta de consistencia en el contenido web por desorganización en la carga.<br>
+                            - Omisiones en los procedimientos del Manual de Técnica Legislativa.
                         </div>
 
                         <div>
                             <strong class="text-slate-900 dark:text-slate-200 block mb-1">6. CONCLUSIÓN (ÁREAS A RELEVAR):</strong>
-                            Se requiere llevar a cabo una auditoría técnica en la Gerencia de Infraestructura para estudiar la viabilidad de migrar el servidor a la nube. Asimismo, se planificarán entrevistas con el Jefe de Administración de Proyectos y operadores de carga para diagnosticar las fallas de cumplimiento del Manual de Técnica Legislativa.
+                            Auditar la Gerencia de Infraestructura para estudiar migración a la nube y entrevistarse con el Jefe de Administración de Proyectos.
                         </div>
                     </div>
                 </section>
 
-                <!-- SECCIÓN 4: TÉCNICAS DE RELEVAMIENTO -->
-                <section id="tecnicas-relevamiento" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                <!-- SECCIÓN 8: CASO JUEGOS DEL PAÍS -->
+                <section id="caso-juegos" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
                     <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
-                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-teal-100 dark:bg-teal-950 text-teal-800 dark:text-teal-300 uppercase tracking-wider">Herramientas de Trabajo</span>
-                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">3. Técnicas de Relevamiento</h2>
-                        <p class="text-sm text-slate-500 mt-1">Cómo recopilar información fidedigna durante las fases tempranas.</p>
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 uppercase tracking-wider">Caso de estudio 2 (Oficial Cátedra)</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">Caso práctico: Juegos del País S.H.</h2>
+                        <p class="text-sm text-slate-500 mt-1">Resolución completa paso a paso según la guía del trabajo práctico N° 2.</p>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-                        <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800 space-y-2">
-                            <strong class="text-slate-900 dark:text-slate-100 text-sm">🗣️ Entrevistas (Abiertas vs Cerradas)</strong>
-                            <p class="text-slate-600 dark:text-slate-400">
-                                Las <strong>preguntas abiertas</strong> son ideales en la etapa inicial de reconocimiento para obtener panorama general del contexto. Las <strong>preguntas cerradas</strong> se emplean posteriormente para confirmar datos cuantitativos o reglas de negocio precisas.
-                            </p>
+                    <div class="bg-slate-50 dark:bg-slate-950 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 font-mono text-xs text-slate-700 dark:text-slate-300 space-y-4 shadow-inner">
+                        <div class="text-center border-b border-slate-200 dark:border-slate-800 pb-3">
+                            <strong class="text-slate-900 dark:text-slate-100 text-sm">INFORME DE RECONOCIMIENTO: JUEGOS DEL PAÍS S.H.</strong><br>
+                            <span class="text-[10px] text-slate-500">Fecha de Revisión: 20/04/2026 | Versión: Emisión Original</span>
                         </div>
 
-                        <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800 space-y-2">
-                            <strong class="text-slate-900 dark:text-slate-100 text-sm">📄 Lectura Documental & Observación Directa</strong>
-                            <p class="text-slate-600 dark:text-slate-400">
-                                La revisión de formularios, planillas, manuales de procedimiento y la observación in situ permiten contrastar el proceso formal decretado contra la operativa real diaria.
-                            </p>
+                        <div>
+                            <strong class="text-slate-900 dark:text-slate-200 block mb-1">1. NOMBRE Y OBJETIVO DE LA ORGANIZACIÓN:</strong>
+                            Juegos del País S.H. Se dedica a la administración de agencias de lotería en Mendoza, Corrientes, Chaco, Neuquén y Misiones (con apertura planificada en Córdoba, Salta y Santiago del Estero).
+                        </div>
+
+                        <div>
+                            <strong class="text-slate-900 dark:text-slate-200 block mb-1">2. SPONSOR:</strong>
+                            Ernesto del Tránsito.
+                        </div>
+
+                        <div>
+                            <strong class="text-slate-900 dark:text-slate-200 block mb-1">3. OBJETIVO DEL MANDATO:</strong>
+                            Implementación de un sistema de seguimiento de jugadas que abarque desde el sorteo hasta el pago de premios.
+                        </div>
+
+                        <div>
+                            <strong class="text-slate-900 dark:text-slate-200 block mb-1">4. ESTRUCTURA FORMAL Y FUNCIONES:</strong>
+                            - <strong>Comité Directivo:</strong> Establecer pautas generales, planes de negocio y presupuestos.<br>
+                            - <strong>Gerencia Administrativa:</strong> Centralizar la administración de sucursales.<br>
+                            - <strong>Departamento de Recursos:</strong> Selección, evaluación y rotación de personal.<br>
+                            - <strong>Departamento de Sorteos:</strong> Definir sorteos, dar alta e ingresar números favorecidos.<br>
+                            - <strong>Gerencia de Finanzas:</strong> Centralizar las funciones de finanzas.<br>
+                            - <strong>Departamento de Recaudaciones:</strong> Consolidar saldos depositados y liberar pagos.<br>
+                            - <strong>Departamento de Premios:</strong> Procesar apuestas, determinar premios y emitir estadísticas.<br>
+                            - <strong>Sector Publicaciones:</strong> Publicar resultados.
+                        </div>
+
+                        <div>
+                            <strong class="text-slate-900 dark:text-slate-200 block mb-1">5. PROBLEMAS Y NECESIDADES DETECTADOS:</strong>
+                            - El sistema de seguimiento debe ser web enabled.<br>
+                            - La base de datos debe ser MySQL o equivalente.<br>
+                            - El seguimiento debe cumplir con la Ley de Juegos y Casinos.
+                        </div>
+
+                        <div>
+                            <strong class="text-slate-900 dark:text-slate-200 block mb-1">6. CONCLUSIÓN (ÁREAS A RELEVAR):</strong>
+                            Las áreas a relevar en detalle son los Departamentos de Premios, Recaudaciones, Sorteos y Publicaciones y su interacción con el resto de la empresa.
+                        </div>
+
+                        <div class="pt-2 border-t border-slate-200 dark:border-slate-800 text-amber-600 dark:text-amber-400">
+                            <strong>🔍 DATOS FALTANTES (NOTAS DEL ANALISTA):</strong><br>
+                            - Falta definir las funciones del Departamento de Administración.<br>
+                            - Falta definir las funciones de Informática Andina e Informática Noroeste.<br>
+                            - Falta indicar la dependencia del Sector Publicaciones.
                         </div>
                     </div>
                 </section>
 
-                <!-- SECCIÓN 5: CHECKLIST DE VALIDACIÓN -->
+                <!-- SECCIÓN 9: CHECKLIST -->
                 <section id="checklist" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
                     <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
-                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 uppercase tracking-wider">Control de Calidad</span>
-                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">✅ Checklist para Evaluar tu Informe</h2>
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 uppercase tracking-wider">Control de calidad</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">✅ Checklist para evaluar tu informe</h2>
                         <p class="text-sm text-slate-500 mt-1">Asegurate de cumplir estos puntos antes de presentar tu entregable.</p>
                     </div>
 
@@ -226,15 +415,15 @@
                         </label>
                         <label class="flex items-center gap-3 p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl cursor-pointer">
                             <input type="checkbox" checked class="w-4 h-4 text-emerald-600 rounded">
-                            <span>¿Se especificaron las funciones principales de cada área mencionada?</span>
+                            <span>¿Se incluyó la carta formal al sponsor solicitando la validación del documento?</span>
                         </label>
                         <label class="flex items-center gap-3 p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl cursor-pointer">
                             <input type="checkbox" checked class="w-4 h-4 text-emerald-600 rounded">
-                            <span>¿Se diferenciaron los problemas actuales de las necesidades/soluciones propuestas?</span>
+                            <span>¿Se especificaron las funciones principales de cada área relevada?</span>
                         </label>
                         <label class="flex items-center gap-3 p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl cursor-pointer">
                             <input type="checkbox" checked class="w-4 h-4 text-emerald-600 rounded">
-                            <span>¿La conclusión indica claramente cuáles son los próximos pasos y sectores a profundizar?</span>
+                            <span>¿Se listaron las lagunas de información en la sección de datos faltantes?</span>
                         </label>
                     </div>
                 </section>
@@ -244,7 +433,7 @@
     </div>
 
     <footer class="bg-slate-900 text-slate-400 text-xs text-center p-4 mt-auto border-t border-slate-800">
-        <p>© 2026 - Análisis de Sistemas - Clase 03: Informe de Reconocimiento</p>
+        <p>© 2026 - Análisis de sistemas - Clase 03: Informe de reconocimiento</p>
     </footer>
 
     <script src="../../component.js"></script>
