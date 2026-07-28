@@ -488,15 +488,28 @@ function enhanceSectionTitles() {
         const h2 = headerDiv.querySelector('h2');
         if (!h2) return;
 
-        // Extraer número si existe en el texto (ej: "1. Título")
+        // Extraer y limpiar el texto del título
         const original = h2.textContent.trim();
-        const match = original.match(/^\s*(\d+)[\.\-]\s*(.+)/);
-        const number = match ? match[1] : (idx + 1).toString();
-        let text = match ? match[2] : original;
+        // Remover emojis/puntuación inicial y prefijo numérico si existe
+        let cleaned = original.replace(/^[^0-9A-Za-zÁÉÍÓÚÜÑáéíóúüñ]+/, '').replace(/^\s*(\d+)[\.\-\)]?\s*/, '');
+        // Guardar número (si el título original tenía número) o calcular por índice
+        const numberMatch = original.match(/^\s*(\d+)[\.\-\)]/);
+        const number = numberMatch ? numberMatch[1] : (idx + 1).toString();
 
-        // Normalizar a notación común: "Nombre del título" (sentence case)
-        text = text.trim().toLowerCase();
-        if (text.length > 0) text = text.charAt(0).toUpperCase() + text.slice(1);
+        // Normalizar a sentence case salvo acrónimos (si todo en mayúsculas, respetar)
+        let text = cleaned;
+        if (text && text === text.toUpperCase()) {
+            // Posible acrónimo (INVEST, BDD...) -> mantener
+            text = text;
+        } else {
+            text = text.trim().toLowerCase();
+            if (text.length > 0) text = text.charAt(0).toUpperCase() + text.slice(1);
+        }
+
+        // Si es la sección de autoevaluación, eliminar íconos y hacer el título más llamativo
+        const isAutoEval = section.id === 'autoevaluacion' || section.id === 'autoevaluacion-interactiva' || /autoevaluac/i.test(section.id);
+
+        const titleClasses = isAutoEval ? 'text-2xl font-extrabold text-amber-700 dark:text-amber-300 ml-1 section-title-text' : 'text-lg font-semibold text-slate-800 dark:text-slate-100 ml-1 section-title-text';
 
         // Reemplazar el h2 por una versión con número estilizado y botón de colapsado
         h2.innerHTML = `
@@ -504,7 +517,7 @@ function enhanceSectionTitles() {
                 <div class="flex items-center gap-3">
                     <span class="text-sm font-semibold text-slate-400 dark:text-slate-500 opacity-90">|</span>
                     <span class="text-sm font-semibold text-slate-700 dark:text-slate-200 section-number">${number}</span>
-                    <span class="text-lg font-semibold text-slate-800 dark:text-slate-100 ml-1 section-title-text">${text}</span>
+                    <span class="${titleClasses}">${text}</span>
                 </div>
                 <button aria-expanded="true" class="toggle-section-btn text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 transition-transform" title="Minimizar/Expandir sección">
                     <svg class="w-4 h-4 transform transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -516,35 +529,81 @@ function enhanceSectionTitles() {
         const headerIndex = Array.from(section.children).indexOf(headerDiv);
         const contentChildren = Array.from(section.children).slice(headerIndex + 1);
 
+        // guardar referencias a elementos que deben ocultarse cuando esté minimizada
+        const subtitleElems = Array.from(headerDiv.querySelectorAll('p, .text-sm')).filter(el => el && el.tagName !== 'H2');
+
+        // Guardar estilos originales para restaurar
+        if (!section.__originalStyles) {
+            section.__originalStyles = {
+                padding: section.style.padding || '',
+            };
+        }
+        if (!headerDiv.__originalStyles) {
+            headerDiv.__originalStyles = {
+                paddingBottom: headerDiv.style.paddingBottom || '',
+                marginBottom: headerDiv.style.marginBottom || ''
+            };
+        }
+
         // Estado inicial (expandido)
         section.__expanded = true;
 
-        toggleBtn?.addEventListener('click', (e) => {
-            e.preventDefault();
-            section.__expanded = !section.__expanded;
-
+        const applyCollapseState = (expanded) => {
             // Mostrar/ocultar contenido posterior al header
             contentChildren.forEach(el => {
-                if (section.__expanded) {
+                if (expanded) {
                     el.classList.remove('hidden');
                 } else {
                     el.classList.add('hidden');
                 }
             });
 
+            // Mostrar/ocultar subtítulo dentro del header (para que el collapsed quede compacto)
+            subtitleElems.forEach(el => {
+                if (expanded) el.classList.remove('hidden'); else el.classList.add('hidden');
+            });
+
+            // Ajustar padding para que las secciones minimizadas sean compactas y de tamaño similar
+            if (!expanded) {
+                section.classList.add('section-collapsed');
+                section.style.padding = '0.6rem';
+                headerDiv.style.paddingBottom = '0.125rem';
+                headerDiv.style.marginBottom = '0';
+            } else {
+                section.classList.remove('section-collapsed');
+                section.style.padding = section.__originalStyles.padding;
+                headerDiv.style.paddingBottom = headerDiv.__originalStyles.paddingBottom;
+                headerDiv.style.marginBottom = headerDiv.__originalStyles.marginBottom;
+            }
+
             // Rotar cheurón
             const svg = toggleBtn.querySelector('svg');
-            if (svg) svg.style.transform = section.__expanded ? 'rotate(0deg)' : 'rotate(180deg)';
+            if (svg) svg.style.transform = expanded ? 'rotate(0deg)' : 'rotate(180deg)';
 
-            toggleBtn.setAttribute('aria-expanded', section.__expanded ? 'true' : 'false');
+            toggleBtn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+            section.__expanded = expanded;
+        };
+
+        toggleBtn?.addEventListener('click', (e) => {
+            e.preventDefault();
+            applyCollapseState(!section.__expanded);
         });
 
-        // Hacer que click en el header también active el toggle (excepto cuando se hace click en el propio botón)
+        // Hacer que click en el header también active el toggle
+        // pero IGNORAR clicks en elementos interactivos (botones, enlaces, inputs, etc.) para no interferir con controles internos
         headerDiv.style.cursor = 'pointer';
         headerDiv.addEventListener('click', (e) => {
             if (e.target.closest('.toggle-section-btn')) return;
-            toggleBtn?.click();
+            if (e.target.closest('button, a, input, textarea, select, label, .tgs-dot')) return;
+            // si se hace click en cualquier otro lugar del header, toggle
+            applyCollapseState(!section.__expanded);
         });
+
+        // Inicializar estado (asegurar consistencia)
+        applyCollapseState(true);
+
+        // Hacer que el control del carrusel u otros botones no colapsen la sección accidentalmente
+        // (si en algún caso se quiere que un botón concreto colapse, añadir la clase "collapse-toggle" a ese botón en el HTML)
     });
 }
 
