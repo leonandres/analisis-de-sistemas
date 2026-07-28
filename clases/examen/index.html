@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Repaso de conceptos clave para el parcial de Análisis de Sistemas - UTN.BA">
+    <title>Repaso de Examen | Análisis de Sistemas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { darkMode: 'class' }
+    </script>
+    <link rel="stylesheet" href="../../styles.css">
+    <!-- Favicon SVG -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-200">
+
+    <div id="header-container"></div>
+
+    <div class="main-content-wrapper flex-1 w-full pt-20">
+        
+        <div class="max-w-7xl mx-auto w-full p-4 md:p-6 grid grid-cols-1 lg:grid-cols-4 gap-6 flex-1">        
+            
+            <!-- SIDEBAR GLOBAL DINÁMICO -->
+            <nav id="sidebar-container" class="lg:col-span-1 space-y-2"></nav>
+
+            <!-- CONTENIDO PRINCIPAL -->
+            <main class="lg:col-span-3 space-y-8">
+                
+                <!-- El contenido de Ventas vs Compras ha sido trasladado a la Clase 06 de Requerimientos -->
+
+                <!-- SECCIÓN 2: INFORME DE RECONOCIMIENTO -->
+                <section id="informe-reconocimiento" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                        <div class="mt-4 p-4 bg-gradient-to-r from-amber-500/10 to-orange-500/10 rounded-xl border border-amber-500/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                            <div>
+                                <h4 class="font-bold text-slate-800 dark:text-slate-100 text-sm">📚 Clase Completa Dedicada</h4>
+                                <p class="text-xs text-slate-600 dark:text-slate-400">Accedé a la guía completa, técnicas de relevamiento y checklists de validación.</p>
+                            </div>
+                            <a href="../clase-03-informe-de-reconocimiento/index.html" class="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs rounded-xl shadow-xs transition-all flex-shrink-0">
+                                Ver Clase 03 ➔
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                        <p>
+                            Tras realizar las primeras entrevistas o minutas de reunión, el analista de sistemas redacta este informe para validar el entendimiento con el sponsor del proyecto. Sirve para definir los límites y el alcance del sistema a construir.
+                        </p>
+                        
+                        <h3 class="font-bold text-slate-800 dark:text-slate-200 text-base mt-4">Estructura Estándar del Informe (UTN)</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800/60 text-xs space-y-2">
+                                <div><strong class="text-slate-850 dark:text-slate-200">1. Nombre y Descripción:</strong> Identificación de la organización y su rubro.</div>
+                                <div><strong class="text-slate-850 dark:text-slate-200">2. Sponsor:</strong> Quién solicita e impulsa el proyecto (líder jerárquico).</div>
+                                <div><strong class="text-slate-850 dark:text-slate-200">3. Objetivo del Mandato:</strong> La meta principal encomendada al sistema.</div>
+                            </div>
+                            <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800/60 text-xs space-y-2">
+                                <div><strong class="text-slate-850 dark:text-slate-200">4. Estructura y Funciones:</strong> Organigrama formal y responsabilidades de las áreas involucradas.</div>
+                                <div><strong class="text-slate-850 dark:text-slate-200">5. Problemas/Necesidades:</strong> Cuellos de botella y dolencias actuales.</div>
+                                <div><strong class="text-slate-850 dark:text-slate-200">6. Conclusión / Áreas a relevar:</strong> Siguientes pasos de investigación del analista.</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 3: EJEMPLO DE INFORME -->
+                <section id="ejemplo-informe" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-violet-100 dark:bg-violet-950 text-violet-800 dark:text-violet-300 uppercase tracking-wider">Caso Práctico de Parcial</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">Ejemplo Real: Caso InfoLey Web</h2>
+                        <p class="text-sm text-slate-500 mt-1">Informe redactado con base en la minuta de reunión del parcial K2001.</p>
+                    </div>
+
+                    <div class="bg-slate-50 dark:bg-slate-950 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 font-mono text-xs text-slate-700 dark:text-slate-350 space-y-4 shadow-inner">
+                        <div class="text-center border-b border-slate-200 dark:border-slate-800 pb-3">
+                            <strong class="text-slate-900 dark:text-slate-100 text-sm">INFORME DE RECONOCIMIENTO: SISTEMA INFOLEY WEB</strong><br>
+                            <span class="text-[10px] text-slate-500">Fecha: 08 de Julio de 2024 | Analista: Equipo de Análisis</span>
+                        </div>
+
+                        <div>
+                            <strong class="text-slate-900 dark:text-slate-200 block mb-1">1. NOMBRE Y DESCRIPCIÓN DE LA ORGANIZACIÓN:</strong>
+                            InfoLey, organismo dependiente de la Dirección General de InfoLey, Ministerio de Justicia de la Nación. Se encarga de brindar asistencia y consulta legislativa y jurídica pública a través de su portal web.
+                        </div>
+
+                        <div>
+                            <strong class="text-slate-900 dark:text-slate-200 block mb-1">2. SPONSOR:</strong>
+                            Ing. C. Chahin, Directora General de InfoLey.
+                        </div>
+
+                        <div>
+                            <strong class="text-slate-900 dark:text-slate-200 block mb-1">3. OBJETIVO DEL MANDATO:</strong>
+                            Desarrollar e implementar la integración gradual del Sistema Integrado de Gestión (SIG) con InfoLey Web para dar acceso seguro y ágil a toda la información jurídica en una única plataforma, optimizando recursos del Estado y mejorando las consultas ciudadanas.
+                        </div>
+
+                        <div>
+                            <strong class="text-slate-900 dark:text-slate-200 block mb-1">4. ESTRUCTURA FORMAL Y FUNCIONES:</strong>
+                            - <strong>Dirección General de InfoLey:</strong> Coordina las áreas. Dependen jerárquicamente:<br>
+                            &nbsp;&nbsp;&bull; <em>Secretaría de Derecho Penal</em>, <em>S. de Derecho Administrativo</em> y <em>S. de Derecho Procesal</em>: Encargadas de recibir y procesar consultas, y de cargar y publicar información jurídica en la web.<br>
+                            &nbsp;&nbsp;&bull; <em>Oficina de Jurisprudencia:</em> Busca y registra fallos de la Corte Suprema.<br>
+                            &nbsp;&nbsp;&bull; <em>Gerencia de Infraestructura:</em> Administra los servidores y la red del organismo.
+                        </div>
+
+                        <div>
+                            <strong class="text-slate-900 dark:text-slate-200 block mb-1">5. PROBLEMAS Y NECESIDADES DETECTADOS:</strong>
+                            - Alto tiempo de respuesta de los servidores locales ante picos de demanda (más de 500,000 usuarios únicos diarios).<br>
+                            - Falta de consistencia en el contenido de la web por desorganización en la carga legislativa.<br>
+                            - Omisiones en los procedimientos de validación del Manual de Técnica Legislativa por parte de los operadores.
+                        </div>
+
+                        <div>
+                            <strong class="text-slate-900 dark:text-slate-200 block mb-1">6. CONCLUSIÓN (ÁREAS A RELEVAR):</strong>
+                            Se requiere llevar a cabo una auditoría técnica en la Gerencia de Infraestructura para estudiar la viabilidad de migrar el servidor a la nube. Asimismo, se planificarán entrevistas con el Jefe de Administración de Proyectos y operadores de carga para diagnosticar las fallas de cumplimiento del Manual de Técnica Legislativa.
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 4: CASOS DE USO -->
+                <section id="casos-uso" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-sky-100 dark:bg-sky-950 text-sky-800 dark:text-sky-300 uppercase tracking-wider">UML & Requerimientos</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">Casos de Uso (Conceptos Fundamentales)</h2>
+                        <p class="text-sm text-slate-500 mt-1">Conceptos base para entender la próxima clase de Casos de Uso.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-250 dark:border-slate-800">
+                            <span class="text-lg">🎭</span>
+                            <h4 class="font-extrabold text-xs uppercase text-slate-800 dark:text-slate-200 mt-2 mb-1">Actor</h4>
+                            <p class="text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed">
+                                Un rol externo al sistema que interactúa con él (ej: Ciudadano, Secretario, Jefe de Proyectos). <em>¡Ojo! Un actor no es una persona, es un rol.</em>
+                            </p>
+                        </div>
+
+                        <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-250 dark:border-slate-800">
+                            <span class="text-lg">🎬</span>
+                            <h4 class="font-extrabold text-xs uppercase text-slate-800 dark:text-slate-200 mt-2 mb-1">Escenario</h4>
+                            <p class="text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed">
+                                Una interacción específica actor-sistema. Un Caso de Uso agrupa múltiples escenarios (flujos exitosos y de error/excepción).
+                            </p>
+                        </div>
+
+                        <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-250 dark:border-slate-800">
+                            <span class="text-lg">🔗</span>
+                            <h4 class="font-extrabold text-xs uppercase text-slate-800 dark:text-slate-200 mt-2 mb-1">Relación Include</h4>
+                            <p class="text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed">
+                                Relación obligatoria donde un Caso de Uso base requiere la ejecución de otro sub-caso (ej: Generar Expediente &lt;&lt;include&gt;&gt; Iniciar Sesión).
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 5: 1° PARCIAL INTERACTIVO -->
+                <section id="parcial-1" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <div>
+                            <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-indigo-100 dark:bg-indigo-950 text-indigo-800 dark:text-indigo-300 uppercase tracking-wider">Simulador Oficial</span>
+                            <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">📝 1° Parcial Interactivo (08/07/2024)</h2>
+                            <p class="text-sm text-slate-500 mt-1">Primer Parcial Tema 1 - Curso K2001. Resolvé las consignas de teoría y práctica.</p>
+                        </div>
+                        <a href="resolucion_parciales.md" target="_blank" class="px-3.5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-xl shadow-sm transition-all flex items-center gap-1.5 cursor-pointer">
+                            <span>📄 Descargar Guía Resuelta</span>
+                        </a>
+                    </div>
+
+                    <!-- Banner de la sección -->
+                    <img src="../../assets/images/reconocimiento-banner.jpg" class="w-full h-40 object-cover rounded-xl mb-6 shadow-sm border border-slate-200 dark:border-slate-800" alt="Reconocimiento Banner">
+
+                    <div class="space-y-6">
+                        <!-- Bloque de Teoría -->
+                        <div>
+                            <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm mb-3">Parte I: Preguntas de Teoría</h3>
+                            
+                            <div class="space-y-4">
+                                <!-- Pregunta 1: SI y Homeostasis -->
+                                <div class="p-4 bg-slate-50 dark:bg-slate-800/30 rounded-xl border border-slate-200 dark:border-slate-800 font-sans">
+                                    <strong class="text-xs text-slate-800 dark:text-slate-200">1. ¿Qué es un SI? Da un ejemplo en laboratorios y relacionalo con la homeostasis.</strong>
+                                    <textarea id="p1-respuesta" class="w-full mt-2 p-3 text-xs bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl focus:ring-1 focus:ring-indigo-500 outline-none text-slate-700 dark:text-slate-300 min-h-[4rem]" placeholder="Escribí tu respuesta acá para comparar..."></textarea>
+                                    <div class="mt-2 flex justify-between items-center">
+                                        <button onclick="toggleRespuestaCatedra('p1-catedra')" class="text-xs text-indigo-600 dark:text-indigo-400 font-bold hover:underline cursor-pointer">Ver Solución de la Cátedra ➔</button>
+                                        <button onclick="toggleRespuestaCatedra('p1-alumno')" class="text-xs text-amber-600 dark:text-amber-400 font-semibold hover:underline cursor-pointer">Ver examen de Alumno (Nota: 6) ➔</button>
+                                    </div>
+                                    <div id="p1-catedra" class="hidden mt-3 p-3 bg-emerald-50 dark:bg-emerald-950/20 text-emerald-800 dark:text-emerald-300 border border-emerald-100 dark:border-emerald-900/50 rounded-xl text-xs">
+                                        <strong>Respuesta Ideal Cátedra:</strong> Un SI recolecta, procesa, almacena y distribuye información. En un laboratorio (ej: LIMS), los datos de muestras de sangre se ingresan (Entrada), se calculan promedios (Procesamiento), se guardan en la BD (Almacenamiento) y se genera el PDF de resultados (Salida). La homeostasis es el equilibrio dinámico autorregulado; el sistema avisa si hay valores críticos fuera de rango para que se actúe.
+                                    </div>
+                                    <div id="p1-alumno" class="hidden mt-3 p-3 bg-amber-50 dark:bg-amber-950/20 text-amber-800 dark:text-amber-300 border border-amber-100 dark:border-amber-900/50 rounded-xl text-xs">
+                                        <strong>Respuesta Escrita por Alumno (Aprobada):</strong> "Es un sistema que recolecta, procesa, almacena y distribuye información. En un laboratorio por ejemplo, se le cargan datos relacionados al experimento, almacenándolos y posteriormente procesándolos para transformarlos (sacar un promedio) y distribuyéndolo al científico cuando lo requiera."
+                                    </div>
+                                </div>
+
+                                <!-- Pregunta 2: Procesos Operativos -->
+                                <div class="p-4 bg-slate-50 dark:bg-slate-800/30 rounded-xl border border-slate-200 dark:border-slate-800">
+                                    <strong class="text-xs text-slate-800 dark:text-slate-200 font-sans block mb-2">2. Los procesos de negocio...</strong>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-sans">
+                                        <button onclick="verificarRespuestaSimple(this, true, 'p2-explicacion')" class="p-2.5 bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 rounded-lg text-left text-slate-750 dark:text-slate-350 cursor-pointer">
+                                            Operativos: tienen como propósito la creación de valor y el logro de objetivos.
+                                        </button>
+                                        <button onclick="verificarRespuestaSimple(this, false, 'p2-explicacion')" class="p-2.5 bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 rounded-lg text-left text-slate-755 dark:text-slate-355 cursor-pointer">
+                                            De soporte: tienen contacto directo con el cliente final y facturan los ingresos.
+                                        </button>
+                                    </div>
+                                    <div id="p2-explicacion" class="hidden mt-3 p-3 bg-slate-100 dark:bg-slate-800 rounded-xl text-xs text-slate-700 dark:text-slate-300">
+                                        Los procesos <strong>Operativos</strong> son los responsables directos de generar y entregar valor al cliente externo de la organización.
+                                    </div>
+                                </div>
+
+                                <!-- Pregunta 4: Req No Funcionales Organizacionales -->
+                                <div class="p-4 bg-slate-50 dark:bg-slate-800/30 rounded-xl border border-slate-200 dark:border-slate-800">
+                                    <strong class="text-xs text-slate-800 dark:text-slate-200 font-sans block mb-2">4. Identifique dos requerimientos no funcionales organizacionales correctos:</strong>
+                                    <div class="grid grid-cols-1 gap-2 text-xs font-sans">
+                                        <button onclick="verificarRespuestaSimple(this, true, 'p4-explicacion')" class="p-2.5 bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 rounded-lg text-left text-slate-750 dark:text-slate-350 cursor-pointer">
+                                            "El sistema debe ser escrito en C++" y "Debe comunicarse usando un framework específico".
+                                        </button>
+                                        <button onclick="verificarRespuestaSimple(this, false, 'p4-explicacion')" class="p-2.5 bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 rounded-lg text-left text-slate-755 dark:text-slate-355 cursor-pointer">
+                                            "El sistema debe tardar menos de 2 segundos en responder" y "Cumplir con la Ley de Protección de Datos".
+                                        </button>
+                                    </div>
+                                    <div id="p4-explicacion" class="hidden mt-3 p-3 bg-slate-100 dark:bg-slate-800 rounded-xl text-xs text-slate-700 dark:text-slate-300">
+                                        La primera opción es correcta porque representa restricciones tecnológicas internas de la propia organización (programación en C++ y uso de framework corporativo). La segunda opción contiene un requerimiento de calidad (rendimiento) y uno externo (ley).
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bloque de Verdadero o Falso -->
+                        <div>
+                            <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm mb-3">Parte II: Verdadero o Falso (Justificado)</h3>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <!-- Q6 -->
+                                <div class="p-4 bg-slate-50 dark:bg-slate-800/30 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col justify-between font-sans">
+                                    <div>
+                                        <span class="text-[9px] font-bold text-slate-400">PREGUNTA 6</span>
+                                        <p class="text-xs text-slate-800 dark:text-slate-250 mt-1 font-medium">"En el relevamiento es mejor utilizar siempre preguntas cerradas porque de esa forma el usuario no explaya sobre aspectos de su trabajo que no son relevantes."</p>
+                                    </div>
+                                    <div class="mt-4">
+                                        <div class="flex gap-2">
+                                            <button onclick="verificarVF(this, false, 'q6-just')" class="flex-1 py-1.5 bg-white dark:bg-slate-900 hover:bg-slate-100 border border-slate-200 dark:border-slate-800 rounded-lg text-xs font-semibold cursor-pointer">Verdadero</button>
+                                            <button onclick="verificarVF(this, true, 'q6-just')" class="flex-1 py-1.5 bg-white dark:bg-slate-900 hover:bg-slate-100 border border-slate-200 dark:border-slate-800 rounded-lg text-xs font-semibold cursor-pointer">Falso</button>
+                                        </div>
+                                        <div id="q6-just" class="hidden mt-2.5 p-2.5 bg-emerald-50 dark:bg-emerald-950/20 text-emerald-800 dark:text-emerald-300 border border-emerald-100 dark:border-emerald-900/50 rounded-lg text-[10px]">
+                                            <strong>Justificación:</strong> Falso. No existe preferencia única. Depende del analista y la situación. Al inicio se prefieren preguntas abiertas para relevar procesos globales.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Q8 -->
+                                <div class="p-4 bg-slate-50 dark:bg-slate-800/30 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col justify-between font-sans">
+                                    <div>
+                                        <span class="text-[9px] font-bold text-slate-400">PREGUNTA 8</span>
+                                        <p class="text-xs text-slate-800 dark:text-slate-250 mt-1 font-medium">"En un sistema de inscripciones algunos ejemplos de requerimientos funcionales pueden ser el tiempo de generación del comprobante de inscripción, el tipo de letra utilizado y la definición de los datos a imprimir."</p>
+                                    </div>
+                                    <div class="mt-4">
+                                        <div class="flex gap-2">
+                                            <button onclick="verificarVF(this, false, 'q8-just')" class="flex-1 py-1.5 bg-white dark:bg-slate-900 hover:bg-slate-100 border border-slate-200 dark:border-slate-800 rounded-lg text-xs font-semibold cursor-pointer">Verdadero</button>
+                                            <button onclick="verificarVF(this, true, 'q8-just')" class="flex-1 py-1.5 bg-white dark:bg-slate-900 hover:bg-slate-100 border border-slate-200 dark:border-slate-800 rounded-lg text-xs font-semibold cursor-pointer">Falso</button>
+                                        </div>
+                                        <div id="q8-just" class="hidden mt-2.5 p-2.5 bg-emerald-50 dark:bg-emerald-950/20 text-emerald-800 dark:text-emerald-300 border border-emerald-100 dark:border-emerald-900/50 rounded-lg text-[10px]">
+                                            <strong>Justificación:</strong> Falso. El tiempo de generación es un requerimiento no funcional de calidad (rendimiento), y el tipo de letra es no funcional de usabilidad.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Caso de Estudio: InfoLey Web -->
+                        <div>
+                            <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm mb-3">Parte III: Caso Práctico - Informe de Reconocimiento</h3>
+                            <div class="p-4 bg-slate-50 dark:bg-slate-950 rounded-xl border border-slate-200 dark:border-slate-850 text-xs font-sans space-y-3">
+                                <p class="text-slate-500 italic">De acuerdo a la minuta de reunión cargada en la sección teórica, validá las respuestas claves del informe:</p>
+                                
+                                <div class="space-y-3">
+                                    <div>
+                                        <span class="font-bold text-slate-700 dark:text-slate-300">1. Objetivo de Mandato</span>
+                                        <textarea class="w-full mt-1 p-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg outline-none text-[11px]" readonly>Desarrollar la integración gradual del Sistema Integrado de Gestión (SIG) con InfoLey Web para dar acceso seguro y ágil a toda la información jurídica en una única plataforma, optimizando recursos del Estado y mejorando las consultas ciudadanas.</textarea>
+                                    </div>
+
+                                    <div>
+                                        <span class="font-bold text-slate-700 dark:text-slate-300">2. Datos Faltantes para Relevar</span>
+                                        <div class="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-2 text-[10px]">
+                                            <div class="p-3 bg-red-50/20 dark:bg-red-950/10 border border-red-200 dark:border-red-900/50 rounded-lg">
+                                                <strong class="text-red-700 dark:text-red-400">¿Qué le faltó relevar al alumno?</strong>
+                                                <ul class="list-disc pl-4 mt-1 space-y-1 text-slate-650 dark:text-slate-400">
+                                                    <li>Responsabilidades/funciones específicas del sector de Derecho Penal, Administrativo y Procesal.</li>
+                                                    <li>Organigrama y dependencias de la Dirección de Sistemas.</li>
+                                                </ul>
+                                            </div>
+                                            <div class="p-emerald-50/20 dark:p-emerald-950/10 p-3 bg-emerald-50/20 dark:bg-emerald-950/10 border border-emerald-200 dark:border-emerald-900/50 rounded-lg">
+                                                <strong class="text-emerald-700 dark:text-emerald-400">Tip de la Cátedra:</strong>
+                                                <p class="mt-1 text-slate-650 dark:text-slate-400">En el informe de reconocimiento siempre se debe listar qué sectores formales carecen de funciones explicitadas en la minuta inicial.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Caso de Estudio: Casos de Uso (Generar Expediente) -->
+                        <div>
+                            <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm mb-3">Parte IV: Caso Práctico - Casos de Uso</h3>
+                            
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                                <!-- Diagrama UML -->
+                                <div class="p-4 bg-slate-50 dark:bg-slate-800/30 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col items-center">
+                                    <strong class="text-xs text-slate-800 dark:text-slate-200 font-sans mb-3">UML Diagramado con Mermaid</strong>
+                                    <div class="mermaid text-xs w-full flex justify-center">
+                                        graph TD
+                                            sec((Secretario))
+                                            jefe((Jefe de Proyectos))
+                                            ciu((Ciudadano))
+                                            
+                                            uc1(Generar expediente)
+                                            uc2(Iniciar Sesión)
+                                            uc3(Consultar Proyectos Rechazados)
+                                            uc4(Seguimiento de Proyecto)
+                                            
+                                            sec --> uc1
+                                            jefe --> uc3
+                                            ciu --> uc4
+                                            
+                                            uc1 -.->|&lt;&lt;include&gt;&gt;| uc2
+                                            uc3 -.->|&lt;&lt;include&gt;&gt;| uc2
+                                    </div>
+                                </div>
+
+                                <!-- Especificación del Caso de Uso -->
+                                <div class="p-4 bg-slate-50 dark:bg-slate-800/30 rounded-xl border border-slate-200 dark:border-slate-800">
+                                    <strong class="text-xs text-slate-800 dark:text-slate-200 font-sans block mb-2">Especificación de "Generar Expediente":</strong>
+                                    <div class="text-[10px] text-slate-600 dark:text-slate-400 space-y-2">
+                                        <p><strong>Actor:</strong> Secretario</p>
+                                        <p><strong>Precondición:</strong> El Secretario está logueado en el sistema.</p>
+                                        <p><strong>Curso Alternativo de Error Clave (Materia incorrecta):</strong></p>
+                                        <div class="p-2.5 bg-red-50/30 dark:bg-red-950/10 border border-red-200 dark:border-red-900/50 rounded-lg">
+                                            <em>7.a. La materia no corresponde a la Cámara de Origen:</em><br>
+                                            1. El sistema muestra: "No corresponde iniciar el proyecto en esta cámara".<br>
+                                            2. El Secretario confirma la lectura y el sistema regresa al menú principal.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 6: 2° PARCIAL INTERACTIVO -->
+                <section id="parcial-2" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-indigo-100 dark:bg-indigo-950 text-indigo-800 dark:text-indigo-300 uppercase tracking-wider">Simulador Oficial</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">📝 2° Parcial Interactivo (11/11/2024)</h2>
+                        <p class="text-sm text-slate-500 mt-1">Segundo Parcial Tema 1 - Curso K2001. Contenido ágil y de modelado estructural.</p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- Scrum y Agilidad -->
+                        <div>
+                            <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm mb-3">Teoría de Agilidad y SCRUM</h3>
+                            
+                            <div class="space-y-4">
+                                <!-- Product Backlog -->
+                                <div class="p-4 bg-slate-50 dark:bg-slate-800/30 rounded-xl border border-slate-200 dark:border-slate-800">
+                                    <strong class="text-xs text-slate-800 dark:text-slate-200 font-sans block mb-2">1. El Product Backlog es...</strong>
+                                    <div class="grid grid-cols-1 gap-2 text-xs font-sans">
+                                        <button onclick="verificarRespuestaSimple(this, false, 'pb-explicacion')" class="p-2.5 bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 rounded-lg text-left text-slate-750 dark:text-slate-350 cursor-pointer">
+                                            Armado y priorizado por el Scrum Master para el siguiente Sprint.
+                                        </button>
+                                        <button onclick="verificarRespuestaSimple(this, false, 'pb-explicacion')" class="p-2.5 bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 rounded-lg text-left text-slate-750 dark:text-slate-350 cursor-pointer">
+                                            Una lista de tareas técnicas que el equipo de desarrollo debe completar antes del Sprint.
+                                        </button>
+                                        <button onclick="verificarRespuestaSimple(this, true, 'pb-explicacion')" class="p-2.5 bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 rounded-lg text-left text-slate-750 dark:text-slate-350 cursor-pointer font-semibold">
+                                            Ninguna de las anteriores (Es gestionado y ordenado por el Product Owner).
+                                        </button>
+                                    </div>
+                                    <div id="pb-explicacion" class="hidden mt-3 p-3 bg-slate-100 dark:bg-slate-800 rounded-xl text-xs text-slate-700 dark:text-slate-300 font-sans">
+                                        El Product Backlog es responsabilidad del **Product Owner**. El Scrum Master ayuda a facilitar el proceso pero no posee ni prioriza el Backlog. La lista de tareas para el Sprint actual es el **Sprint Backlog**.
+                                    </div>
+                                </div>
+
+                                <!-- Sprint Planning V/F -->
+                                <div class="p-4 bg-slate-50 dark:bg-slate-800/30 rounded-xl border border-slate-200 dark:border-slate-800 font-sans">
+                                    <strong class="text-xs text-slate-800 dark:text-slate-200 block mb-2">2. V/F: "En la ceremonia Planning de SCRUM, se analiza qué se va a hacer a lo largo de todo el proyecto."</strong>
+                                    <div class="flex gap-2 text-xs">
+                                        <button onclick="verificarVF(this, false, 'planning-just')" class="flex-1 py-2 bg-white dark:bg-slate-900 hover:bg-slate-100 border border-slate-200 dark:border-slate-800 rounded-lg font-semibold cursor-pointer">Verdadero</button>
+                                        <button onclick="verificarVF(this, true, 'planning-just')" class="flex-1 py-2 bg-white dark:bg-slate-900 hover:bg-slate-100 border border-slate-200 dark:border-slate-800 rounded-lg font-semibold cursor-pointer">Falso</button>
+                                    </div>
+                                    <div id="planning-just" class="hidden mt-3 p-3 bg-emerald-50 dark:bg-emerald-950/20 text-emerald-800 dark:text-emerald-300 border border-emerald-100 dark:border-emerald-900/50 rounded-xl text-xs">
+                                        <strong>Justificación:</strong> Falso. En la Sprint Planning solo se planifica el alcance del **Sprint entrante** (normalmente de 2 a 4 semanas), no de todo el proyecto.
+                                    </div>
+                                </div>
+
+                                <!-- UML Structural Diagrams -->
+                                <div class="p-4 bg-slate-50 dark:bg-slate-800/30 rounded-xl border border-slate-200 dark:border-slate-800">
+                                    <strong class="text-xs text-slate-800 dark:text-slate-200 font-sans block mb-2">3. ¿Cuáles son los diagramas estructurales en UML?</strong>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-sans">
+                                        <button onclick="verificarRespuestaSimple(this, false, 'structural-explicacion')" class="p-2.5 bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 rounded-lg text-left text-slate-750 dark:text-slate-350 cursor-pointer">
+                                            Diagramas de Casos de Uso y Secuencia.
+                                        </button>
+                                        <button onclick="verificarRespuestaSimple(this, true, 'structural-explicacion')" class="p-2.5 bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 rounded-lg text-left text-slate-750 dark:text-slate-350 cursor-pointer font-semibold">
+                                            Diagramas de Clases y Despliegue.
+                                        </button>
+                                    </div>
+                                    <div id="structural-explicacion" class="hidden mt-3 p-3 bg-slate-100 dark:bg-slate-800 rounded-xl text-xs text-slate-700 dark:text-slate-300">
+                                        Los diagramas **estructurales** modelan la parte estática del sistema (Clases, Despliegue, Paquetes, Objetos, Componentes). Los de **comportamiento/interacción** modelan la dinámica (Casos de Uso, Secuencia, Actividades, Estados).
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+    
+    <footer class="bg-slate-900 text-slate-400 text-xs text-center p-4 mt-auto border-t border-slate-800 font-sans">
+        <p>© 2026 - Análisis de Sistemas - Repaso de Examen</p>
+    </footer>
+
+    <script src="../../component.js"></script>
+    <script src="../../index.js"></script>
+    <script src="index.js"></script>
+
+    <button id="btn-top" class="fixed bottom-6 right-6 z-40 w-12 h-12 bg-sky-600 hover:bg-sky-700 text-white rounded-full shadow-lg opacity-0 invisible transition-all duration-300 flex items-center justify-center cursor-pointer" title="Volver al inicio">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
+    </button>
+</body>
+</html>

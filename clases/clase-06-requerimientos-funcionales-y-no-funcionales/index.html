@@ -16,67 +16,13 @@
 </head>
 <body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-200">
 
-    <header class="bg-slate-900 text-white p-6 shadow-md border-b border-slate-800">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-            <div>
-                <a href="../../index.html" class="text-xs font-semibold tracking-wider text-sky-400 uppercase hover:text-sky-300 transition-colors">← Volver al inicio</a>
-                <h1 class="text-2xl font-bold mt-1 text-slate-100">Ingeniería de Requerimientos</h1>
-            </div>
-            <div class="flex items-center gap-3">
-                <button id="btn-tema" class="px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-sm font-medium rounded-lg border border-slate-700 transition-colors cursor-pointer text-slate-200 flex items-center gap-2">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition-transform">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                    Tema
-                </button>
-                <div class="bg-slate-800 px-4 py-2 rounded-lg border border-slate-700 text-sm">
-                    <span class="text-slate-400">Contenido base:</span> <strong class="text-sky-400">Cátedra</strong>
-                </div>
-            </div>
-        </div>
-    </header>
+    <div id="header-container"></div>
 
-    <div class="max-w-7xl mx-auto w-full p-4 md:p-6 grid grid-cols-1 lg:grid-cols-4 gap-6 flex-1">
+    <div class="main-content-wrapper flex-1 w-full pt-20">
+        <div class="max-w-7xl mx-auto w-full p-4 md:p-6 grid grid-cols-1 lg:grid-cols-4 gap-6 flex-1">
         
-        <nav class="lg:col-span-1 space-y-2">
-            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 sticky top-6">
-                <h2 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-3 px-2">Unidades de estudio</h2>
-                <div class="space-y-1">
-                    <a href="#fundamentos" class="block px-3 py-2.5 text-sm font-medium rounded-lg bg-sky-50 dark:bg-slate-800 text-sky-700 dark:text-sky-400 border-l-4 border-sky-600 navigation-link active">
-                        1. Fundamentos y metodología
-                    </a>
-                    <a href="#clasificacion" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-100 border-l-4 border-transparent transition-all navigation-link">
-                        2. Funcionales y no funcionales
-                    </a>
-                    <a href="#elicitation" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
-                        3. Técnicas de elicitación
-                    </a>
-                    <a href="#calidad" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
-                        4. Calidad de requerimientos
-                    </a>
-                    <a href="#practica-clasificacion" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
-                        ⚡ Laboratorio: Clasificación
-                    </a>
-                    <a href="#practica-calidad" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
-                        ⚡ Laboratorio: Características
-                    </a>
-                    <a href="#examen-autoevaluacion" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
-                        📋 Autoevaluación Teórica
-                    </a>
-                    <a href="#materiales" class="block px-3 py-2.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent transition-all navigation-link">
-                        📚 Materiales
-                    </a>
-                </div>
-            </div>
-        </nav>
+        <!-- SIDEBAR GLOBAL DINÁMICO -->
+        <nav id="sidebar-container" class="lg:col-span-1 space-y-2"></nav>
 
         <main class="lg:col-span-3 space-y-8">
             
@@ -273,6 +219,8 @@
                 </div>
             </section>
 
+            
+
             <section id="practica-clasificacion" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-6">
                 <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
                     <span class="text-xs font-bold px-2 py-0.5 rounded bg-sky-100 dark:bg-sky-950 text-sky-800 dark:text-sky-300 uppercase tracking-wide">Interactivo</span>
@@ -354,7 +302,7 @@
             <section id="materiales" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-6">
                 <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
                     <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-300 uppercase tracking-wide">Recursos</span>
-                    <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2"> Materiales de Apoyo</h2>
+                    <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2"> Materiales de apoyo</h2>
                     <p class="text-sm text-slate-500 mt-1">Documentación oficial y apuntes de la cátedra para profundizar en la teoría.</p>
                 </div>
 
@@ -373,7 +321,7 @@
                         <div class="flex items-start gap-3">
                             <span class="text-2xl">📖</span>
                             <div>
-                                <h3 class="font-bold text-slate-800 dark:text-slate-100">Ingeniería de Requerimientos - Capítulo 4</h3>
+                                <h3 class="font-bold text-slate-800 dark:text-slate-100">Ingeniería de requerimientos - Capítulo 4</h3>
                                 <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Análisis profundo según Sommerville.</p>
                             </div>
                         </div>
@@ -403,7 +351,7 @@
                         <div class="flex items-start gap-3">
                             <span class="text-2xl">🔑</span>
                             <div>
-                                <h3 class="font-bold text-slate-800 dark:text-slate-100">Requerimientos y Requisitos</h3>
+                                <h3 class="font-bold text-slate-800 dark:text-slate-100">Requerimientos y requisitos</h3>
                                 <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Distinción y relación entre conceptos clave.</p>
                             </div>
                         </div>
@@ -413,11 +361,13 @@
 
         </main>
     </div>
+    </div>
 
     <footer class="bg-slate-900 text-slate-400 text-xs text-center p-4 mt-auto border-t border-slate-800">
         <p>© 2026 - Análisis de Sistemas - Ingeniería de Requerimientos</p>
     </footer>
         
+    <script src="../../component.js"></script>
     <script src="../../index.js"></script>
     <script src="index.js"></script>
 </body>

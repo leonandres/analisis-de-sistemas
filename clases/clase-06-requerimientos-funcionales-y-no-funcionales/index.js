@@ -318,7 +318,17 @@ function resetTrivia() {
 }
 
 // ==========================================
-// NAVEGACIÓN SUAVE
+// MANEJADOR DEL BOTÓN "SIGUIENTE" EN TRIVIA
+// ==========================================
+document.addEventListener('click', (e) => {
+    if (e.target && e.target.id === 'btn-siguiente-trivia') {
+        currentTrivia++;
+        loadTriviaQuestion();
+    }
+});
+
+// ==========================================
+// NAVEGACIÓN SUAVE Y SPYING DE SCROLL
 // ==========================================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -338,12 +348,60 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+const navLinks = document.querySelectorAll('.navigation-link');
+const sections = document.querySelectorAll('section');
+
+window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (window.scrollY >= sectionTop - 150) {
+            current = section.getAttribute('id');
+        }
+    });
+
+    if (current) {
+        navLinks.forEach(link => {
+            link.classList.remove('active', 'bg-sky-50', 'dark:bg-slate-800', 'text-sky-700', 'dark:text-sky-400', 'border-sky-600');
+            link.classList.add('text-slate-600', 'dark:text-slate-400', 'border-transparent');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active', 'bg-sky-50', 'dark:bg-slate-800', 'text-sky-700', 'dark:text-sky-400', 'border-sky-600');
+                link.classList.remove('text-slate-600', 'dark:text-slate-400', 'border-transparent');
+            }
+        });
+    }
+});
+
 // ==========================================
 // INICIALIZACIÓN - Todo dentro de DOMContentLoaded
 // ==========================================
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Clase 06: DOM cargado, inicializando...');
     
+    // ==========================================
+    // 1. AJUSTAR PADDING DESPUÉS DE CARGAR EL HEADER
+    // ==========================================
+    setTimeout(() => {
+        const header = document.querySelector('header');
+        const mainContent = document.querySelector('.main-content-wrapper');
+        
+        if (header && mainContent) {
+            const headerHeight = header.offsetHeight;
+            mainContent.style.paddingTop = headerHeight + 'px';
+            console.log(`✅ Padding ajustado a ${headerHeight}px`);
+        } else {
+            console.warn('⚠️ No se encontró header o main-content-wrapper');
+        }
+    }, 50);
+    
+    // ==========================================
+    // 2. ACTUALIZAR TÍTULO DE LA CLASE
+    // ==========================================
+    const tituloElement = document.getElementById('titulo-clase');
+    if (tituloElement) {
+        tituloElement.textContent = 'Ingeniería de Requerimientos';
+    }
+
     // Laboratorio 1: Clasificación
     cargarEnunciado();
     
