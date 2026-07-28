@@ -509,7 +509,8 @@ function enhanceSectionTitles() {
         // Si es la sección de autoevaluación, eliminar íconos y hacer el título más llamativo
         const isAutoEval = section.id === 'autoevaluacion' || section.id === 'autoevaluacion-interactiva' || /autoevaluac/i.test(section.id);
 
-        const titleClasses = isAutoEval ? 'text-2xl font-extrabold text-amber-700 dark:text-amber-300 ml-1 section-title-text' : 'text-lg font-semibold text-slate-800 dark:text-slate-100 ml-1 section-title-text';
+        // Aplicar estilo mejorado a TODOS los títulos; autoevaluación tiene variante más grande
+        const titleClasses = isAutoEval ? 'text-2xl font-extrabold text-amber-700 dark:text-amber-300 ml-1 section-title-text' : 'text-xl font-bold text-slate-800 dark:text-slate-100 ml-1 section-title-text';
 
         // Reemplazar el h2 por una versión con número estilizado y botón de colapsado
         h2.innerHTML = `
@@ -532,16 +533,21 @@ function enhanceSectionTitles() {
         // guardar referencias a elementos que deben ocultarse cuando esté minimizada
         const subtitleElems = Array.from(headerDiv.querySelectorAll('p, .text-sm')).filter(el => el && el.tagName !== 'H2');
 
-        // Guardar estilos originales para restaurar
+        // Guardar estilos originales para restaurar (usar estilos computados si no hay inline)
         if (!section.__originalStyles) {
+            const cs = window.getComputedStyle(section);
             section.__originalStyles = {
-                padding: section.style.padding || '',
+                paddingTop: cs.paddingTop,
+                paddingBottom: cs.paddingBottom,
+                paddingLeft: cs.paddingLeft,
+                paddingRight: cs.paddingRight
             };
         }
         if (!headerDiv.__originalStyles) {
+            const ch = window.getComputedStyle(headerDiv);
             headerDiv.__originalStyles = {
-                paddingBottom: headerDiv.style.paddingBottom || '',
-                marginBottom: headerDiv.style.marginBottom || ''
+                paddingBottom: ch.paddingBottom,
+                marginBottom: ch.marginBottom
             };
         }
 
@@ -566,12 +572,23 @@ function enhanceSectionTitles() {
             // Ajustar padding para que las secciones minimizadas sean compactas y de tamaño similar
             if (!expanded) {
                 section.classList.add('section-collapsed');
-                section.style.padding = '0.6rem';
+                // Mantener paddings horizontales para que el título no se desplace
+                section.style.paddingLeft = section.__originalStyles.paddingLeft;
+                section.style.paddingRight = section.__originalStyles.paddingRight;
+                // Reducir sólo padding vertical
+                section.style.paddingTop = '0.35rem';
+                section.style.paddingBottom = '0.35rem';
+
                 headerDiv.style.paddingBottom = '0.125rem';
                 headerDiv.style.marginBottom = '0';
             } else {
                 section.classList.remove('section-collapsed');
-                section.style.padding = section.__originalStyles.padding;
+                // Restaurar paddings completos
+                section.style.paddingTop = section.__originalStyles.paddingTop;
+                section.style.paddingBottom = section.__originalStyles.paddingBottom;
+                section.style.paddingLeft = section.__originalStyles.paddingLeft;
+                section.style.paddingRight = section.__originalStyles.paddingRight;
+
                 headerDiv.style.paddingBottom = headerDiv.__originalStyles.paddingBottom;
                 headerDiv.style.marginBottom = headerDiv.__originalStyles.marginBottom;
             }
