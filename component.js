@@ -283,6 +283,13 @@ function loadHeader() {
         initializeMenu();
     }
     loadSidebar();
+    // Mejorar títulos de secciones y habilitar colapsado después de cargar header/sidebar
+    if (typeof window.enhanceSectionTitles === 'function') {
+        // Ejecutar en el siguiente tick para asegurar que el DOM de la página esté listo
+        setTimeout(() => {
+            try { window.enhanceSectionTitles(); } catch (e) { console.error('Error al mejorar títulos de sección', e); }
+        }, 20);
+    }
 }
 
 // ============================================================
@@ -472,5 +479,152 @@ function initializeMenu() {
     }
 }
 
+function enhanceSectionTitles() {
+    const sections = document.querySelectorAll('main section');
+    sections.forEach((section, idx) => {
+        // Buscar el contenedor de cabecera (suele ser div.border-b)
+        const headerDiv = section.querySelector('div.border-b') || section.querySelector('h2')?.parentElement;
+        if (!headerDiv) return;
+        const h2 = headerDiv.querySelector('h2');
+        if (!h2) return;
+
+        // Extraer y limpiar el texto del título
+        const original = h2.textContent.trim();
+        // Remover emojis/puntuación inicial y prefijo numérico si existe
+        let cleaned = original.replace(/^[^0-9A-Za-zÁÉÍÓÚÜÑáéíóúüñ]+/, '').replace(/^\s*(\d+)[\.\-\)]?\s*/, '');
+        // Guardar número (si el título original tenía número) o calcular por índice
+        const numberMatch = original.match(/^\s*(\d+)[\.\-\)]/);
+        const number = numberMatch ? numberMatch[1] : (idx + 1).toString();
+
+        // Normalizar a sentence case salvo acrónimos (si todo en mayúsculas, respetar)
+        let text = cleaned;
+        if (text && text === text.toUpperCase()) {
+            // Posible acrónimo (INVEST, BDD...) -> mantener
+            text = text;
+        } else {
+            text = text.trim().toLowerCase();
+            if (text.length > 0) text = text.charAt(0).toUpperCase() + text.slice(1);
+        }
+
+        // Si es la sección de autoevaluación, eliminar íconos y hacer el título más llamativo
+        const isAutoEval = section.id === 'autoevaluacion' || section.id === 'autoevaluacion-interactiva' || /autoevaluac/i.test(section.id);
+
+        // Aplicar estilo mejorado a TODOS los títulos; autoevaluación tiene variante más grande
+        const titleClasses = isAutoEval ? 'text-2xl font-extrabold text-amber-700 dark:text-amber-300 ml-1 section-title-text' : 'text-xl font-bold text-slate-800 dark:text-slate-100 ml-1 section-title-text';
+
+        // Reemplazar el h2 por una versión con número estilizado y botón de colapsado
+        h2.innerHTML = `
+            <div class="flex items-center justify-between gap-3">
+                <div class="flex items-center gap-3">
+                    <span class="text-sm font-semibold text-slate-400 dark:text-slate-500 opacity-90">|</span>
+                    <span class="text-sm font-semibold text-slate-700 dark:text-slate-200 section-number">${number}</span>
+                    <span class="${titleClasses}">${text}</span>
+                </div>
+                <button aria-expanded="true" class="toggle-section-btn text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 transition-transform" title="Minimizar/Expandir sección">
+                    <svg class="w-4 h-4 transform transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+            </div>
+        `;
+
+        const toggleBtn = headerDiv.querySelector('.toggle-section-btn');
+        const headerIndex = Array.from(section.children).indexOf(headerDiv);
+        const contentChildren = Array.from(section.children).slice(headerIndex + 1);
+
+        // guardar referencias a elementos que deben ocultarse cuando esté minimizada
+        const subtitleElems = Array.from(headerDiv.querySelectorAll('p, .text-sm')).filter(el => el && el.tagName !== 'H2');
+
+        // Guardar estilos originales para restaurar (usar estilos computados si no hay inline)
+        if (!section.__originalStyles) {
+            const cs = window.getComputedStyle(section);
+            section.__originalStyles = {
+                paddingTop: cs.paddingTop,
+                paddingBottom: cs.paddingBottom,
+                paddingLeft: cs.paddingLeft,
+                paddingRight: cs.paddingRight
+            };
+        }
+        if (!headerDiv.__originalStyles) {
+            const ch = window.getComputedStyle(headerDiv);
+            headerDiv.__originalStyles = {
+                paddingBottom: ch.paddingBottom,
+                marginBottom: ch.marginBottom
+            };
+        }
+
+        // Estado inicial (expandido)
+        section.__expanded = true;
+
+        const applyCollapseState = (expanded) => {
+            // Mostrar/ocultar contenido posterior al header
+            contentChildren.forEach(el => {
+                if (expanded) {
+                    el.classList.remove('hidden');
+                } else {
+                    el.classList.add('hidden');
+                }
+            });
+
+            // Mostrar/ocultar subtítulo dentro del header (para que el collapsed quede compacto)
+            subtitleElems.forEach(el => {
+                if (expanded) el.classList.remove('hidden'); else el.classList.add('hidden');
+            });
+
+            // Ajustar padding para que las secciones minimizadas sean compactas y de tamaño similar
+            if (!expanded) {
+                section.classList.add('section-collapsed');
+                // Mantener paddings horizontales para que el título no se desplace
+                section.style.paddingLeft = section.__originalStyles.paddingLeft;
+                section.style.paddingRight = section.__originalStyles.paddingRight;
+                // Reducir sólo padding vertical
+                section.style.paddingTop = '0.35rem';
+                section.style.paddingBottom = '0.35rem';
+
+                headerDiv.style.paddingBottom = '0.125rem';
+                headerDiv.style.marginBottom = '0';
+            } else {
+                section.classList.remove('section-collapsed');
+                // Restaurar paddings completos
+                section.style.paddingTop = section.__originalStyles.paddingTop;
+                section.style.paddingBottom = section.__originalStyles.paddingBottom;
+                section.style.paddingLeft = section.__originalStyles.paddingLeft;
+                section.style.paddingRight = section.__originalStyles.paddingRight;
+
+                headerDiv.style.paddingBottom = headerDiv.__originalStyles.paddingBottom;
+                headerDiv.style.marginBottom = headerDiv.__originalStyles.marginBottom;
+            }
+
+            // Rotar cheurón
+            const svg = toggleBtn.querySelector('svg');
+            if (svg) svg.style.transform = expanded ? 'rotate(0deg)' : 'rotate(180deg)';
+
+            toggleBtn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+            section.__expanded = expanded;
+        };
+
+        toggleBtn?.addEventListener('click', (e) => {
+            e.preventDefault();
+            applyCollapseState(!section.__expanded);
+        });
+
+        // Hacer que click en el header también active el toggle
+        // pero IGNORAR clicks en elementos interactivos (botones, enlaces, inputs, etc.) para no interferir con controles internos
+        headerDiv.style.cursor = 'pointer';
+        headerDiv.addEventListener('click', (e) => {
+            if (e.target.closest('.toggle-section-btn')) return;
+            if (e.target.closest('button, a, input, textarea, select, label, .tgs-dot')) return;
+            // si se hace click en cualquier otro lugar del header, toggle
+            applyCollapseState(!section.__expanded);
+        });
+
+        // Inicializar estado (asegurar consistencia)
+        applyCollapseState(true);
+
+        // Hacer que el control del carrusel u otros botones no colapsen la sección accidentalmente
+        // (si en algún caso se quiere que un botón concreto colapse, añadir la clase "collapse-toggle" a ese botón en el HTML)
+    });
+}
+
+// Exponer y ejecutar desde el ámbito global
+window.enhanceSectionTitles = enhanceSectionTitles;
 window.loadHeader = loadHeader;
 window.loadSidebar = loadSidebar;
