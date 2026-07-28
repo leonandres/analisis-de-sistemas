@@ -283,6 +283,13 @@ function loadHeader() {
         initializeMenu();
     }
     loadSidebar();
+    // Mejorar títulos de secciones y habilitar colapsado después de cargar header/sidebar
+    if (typeof window.enhanceSectionTitles === 'function') {
+        // Ejecutar en el siguiente tick para asegurar que el DOM de la página esté listo
+        setTimeout(() => {
+            try { window.enhanceSectionTitles(); } catch (e) { console.error('Error al mejorar títulos de sección', e); }
+        }, 20);
+    }
 }
 
 // ============================================================
@@ -472,5 +479,76 @@ function initializeMenu() {
     }
 }
 
+function enhanceSectionTitles() {
+    const sections = document.querySelectorAll('main section');
+    sections.forEach((section, idx) => {
+        // Buscar el contenedor de cabecera (suele ser div.border-b)
+        const headerDiv = section.querySelector('div.border-b') || section.querySelector('h2')?.parentElement;
+        if (!headerDiv) return;
+        const h2 = headerDiv.querySelector('h2');
+        if (!h2) return;
+
+        // Extraer número si existe en el texto (ej: "1. Título")
+        const original = h2.textContent.trim();
+        const match = original.match(/^\s*(\d+)[\.\-]\s*(.+)/);
+        const number = match ? match[1] : (idx + 1).toString();
+        let text = match ? match[2] : original;
+
+        // Normalizar a notación común: "Nombre del título" (sentence case)
+        text = text.trim().toLowerCase();
+        if (text.length > 0) text = text.charAt(0).toUpperCase() + text.slice(1);
+
+        // Reemplazar el h2 por una versión con número estilizado y botón de colapsado
+        h2.innerHTML = `
+            <div class="flex items-center justify-between gap-3">
+                <div class="flex items-center gap-3">
+                    <span class="text-sm font-semibold text-slate-400 dark:text-slate-500 opacity-90">|</span>
+                    <span class="text-sm font-semibold text-slate-700 dark:text-slate-200 section-number">${number}</span>
+                    <span class="text-lg font-semibold text-slate-800 dark:text-slate-100 ml-1 section-title-text">${text}</span>
+                </div>
+                <button aria-expanded="true" class="toggle-section-btn text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 transition-transform" title="Minimizar/Expandir sección">
+                    <svg class="w-4 h-4 transform transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+            </div>
+        `;
+
+        const toggleBtn = headerDiv.querySelector('.toggle-section-btn');
+        const headerIndex = Array.from(section.children).indexOf(headerDiv);
+        const contentChildren = Array.from(section.children).slice(headerIndex + 1);
+
+        // Estado inicial (expandido)
+        section.__expanded = true;
+
+        toggleBtn?.addEventListener('click', (e) => {
+            e.preventDefault();
+            section.__expanded = !section.__expanded;
+
+            // Mostrar/ocultar contenido posterior al header
+            contentChildren.forEach(el => {
+                if (section.__expanded) {
+                    el.classList.remove('hidden');
+                } else {
+                    el.classList.add('hidden');
+                }
+            });
+
+            // Rotar cheurón
+            const svg = toggleBtn.querySelector('svg');
+            if (svg) svg.style.transform = section.__expanded ? 'rotate(0deg)' : 'rotate(180deg)';
+
+            toggleBtn.setAttribute('aria-expanded', section.__expanded ? 'true' : 'false');
+        });
+
+        // Hacer que click en el header también active el toggle (excepto cuando se hace click en el propio botón)
+        headerDiv.style.cursor = 'pointer';
+        headerDiv.addEventListener('click', (e) => {
+            if (e.target.closest('.toggle-section-btn')) return;
+            toggleBtn?.click();
+        });
+    });
+}
+
+// Exponer y ejecutar desde el ámbito global
+window.enhanceSectionTitles = enhanceSectionTitles;
 window.loadHeader = loadHeader;
 window.loadSidebar = loadSidebar;
