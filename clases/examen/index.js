@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     const tituloElement = document.getElementById('titulo-clase');
     if (tituloElement) {
-        tituloElement.textContent = 'Repaso de Examen';
+        tituloElement.textContent = 'Repaso para el examen';
     }
 
     // ==========================================

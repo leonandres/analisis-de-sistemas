@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Clase de Ingeniería de Requerimientos - Análisis de Sistemas de Información">
-    <title>Ingeniería de Requerimientos | Análisis de Sistemas</title>
+    <title>Clase 06: Ingeniería de requerimientos | Análisis de sistemas</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = { darkMode: 'class' }
@@ -25,10 +25,21 @@
         <nav id="sidebar-container" class="lg:col-span-1 space-y-2"></nav>
 
         <main class="lg:col-span-3 space-y-8">
+
+            <!-- HERO TITLE -->
+            <div class="bg-gradient-to-r from-violet-600 to-purple-700 rounded-2xl p-6 text-white shadow-lg relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 opacity-15 text-9xl select-none">📐</div>
+                <span class="px-2.5 py-1 text-[10px] font-black uppercase tracking-wider bg-white/20 rounded-md backdrop-blur-md">Unidad 6</span>
+                <h1 class="text-2xl md:text-3xl font-extrabold mt-2">Ingeniería de requerimientos</h1>
+                <p class="text-violet-100 text-sm mt-2 max-w-2xl leading-relaxed">
+                    Requerimientos funcionales y no funcionales, técnicas de elicitación, calidad según ISO/IEC 9126 y laboratorios de clasificación.
+                </p>
+            </div>
             
-            <section id="fundamentos" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-6">
+            <section id="fundamentos" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
                 <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
-                    <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100">1. Fundamentos y metodología</h2>
+                    <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 uppercase tracking-wider">Ingeniería de software</span>
+                    <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">1. Fundamentos y metodología</h2>
                     <p class="text-sm text-slate-500 mt-1">Definiciones base y comportamiento en las etapas del ciclo de vida.</p>
                 </div>
 
@@ -69,11 +80,15 @@
                 </div>
             </section>
 
-            <section id="clasificacion" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-6">
+            <section id="clasificacion" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
                 <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
-                    <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100">2. Tipos de requerimientos</h2>
+                    <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-violet-100 dark:bg-violet-950 text-violet-800 dark:text-violet-300 uppercase tracking-wider">Clasificación</span>
+                    <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">2. Tipos de requerimientos</h2>
                     <p class="text-sm text-slate-500 mt-1">División fundamental de las expectativas y restricciones del software.</p>
                 </div>
+
+                <!-- Imagen de sección -->
+                <img src="" alt="Diagrama comparativo entre requerimientos funcionales (qué hace el sistema) y no funcionales (cómo debe ser)" class="w-full h-44 object-cover rounded-xl mb-6 bg-slate-200 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
 
                 <div class="space-y-6">
                     <div class="p-5 border-l-4 border-sky-600 bg-slate-50 dark:bg-slate-800/40 rounded-r-xl">
@@ -132,9 +147,10 @@
                 </div>
             </section>
 
-            <section id="elicitation" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-6">
+            <section id="elicitation" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
                 <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
-                    <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100">3. Técnicas de elicitación</h2>
+                    <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 uppercase tracking-wider">Técnicas</span>
+                    <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">3. Técnicas de elicitación</h2>
                     <p class="text-sm text-slate-500 mt-1">Métodos para descubrir y recopilar requerimientos del usuario.</p>
                 </div>
 
@@ -173,9 +189,10 @@
                 </div>
             </section>
 
-            <section id="calidad" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-6">
+            <section id="calidad" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
                 <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
-                    <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100">4. Calidad de requerimientos</h2>
+                    <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-rose-100 dark:bg-rose-950 text-rose-800 dark:text-rose-300 uppercase tracking-wider">Calidad · ISO/IEC 9126</span>
+                    <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">4. Calidad de requerimientos</h2>
                     <p class="text-sm text-slate-500 mt-1">Características que debe cumplir un buen requerimiento según ISO/IEC 9126.</p>
                 </div>
 
@@ -221,7 +238,7 @@
 
             
 
-            <section id="practica-clasificacion" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-6">
+            <section id="practica-clasificacion" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
                 <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
                     <span class="text-xs font-bold px-2 py-0.5 rounded bg-sky-100 dark:bg-sky-950 text-sky-800 dark:text-sky-300 uppercase tracking-wide">Interactivo</span>
                     <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">⚡ Laboratorio: Clasificación de enunciados</h2>
@@ -252,7 +269,7 @@
                 </div>
             </section>
 
-            <section id="practica-calidad" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-6">
+            <section id="practica-calidad" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
                 <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
                     <span class="text-xs font-bold px-2 py-0.5 rounded bg-sky-100 dark:bg-sky-950 text-sky-800 dark:text-sky-300 uppercase tracking-wide">Interactivo</span>
                     <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">⚡ Laboratorio: Control de calidad del requerimiento</h2>
@@ -288,7 +305,7 @@
                 </div>
             </section>
 
-            <section id="examen-autoevaluacion" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-6">
+            <section id="examen-autoevaluacion" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
                 <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
                     <span class="text-xs font-bold px-2 py-0.5 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 uppercase tracking-wide">Examen</span>
                     <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2"> Trivia de autoevaluación teórica</h2>
@@ -299,7 +316,7 @@
                 </div>
             </section>
 
-            <section id="materiales" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-6">
+            <section id="materiales" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
                 <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
                     <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-300 uppercase tracking-wide">Recursos</span>
                     <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2"> Materiales de apoyo</h2>

@@ -64,7 +64,7 @@ const CLASES_DATA = [
         key: 'clase-06-requerimientos-funcionales-y-no-funcionales',
         emoji: '📐',
         numero: '06',
-        titulo: 'Requerimientos funcionales y no funcionales',
+        titulo: 'Ingeniería de requerimientos',
         color: 'violet',
         secciones: [
             { anchor: 'fundamentos',            label: 'Fundamentos y metodología' },
@@ -516,8 +516,7 @@ function enhanceSectionTitles() {
         h2.innerHTML = `
             <div class="flex items-center justify-between gap-3">
                 <div class="flex items-center gap-3">
-                    <span class="text-sm font-semibold text-slate-400 dark:text-slate-500 opacity-90">|</span>
-                    <span class="text-sm font-semibold text-slate-700 dark:text-slate-200 section-number">${number}</span>
+                    <span class="inline-flex items-center justify-center min-w-[2rem] h-8 px-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-base font-extrabold text-slate-600 dark:text-slate-300 tabular-nums section-number">${number}</span>
                     <span class="${titleClasses}">${text}</span>
                 </div>
                 <button aria-expanded="true" class="toggle-section-btn text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 transition-transform" title="Minimizar/Expandir sección">
@@ -530,68 +529,16 @@ function enhanceSectionTitles() {
         const headerIndex = Array.from(section.children).indexOf(headerDiv);
         const contentChildren = Array.from(section.children).slice(headerIndex + 1);
 
-        // guardar referencias a elementos que deben ocultarse cuando esté minimizada
-        const subtitleElems = Array.from(headerDiv.querySelectorAll('p, .text-sm')).filter(el => el && el.tagName !== 'H2');
-
-        // Guardar estilos originales para restaurar (usar estilos computados si no hay inline)
-        if (!section.__originalStyles) {
-            const cs = window.getComputedStyle(section);
-            section.__originalStyles = {
-                paddingTop: cs.paddingTop,
-                paddingBottom: cs.paddingBottom,
-                paddingLeft: cs.paddingLeft,
-                paddingRight: cs.paddingRight
-            };
-        }
-        if (!headerDiv.__originalStyles) {
-            const ch = window.getComputedStyle(headerDiv);
-            headerDiv.__originalStyles = {
-                paddingBottom: ch.paddingBottom,
-                marginBottom: ch.marginBottom
-            };
-        }
-
         // Estado inicial (expandido)
         section.__expanded = true;
 
         const applyCollapseState = (expanded) => {
-            // Mostrar/ocultar contenido posterior al header
+            // Solo ocultar/mostrar el contenido posterior al header; el encabezado mantiene su espaciado
             contentChildren.forEach(el => {
-                if (expanded) {
-                    el.classList.remove('hidden');
-                } else {
-                    el.classList.add('hidden');
-                }
+                el.classList.toggle('hidden', !expanded);
             });
 
-            // Mostrar/ocultar subtítulo dentro del header (para que el collapsed quede compacto)
-            subtitleElems.forEach(el => {
-                if (expanded) el.classList.remove('hidden'); else el.classList.add('hidden');
-            });
-
-            // Ajustar padding para que las secciones minimizadas sean compactas y de tamaño similar
-            if (!expanded) {
-                section.classList.add('section-collapsed');
-                // Mantener paddings horizontales para que el título no se desplace
-                section.style.paddingLeft = section.__originalStyles.paddingLeft;
-                section.style.paddingRight = section.__originalStyles.paddingRight;
-                // Reducir sólo padding vertical
-                section.style.paddingTop = '0.35rem';
-                section.style.paddingBottom = '0.35rem';
-
-                headerDiv.style.paddingBottom = '0.125rem';
-                headerDiv.style.marginBottom = '0';
-            } else {
-                section.classList.remove('section-collapsed');
-                // Restaurar paddings completos
-                section.style.paddingTop = section.__originalStyles.paddingTop;
-                section.style.paddingBottom = section.__originalStyles.paddingBottom;
-                section.style.paddingLeft = section.__originalStyles.paddingLeft;
-                section.style.paddingRight = section.__originalStyles.paddingRight;
-
-                headerDiv.style.paddingBottom = headerDiv.__originalStyles.paddingBottom;
-                headerDiv.style.marginBottom = headerDiv.__originalStyles.marginBottom;
-            }
+            section.classList.toggle('section-collapsed', !expanded);
 
             // Rotar cheurón
             const svg = toggleBtn.querySelector('svg');

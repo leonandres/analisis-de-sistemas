@@ -1,3 +1,6 @@
+/* ============================================
+   BASE
+   ============================================ */
 html {
     scroll-behavior: smooth;
     color-scheme: light;
@@ -10,62 +13,263 @@ html.dark {
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    line-height: 1.5;
+    line-height: 1.6;
     transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ============================================
+   TIPOGRAFÍA
+   ============================================ */
+h1, h2, h3 {
+    letter-spacing: -0.02em;
+}
+
+strong {
+    font-weight: 700;
+}
+
+/* ============================================
+   HERO BANNER
+   ============================================ */
+main > div:first-child[class*="bg-gradient"] {
+    position: relative;
+    overflow: hidden;
+}
+
+main > div:first-child[class*="bg-gradient"]::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.07) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+/* ============================================
+   SECCIONES — animación de entrada
+   ============================================ */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+section {
+    animation: fadeInUp 0.5s ease-out both;
+}
+
+section:nth-child(1) { animation-delay: 0.05s; }
+section:nth-child(2) { animation-delay: 0.12s; }
+section:nth-child(3) { animation-delay: 0.19s; }
+section:nth-child(4) { animation-delay: 0.26s; }
+section:nth-child(5) { animation-delay: 0.33s; }
+section:nth-child(6) { animation-delay: 0.40s; }
+section:nth-child(7) { animation-delay: 0.47s; }
+
+/* Secciones con borde izquierdo de acento al hacer hover */
+section {
+    transition: box-shadow 0.25s ease;
+}
+
+section:hover {
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+}
+
+html.dark section:hover {
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+}
+
+/* ============================================
+   BADGES / ETIQUETAS DE MÓDULO
+   ============================================ */
+span[class*="text-[10px]"][class*="font-extrabold"] {
+    letter-spacing: 0.08em;
+}
+
+/* ============================================
+   TARJETAS DE SLIDES (carruseles)
+   ============================================ */
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(18px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+.tgs-slide:not(.hidden),
+.elem-slide:not(.hidden) {
+    animation: slideIn 0.35s ease-out both;
+}
+
+/* ============================================
+   FLIP CARDS
+   ============================================ */
+.flip-card {
+    perspective: 1000px;
+}
+
+.flip-card-inner {
+    transition: transform 0.55s cubic-bezier(0.4, 0.2, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.flip-card-back {
+    transform: rotateY(180deg);
+}
+
+.flip-card:hover .flip-card-inner:not(.flipped) {
+    transform: translateY(-3px);
+}
+
+.flip-card.flipped:hover .flip-card-inner {
+    transform: rotateY(180deg) translateY(-3px);
+}
+
+/* ============================================
+   TARJETAS DE LABORATORIO (process-card)
+   ============================================ */
+.process-card {
+    transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.process-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+    transition: left 0.45s;
+}
+
+.process-card:hover::before { left: 100%; }
+
+.process-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.process-card.selected {
+    animation: selectedPulse 0.5s ease-in-out;
+}
+
+@keyframes selectedPulse {
+    0%, 100% { transform: scale(1); }
+    50%       { transform: scale(1.04); }
+}
+
+/* ============================================
+   DROP ZONES
+   ============================================ */
+.drop-zone {
+    transition: all 0.28s ease;
+    position: relative;
+}
+
+.drop-zone::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 0.5rem;
+    background: radial-gradient(circle at center, rgba(59, 130, 246, 0.12) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+.drop-zone:hover::after { opacity: 1; }
+
+.drop-zone:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================
+   FEEDBACK ANIMADO
+   ============================================ */
+@keyframes bounceIn {
+    0%   { opacity: 0; transform: scale(0.85); }
+    60%  { opacity: 1; transform: scale(1.04); }
+    100% { transform: scale(1); }
+}
+
+#lab-feedback,
+#trivia-feedback,
+#examen-feedback {
+    animation: bounceIn 0.4s ease-out;
+}
+
+/* ============================================
+   ÉXITO / ERROR
+   ============================================ */
+@keyframes successPulse {
+    0%   { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); }
+    70%  { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+@keyframes errorShake {
+    0%, 100%              { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80%    { transform: translateX(5px); }
+}
+
+.success-animation { animation: successPulse 0.6s ease-out; }
+.error-animation   { animation: errorShake 0.45s ease-in-out; }
+
+/* ============================================
+   TABLAS
+   ============================================ */
+table tbody tr {
+    transition: background-color 0.18s ease;
+}
+
+table tbody tr:hover {
+    background: rgba(59, 130, 246, 0.05);
+}
+
+html.dark table tbody tr:hover {
+    background: rgba(59, 130, 246, 0.08);
+}
+
+/* ============================================
+   BOTONES
+   ============================================ */
+button {
+    transition: transform 0.1s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:active {
+    transform: scale(0.97);
 }
 
 .navigation-link {
     transition: all 0.2s ease-in-out;
 }
 
-button {
-    transition: transform 0.1s ease, background-color 0.2s ease;
-}
-
-button:active {
-    transform: scale(0.98);
-}
-
 .transition-colors {
-    transition-property: background-color, border-color, text-decoration-color, fill, stroke;
+    transition-property: background-color, border-color, color, fill, stroke;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 200ms;
 }
 
-/* Scrollbars mejoradas */
-::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: rgba(156, 163, 175, 0.5);
-    border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(156, 163, 175, 0.8);
-}
-
-html.dark ::-webkit-scrollbar-thumb {
-    background-color: rgba(71, 85, 105, 0.6);
-}
-
-html.dark ::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(100, 116, 139, 0.8);
-}
-
-#chat-box::-webkit-scrollbar {
-    width: 8px;
-}
-
-#chat-box::-webkit-scrollbar-thumb {
-    background-color: rgba(156, 163, 175, 0.4);
-    border-radius: 4px;
+/* ============================================
+   BOTÓN VOLVER ARRIBA
+   ============================================ */
+#btn-top {
+    transform: translateY(20px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
 }
 
 #btn-top.visible {
@@ -73,6 +277,50 @@ html.dark ::-webkit-scrollbar-thumb:hover {
     visibility: visible;
     transform: translateY(0);
 }
-#btn-top {
-    transform: translateY(20px);
+
+/* ============================================
+   SCROLLBARS
+   ============================================ */
+::-webkit-scrollbar       { width: 7px; height: 7px; }
+::-webkit-scrollbar-track { background: transparent; }
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(148, 163, 184, 0.45);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(148, 163, 184, 0.75);
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+    background-color: rgba(71, 85, 105, 0.55);
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(100, 116, 139, 0.8);
+}
+
+#chat-box::-webkit-scrollbar       { width: 7px; }
+#chat-box::-webkit-scrollbar-thumb {
+    background-color: rgba(148, 163, 184, 0.35);
+    border-radius: 4px;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+    section {
+        animation: fadeInUp 0.35s ease-out both;
+    }
+
+    .process-card:hover,
+    .drop-zone:hover {
+        transform: none;
+    }
+
+    .flip-card:hover .flip-card-inner:not(.flipped) {
+        transform: none;
+    }
 }
