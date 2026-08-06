@@ -10,6 +10,7 @@
         tailwind.config = { darkMode: 'class' }
     </script>
     <link rel="stylesheet" href="../../styles.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
     <!-- Favicon SVG -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
     <style>
@@ -48,7 +49,9 @@
                 
                 <!-- HERO TITLE -->
                 <div class="bg-gradient-to-r from-sky-600 via-indigo-600 to-blue-700 rounded-2xl p-6 text-white shadow-lg relative overflow-hidden">
-                    <div class="absolute -right-10 -bottom-10 opacity-15 text-9xl select-none">🌐</div>
+                    <div class="absolute -right-6 -bottom-6 opacity-10">
+                        <i data-lucide="globe" class="w-36 h-36"></i>
+                    </div>
                     <span class="px-2.5 py-1 text-[10px] font-black uppercase tracking-wider bg-white/20 rounded-md backdrop-blur-md">Unidad 1</span>
                     <h1 class="text-2xl md:text-3xl font-extrabold mt-2">Definiciones iniciales y Teoría general de sistemas</h1>
                     <p class="text-sky-100 text-sm mt-2 max-w-2xl leading-relaxed">
@@ -88,8 +91,9 @@
                                 <p class="text-xs md:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                                     Un <strong>sistema</strong> es un conjunto de elementos interrelacionados e interdependientes que interactúan dentro de una estructura delimitada para alcanzar un <strong>objetivo común</strong>.
                                 </p>
-                                <div class="mt-4 p-3 bg-white/80 dark:bg-slate-950/60 rounded-xl text-xs border border-sky-100 dark:border-slate-800 text-slate-700 dark:text-slate-300">
-                                    💡 <strong>Visión holística:</strong> El comportamiento global del sistema no se deduce estudiando sus partes aisladas, sino analizando las relaciones e interacciones entre ellas.
+                                <div class="mt-4 p-3 bg-white/80 dark:bg-slate-950/60 rounded-xl text-xs border border-sky-100 dark:border-slate-800 text-slate-700 dark:text-slate-300 flex items-start gap-2">
+                                    <i data-lucide="lightbulb" class="w-4 h-4 text-sky-500 flex-shrink-0 mt-0.5"></i>
+                                    <span><strong>Visión holística:</strong> El comportamiento global del sistema no se deduce estudiando sus partes aisladas, sino analizando las relaciones e interacciones entre ellas.</span>
                                 </div>
                             </div>
                         </div>

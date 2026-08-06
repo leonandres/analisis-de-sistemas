@@ -5,15 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Portal de estudio de Análisis de sistemas - UTN.BA">
     <title>Análisis de sistemas | Portal de estudio</title>
-    
-    <!-- Favicon SVG -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
-    
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = { darkMode: 'class' }
-    </script>
+    <script>tailwind.config = { darkMode: 'class' }</script>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/dist/duotone/index.js"></script>
 </head>
 <body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-200">
 
@@ -32,14 +28,10 @@
                 <button id="btn-tema" class="relative w-10 h-10 flex items-center justify-center bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-medium transition-all duration-300 hover:scale-105 flex-shrink-0" title="Cambiar tema">
                     <svg id="icon-sol" class="w-5 h-5 text-amber-500 transition-all duration-500 rotate-0 scale-100 dark:rotate-90 dark:scale-0 absolute" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        <line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                     <svg id="icon-luna" class="w-5 h-5 text-sky-400 transition-all duration-500 -rotate-90 scale-0 dark:rotate-0 dark:scale-100 absolute" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
@@ -52,181 +44,162 @@
 
     <!-- CONTENIDO PRINCIPAL -->
     <div class="flex-1 w-full">
-
         <main class="flex-1 max-w-7xl mx-auto w-full p-4 md:p-8">
-        
+
             <div class="mb-8">
                 <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mb-2">Unidades de estudio</h2>
                 <p class="text-slate-500 text-sm">Hacé clic en cualquier tarjeta para acceder al contenido teórico, laboratorios y exámenes.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                
+
                 <!-- TARJETA 1: DEFINICIONES INICIALES -->
-                <a href="clases/clase-01-definiciones-iniciales/index.html" class="group block bg-white dark:bg-slate-900 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 hover:shadow-lg hover:border-sky-500 dark:hover:border-sky-500 transition-all duration-300 overflow-hidden">
-                    <div class="h-2 bg-gradient-to-r from-sky-400 to-indigo-600"></div>
+                <a href="clases/clase-01-definiciones-iniciales/index.html" class="group block bg-white dark:bg-slate-900 rounded-2xl shadow-xs border border-slate-200 dark:border-slate-800 hover:shadow-xl hover:-translate-y-1 hover:border-sky-400 dark:hover:border-sky-500 transition-all duration-300 overflow-hidden">
+                    <div class="h-1.5 bg-gradient-to-r from-sky-400 to-indigo-500"></div>
                     <div class="p-6">
                         <div class="flex items-start justify-between mb-4">
-                            <span class="p-3 bg-sky-50 dark:bg-sky-950/30 rounded-lg text-2xl">🌐</span>
-                            <span class="text-xs font-bold px-2 py-1 rounded bg-sky-100 dark:bg-sky-950 text-sky-800 dark:text-sky-300 uppercase">Clase 01</span>
+                            <div class="p-3 bg-gradient-to-br from-sky-100 to-indigo-100 dark:from-sky-950/60 dark:to-indigo-950/40 rounded-xl border border-sky-200 dark:border-sky-900/50">
+                                <i class="ph-duotone ph-circles-three-plus text-4xl text-sky-500"></i>
+                            </div>
+                            <span class="text-[10px] font-black px-2.5 py-1 rounded-lg bg-sky-100 dark:bg-sky-950 text-sky-700 dark:text-sky-300 uppercase tracking-wider">Clase 01</span>
                         </div>
-                        <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors mb-2">
-                            Definiciones iniciales
-                        </h3>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                            Teoría general de sistemas (TGS), propiedades sistémicas, clasificación de SI y el rol del analista.
-                        </p>
-                        <div class="mt-4 flex items-center text-xs font-medium text-sky-600 dark:text-sky-400 opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
-                            Ver contenido ➔
+                        <h3 class="text-base font-bold text-slate-800 dark:text-slate-100 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors mb-1.5">Definiciones iniciales</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Teoría general de sistemas (TGS), propiedades sistémicas, clasificación de SI y el rol del analista.</p>
+                        <div class="mt-4 flex items-center gap-1 text-xs font-semibold text-sky-600 dark:text-sky-400 opacity-0 group-hover:opacity-100 transition-all duration-200 translate-y-1 group-hover:translate-y-0">
+                            Ver contenido <i class="ph-duotone ph-arrow-right text-base"></i>
                         </div>
                     </div>
                 </a>
 
                 <!-- TARJETA 2: PROCESOS DE NEGOCIO -->
-                <a href="clases/clase-02-procesos-de-negocio/index.html" class="group block bg-white dark:bg-slate-900 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 hover:shadow-lg hover:border-emerald-500 dark:hover:border-emerald-500 transition-all duration-300 overflow-hidden">
-                    <div class="h-2 bg-gradient-to-r from-emerald-500 to-teal-600"></div>
+                <a href="clases/clase-02-procesos-de-negocio/index.html" class="group block bg-white dark:bg-slate-900 rounded-2xl shadow-xs border border-slate-200 dark:border-slate-800 hover:shadow-xl hover:-translate-y-1 hover:border-emerald-400 dark:hover:border-emerald-500 transition-all duration-300 overflow-hidden">
+                    <div class="h-1.5 bg-gradient-to-r from-emerald-500 to-teal-500"></div>
                     <div class="p-6">
                         <div class="flex items-start justify-between mb-4">
-                            <span class="p-3 bg-emerald-50 dark:bg-emerald-950/30 rounded-lg text-2xl">🔄</span>
-                            <span class="text-xs font-bold px-2 py-1 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 uppercase">Clase 02</span>
+                            <div class="p-3 bg-gradient-to-br from-emerald-100 to-teal-100 dark:from-emerald-950/60 dark:to-teal-950/40 rounded-xl border border-emerald-200 dark:border-emerald-900/50">
+                                <i class="ph-duotone ph-flow-arrow text-4xl text-emerald-500"></i>
+                            </div>
+                            <span class="text-[10px] font-black px-2.5 py-1 rounded-lg bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 uppercase tracking-wider">Clase 02</span>
                         </div>
-                        <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors mb-2">
-                            Procesos de negocio
-                        </h3>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                            Visión transversal, ISO 9001, macroprocesos, modelado SIPOC/BPMN y caso práctico Termilagro.
-                        </p>
-                        <div class="mt-4 flex items-center text-xs font-medium text-emerald-600 dark:text-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
-                            Ver contenido ➔
+                        <h3 class="text-base font-bold text-slate-800 dark:text-slate-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors mb-1.5">Procesos de negocio</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Visión transversal, ISO 9001, macroprocesos, modelado SIPOC/BPMN y caso práctico Termilagro.</p>
+                        <div class="mt-4 flex items-center gap-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400 opacity-0 group-hover:opacity-100 transition-all duration-200 translate-y-1 group-hover:translate-y-0">
+                            Ver contenido <i class="ph-duotone ph-arrow-right text-base"></i>
                         </div>
                     </div>
                 </a>
 
                 <!-- TARJETA 3: INFORME DE RECONOCIMIENTO -->
-                <a href="clases/clase-03-informe-de-reconocimiento/index.html" class="group block bg-white dark:bg-slate-900 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 hover:shadow-lg hover:border-amber-500 dark:hover:border-amber-500 transition-all duration-300 overflow-hidden">
-                    <div class="h-2 bg-gradient-to-r from-amber-500 to-orange-600"></div>
+                <a href="clases/clase-03-informe-de-reconocimiento/index.html" class="group block bg-white dark:bg-slate-900 rounded-2xl shadow-xs border border-slate-200 dark:border-slate-800 hover:shadow-xl hover:-translate-y-1 hover:border-amber-400 dark:hover:border-amber-500 transition-all duration-300 overflow-hidden">
+                    <div class="h-1.5 bg-gradient-to-r from-amber-500 to-orange-500"></div>
                     <div class="p-6">
                         <div class="flex items-start justify-between mb-4">
-                            <span class="p-3 bg-amber-50 dark:bg-amber-950/30 rounded-lg text-2xl">📋</span>
-                            <span class="text-xs font-bold px-2 py-1 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 uppercase">Clase 03</span>
+                            <div class="p-3 bg-gradient-to-br from-amber-100 to-orange-100 dark:from-amber-950/60 dark:to-orange-950/40 rounded-xl border border-amber-200 dark:border-amber-900/50">
+                                <i class="ph-duotone ph-magnifying-glass-plus text-4xl text-amber-500"></i>
+                            </div>
+                            <span class="text-[10px] font-black px-2.5 py-1 rounded-lg bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300 uppercase tracking-wider">Clase 03</span>
                         </div>
-                        <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors mb-2">
-                            Informe de reconocimiento
-                        </h3>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                            Metodología de relevamiento, flujo del proceso, estructura UTN, carta al sponsor, datos faltantes y caso Juegos del País S.H.
-                        </p>
-                        <div class="mt-4 flex items-center text-xs font-medium text-amber-600 dark:text-amber-400 opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
-                            Ver contenido ➔
+                        <h3 class="text-base font-bold text-slate-800 dark:text-slate-100 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors mb-1.5">Informe de reconocimiento</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Metodología de relevamiento, estructura UTN, carta al sponsor, datos faltantes y caso Juegos del País S.H.</p>
+                        <div class="mt-4 flex items-center gap-1 text-xs font-semibold text-amber-600 dark:text-amber-400 opacity-0 group-hover:opacity-100 transition-all duration-200 translate-y-1 group-hover:translate-y-0">
+                            Ver contenido <i class="ph-duotone ph-arrow-right text-base"></i>
                         </div>
                     </div>
                 </a>
 
                 <!-- TARJETA 4: REQUERIMIENTOS -->
-                <a href="clases/clase-06-requerimientos-funcionales-y-no-funcionales/index.html" class="group block bg-white dark:bg-slate-900 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 hover:shadow-lg hover:border-sky-500 dark:hover:border-sky-500 transition-all duration-300 overflow-hidden">
-                    <div class="h-2 bg-gradient-to-r from-sky-500 to-blue-600"></div>
+                <a href="clases/clase-06-requerimientos-funcionales-y-no-funcionales/index.html" class="group block bg-white dark:bg-slate-900 rounded-2xl shadow-xs border border-slate-200 dark:border-slate-800 hover:shadow-xl hover:-translate-y-1 hover:border-violet-400 dark:hover:border-violet-500 transition-all duration-300 overflow-hidden">
+                    <div class="h-1.5 bg-gradient-to-r from-violet-500 to-purple-600"></div>
                     <div class="p-6">
                         <div class="flex items-start justify-between mb-4">
-                            <span class="p-3 bg-sky-50 dark:bg-sky-950/30 rounded-lg text-2xl">📋</span>
-                            <span class="text-xs font-bold px-2 py-1 rounded bg-sky-100 dark:bg-sky-950 text-sky-800 dark:text-sky-300 uppercase">Clase 06</span>
+                            <div class="p-3 bg-gradient-to-br from-violet-100 to-purple-100 dark:from-violet-950/60 dark:to-purple-950/40 rounded-xl border border-violet-200 dark:border-violet-900/50">
+                                <i class="ph-duotone ph-funnel-simple text-4xl text-violet-500"></i>
+                            </div>
+                            <span class="text-[10px] font-black px-2.5 py-1 rounded-lg bg-violet-100 dark:bg-violet-950 text-violet-700 dark:text-violet-300 uppercase tracking-wider">Clase 06</span>
                         </div>
-                        <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors mb-2">
-                            Ingeniería de requerimientos
-                        </h3>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                            Fundamentos, clasificación funcional/no funcional, elicitación y control de calidad de requisitos.
-                        </p>
-                        <div class="mt-4 flex items-center text-xs font-medium text-sky-600 dark:text-sky-400 opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
-                            Ver contenido ➔
+                        <h3 class="text-base font-bold text-slate-800 dark:text-slate-100 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors mb-1.5">Ingeniería de requerimientos</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Fundamentos, clasificación funcional/no funcional, técnicas de elicitación y control de calidad de requisitos.</p>
+                        <div class="mt-4 flex items-center gap-1 text-xs font-semibold text-violet-600 dark:text-violet-400 opacity-0 group-hover:opacity-100 transition-all duration-200 translate-y-1 group-hover:translate-y-0">
+                            Ver contenido <i class="ph-duotone ph-arrow-right text-base"></i>
                         </div>
                     </div>
                 </a>
 
                 <!-- TARJETA 5: PLANIFICACIÓN -->
-                <a href="clases/clase-07-planificacion/index.html" class="group block bg-white dark:bg-slate-900 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 hover:shadow-lg hover:border-orange-500 dark:hover:border-orange-500 transition-all duration-300 overflow-hidden">
-                    <div class="h-2 bg-gradient-to-r from-orange-500 to-amber-600"></div>
+                <a href="clases/clase-07-planificacion/index.html" class="group block bg-white dark:bg-slate-900 rounded-2xl shadow-xs border border-slate-200 dark:border-slate-800 hover:shadow-xl hover:-translate-y-1 hover:border-orange-400 dark:hover:border-orange-500 transition-all duration-300 overflow-hidden">
+                    <div class="h-1.5 bg-gradient-to-r from-orange-500 to-amber-500"></div>
                     <div class="p-6">
                         <div class="flex items-start justify-between mb-4">
-                            <span class="p-3 bg-orange-50 dark:bg-orange-950/30 rounded-lg text-2xl">📊</span>
-                            <span class="text-xs font-bold px-2 py-1 rounded bg-orange-100 dark:bg-orange-950 text-orange-800 dark:text-orange-300 uppercase">Clase 07</span>
+                            <div class="p-3 bg-gradient-to-br from-orange-100 to-amber-100 dark:from-orange-950/60 dark:to-amber-950/40 rounded-xl border border-orange-200 dark:border-orange-900/50">
+                                <i class="ph-duotone ph-calendar-dots text-4xl text-orange-500"></i>
+                            </div>
+                            <span class="text-[10px] font-black px-2.5 py-1 rounded-lg bg-orange-100 dark:bg-orange-950 text-orange-700 dark:text-orange-300 uppercase tracking-wider">Clase 07</span>
                         </div>
-                        <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors mb-2">
-                            Planificación de proyectos
-                        </h3>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                            CPM, PERT, diagrama de Gantt, WBS y metodologías ágiles vs. predictivas.
-                        </p>
-                        <div class="mt-4 flex items-center text-xs font-medium text-orange-600 dark:text-orange-400 opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
-                            Ver contenido ➔
+                        <h3 class="text-base font-bold text-slate-800 dark:text-slate-100 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors mb-1.5">Planificación de proyectos</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">CPM, PERT, diagrama de Gantt, WBS y metodologías ágiles vs. predictivas.</p>
+                        <div class="mt-4 flex items-center gap-1 text-xs font-semibold text-orange-600 dark:text-orange-400 opacity-0 group-hover:opacity-100 transition-all duration-200 translate-y-1 group-hover:translate-y-0">
+                            Ver contenido <i class="ph-duotone ph-arrow-right text-base"></i>
                         </div>
                     </div>
                 </a>
 
                 <!-- TARJETA 6: CASOS DE USO -->
-                <a href="clases/clase-10-casos-de-uso/index.html" class="group block bg-white dark:bg-slate-900 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 hover:shadow-lg hover:border-indigo-500 dark:hover:border-indigo-500 transition-all duration-300 overflow-hidden">
-                    <div class="h-2 bg-gradient-to-r from-indigo-500 to-purple-600"></div>
+                <a href="clases/clase-10-casos-de-uso/index.html" class="group block bg-white dark:bg-slate-900 rounded-2xl shadow-xs border border-slate-200 dark:border-slate-800 hover:shadow-xl hover:-translate-y-1 hover:border-indigo-400 dark:hover:border-indigo-500 transition-all duration-300 overflow-hidden">
+                    <div class="h-1.5 bg-gradient-to-r from-indigo-500 to-blue-600"></div>
                     <div class="p-6">
                         <div class="flex items-start justify-between mb-4">
-                            <span class="p-3 bg-indigo-50 dark:bg-indigo-950/30 rounded-lg text-2xl">🎭</span>
-                            <span class="text-xs font-bold px-2 py-1 rounded bg-indigo-100 dark:bg-indigo-950 text-indigo-800 dark:text-indigo-300 uppercase">Clase 10</span>
+                            <div class="p-3 bg-gradient-to-br from-indigo-100 to-blue-100 dark:from-indigo-950/60 dark:to-blue-950/40 rounded-xl border border-indigo-200 dark:border-indigo-900/50">
+                                <i class="ph-duotone ph-users-three text-4xl text-indigo-500"></i>
+                            </div>
+                            <span class="text-[10px] font-black px-2.5 py-1 rounded-lg bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 uppercase tracking-wider">Clase 10</span>
                         </div>
-                        <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors mb-2">
-                            Casos de uso
-                        </h3>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                            Diagramas UML, relaciones de inclusión y extensión, especificaciones narrativas y escenario teatralizado.
-                        </p>
-                        <div class="mt-4 flex items-center text-xs font-medium text-indigo-600 dark:text-indigo-400 opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
-                            Ver contenido ➔
+                        <h3 class="text-base font-bold text-slate-800 dark:text-slate-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors mb-1.5">Casos de uso</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Diagramas UML, relaciones de inclusión y extensión, especificaciones narrativas y escenario teatralizado.</p>
+                        <div class="mt-4 flex items-center gap-1 text-xs font-semibold text-indigo-600 dark:text-indigo-400 opacity-0 group-hover:opacity-100 transition-all duration-200 translate-y-1 group-hover:translate-y-0">
+                            Ver contenido <i class="ph-duotone ph-arrow-right text-base"></i>
                         </div>
                     </div>
                 </a>
 
                 <!-- TARJETA 7: HISTORIAS DE USUARIO -->
-                <a href="clases/clase-12-historias-de-usuario/index.html" class="group block bg-white dark:bg-slate-900 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 hover:shadow-lg hover:border-emerald-500 dark:hover:border-emerald-500 transition-all duration-300 overflow-hidden">
-                    <div class="h-2 bg-gradient-to-r from-emerald-500 to-teal-600"></div>
+                <a href="clases/clase-12-historias-de-usuario/index.html" class="group block bg-white dark:bg-slate-900 rounded-2xl shadow-xs border border-slate-200 dark:border-slate-800 hover:shadow-xl hover:-translate-y-1 hover:border-teal-400 dark:hover:border-teal-500 transition-all duration-300 overflow-hidden">
+                    <div class="h-1.5 bg-gradient-to-r from-teal-500 to-emerald-500"></div>
                     <div class="p-6">
                         <div class="flex items-start justify-between mb-4">
-                            <span class="p-3 bg-emerald-50 dark:bg-emerald-950/30 rounded-lg text-2xl">📝</span>
-                            <span class="text-xs font-bold px-2 py-1 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 uppercase">Clase 12</span>
+                            <div class="p-3 bg-gradient-to-br from-teal-100 to-emerald-100 dark:from-teal-950/60 dark:to-emerald-950/40 rounded-xl border border-teal-200 dark:border-teal-900/50">
+                                <i class="ph-duotone ph-card-holder text-4xl text-teal-500"></i>
+                            </div>
+                            <span class="text-[10px] font-black px-2.5 py-1 rounded-lg bg-teal-100 dark:bg-teal-950 text-teal-700 dark:text-teal-300 uppercase tracking-wider">Clase 12</span>
                         </div>
-                        <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors mb-2">
-                            Historias de usuario
-                        </h3>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                            Agilidad, formato canónico (3 C), criterios INVEST, BDD (Dado-Cuando-Entonces) y Story points.
-                        </p>
-                        <div class="mt-4 flex items-center text-xs font-medium text-emerald-600 dark:text-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
-                            Ver contenido ➔
+                        <h3 class="text-base font-bold text-slate-800 dark:text-slate-100 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors mb-1.5">Historias de usuario</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Agilidad, formato canónico (3 C), criterios INVEST, BDD (Dado-Cuando-Entonces) y Story points.</p>
+                        <div class="mt-4 flex items-center gap-1 text-xs font-semibold text-teal-600 dark:text-teal-400 opacity-0 group-hover:opacity-100 transition-all duration-200 translate-y-1 group-hover:translate-y-0">
+                            Ver contenido <i class="ph-duotone ph-arrow-right text-base"></i>
                         </div>
                     </div>
                 </a>
 
                 <!-- TARJETA 8: REPASO EXAMEN -->
-                <a href="clases/examen/index.html" class="group block bg-white dark:bg-slate-900 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 hover:shadow-lg hover:border-violet-500 dark:hover:border-violet-500 transition-all duration-300 overflow-hidden">
-                    <div class="h-2 bg-gradient-to-r from-violet-500 to-fuchsia-600"></div>
+                <a href="clases/examen/index.html" class="group block bg-white dark:bg-slate-900 rounded-2xl shadow-xs border border-slate-200 dark:border-slate-800 hover:shadow-xl hover:-translate-y-1 hover:border-rose-400 dark:hover:border-rose-500 transition-all duration-300 overflow-hidden">
+                    <div class="h-1.5 bg-gradient-to-r from-rose-500 to-pink-600"></div>
                     <div class="p-6">
                         <div class="flex items-start justify-between mb-4">
-                            <span class="p-3 bg-violet-50 dark:bg-violet-950/30 rounded-lg text-2xl">🎓</span>
-                            <span class="text-xs font-bold px-2 py-1 rounded bg-violet-100 dark:bg-violet-950 text-violet-800 dark:text-violet-300 uppercase">Examen</span>
+                            <div class="p-3 bg-gradient-to-br from-rose-100 to-pink-100 dark:from-rose-950/60 dark:to-pink-950/40 rounded-xl border border-rose-200 dark:border-rose-900/50">
+                                <i class="ph-duotone ph-exam text-4xl text-rose-500"></i>
+                            </div>
+                            <span class="text-[10px] font-black px-2.5 py-1 rounded-lg bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-300 uppercase tracking-wider">Examen</span>
                         </div>
-                        <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors mb-2">
-                            Examen & parciales
-                        </h3>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                            Machete y repaso para parciales de la UTN.BA: 1° y 2° Parcial interactivo con resolución explicada.
-                        </p>
-                        <div class="mt-4 flex items-center text-xs font-medium text-violet-600 dark:text-violet-400 opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
-                            Ver repaso ➔
+                        <h3 class="text-base font-bold text-slate-800 dark:text-slate-100 group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors mb-1.5">Examen & parciales</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Machete y repaso para parciales de la UTN.BA: 1° y 2° Parcial interactivo con resolución explicada.</p>
+                        <div class="mt-4 flex items-center gap-1 text-xs font-semibold text-rose-600 dark:text-rose-400 opacity-0 group-hover:opacity-100 transition-all duration-200 translate-y-1 group-hover:translate-y-0">
+                            Ver repaso <i class="ph-duotone ph-arrow-right text-base"></i>
                         </div>
                     </div>
                 </a>
 
             </div>
-
         </main>
-    </div> 
-    
+    </div>
 
     <footer class="bg-slate-900 text-slate-400 text-xs text-center p-4 mt-auto border-t border-slate-800">
         <p>© 2026 - Análisis de sistemas - Portal de estudio</p>
