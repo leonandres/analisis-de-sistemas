@@ -60,6 +60,22 @@ const CLASES_DATA = [
         ]
     },
     {
+        id: 'clase07',
+        key: 'clase-07-planificacion',
+        emoji: '📊',
+        numero: '07',
+        titulo: 'Planificación de proyectos',
+        color: 'orange',
+        secciones: [
+            { anchor: 'fundamentos',        label: 'Fundamentos y triple restricción' },
+            { anchor: 'wbs',                label: 'WBS / EDT' },
+            { anchor: 'cpm-pert',           label: 'CPM y PERT' },
+            { anchor: 'gantt',              label: 'Diagrama de Gantt' },
+            { anchor: 'agilidad',           label: 'Metodologías ágiles' },
+            { anchor: 'agil-vs-tradicional',label: 'Ágil vs. predictivo' },
+        ]
+    },
+    {
         id: 'clase06',
         key: 'clase-06-requerimientos-funcionales-y-no-funcionales',
         emoji: '📐',
@@ -137,6 +153,7 @@ function getRelativePaths() {
         clase02: isSubPage ? '../clase-02-procesos-de-negocio/index.html' : './clases/clase-02-procesos-de-negocio/index.html',
         clase03: isSubPage ? '../clase-03-informe-de-reconocimiento/index.html' : './clases/clase-03-informe-de-reconocimiento/index.html',
         clase06: isSubPage ? '../clase-06-requerimientos-funcionales-y-no-funcionales/index.html' : './clases/clase-06-requerimientos-funcionales-y-no-funcionales/index.html',
+        clase07: isSubPage ? '../clase-07-planificacion/index.html' : './clases/clase-07-planificacion/index.html',
         clase10: isSubPage ? '../clase-10-casos-de-uso/index.html' : './clases/clase-10-casos-de-uso/index.html',
         clase12: isSubPage ? '../clase-12-historias-de-usuario/index.html' : './clases/clase-12-historias-de-usuario/index.html',
         examen: isSubPage ? '../examen/index.html' : './clases/examen/index.html'
@@ -208,6 +225,16 @@ function getHeaderHTML(paths) {
                                 <div class="text-[10px] font-bold text-sky-600 dark:text-sky-400 uppercase tracking-wider">Clase 06</div>
                                 <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">Ingeniería de requerimientos</div>
                                 <div class="text-xs text-slate-500 dark:text-slate-400">Funcionales y no funcionales</div>
+                            </div>
+                            <span class="text-slate-400 group-hover:translate-x-1 transition-transform duration-200">→</span>
+                        </a>
+
+                        <a href="${paths.clase07}" class="flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
+                            <span class="text-2xl group-hover:scale-110 transition-transform duration-200">📊</span>
+                            <div class="flex-1">
+                                <div class="text-[10px] font-bold text-orange-600 dark:text-orange-400 uppercase tracking-wider">Clase 07</div>
+                                <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">Planificación de proyectos</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">CPM, PERT, Gantt, Scrum</div>
                             </div>
                             <span class="text-slate-400 group-hover:translate-x-1 transition-transform duration-200">→</span>
                         </a>
@@ -313,6 +340,7 @@ function getSidebarHTML(paths) {
         violet:  { badge: 'bg-violet-100 dark:bg-violet-950 text-violet-700 dark:text-violet-300', border: 'border-violet-500', dot: 'bg-violet-500' },
         indigo:  { badge: 'bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300', border: 'border-indigo-500', dot: 'bg-indigo-500' },
         rose:    { badge: 'bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-300',     border: 'border-rose-500',   dot: 'bg-rose-500' },
+        orange:  { badge: 'bg-orange-100 dark:bg-orange-950 text-orange-700 dark:text-orange-300', border: 'border-orange-500', dot: 'bg-orange-500' },
     };
 
     const clasesHTML = CLASES_DATA.map(clase => {

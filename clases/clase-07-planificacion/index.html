@@ -1,23 +1,456 @@
-<!DOCTYPE html>
-<html lang="en">
+﻿<!DOCTYPE html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Planificación y gestión de proyectos - Análisis de sistemas</title>
-    <!-- Favicon SVG -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
+    <meta name="description" content="Clase de Planificación de Proyectos - Análisis de Sistemas de Información - UTN.BA">
+    <meta name="author" content="Análisis de Sistemas">
+    <title>Clase 07: Planificación | Análisis de sistemas</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = { darkMode: 'class' }
-    </script>
+    <script>tailwind.config = { darkMode: 'class' }</script>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
-<body>
-    <header>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-200">
 
-    </header>
+    <div id="header-container"></div>
 
-    <div>
-        
+    <div class="main-content-wrapper flex-1 w-full pt-20">
+        <div class="max-w-7xl mx-auto w-full p-4 md:p-6 grid grid-cols-1 lg:grid-cols-4 gap-6 flex-1">
+            <nav id="sidebar-container" class="lg:col-span-1 space-y-2"></nav>
+            <main class="lg:col-span-3 space-y-8">
+
+                <!-- HERO -->
+                <div class="bg-gradient-to-r from-orange-600 to-amber-700 rounded-2xl p-6 text-white shadow-lg relative overflow-hidden">
+                    <div class="absolute -right-6 -bottom-6 opacity-10">
+                        <i data-lucide="gantt-chart" class="w-36 h-36"></i>
+                    </div>
+                    <span class="px-2.5 py-1 text-[10px] font-black uppercase tracking-wider bg-white/20 rounded-md backdrop-blur-md">Unidad 4</span>
+                    <h1 class="text-2xl md:text-3xl font-extrabold mt-2">Planificación de proyectos</h1>
+                    <p class="text-orange-100 text-sm mt-2 max-w-2xl leading-relaxed">
+                        Estimación de tiempos y recursos, técnicas de red CPM y PERT, gestión de riesgos y metodologías ágiles vs. predictivas.
+                    </p>
+                </div>
+
+                <!-- SECCIÓN 1: FUNDAMENTOS -->
+                <section id="fundamentos" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-orange-100 dark:bg-orange-950 text-orange-800 dark:text-orange-300 uppercase tracking-wider">Gestión de proyectos</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">1. Fundamentos de la planificación</h2>
+                        <p class="text-sm text-slate-500 mt-1">Conceptos base: proyecto, planificación y las variables que lo determinan.</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        <div class="p-5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-800">
+                            <span class="text-xs font-bold px-2.5 py-1 rounded-md bg-orange-100 dark:bg-orange-950/50 text-orange-800 dark:text-orange-300 uppercase tracking-wide">PMI / PMBOK</span>
+                            <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200 mt-3 mb-2">Proyecto</h3>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                                "Esfuerzo temporal que se lleva a cabo para crear un producto, servicio o resultado único". Tiene inicio y fin definidos, a diferencia de las operaciones continuas.
+                            </p>
+                        </div>
+                        <div class="p-5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-800">
+                            <span class="text-xs font-bold px-2.5 py-1 rounded-md bg-amber-100 dark:bg-amber-950/50 text-amber-800 dark:text-amber-300 uppercase tracking-wide">Planificación</span>
+                            <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200 mt-3 mb-2">Plan de proyecto</h3>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                                Proceso de definir qué actividades hay que realizar, en qué secuencia, con qué recursos y en cuánto tiempo para alcanzar los objetivos dentro de las restricciones del proyecto.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mt-4 bg-slate-900 text-slate-100 p-5 rounded-xl border border-slate-800">
+                        <h4 class="text-sm font-bold uppercase tracking-wider text-orange-400 mb-4">El triángulo de hierro — Triple restricción</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                            <div class="bg-slate-800 p-4 rounded-lg border border-slate-700 text-center">
+                                <div class="flex justify-center mb-2 text-orange-400"><i data-lucide="timer" class="w-7 h-7"></i></div>
+                                <strong class="block text-white mb-1">Tiempo</strong>
+                                <p class="text-slate-400 text-xs">Duración total del proyecto y sus plazos intermedios.</p>
+                            </div>
+                            <div class="bg-slate-800 p-4 rounded-lg border border-slate-700 text-center">
+                                <div class="flex justify-center mb-2 text-orange-400"><i data-lucide="circle-dollar-sign" class="w-7 h-7"></i></div>
+                                <strong class="block text-white mb-1">Costo</strong>
+                                <p class="text-slate-400 text-xs">Presupuesto asignado: recursos humanos, tecnología, infraestructura.</p>
+                            </div>
+                            <div class="bg-slate-800 p-4 rounded-lg border border-slate-700 text-center">
+                                <div class="flex justify-center mb-2 text-orange-400"><i data-lucide="crosshair" class="w-7 h-7"></i></div>
+                                <strong class="block text-white mb-1">Alcance</strong>
+                                <p class="text-slate-400 text-xs">Funcionalidades y entregables comprometidos con el cliente.</p>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-xs text-slate-400 leading-relaxed">
+                            Modificar cualquiera de las tres variables impacta inevitablemente sobre las otras dos. Si se amplía el alcance sin ajustar tiempo ni costo, la calidad se resiente.
+                        </p>
+                    </div>
+                    <div class="mt-4 bg-orange-50 dark:bg-orange-950/30 border border-orange-200 dark:border-orange-900/50 rounded-lg p-4">
+                        <div class="flex items-start gap-3">
+                            <i data-lucide="lightbulb" class="w-6 h-6 text-orange-500 flex-shrink-0 mt-0.5"></i>
+                            <div>
+                                <strong class="text-orange-900 dark:text-orange-200 block mb-1">Planificación en Análisis de Sistemas:</strong>
+                                <p class="text-sm text-orange-800 dark:text-orange-300 leading-relaxed">
+                                    En el contexto de la materia, planificar el proyecto de sistemas implica descomponer el trabajo en actividades medibles, asignar responsables y establecer dependencias entre tareas antes de comenzar el relevamiento o el desarrollo.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 2: WBS -->
+                <section id="wbs" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-sky-100 dark:bg-sky-950 text-sky-800 dark:text-sky-300 uppercase tracking-wider">Descomposición</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">2. Estructura de desglose del trabajo (WBS / EDT)</h2>
+                        <p class="text-sm text-slate-500 mt-1">El primer paso antes de estimar: descomponer el trabajo en unidades manejables.</p>
+                    </div>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-5 leading-relaxed">
+                        La <strong>Work Breakdown Structure (WBS)</strong>, o Estructura de Desglose del Trabajo (EDT), descompone jerárquicamente todo el trabajo del proyecto en entregables y paquetes de trabajo concretos. Es la base sobre la cual se estiman tiempos, costos y se asignan recursos.
+                    </p>
+                    <div class="space-y-3 mb-6">
+                        <div class="flex gap-4 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-200 dark:border-slate-800">
+                            <div class="flex-shrink-0 w-10 h-10 bg-sky-600 text-white rounded-full flex items-center justify-center font-bold text-sm">1</div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 dark:text-slate-200">Nivel 0: Proyecto total</h4>
+                                <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">El objetivo global. Ej: "Sistema de gestión de alumnos".</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-200 dark:border-slate-800">
+                            <div class="flex-shrink-0 w-10 h-10 bg-sky-600 text-white rounded-full flex items-center justify-center font-bold text-sm">2</div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 dark:text-slate-200">Nivel 1: Fases o entregables mayores</h4>
+                                <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Ej: Reconocimiento, Relevamiento, Análisis, Diseño, Implementación.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-200 dark:border-slate-800">
+                            <div class="flex-shrink-0 w-10 h-10 bg-sky-600 text-white rounded-full flex items-center justify-center font-bold text-sm">3</div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 dark:text-slate-200">Nivel 2+: Paquetes de trabajo</h4>
+                                <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Tareas concretas asignables a un responsable, con duración y costo estimable. Ej: "Entrevista con gerente de ventas".</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50 rounded-lg p-4">
+                        <div class="flex items-start gap-3">
+                            <i data-lucide="pin" class="w-6 h-6 text-amber-500 flex-shrink-0 mt-0.5"></i>
+                            <div>
+                                <strong class="text-amber-900 dark:text-amber-200 block mb-1">Regla del 100%:</strong>
+                                <p class="text-sm text-amber-800 dark:text-amber-300 leading-relaxed">
+                                    La WBS debe capturar el <strong>100% del trabajo</strong> del proyecto. Todo lo que no está en la WBS no forma parte del alcance; todo lo que sobra representa <em>scope creep</em> (expansión no controlada del alcance).
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 3: CPM / PERT -->
+                <section id="cpm-pert" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 uppercase tracking-wider">Técnicas de red</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">3. CPM y PERT</h2>
+                        <p class="text-sm text-slate-500 mt-1">Dos técnicas de planificación basadas en grafos para determinar el camino crítico y estimar duraciones.</p>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="p-5 border-l-4 border-orange-500 bg-slate-50 dark:bg-slate-800/40 rounded-r-xl">
+                            <div class="flex items-center gap-2 mb-3">
+                                <i data-lucide="route" class="w-5 h-5 text-orange-500"></i>
+                                <h3 class="font-bold text-lg text-slate-800 dark:text-slate-200">CPM — Critical Path Method</h3>
+                            </div>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
+                                Desarrollado en 1957 por DuPont. Trabaja con <strong>duraciones determinísticas</strong> (un único valor de tiempo por tarea). Su objetivo es identificar la secuencia de actividades que determina la duración mínima total del proyecto: el <strong>camino crítico</strong>.
+                            </p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                                <div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800">
+                                    <strong class="text-orange-700 dark:text-orange-400 block mb-2">Conceptos clave:</strong>
+                                    <ul class="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300 text-xs">
+                                        <li><strong>ES (Early Start):</strong> inicio más temprano posible.</li>
+                                        <li><strong>EF (Early Finish):</strong> fin más temprano posible.</li>
+                                        <li><strong>LS (Late Start):</strong> inicio más tardío sin demorar el proyecto.</li>
+                                        <li><strong>LF (Late Finish):</strong> fin más tardío sin demorar el proyecto.</li>
+                                        <li><strong>Holgura:</strong> LS − ES. En el camino crítico es <strong>cero</strong>.</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800">
+                                    <strong class="text-orange-700 dark:text-orange-400 block mb-2">Camino crítico:</strong>
+                                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-xs">
+                                        Es la secuencia de actividades con holgura cero. Determina la <strong>duración mínima del proyecto</strong>. Cualquier retraso en una actividad del camino crítico retrasa el proyecto completo.
+                                    </p>
+                                    <div class="mt-3 bg-orange-50 dark:bg-orange-950/30 rounded-lg p-3 text-xs">
+                                        <strong class="text-orange-800 dark:text-orange-300">Ejemplo:</strong>
+                                        <p class="text-slate-600 dark:text-slate-400 mt-1">Si hay dos caminos: A→B→C (10 días) y A→D→E (14 días), el camino crítico es A→D→E. El proyecto no puede completarse en menos de 14 días.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-5 border-l-4 border-amber-500 bg-slate-50 dark:bg-slate-800/40 rounded-r-xl">
+                            <div class="flex items-center gap-2 mb-3">
+                                <i data-lucide="bar-chart-2" class="w-5 h-5 text-amber-500"></i>
+                                <h3 class="font-bold text-lg text-slate-800 dark:text-slate-200">PERT — Program Evaluation and Review Technique</h3>
+                            </div>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
+                                Desarrollado en 1958 por la Marina de EE.UU. para el proyecto del misil Polaris. A diferencia del CPM, trabaja con <strong>duraciones probabilísticas</strong>: para cada tarea se definen tres estimaciones de tiempo que permiten modelar la incertidumbre.
+                            </p>
+                            <div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800 mb-4">
+                                <strong class="text-amber-700 dark:text-amber-400 block mb-3">Las tres estimaciones PERT:</strong>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
+                                    <div class="p-3 bg-emerald-50 dark:bg-emerald-950/30 rounded-lg border border-emerald-200 dark:border-emerald-900/40">
+                                        <strong class="text-emerald-800 dark:text-emerald-300 block mb-1">Optimista (O)</strong>
+                                        <p class="text-xs text-slate-600 dark:text-slate-400">Duración mínima si todo sale perfecto. Probabilidad baja.</p>
+                                    </div>
+                                    <div class="p-3 bg-sky-50 dark:bg-sky-950/30 rounded-lg border border-sky-200 dark:border-sky-900/40">
+                                        <strong class="text-sky-800 dark:text-sky-300 block mb-1">Más probable (M)</strong>
+                                        <p class="text-xs text-slate-600 dark:text-slate-400">Duración más frecuente en condiciones normales.</p>
+                                    </div>
+                                    <div class="p-3 bg-red-50 dark:bg-red-950/30 rounded-lg border border-red-200 dark:border-red-900/40">
+                                        <strong class="text-red-800 dark:text-red-300 block mb-1">Pesimista (P)</strong>
+                                        <p class="text-xs text-slate-600 dark:text-slate-400">Duración máxima si ocurren problemas.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-slate-900 text-slate-100 p-4 rounded-xl border border-slate-800">
+                                <h4 class="text-sm font-bold text-amber-400 mb-3">Fórmula de duración esperada (te):</h4>
+                                <div class="text-center text-xl font-mono font-bold text-white mb-3">te = (O + 4M + P) / 6</div>
+                                <p class="text-xs text-slate-400 leading-relaxed">La fórmula pondera 4 veces la estimación más probable. El resultado es el <strong>tiempo esperado</strong> de la tarea que reemplaza al valor único del CPM.</p>
+                                <div class="mt-3 p-3 bg-slate-800 rounded-lg text-xs">
+                                    <strong class="text-amber-300">Ejemplo:</strong>
+                                    <span class="text-slate-300"> O=2, M=5, P=14 → te = (2 + 4×5 + 14) / 6 = <strong class="text-white">6 días</strong></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800">
+                            <table class="w-full text-sm">
+                                <thead class="bg-slate-200 dark:bg-slate-700">
+                                    <tr>
+                                        <th class="px-4 py-3 text-left text-xs font-bold text-slate-700 dark:text-slate-300 uppercase">Característica</th>
+                                        <th class="px-4 py-3 text-left text-xs font-bold text-orange-700 dark:text-orange-300 uppercase">CPM</th>
+                                        <th class="px-4 py-3 text-left text-xs font-bold text-amber-700 dark:text-amber-300 uppercase">PERT</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+                                    <tr class="bg-white dark:bg-slate-900"><td class="px-4 py-3 font-medium text-slate-700 dark:text-slate-300">Estimación</td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">Determinística (1 valor)</td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">Probabilística (3 valores)</td></tr>
+                                    <tr class="bg-white dark:bg-slate-900"><td class="px-4 py-3 font-medium text-slate-700 dark:text-slate-300">Contexto ideal</td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">Proyectos con tiempos conocidos</td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">Proyectos nuevos con alta incertidumbre</td></tr>
+                                    <tr class="bg-white dark:bg-slate-900"><td class="px-4 py-3 font-medium text-slate-700 dark:text-slate-300">Origen</td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">DuPont, 1957</td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">Marina EE.UU., 1958</td></tr>
+                                    <tr class="bg-white dark:bg-slate-900"><td class="px-4 py-3 font-medium text-slate-700 dark:text-slate-300">Resultado</td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">Duración mínima + holguras</td><td class="px-4 py-3 text-slate-600 dark:text-slate-400">Duración esperada + varianza</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 4: GANTT -->
+                <section id="gantt" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 uppercase tracking-wider">Cronograma</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">4. Diagrama de Gantt</h2>
+                        <p class="text-sm text-slate-500 mt-1">La herramienta más utilizada para visualizar y comunicar el cronograma del proyecto.</p>
+                    </div>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-5 leading-relaxed">
+                        Desarrollado por Henry Gantt (1910). El eje X representa el tiempo y el eje Y las tareas. Cada barra muestra la duración y el período de ejecución de una actividad. Es el complemento visual del CPM/PERT.
+                    </p>
+                    <div class="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800 mb-5">
+                        <table class="w-full text-xs">
+                            <thead class="bg-slate-200 dark:bg-slate-700">
+                                <tr>
+                                    <th class="px-3 py-2 text-left font-bold text-slate-700 dark:text-slate-300 uppercase w-36">Tarea</th>
+                                    <th class="px-2 py-2 text-center font-bold text-slate-700 dark:text-slate-300">Sem 1</th>
+                                    <th class="px-2 py-2 text-center font-bold text-slate-700 dark:text-slate-300">Sem 2</th>
+                                    <th class="px-2 py-2 text-center font-bold text-slate-700 dark:text-slate-300">Sem 3</th>
+                                    <th class="px-2 py-2 text-center font-bold text-slate-700 dark:text-slate-300">Sem 4</th>
+                                    <th class="px-2 py-2 text-center font-bold text-slate-700 dark:text-slate-300">Sem 5</th>
+                                    <th class="px-2 py-2 text-center font-bold text-slate-700 dark:text-slate-300">Sem 6</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+                                <tr class="bg-white dark:bg-slate-900"><td class="px-3 py-2 font-medium text-slate-700 dark:text-slate-300">Reconocimiento</td><td class="px-1 py-2"><div class="bg-orange-500 rounded h-5"></div></td><td class="px-1 py-2"><div class="bg-orange-500 rounded h-5"></div></td><td></td><td></td><td></td><td></td></tr>
+                                <tr class="bg-white dark:bg-slate-900"><td class="px-3 py-2 font-medium text-slate-700 dark:text-slate-300">Relevamiento</td><td></td><td class="px-1 py-2"><div class="bg-sky-500 rounded h-5"></div></td><td class="px-1 py-2"><div class="bg-sky-500 rounded h-5"></div></td><td class="px-1 py-2"><div class="bg-sky-500 rounded h-5"></div></td><td></td><td></td></tr>
+                                <tr class="bg-white dark:bg-slate-900"><td class="px-3 py-2 font-medium text-slate-700 dark:text-slate-300">Análisis</td><td></td><td></td><td></td><td class="px-1 py-2"><div class="bg-violet-500 rounded h-5"></div></td><td class="px-1 py-2"><div class="bg-violet-500 rounded h-5"></div></td><td></td></tr>
+                                <tr class="bg-white dark:bg-slate-900"><td class="px-3 py-2 font-medium text-slate-700 dark:text-slate-300">Entrega final</td><td></td><td></td><td></td><td></td><td></td><td class="px-1 py-2"><div class="bg-emerald-500 rounded h-5"></div></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                        <div class="p-4 bg-emerald-50 dark:bg-emerald-950/30 rounded-lg border border-emerald-200 dark:border-emerald-900/40">
+                            <div class="flex items-center gap-2 mb-2">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600"></i>
+                                <strong class="text-emerald-800 dark:text-emerald-300">Ventajas:</strong>
+                            </div>
+                            <ul class="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300 text-xs">
+                                <li>Fácil de leer por todos los stakeholders</li>
+                                <li>Muestra dependencias entre tareas visualmente</li>
+                                <li>Permite comparar avance real vs. planificado</li>
+                            </ul>
+                        </div>
+                        <div class="p-4 bg-red-50 dark:bg-red-950/30 rounded-lg border border-red-200 dark:border-red-900/40">
+                            <div class="flex items-center gap-2 mb-2">
+                                <i data-lucide="alert-triangle" class="w-4 h-4 text-red-500"></i>
+                                <strong class="text-red-800 dark:text-red-300">Limitaciones:</strong>
+                            </div>
+                            <ul class="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300 text-xs">
+                                <li>Se vuelve complejo con muchas tareas interdependientes</li>
+                                <li>No muestra el camino crítico por sí solo</li>
+                                <li>En proyectos ágiles, queda obsoleto rápidamente</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 5: METODOLOGÍAS ÁGILES -->
+                <section id="agilidad" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-sky-100 dark:bg-sky-950 text-sky-800 dark:text-sky-300 uppercase tracking-wider">Metodología ágil</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">5. Metodologías ágiles</h2>
+                        <p class="text-sm text-slate-500 mt-1">El enfoque iterativo e incremental que cambió la industria del software a partir del Manifiesto Ágil (2001).</p>
+                    </div>
+                    <div class="mb-6 bg-slate-900 text-slate-100 p-5 rounded-xl border border-slate-800">
+                        <h4 class="text-sm font-bold uppercase tracking-wider text-sky-400 mb-3">Los 4 valores del Manifiesto Ágil (Beck et al., 2001)</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                            <div class="bg-slate-800 p-3 rounded-lg border border-slate-700"><p class="text-white"><strong class="text-sky-300">Individuos e interacciones</strong> sobre procesos y herramientas.</p></div>
+                            <div class="bg-slate-800 p-3 rounded-lg border border-slate-700"><p class="text-white"><strong class="text-sky-300">Software funcionando</strong> sobre documentación extensiva.</p></div>
+                            <div class="bg-slate-800 p-3 rounded-lg border border-slate-700"><p class="text-white"><strong class="text-sky-300">Colaboración con el cliente</strong> sobre negociación contractual.</p></div>
+                            <div class="bg-slate-800 p-3 rounded-lg border border-slate-700"><p class="text-white"><strong class="text-sky-300">Respuesta al cambio</strong> sobre seguir un plan.</p></div>
+                        </div>
+                        <p class="mt-3 text-xs text-slate-400">Los ítems de la derecha tienen valor, pero los de la izquierda se valoran más.</p>
+                    </div>
+                    <div class="space-y-5">
+                        <div class="p-5 border-l-4 border-sky-500 bg-slate-50 dark:bg-slate-800/40 rounded-r-xl">
+                            <div class="flex items-center gap-2 mb-3">
+                                <i data-lucide="repeat-2" class="w-5 h-5 text-sky-500"></i>
+                                <h3 class="font-bold text-lg text-slate-800 dark:text-slate-200">Scrum</h3>
+                            </div>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 mb-3 leading-relaxed">
+                                El framework ágil más adoptado. Organiza el trabajo en <strong>Sprints</strong> (ciclos de 1 a 4 semanas) al final de los cuales se entrega un incremento funcional del producto.
+                            </p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                                <div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800">
+                                    <strong class="text-sky-700 dark:text-sky-400 block mb-2">Roles:</strong>
+                                    <ul class="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300 text-xs">
+                                        <li><strong>Product Owner:</strong> representa al cliente, prioriza el backlog.</li>
+                                        <li><strong>Scrum Master:</strong> facilita el proceso y elimina impedimentos.</li>
+                                        <li><strong>Dev Team:</strong> equipo auto-organizado que construye el producto.</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800">
+                                    <strong class="text-sky-700 dark:text-sky-400 block mb-2">Artefactos:</strong>
+                                    <ul class="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300 text-xs">
+                                        <li><strong>Product Backlog:</strong> lista priorizada de todo lo que el producto necesita.</li>
+                                        <li><strong>Sprint Backlog:</strong> ítems comprometidos para el sprint en curso.</li>
+                                        <li><strong>Incremento:</strong> versión funcional y potencialmente entregable.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-5 border-l-4 border-indigo-500 bg-slate-50 dark:bg-slate-800/40 rounded-r-xl">
+                            <div class="flex items-center gap-2 mb-3">
+                                <i data-lucide="kanban" class="w-5 h-5 text-indigo-500"></i>
+                                <h3 class="font-bold text-lg text-slate-800 dark:text-slate-200">Kanban</h3>
+                            </div>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 mb-3 leading-relaxed">
+                                Originado en Toyota. Visualiza el flujo de trabajo mediante un tablero con columnas que representan estados. No tiene iteraciones fijas; el trabajo fluye de forma continua y se limita el trabajo en progreso (WIP) para evitar cuellos de botella.
+                            </p>
+                            <div class="grid grid-cols-3 gap-2 text-xs">
+                                <div class="bg-slate-200 dark:bg-slate-700 rounded-lg p-3">
+                                    <strong class="block text-slate-700 dark:text-slate-200 mb-2 text-center">Por hacer</strong>
+                                    <div class="space-y-1">
+                                        <div class="bg-white dark:bg-slate-800 rounded p-1.5 text-slate-600 dark:text-slate-400 text-center">Tarea A</div>
+                                        <div class="bg-white dark:bg-slate-800 rounded p-1.5 text-slate-600 dark:text-slate-400 text-center">Tarea B</div>
+                                    </div>
+                                </div>
+                                <div class="bg-sky-100 dark:bg-sky-950/30 rounded-lg p-3">
+                                    <strong class="block text-sky-700 dark:text-sky-300 mb-2 text-center">En progreso</strong>
+                                    <div class="space-y-1">
+                                        <div class="bg-white dark:bg-slate-800 rounded p-1.5 text-slate-600 dark:text-slate-400 text-center">Tarea C</div>
+                                    </div>
+                                </div>
+                                <div class="bg-emerald-100 dark:bg-emerald-950/30 rounded-lg p-3">
+                                    <strong class="block text-emerald-700 dark:text-emerald-300 mb-2 text-center">Hecho</strong>
+                                    <div class="space-y-1">
+                                        <div class="bg-white dark:bg-slate-800 rounded p-1.5 text-slate-600 dark:text-slate-400 text-center">Tarea D</div>
+                                        <div class="bg-white dark:bg-slate-800 rounded p-1.5 text-slate-600 dark:text-slate-400 text-center">Tarea E</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 6: ÁGIL VS TRADICIONAL -->
+                <section id="agil-vs-tradicional" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-violet-100 dark:bg-violet-950 text-violet-800 dark:text-violet-300 uppercase tracking-wider">Comparativa</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">6. Ágil vs. predictivo (cascada)</h2>
+                        <p class="text-sm text-slate-500 mt-1">Dos filosofías de gestión con contextos de aplicación diferentes.</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div class="p-5 rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100/50 dark:from-slate-800/50 dark:to-slate-900/30 border border-slate-200 dark:border-slate-700">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="p-2 bg-slate-600 text-white rounded-lg"><i data-lucide="layers" class="w-5 h-5"></i></div>
+                                <h3 class="font-extrabold text-slate-800 dark:text-slate-200 text-base">Predictivo (Cascada)</h3>
+                            </div>
+                            <ul class="space-y-2 text-xs text-slate-600 dark:text-slate-400">
+                                <li class="flex gap-2"><i data-lucide="minus" class="w-3 h-3 mt-0.5 flex-shrink-0"></i>Fases secuenciales: Requisitos → Diseño → Desarrollo → Pruebas → Entrega.</li>
+                                <li class="flex gap-2"><i data-lucide="minus" class="w-3 h-3 mt-0.5 flex-shrink-0"></i>El alcance se define completamente al inicio.</li>
+                                <li class="flex gap-2"><i data-lucide="minus" class="w-3 h-3 mt-0.5 flex-shrink-0"></i>Los cambios son costosos y difíciles de incorporar.</li>
+                                <li class="flex gap-2"><i data-lucide="minus" class="w-3 h-3 mt-0.5 flex-shrink-0"></i>El cliente recibe el producto al final del proyecto.</li>
+                                <li class="flex gap-2"><i data-lucide="minus" class="w-3 h-3 mt-0.5 flex-shrink-0"></i>Ideal para requisitos estables y bien definidos.</li>
+                            </ul>
+                        </div>
+                        <div class="p-5 rounded-2xl bg-gradient-to-br from-sky-50/50 to-sky-100/10 dark:from-sky-950/20 dark:to-sky-900/5 border border-sky-200/60 dark:border-sky-900/40">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="p-2 bg-sky-500 text-white rounded-lg"><i data-lucide="refresh-cw" class="w-5 h-5"></i></div>
+                                <h3 class="font-extrabold text-sky-800 dark:text-sky-300 text-base">Ágil / Iterativo</h3>
+                            </div>
+                            <ul class="space-y-2 text-xs text-slate-600 dark:text-slate-400">
+                                <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 mt-0.5 flex-shrink-0 text-sky-500"></i>Ciclos cortos de entrega con valor incremental.</li>
+                                <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 mt-0.5 flex-shrink-0 text-sky-500"></i>El alcance evoluciona con el aprendizaje del equipo.</li>
+                                <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 mt-0.5 flex-shrink-0 text-sky-500"></i>Los cambios son bienvenidos, incluso tardíos.</li>
+                                <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 mt-0.5 flex-shrink-0 text-sky-500"></i>El cliente recibe valor funcional desde las primeras iteraciones.</li>
+                                <li class="flex gap-2"><i data-lucide="check" class="w-3 h-3 mt-0.5 flex-shrink-0 text-sky-500"></i>Ideal para requisitos cambiantes o inciertos.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800 mb-4">
+                        <table class="w-full text-xs">
+                            <thead class="bg-slate-200 dark:bg-slate-700">
+                                <tr>
+                                    <th class="px-4 py-2 text-left font-bold text-slate-700 dark:text-slate-300 uppercase">Variable</th>
+                                    <th class="px-4 py-2 text-left font-bold text-slate-600 dark:text-slate-400 uppercase">Predictivo</th>
+                                    <th class="px-4 py-2 text-left font-bold text-sky-700 dark:text-sky-300 uppercase">Ágil</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+                                <tr class="bg-white dark:bg-slate-900"><td class="px-4 py-2 font-medium text-slate-700 dark:text-slate-300">Planificación</td><td class="px-4 py-2 text-slate-600 dark:text-slate-400">Detallada al inicio (Big Design Up Front)</td><td class="px-4 py-2 text-slate-600 dark:text-slate-400">Progresiva, just-in-time</td></tr>
+                                <tr class="bg-white dark:bg-slate-900"><td class="px-4 py-2 font-medium text-slate-700 dark:text-slate-300">Entrega de valor</td><td class="px-4 py-2 text-slate-600 dark:text-slate-400">Al final del proyecto</td><td class="px-4 py-2 text-slate-600 dark:text-slate-400">Cada sprint / iteración</td></tr>
+                                <tr class="bg-white dark:bg-slate-900"><td class="px-4 py-2 font-medium text-slate-700 dark:text-slate-300">Rol del cliente</td><td class="px-4 py-2 text-slate-600 dark:text-slate-400">Define al inicio, espera el resultado</td><td class="px-4 py-2 text-slate-600 dark:text-slate-400">Colabora continuamente</td></tr>
+                                <tr class="bg-white dark:bg-slate-900"><td class="px-4 py-2 font-medium text-slate-700 dark:text-slate-300">Documentación</td><td class="px-4 py-2 text-slate-600 dark:text-slate-400">Exhaustiva y formal</td><td class="px-4 py-2 text-slate-600 dark:text-slate-400">Suficiente, orientada al valor</td></tr>
+                                <tr class="bg-white dark:bg-slate-900"><td class="px-4 py-2 font-medium text-slate-700 dark:text-slate-300">Cambios</td><td class="px-4 py-2 text-slate-600 dark:text-slate-400">Costosos, requieren control formal</td><td class="px-4 py-2 text-slate-600 dark:text-slate-400">Naturales, incorporados al proceso</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="bg-sky-50 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-900/50 rounded-lg p-4">
+                        <div class="flex items-start gap-3">
+                            <i data-lucide="lightbulb" class="w-6 h-6 text-sky-500 flex-shrink-0 mt-0.5"></i>
+                            <div>
+                                <strong class="text-sky-900 dark:text-sky-200 block mb-1">¿Cuándo usar cada uno?</strong>
+                                <p class="text-sm text-sky-800 dark:text-sky-300 leading-relaxed">
+                                    En la práctica muchos proyectos usan enfoques híbridos. La clave es evaluar el grado de incertidumbre de los requisitos. A mayor incertidumbre → más ágil. A mayor estabilidad y riesgo regulatorio → más predictivo.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+        </div>
     </div>
+
+    <button id="btn-top" class="fixed bottom-6 right-6 z-40 w-12 h-12 bg-orange-600 hover:bg-orange-700 text-white rounded-full shadow-lg transition-all duration-300 flex items-center justify-center cursor-pointer" title="Volver al inicio">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
+    </button>
+
+    <script src="../../component.js"></script>
+    <script src="../../index.js"></script>
+    <script>lucide.createIcons();</script>
+
+
+    <footer class="bg-slate-900 text-slate-400 text-xs text-center p-4 mt-auto border-t border-slate-800">
+        <p>© 2026 - Análisis de Sistemas - Planificación</p>
+    </footer>
 </body>
 </html>
