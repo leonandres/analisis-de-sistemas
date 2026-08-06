@@ -67,9 +67,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if (btnTop) {
         window.addEventListener('scroll', function() {
             if (window.scrollY > 300) {
-                btnTop.classList.remove('opacity-0', 'invisible');
+                btnTop.classList.add('visible');
             } else {
-                btnTop.classList.add('opacity-0', 'invisible');
+                btnTop.classList.remove('visible');
             }
         });
         
