@@ -29,15 +29,18 @@ const CLASES_DATA = [
         titulo: 'Procesos de negocio',
         color: 'emerald',
         secciones: [
-            { anchor: 'fundamentos',           label: 'Fundamentos y conceptos' },
-            { anchor: 'vision-procesos',        label: 'Visión funcional vs. procesos' },
-            { anchor: 'clasificacion',          label: 'Clasificación (ISO 9001)' },
-            { anchor: 'modelo-gestion',         label: 'Modelo de gestión' },
-            { anchor: 'fases',                  label: 'Fases de gestión' },
-            { anchor: 'modelado',               label: 'Modelado (SIPOC / BPMN)' },
-            { anchor: 'caso-termilagro',        label: '🏭 Caso Termilagro' },
-            { anchor: 'practica-clasificacion', label: '⚡ Laboratorio: Clasificación' },
-            { anchor: 'examen-autoevaluacion',  label: '📋 Autoevaluación' },
+            { anchor: 'fundamentos',           label: 'Fundamentos y conceptos',         icon: 'book-open' },
+            { anchor: 'vision-procesos',        label: 'Visión funcional vs. procesos',   icon: 'eye' },
+            { anchor: 'clasificacion',          label: 'Clasificación (ISO 9001)',         icon: 'layers' },
+            { anchor: 'modelo-gestion',         label: 'Modelo de gestión',               icon: 'git-merge' },
+            { anchor: 'fases',                  label: 'Fases de gestión',                icon: 'list-ordered' },
+            { anchor: 'modelado',               label: 'Modelado (SIPOC / BPMN)',         icon: 'workflow' },
+            { anchor: 'caso-termilagro',        label: 'Caso Termilagro S.A.',            icon: 'factory' },
+            { anchor: 'ventas-compras',         label: 'Ventas vs. Compras',              icon: 'arrow-left-right' },
+            { anchor: 'practica-clasificacion', label: 'Laboratorio: Clasificación',      icon: 'flask-conical' },
+            { anchor: 'examen-autoevaluacion',  label: 'Trivia de autoevaluación',        icon: 'help-circle' },
+            { anchor: 'examen-final',           label: 'Examen final',                    icon: 'graduation-cap' },
+            { anchor: 'materiales',             label: 'Materiales de la clase',          icon: 'paperclip' },
         ]
     },
     {
@@ -350,9 +353,10 @@ function getSidebarHTML(paths) {
         const basePath = baseUrl.replace('index.html', '');
 
         const seccionesHTML = clase.secciones.map(sec => {
+            const iconTag = `<span class="w-1.5 h-1.5 rounded-full ${c.dot} flex-shrink-0 opacity-50 group-hover:opacity-100 transition-opacity duration-150"></span>`;
             return `<a href="${basePath}index.html#${sec.anchor}"
                 class="flex items-center gap-2 px-3 py-1.5 text-xs rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-100 transition-all duration-150 group">
-                <span class="w-1 h-1 rounded-full ${c.dot} flex-shrink-0 opacity-60 group-hover:opacity-100"></span>
+                ${iconTag}
                 ${sec.label}
             </a>`;
         }).join('');
