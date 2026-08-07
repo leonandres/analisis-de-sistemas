@@ -534,18 +534,14 @@ function enhanceSectionTitles() {
             if (text.length > 0) text = text.charAt(0).toUpperCase() + text.slice(1);
         }
 
-        // Si es la sección de autoevaluación, eliminar íconos y hacer el título más llamativo
-        const isAutoEval = section.id === 'autoevaluacion' || section.id === 'autoevaluacion-interactiva' || /autoevaluac/i.test(section.id);
-
-        // Aplicar estilo mejorado a TODOS los títulos; autoevaluación tiene variante más grande
-        const titleClasses = isAutoEval ? 'text-2xl font-extrabold text-amber-700 dark:text-amber-300 ml-1 section-title-text' : 'text-xl font-bold text-slate-800 dark:text-slate-100 ml-1 section-title-text';
+        const gradientStyle = 'background: linear-gradient(90deg, #0e7490, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline-block; font-size: 1.25rem; line-height: 1.75rem; font-weight: 800;';
 
         // Reemplazar el h2 por una versión con número estilizado y botón de colapsado
         h2.innerHTML = `
             <div class="flex items-center justify-between gap-3">
                 <div class="flex items-center gap-3">
                     <span class="inline-flex items-center justify-center min-w-[2rem] h-8 px-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-base font-extrabold text-slate-600 dark:text-slate-300 tabular-nums section-number">${number}</span>
-                    <span class="${titleClasses}">${text}</span>
+                    <span class="section-title-text ml-1" style="${gradientStyle}">${text}</span>
                 </div>
                 <button aria-expanded="true" class="toggle-section-btn text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 transition-transform" title="Minimizar/Expandir sección">
                     <svg class="w-4 h-4 transform transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>

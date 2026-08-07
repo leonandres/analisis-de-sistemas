@@ -296,13 +296,16 @@ function checkTriviaAnswer(selectedIndex, btn) {
         scoreTrivia++;
         btn.style.background = "#d1fae5";
         btn.style.borderColor = "#10b981";
+        btn.style.color = "#064e3b";
         feedback.textContent = "✅ " + data.explanation;
         feedback.className = "mt-4 p-3 text-sm rounded-lg bg-emerald-50 dark:bg-emerald-950/30 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-900/50";
     } else {
         btn.style.background = "#fee2e2";
         btn.style.borderColor = "#ef4444";
+        btn.style.color = "#7f1d1d";
         buttons[data.correct].style.background = "#d1fae5";
         buttons[data.correct].style.borderColor = "#10b981";
+        buttons[data.correct].style.color = "#064e3b";
         feedback.textContent = "❌ Incorrecto. " + data.explanation;
         feedback.className = "mt-4 p-3 text-sm rounded-lg bg-red-50 dark:bg-red-950/30 text-red-800 dark:text-red-300 border border-red-200 dark:border-red-900/50";
     }
@@ -530,14 +533,17 @@ function checkExamenAnswer(selectedIndex, btn) {
         scoreExamen++;
         btn.style.background = "#d1fae5";
         btn.style.borderColor = "#10b981";
+        btn.style.color = "#064e3b";
         feedback.textContent = "✅ " + data.explanation;
         feedback.className = "mt-4 p-3 text-sm rounded-lg bg-emerald-50 dark:bg-emerald-950/30 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-900/50";
         btn.classList.add('success-animation');
     } else {
         btn.style.background = "#fee2e2";
         btn.style.borderColor = "#ef4444";
+        btn.style.color = "#7f1d1d";
         buttons[data.correct].style.background = "#d1fae5";
         buttons[data.correct].style.borderColor = "#10b981";
+        buttons[data.correct].style.color = "#064e3b";
         feedback.textContent = "❌ Incorrecto. " + data.explanation;
         feedback.className = "mt-4 p-3 text-sm rounded-lg bg-red-50 dark:bg-red-950/30 text-red-800 dark:text-red-300 border border-red-200 dark:border-red-900/50";
         btn.classList.add('error-animation');
