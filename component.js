@@ -370,7 +370,7 @@ function getSidebarHTML(paths) {
                         ? `${c.badge} font-semibold`
                         : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium'}"
             >
-                <span class="w-5 h-5 flex-shrink-0 flex items-center justify-center">${clase.emoji}</span>
+                <span class="w-5 h-5 flex-shrink-0 flex items-center justify-center text-sky-600 dark:text-sky-300">${clase.emoji}</span>
                 <div class="flex-1 min-w-0">
                     <div class="text-[10px] font-bold uppercase tracking-wider opacity-60">Clase ${clase.numero}</div>
                     <div class="text-xs leading-tight truncate">${clase.titulo}</div>
