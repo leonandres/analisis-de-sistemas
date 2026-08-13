@@ -35,9 +35,9 @@ const CLASES_DATA = [
             { anchor: 'modelo-gestion',         label: 'Modelo de gestión',               icon: 'git-merge' },
             { anchor: 'fases',                  label: 'Fases de gestión',                icon: 'list-ordered' },
             { anchor: 'modelado',               label: 'Modelado (SIPOC / BPMN)',         icon: 'workflow' },
-            { anchor: 'caso-termilagro',        label: 'Caso Termilagro S.A.',            icon: 'factory' },
-            { anchor: 'ventas-compras',         label: 'Ventas vs. Compras',              icon: 'arrow-left-right' },
-            { anchor: 'practica-clasificacion', label: 'Laboratorio: Clasificación',      icon: 'flask-conical' },
+            { anchor: 'caso-termilagro',        label: 'Termilagro S.A.',            icon: 'factory' },
+            { anchor: 'ventas-compras',         label: 'Ventas vs. compras',              icon: 'arrow-left-right' },
+            { anchor: 'practica-clasificacion', label: 'Laboratorio: clasificación',      icon: 'flask-conical' },
             { anchor: 'examen-autoevaluacion',  label: 'Trivia de autoevaluación',        icon: 'help-circle' },
             { anchor: 'examen-final',           label: 'Examen final',                    icon: 'graduation-cap' },
             { anchor: 'materiales',             label: 'Materiales de la clase',          icon: 'paperclip' },
@@ -63,22 +63,6 @@ const CLASES_DATA = [
         ]
     },
     {
-        id: 'clase07',
-        key: 'clase-07-planificacion',
-        emoji: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h10"/><path d="M6 12h9"/><path d="M11 18h7"/><path d="M3 6h.01"/><path d="M3 12h.01"/><path d="M3 18h.01"/></svg>`,
-        numero: '07',
-        titulo: 'Planificación de proyectos',
-        color: 'orange',
-        secciones: [
-            { anchor: 'fundamentos',        label: 'Fundamentos y triple restricción' },
-            { anchor: 'wbs',                label: 'WBS / EDT' },
-            { anchor: 'cpm-pert',           label: 'CPM y PERT' },
-            { anchor: 'gantt',              label: 'Diagrama de Gantt' },
-            { anchor: 'agilidad',           label: 'Metodologías ágiles' },
-            { anchor: 'agil-vs-tradicional',label: 'Ágil vs. predictivo' },
-        ]
-    },
-    {
         id: 'clase06',
         key: 'clase-06-requerimientos-funcionales-y-no-funcionales',
         emoji: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="4" y1="21" y2="14"/><line x1="4" x2="4" y1="10" y2="3"/><line x1="12" x2="12" y1="21" y2="12"/><line x1="12" x2="12" y1="8" y2="3"/><line x1="20" x2="20" y1="21" y2="16"/><line x1="20" x2="20" y1="12" y2="3"/><line x1="1" x2="7" y1="14" y2="14"/><line x1="9" x2="15" y1="8" y2="8"/><line x1="17" x2="23" y1="16" y2="16"/></svg>`,
@@ -94,6 +78,22 @@ const CLASES_DATA = [
             { anchor: 'practica-clasificacion', label: '⚡ Laboratorio: Clasificación' },
             { anchor: 'practica-calidad',       label: '⚡ Laboratorio: Características' },
             { anchor: 'examen-autoevaluacion',  label: '📋 Autoevaluación teórica' },
+        ]
+    },
+    {
+        id: 'clase07',
+        key: 'clase-07-planificacion',
+        emoji: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h10"/><path d="M6 12h9"/><path d="M11 18h7"/><path d="M3 6h.01"/><path d="M3 12h.01"/><path d="M3 18h.01"/></svg>`,
+        numero: '07',
+        titulo: 'Planificación de proyectos',
+        color: 'orange',
+        secciones: [
+            { anchor: 'fundamentos',        label: 'Fundamentos y triple restricción' },
+            { anchor: 'wbs',                label: 'WBS / EDT' },
+            { anchor: 'cpm-pert',           label: 'CPM y PERT' },
+            { anchor: 'gantt',              label: 'Diagrama de Gantt' },
+            { anchor: 'agilidad',           label: 'Metodologías ágiles' },
+            { anchor: 'agil-vs-tradicional',label: 'Ágil vs. predictivo' },
         ]
     },
     {
