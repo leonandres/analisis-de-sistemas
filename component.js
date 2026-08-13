@@ -568,20 +568,27 @@ function enhanceSectionTitles() {
 
         // Extraer y limpiar el texto del título
         const original = h2.textContent.trim();
-        // Remover emojis/puntuación inicial y prefijo numérico si existe
-        let cleaned = original.replace(/^[^0-9A-Za-zÁÉÍÓÚÜÑáéíóúüñ]+/, '').replace(/^\s*(\d+)[\.\-\)]?\s*/, '');
+        // Remover emojis/puntuación inicial y prefijo numérico si existe (admite "1.", "1)", "1-" y también "1 - " con espacios)
+        let cleaned = original.replace(/^[^0-9A-Za-zÁÉÍÓÚÜÑáéíóúüñ]+/, '').replace(/^\s*(\d+)\s*[\.\-\)]?\s*/, '');
         // Guardar número (si el título original tenía número) o calcular por índice
-        const numberMatch = original.match(/^\s*(\d+)[\.\-\)]/);
+        const numberMatch = original.match(/^\s*(\d+)\s*[\.\-\)]/);
         const number = numberMatch ? numberMatch[1] : (idx + 1).toString();
 
-        // Normalizar a sentence case salvo acrónimos (si todo en mayúsculas, respetar)
-        let text = cleaned;
+        // Normalizar a sentence case, preservando acrónimos (siglas en mayúsculas dentro del título, ej. INVEST, BDD)
+        let text = cleaned.trim();
         if (text && text === text.toUpperCase()) {
-            // Posible acrónimo (INVEST, BDD...) -> mantener
+            // Todo el título es un posible acrónimo -> mantener tal cual
             text = text;
-        } else {
-            text = text.trim().toLowerCase();
-            if (text.length > 0) text = text.charAt(0).toUpperCase() + text.slice(1);
+        } else if (text) {
+            text = text.replace(/\S+/g, (word) => {
+                const core = word.replace(/[^A-Za-zÁÉÍÓÚÜÑáéíóúüñ]/g, '');
+                // Palabra de 2+ letras, toda en mayúsculas -> es una sigla, no tocarla
+                if (core.length >= 2 && core === core.toUpperCase() && core !== core.toLowerCase()) {
+                    return word;
+                }
+                return word.toLowerCase();
+            });
+            text = text.charAt(0).toUpperCase() + text.slice(1);
         }
 
         const gradientStyle = 'background: linear-gradient(90deg, #0e7490, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline-block; font-size: 1.25rem; line-height: 1.75rem; font-weight: 800;';
