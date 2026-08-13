@@ -2,242 +2,399 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Parcial – Resolución</title>
-  <style>
-    body {font-family: 'Inter',Arial,sans-serif; line-height:1.6; margin:2rem; color:#2c3e50;}
-    h1,h2,h3 {margin-top:2rem; color:#1a5276;}
-    ul,ol {margin-left:2rem;}
-    .badge {display:inline-block; padding:0.2rem 0.5rem; border-radius:0.3rem; font-size:0.85rem; color:#fff;}
-    .badge.yellow {background:#f1c40f;}
-    .badge.blue   {background:#3498db;}
-    .badge.green  {background:#27ae60;}
-    .badge.purple {background:#9b59b6;}
-    .section {margin-bottom:2rem; padding-bottom:1rem; border-bottom:1px solid #eaecee;}
-    .card {background:#f8f9fa; border:1px solid #dcdcdc; border-radius:8px; padding:1rem; margin:1rem 0;}
-    .card h4 {margin-top:0;}
-    .mermaid {background:#fff; border:1px solid #ccc; border-radius:4px; padding:1rem;}
-    .img-placeholder {width:100%; height:200px; background:#eaeaea; display:flex; align-items:center; justify-content:center; color:#777; font-style:italic;}
-  </style>
-  <!-- MermaidJS (para el diagrama de casos de uso) -->
+  <link rel="stylesheet" href="styles.css">
+  <!-- MermaidJS -->
   <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-  <script>mermaid.initialize({startOnLoad:true});</script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'base',
+      themeVariables: {
+        primaryColor: '#2c3e50',
+        primaryTextColor: '#fff',
+        primaryBorderColor: '#1a5276',
+        lineColor: '#2c3e50',
+        secondaryColor: '#ecf0f1',
+        tertiaryColor: '#f8f9fa',
+        edgeLabelBackground: '#ffffff',
+        actorBkg: '#2c3e50',
+        actorBorder: '#1a5276',
+        actorTextColor: '#fff',
+        usecaseBkg: '#e8f4f8',
+        usecaseBorder: '#2c3e50',
+        usecaseTextColor: '#2c3e50'
+      }
+    });
+  </script>
+  <style>
+    /* Estilos adicionales específicos para la resolución */
+    .card {
+      background: #f8f9fa;
+      border: 1px solid #dcdcdc;
+      border-radius: 8px;
+      padding: 1.2rem 1.5rem;
+      margin: 1.2rem 0;
+    }
+    .card h4 {
+      margin-top: 0;
+      color: #1a5276;
+    }
+    .mermaid-wrapper {
+      background: #ffffff;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      overflow-x: auto;
+    }
+    .mermaid-wrapper svg {
+      max-width: 100%;
+      height: auto;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #fff;
+    }
+    .badge.blue  { background: #3498db; }
+    .badge.green { background: #27ae60; }
+    .badge.purple{ background: #9b59b6; }
+    .badge.orange{ background: #e67e22; }
+    .badge.red   { background: #e74c3c; }
+    .precond {
+      background: #fff3cd;
+      border-left: 4px solid #ffc107;
+      padding: 0.5rem 1rem;
+      margin: 0.5rem 0;
+      border-radius: 4px;
+    }
+    .postcond {
+      background: #d1ecf1;
+      border-left: 4px solid #17a2b8;
+      padding: 0.5rem 1rem;
+      margin: 0.5rem 0;
+      border-radius: 4px;
+    }
+    .flujo {
+      background: #f8f9fa;
+      border-left: 4px solid #6c757d;
+      padding: 0.5rem 1rem;
+      margin: 0.5rem 0;
+      border-radius: 4px;
+    }
+    .alternativo {
+      background: #f8d7da;
+      border-left: 4px solid #dc3545;
+      padding: 0.5rem 1rem;
+      margin: 0.5rem 0;
+      border-radius: 4px;
+    }
+    .section {
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #eaecee;
+    }
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      color: #777;
+      font-size: 0.9rem;
+      border-top: 1px solid #eaecee;
+      padding-top: 1.5rem;
+    }
+    h1, h2, h3 {
+      margin-top: 2rem;
+      color: #2c3e50;
+    }
+    ul, ol {
+      margin-left: 2rem;
+    }
+  </style>
 </head>
 <body>
-  <h1>Parcial – Resolución completa</h1>
 
-  <section class="section">
-    <h2>I) Completar los huecos</h2>
-    <ol>
-      <li>En procesos de negocio, las <strong>declaraciones</strong> representan las definiciones generales de la organización, su misión, su visión y el alcance de sus actividades.</li>
-      <li>El <strong>tablero Kanban</strong> es el artefacto que permite, en agilidad, visualizar el flujo o carga de trabajo en curso (Work in Progress).</li>
-      <li>El método de validación de usuarios … son ejemplos de requerimientos <strong>no funcionales organizacionales</strong>.</li>
-      <li>Si un sistema pierde su capacidad de <strong>homeostasis</strong> (es decir, su nivel de respuesta y adaptación al contexto), irremediablemente su <strong>entropía</strong> se maximizará, acercándolo a su destrucción o desaparición.</li>
-      <li>En HU, la tarjeta que contiene una declaración breve, clara y comprensible de la necesidad del usuario se denomina <strong>Card (Carta)</strong>.</li>
-    </ol>
-  </section>
+<h1>Parcial – Resolución completa</h1>
 
-  <section class="section">
-    <h2>II) Verdadero / Falso (justificación)</h2>
-    <ol start="6">
-      <li><strong>FALSO.</strong> Las **precondiciones** son condiciones del **estado del sistema** que deben cumplirse para que el caso de uso pueda iniciarse. No describen acciones del usuario; esas pertenecen al flujo de eventos.</li>
-      <li><strong>FALSO.</strong> En la fase de **Reconocimiento** (o estudio preliminar) el objetivo es entender el contexto organizacional, procesos y problemáticas actuales, **no** definir la plataforma tecnológica que reemplazará al sistema actual. La definición tecnológica se realiza later en la fase de Diseño.</li>
-      <li><strong>FALSO.</strong> Ese enunciado describe el ciclo de vida **cascada/tradicional**. El ciclo **Prototipo** se usa cuando los requerimientos son **poco claros** y se necesita validar iterativamente con maquetas.</li>
-      <li><strong>VERDADERO.</strong> Una **Historia de Usuario (HU)** es una forma de redactar un **PBI (Product Backlog Item)** en Scrum.</li>
-      <li><strong>FALSO.</strong> La definición de entropía es correcta, pero el ejemplo (jubilación del personal y contratación de nuevos) se refiere al **contexto organizacional**, no al **desgaste del sistema de información** (p.ej., datos obsoletos, código sin mantenimiento, degradación de la base de datos).</li>
-    </ol>
-  </section>
+<!-- ========================================================== -->
+<!-- SECCIÓN I: Completar -->
+<!-- ========================================================== -->
+<section class="section">
+  <h2>I) Completar los huecos</h2>
+  <ol>
+    <li>En procesos de negocio, las <strong>declaraciones</strong> representan las definiciones generales de la organización, su misión, su visión y el alcance de sus actividades.</li>
+    <li>El <strong>tablero Kanban</strong> es el artefacto que permite, en agilidad, visualizar el flujo o carga de trabajo en curso (Work in Progress).</li>
+    <li>El método de validación de usuarios (por ejemplo, mediante un mecanismo LDAP) y la interfaz de la aplicación (como requerir ambiente web o interfaz Windows) son ejemplos de requerimientos <strong>no funcionales</strong>.</li>
+    <li>Si un sistema pierde su capacidad de <strong>homeostasis</strong> (es decir, su nivel de respuesta y adaptación al contexto), irremediablemente su <strong>entropía</strong> se maximizará, acercándolo a su destrucción o desaparición.</li>
+    <li>En HU, la tarjeta que contiene una declaración breve, clara y comprensible de la necesidad del usuario se denomina <strong>Card (Carta)</strong>.</li>
+  </ol>
+</section>
 
-  <section class="section">
-    <h2>III) Informe de Reconocimiento – BaProCha</h2>
+<!-- ========================================================== -->
+<!-- SECCIÓN II: V/F -->
+<!-- ========================================================== -->
+<section class="section">
+  <h2>II) Verdadero / Falso (justificación)</h2>
+  <ol start="6">
+    <li><span class="badge red">FALSO</span> Las <strong>precondiciones</strong> son condiciones del <strong>estado del sistema</strong> que deben cumplirse para que el caso de uso pueda iniciarse. No describen acciones del usuario; esas pertenecen al flujo de eventos.</li>
+    <li><span class="badge red">FALSO</span> En la fase de <strong>Reconocimiento</strong> (o estudio preliminar) el objetivo es entender el contexto organizacional, procesos y problemáticas actuales, <strong>no</strong> definir la plataforma tecnológica. La definición tecnológica se realiza más adelante en la fase de Diseño.</li>
+    <li><span class="badge red">FALSO</span> Ese enunciado describe el ciclo de vida <strong>cascada/tradicional</strong>. El ciclo <strong>Prototipo</strong> se usa cuando los requerimientos son <strong>poco claros</strong> y se necesita validar iterativamente con maquetas.</li>
+    <li><span class="badge green">VERDADERO</span> Una <strong>Historia de Usuario (HU)</strong> es una forma de redactar un <strong>PBI (Product Backlog Item)</strong> en Scrum.</li>
+    <li><span class="badge red">FALSO</span> La definición de entropía es correcta, pero el ejemplo (jubilación del personal) se refiere al <strong>contexto organizacional</strong>, no al <strong>desgaste del sistema de información</strong>.</li>
+  </ol>
+</section>
 
-    <h3>1. Introducción</h3>
-    <p>El presente informe de reconocimiento preliminar ha sido elaborado para <strong>Banco de la Provincia de Chaco (BaProCha)</strong>. La entidad brinda servicios bancarios tradicionales a personas y empresas, cubriendo la <em>captación de depósitos</em> y la <em>colocación de préstamos</em>. La sede central se ubica en Resistencia, con sucursales en Buenos Aires y Corrientes. Actualmente la operatividad se apoya en el core bancario <strong>“Total Banco”</strong>, el cual soporta los módulos de <em>Activas</em>, <em>Pasivas</em> y <em>Comercio Exterior</em>.</p>
+<!-- ========================================================== -->
+<!-- SECCIÓN III: Informe de Reconocimiento -->
+<!-- ========================================================== -->
+<section class="section">
+  <h2>III) Informe de Reconocimiento – BaProCha</h2>
 
-    <h3>2. Objetivo del Mandato</h3>
-    <p>Desarrollar e implementar un nuevo módulo de <strong>“Cuentas Sueldo”</strong> integrado a la plataforma “Total Banco”, destinado a los empleados del sector público provincial. El módulo debe:</p>
-    <ul>
-      <li>Permitir tarjetas de débito sin costos de apertura, mantenimiento ni comisiones.</li>
-      <li>Ofrecer extracciones y transferencias ilimitadas y sin costo.</li>
-      <li>Brindar adelantos de sueldo a costo cero.</li>
-      <li>Incluir controles que protejan los haberes frente a embargos judiciales.</li>
-      <li>Presentarse como una interfaz web ejecutada sobre AS400 (DB2).</li>
-    </ul>
+  <h3>1. Introducción</h3>
+  <p>El presente informe de reconocimiento preliminar ha sido elaborado para <strong>Banco de la Provincia de Chaco (BaProCha)</strong>. La entidad brinda servicios bancarios tradicionales a personas y empresas, cubriendo la <em>captación de depósitos</em> y la <em>colocación de préstamos</em>. La sede central se ubica en Resistencia, con sucursales en Buenos Aires y Corrientes. Actualmente la operatividad se apoya en el core bancario <strong>"Total Banco"</strong>, el cual soporta los módulos de <em>Activas</em>, <em>Pasivas</em> y <em>Comercio Exterior</em>.</p>
 
-    <h3>3. Problemas y Necesidades</h3>
-    <h4>Problemas detectados</h4>
-    <ul>
-      <li><strong>Gerencia de Administración:</strong> No dispone de un módulo único para registrar y priorizar solicitudes de insumos, generando demoras en la entrega.</li>
-      <li><strong>Workflow de Tarifas:</strong> El proceso de actualización y emisión de tarifas para cajas de ahorro y cuentas corrientes presenta retrasos, originando reclamos.</li>
-      <li><strong>Gestión de Morosos:</strong> Falta una herramienta que permita al analista financiero planificar y autorizar el cobro a clientes morosos, afectando la liquidez.</li>
-    </ul>
-    <h4>Necesidades asociadas</h4>
-    <ul>
-      <li>Implementar un sistema de gestión de compras internas que clasifique y priorice por criticidad.</li>
-      <li>Rediseñar y automatizar el workflow de notificación de tarifarios.</li>
-      <li>Crear un sub‑módulo para la administración de morosidad con rastreo judicial y generación de informes.</li>
-    </ul>
+  <h3>2. Objetivo del Mandato</h3>
+  <p>Desarrollar e implementar un nuevo módulo de <strong>"Cuentas Sueldo"</strong> integrado a la plataforma "Total Banco", destinado a los empleados del sector público provincial. El módulo debe:</p>
+  <ul>
+    <li>Permitir tarjetas de débito sin costos de apertura, mantenimiento ni comisiones.</li>
+    <li>Ofrecer extracciones y transferencias ilimitadas y sin costo.</li>
+    <li>Brindar adelantos de sueldo a costo cero.</li>
+    <li>Incluir controles que protejan los haberes frente a embargos judiciales.</li>
+    <li>Presentarse como una interfaz web ejecutada sobre AS400 (DB2).</li>
+  </ul>
 
-    <h3>4. Datos faltantes</h3>
-    <ol>
-      <li><strong>Estructura organizacional de la Gerencia de Administración:</strong> No se especifican los equipos, roles y responsables del proceso de compras.</li>
-      <li><strong>Definición del proceso “Adelanto de Sueldo”:</strong> Falta información sobre límites, plazos, condiciones de autorización y políticas de reembolso.</li>
-      <li><strong>Detalles de integración con la BD DB2 (Total Banco):</strong> No se conoce si existen APIs, mecanismos de middleware o servicios web que permitan sincronizar el módulo web de Cuentas Sueldo en tiempo real.</li>
-    </ol>
-  </section>
+  <h3>3. Problemas y Necesidades</h3>
+  <h4>Problemas detectados</h4>
+  <ul>
+    <li><strong>Gerencia de Administración:</strong> No dispone de un módulo único para registrar y priorizar solicitudes de insumos, generando demoras en la entrega.</li>
+    <li><strong>Workflow de Tarifas:</strong> El proceso de actualización y emisión de tarifas para cajas de ahorro y cuentas corrientes presenta retrasos, originando reclamos.</li>
+    <li><strong>Gestión de Morosos:</strong> Falta una herramienta que permita al analista financiero planificar y autorizar el cobro a clientes morosos, afectando la liquidez.</li>
+  </ul>
+  <h4>Necesidades asociadas</h4>
+  <ul>
+    <li>Implementar un sistema de gestión de compras internas que clasifique y priorice por criticidad.</li>
+    <li>Rediseñar y automatizar el workflow de notificación de tarifarios.</li>
+    <li>Crear un submódulo para la administración de morosidad con rastreo judicial y generación de informes.</li>
+  </ul>
 
-  <section class="section">
-    <h2>IV) Casos de Uso & Historias de Usuario</h2>
+  <h3>4. Datos faltantes</h3>
+  <ol>
+    <li><strong>Estructura organizacional de la Gerencia de Administración:</strong> No se especifican los equipos, roles y responsables del proceso de compras.</li>
+    <li><strong>Definición del proceso "Adelanto de Sueldo":</strong> Falta información sobre límites, plazos, condiciones de autorización y políticas de reembolso.</li>
+    <li><strong>Detalles de integración con la BD DB2 (Total Banco):</strong> No se conoce si existen APIs, mecanismos de middleware o servicios web que permitan sincronizar el módulo web de Cuentas Sueldo en tiempo real.</li>
+  </ol>
+</section>
 
-    <h3>A. Historias de Usuario (3 C)</h3>
+<!-- ========================================================== -->
+<!-- SECCIÓN IV: Casos de Uso & Historias de Usuario -->
+<!-- ========================================================== -->
+<section class="section">
+  <h2>IV) Casos de Uso &amp; Historias de Usuario</h2>
 
-    <div class="card">
-      <h4>HU #01 – Registro de Reclamo por Tarjeta de Crédito</h4>
-      <p><strong>Card (Tarjeta):</strong> “Como <em>cliente registrado</em> de BaProCha, quiero registrar un reclamo por consumos no reconocidos en mi tarjeta de crédito, para obtener la investigación y corrección del cargo.”</p>
-      <p><strong>Conversation (Conversación):</strong> El sistema solicita DNI, número de tarjeta (validado contra la base de clientes), fecha de la transacción, número de operación y código del establecimiento (opcional). El cliente elige el motivo del reclamo entre: cobro erróneo, transacción no realizada, débitos automáticos, cobros duplicados, comisiones abusivas o errores de liquidación.</p>
-      <p><strong>Confirmation (Confirmación):</strong> Cuando el cliente está autenticado y completa los campos obligatorios, el sistema verifica la titularidad de la tarjeta. Si la validación es exitosa, crea el reclamo con estado <code>Pendiente</code> y genera un número único.</p>
-    </div>
+  <h3>A. Historias de Usuario (3 Cs)</h3>
 
-    <div class="card">
-      <h4>HU #02 – Análisis de Reclamos por Analista Legal</h4>
-      <p><strong>Card:</strong> “Como <em>analista de Legales</em> de BaProCha, quiero visualizar la lista y detalle de los reclamos de tarjetas junto a los consumos históricos del cliente, para evaluar su legitimidad y decidir si aprobar o rechazar.”</p>
-      <p><strong>Conversation:</strong> El analista accede al panel semanal, se muestra una grilla con los reclamos pendientes ordenados por fecha. Al seleccionar <em>Analizar</em>, el sistema despliega el historial de transacciones del cliente en la misma fecha y en el mismo establecimiento.</p>
-      <p><strong>Confirmation:</strong> Si el analista está autenticado y hace clic en <em>Analizar</em>, el sistema renderiza la información y habilita los botones <code>Aprobar</code> y <code>Rechazar</code> para cerrar el caso.</p>
-    </div>
+  <div class="card">
+    <h4>HU #01 – Registro de Reclamo por Tarjeta de Crédito</h4>
+    <p><strong>Card (Tarjeta):</strong> "Como <em>cliente registrado</em> de BaProCha, quiero registrar un reclamo por consumos no reconocidos en mi tarjeta de crédito, para obtener la investigación y corrección del cargo."</p>
+    <p><strong>Conversation (Conversación):</strong> El sistema solicita DNI, número de tarjeta (validado contra la base de clientes), fecha de la transacción, número de operación y código del establecimiento (opcional). El cliente elige el motivo del reclamo entre: cobro erróneo, transacción no realizada, débitos automáticos, cobros duplicados, comisiones abusivas o errores de liquidación.</p>
+    <p><strong>Confirmation (Confirmación):</strong> Cuando el cliente está autenticado y completa los campos obligatorios, el sistema verifica la titularidad de la tarjeta. Si la validación es exitosa, crea el reclamo con estado <code>Pendiente</code> y genera un número único.</p>
+  </div>
 
-    <h3>B. Diagrama de Casos de Uso (UML) – Préstamos</h3>
+  <div class="card">
+    <h4>HU #02 – Análisis de Reclamos por Analista Legal</h4>
+    <p><strong>Card:</strong> "Como <em>analista de Legales</em> de BaProCha, quiero visualizar la lista y detalle de los reclamos de tarjetas junto a los consumos históricos del cliente, para evaluar su legitimidad y decidir si aprobar o rechazar."</p>
+    <p><strong>Conversation:</strong> El analista accede al panel semanal, se muestra una grilla con los reclamos pendientes ordenados por fecha. Al seleccionar <em>Analizar</em>, el sistema despliega el historial de transacciones del cliente en la misma fecha y en el mismo establecimiento.</p>
+    <p><strong>Confirmation:</strong> Si el analista está autenticado y hace clic en <em>Analizar</em>, el sistema renderiza la información y habilita los botones <code>Aprobar</code> y <code>Rechazar</code> para cerrar el caso.</p>
+  </div>
+
+  <h3>B. Diagrama de Casos de Uso (UML) – Préstamos</h3>
+
+  <div class="mermaid-wrapper">
     <div class="mermaid">
-      ```mermaid
-      %%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#2c3e50', 'edgeLabelBackground':'#ffffff' }}}%%
-      usecaseDiagram
-        actor AnalistaCredito as AC
-        actor Cliente as C
-        actor AnalistaLegal as AL
-        actor SupervisorTesoreria as ST
+      graph TB
+        subgraph "Sistema de Préstamos"
+          CU1[Analizar solicitud de préstamo]
+          CU2[Verificar incobrables]
+          CU3[Solicitar datos del cliente]
+          CU4[Validar ingresos]
+          CU5[Solicitar monto y tipo]
+          CU6[Valuar propiedad]
+          CU7[Calcular CFT]
+          CU8[Generar préstamo preliminar]
+          CU9[Derivar a Responsable de Activas]
+          CU10[Aprobar/Rechazar préstamo]
+          CU11[Registrarse]
+          CU12[Iniciar sesión]
+          CU13[Consultar préstamos]
+          CU14[Registrar reclamo]
+          CU15[Revisar reclamos]
+          CU16[Aprobar/Rechazar reclamo]
+          CU17[Desembolsar fondos]
+          CU18[Autenticarse]
+        end
 
-        AC --> (Autenticarse)
-        AC --> (Analizar solicitud de préstamo)
-        (Analizar solicitud de préstamo) --> (Verificar incobrables)
-        (Verificar incobrables) --> (Solicitar datos del cliente)
-        (Solicitar datos del cliente) --> (Validar ingresos)
-        (Validar ingresos) --> (Solicitar monto y tipo)
-        (Solicitar monto y tipo) --> (Valuar propiedad) 
-        (Valuar propiedad) --> (Calcular CFT)
-        (Calcular CFT) --> (Generar préstamo preliminar)
-        (Generar préstamo preliminar) --> (Derivar a Responsable de Activas)
-        (Derivar a Responsable de Activas) --> (Aprobar/Rechazar préstamo)
+        AC[Analista de Crédito]
+        C[Cliente]
+        AL[Analista Legal]
+        ST[Supervisor de Tesorería]
+        RA[Responsable de Activas]
 
-        C --> (Registrarse)
-        C --> (Iniciar sesión)
-        C --> (Consultar préstamos)
-        C --> (Registrar reclamo)
+        AC --> CU18
+        AC --> CU1
+        CU1 --> CU2
+        CU2 --> CU3
+        CU3 --> CU4
+        CU4 --> CU5
+        CU5 --> CU6
+        CU6 --> CU7
+        CU7 --> CU8
+        CU8 --> CU9
+        CU9 --> CU10
 
-        AL --> (Revisar reclamos)
-        AL --> (Aprobar/Rechazar reclamo)
+        C --> CU11
+        C --> CU12
+        C --> CU13
+        C --> CU14
 
-        ST --> (Desembolsar fondos)
-      ```
+        AL --> CU15
+        AL --> CU16
+
+        ST --> CU17
+
+        RA --> CU10
     </div>
+  </div>
 
-    <h3>C. Especificación Narrativa – “Analizar Solicitud de Préstamo”</h3>
-    <p><strong>Curso Normal:</strong></p>
-    <ol>
-      <li>El analista de créditos se autentica en el sistema.</li>
-      <li>Selecciona la opción “Analizar solicitud de préstamo”.</li>
-      <li>El sistema solicita los datos del interesado (DNI, CUIT, nombre, nacionalidad, fecha de nacimiento, domicilio, estado civil).</li>
-      <li>El analista ingresa los datos.</li>
-      <li>El sistema consulta el padrón de incobrables del BCRA. Si el interesado figura, muestra “Incobrable” y finaliza la operación.</li>
-      <li>Si no está incobrable, el sistema pide el monto solicitado y el tipo de préstamo (personal o hipotecario).</li>
-      <li>El analista ingresa monto y tipo.</li>
-      <li>El sistema valida los ingresos del interesado contra los rangos permitidos. Si no corresponde, muestra “Monto solicitado mayor al permitido” y vuelve al paso 6.</li>
-      <li>Si el préstamo es hipotecario, el sistema invoca el módulo externo “Valuar Propiedad”.</li>
-      <li>Con el valor de la propiedad, el sistema calcula el CFT, tasas y plazo de devolución.</li>
-      <li>Genera un préstamo preliminar en estado “Pendiente de aprobación” y lo envía a la cola del Responsable de Activas.</li>
-      <li>Se muestra confirmación y el caso de uso finaliza.</li>
-    </ol>
+  <h3>C. Especificación Narrativa – "Analizar Solicitud de Préstamo"</h3>
 
-    <p><strong>Curso Alternativo – Incobrable:</strong> Paso 5 muestra mensaje y finaliza.</p>
-    <p><strong>Curso Alternativo – Ingreso fuera de rango:</strong> Paso 8 redirige al paso 6.</p>
-  </section>
-
-  <section class="section">
-    <h2>V) Procesos de Negocio – BaProCha</h2>
-
-    <h3>1. Mapa de Macro‑procesos (ISO 9001)</h3>
+  <div class="precond">
+    <strong>Precondiciones:</strong>
     <ul>
-      <li><strong>Procesos Estratégicos</strong>
-        <ul>
-          <li>Planificación estratégica anual</li>
-          <li>Gobernanza y normativas BCRA</li>
-          <li>Gestión de RSE (Objetivos de Desarrollo Sostenible)</li>
-        </ul>
-      </li>
-      <li><strong>Procesos Operativos (Clave)</strong>
-        <ul>
-          <li>Generación de nuevos productos</li>
-          <li>Comercialización y oferta a empresas</li>
-          <li>Administración de Activas (préstamos / tarjetas)</li>
-          <li>Administración de Pasivas (cajas de ahorro, cuentas sueldo)</li>
-          <li>Atención al cliente y gestión de reclamos</li>
-        </ul>
-      </li>
-      <li><strong>Procesos de Soporte / Apoyo</strong>
-        <ul>
-          <li>Gestión de compras de insumos</li>
-          <li>Administración de Recursos Humanos</li>
-          <li>Seguridad de la Información</li>
-          <li>Mantenimiento de Sistemas e Infraestructura</li>
-          <li>Capacitación de personal</li>
-        </ul>
-      </li>
+      <li>El analista de créditos debe estar autenticado en el sistema.</li>
+      <li>Debe existir al menos una solicitud de préstamo pendiente de análisis.</li>
     </ul>
+  </div>
 
-    <h3>2. Detalle de un Macro‑proceso seleccionado: “Administración de Pasivas (Cuentas Sueldo)”</h3>
-    <ol>
-      <li><strong>Captación – Apertura de Cuenta Sueldo</strong>
-        <ul>
-          <li>El cliente (empleador público) solicita la apertura.</li>
-          <li>Se valida que la cuenta no genere costos de apertura ni mantenimiento.</li>
-          <li>Se asigna número de cuenta y se genera tarjeta de débito.</li>
-        </ul>
-      </li>
-      <li><strong>Gestión de Transacciones</strong>
-        <ul>
-          <li>Extracciones y transferencias ilimitadas y sin comisión.</li>
-          <li>Actualización de saldo en tiempo real (integración DB2).</li>
-        </ul>
-      </li>
-      <li><strong>Adelanto de Sueldo</strong>
-        <ul>
-          <li>El empleado solicita adelanto vía portal.</li>
-          <li>El sistema verifica límite máximo (ej. 30 % del sueldo).</li>
-          <li>Se registra el movimiento sin costos y se protege contra embargos mediante cifra neta bloqueada.</li>
-        </ul>
-      </li>
-      <li><strong>Control y Protección de Haberes</strong>
-        <ul>
-          <li>Se aplica regla de “bloqueo judicial” que evita débitos por embargo.</li>
-          <li>Se envía notificación automática al área legal cuando se detecta orden de embargo.</li>
-        </ul>
-      </li>
-      <li><strong>Reportes y Auditoría</strong>
-        <ul>
-          <li>Generación mensual de informe de uso, volúmenes y alertas de riesgo.</li>
-          <li>Auditoría de cumplimiento con normativa del BCRA y de RSE.</li>
-        </ul>
-      </li>
-    </ol>
-  </section>
+  <div class="postcond">
+    <strong>Postcondiciones:</strong>
+    <ul>
+      <li>El sistema genera un préstamo preliminar con estado "Pendiente de aprobación".</li>
+      <li>El préstamo preliminar queda registrado en la base de datos.</li>
+    </ul>
+  </div>
 
-  <section class="section">
-    <h2>VI) Imágenes / Diagramas (placeholders)</h2>
-    <p>En los lugares donde se requieran imágenes, inserta el siguiente bloque (reemplaza <code>src=""</code> con la ruta de tu archivo).</p>
-    <pre>
-&lt;img src="" alt="Diagrama de procesos de Cuentas Sueldo" class="w-full h-64 object-cover rounded-lg border border-gray-300"&gt;
-</pre>
-  </section>
+  <p><strong>Curso Normal:</strong></p>
+  <ol class="flujo">
+    <li>El analista de créditos se autentica en el sistema.</li>
+    <li>Selecciona la opción "Analizar solicitud de préstamo".</li>
+    <li>El sistema solicita los datos del interesado (DNI, CUIT, nombre, nacionalidad, fecha de nacimiento, domicilio, estado civil).</li>
+    <li>El analista ingresa los datos.</li>
+    <li>El sistema consulta el padrón de incobrables del BCRA.</li>
+    <li>Si el interesado no está en el registro, el sistema solicita el monto solicitado y el tipo de préstamo (personal o hipotecario).</li>
+    <li>El analista ingresa monto y tipo.</li>
+    <li>El sistema valida los ingresos del interesado contra los rangos permitidos.</li>
+    <li>Si los ingresos son válidos, el sistema determina si el préstamo es personal o hipotecario.</li>
+    <li>Si el préstamo es hipotecario, el sistema invoca el módulo externo "Valuar Propiedad".</li>
+    <li>Con el valor de la propiedad (o si es personal), el sistema calcula el CFT, tasas y plazo de devolución.</li>
+    <li>Genera un préstamo preliminar en estado "Pendiente de aprobación".</li>
+    <li>Lo envía a la cola del Responsable de Activas.</li>
+    <li>Se muestra confirmación y el caso de uso finaliza.</li>
+  </ol>
 
-  <footer style="margin-top:3rem; text-align:center; color:#777;">
-    <p>Resolución generada por Antigravity – 12 ago 2026</p>
-  </footer>
+  <div class="alternativo">
+    <strong>Curso Alternativo A – Incobrable:</strong>
+    <p>En el paso 5, si el interesado figura en el registro de incobrables, el sistema muestra el mensaje "Incobrable. No se puede seguir con la solicitud" y finaliza la operación. El analista llama por teléfono al interesado para comunicarle la situación.</p>
+  </div>
+
+  <div class="alternativo">
+    <strong>Curso Alternativo B – Ingreso fuera de rango:</strong>
+    <p>En el paso 8, si los ingresos no están en el rango requerido, el sistema muestra el mensaje "El monto solicitado es mayor al permitido" y solicita que se ingrese un nuevo monto y tipo de préstamo (vuelve al paso 7).</p>
+  </div>
+</section>
+
+<!-- ========================================================== -->
+<!-- SECCIÓN V: Procesos de Negocio -->
+<!-- ========================================================== -->
+<section class="section">
+  <h2>V) Procesos de Negocio – BaProCha</h2>
+
+  <h3>1. Mapa de Macroprocesos (ISO 9001)</h3>
+  <ul>
+    <li><strong>Procesos Estratégicos</strong>
+      <ul>
+        <li>Planificación estratégica anual</li>
+        <li>Gobernanza y normativas BCRA</li>
+        <li>Gestión de RSE (Objetivos de Desarrollo Sostenible)</li>
+      </ul>
+    </li>
+    <li><strong>Procesos Operativos (Clave)</strong>
+      <ul>
+        <li>Generación de nuevos productos</li>
+        <li>Comercialización y oferta a empresas</li>
+        <li>Administración de Activas (préstamos / tarjetas)</li>
+        <li>Administración de Pasivas (cajas de ahorro, cuentas sueldo)</li>
+        <li>Atención al cliente y gestión de reclamos</li>
+      </ul>
+    </li>
+    <li><strong>Procesos de Soporte / Apoyo</strong>
+      <ul>
+        <li>Gestión de compras de insumos</li>
+        <li>Administración de Recursos Humanos</li>
+        <li>Seguridad de la Información</li>
+        <li>Mantenimiento de Sistemas e Infraestructura</li>
+        <li>Capacitación de personal</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3>2. Detalle de un Macroproceso seleccionado: "Administración de Pasivas (Cuentas Sueldo)"</h3>
+  <ol>
+    <li><strong>Captación – Apertura de Cuenta Sueldo</strong>
+      <ul>
+        <li>El cliente (empleador público) solicita la apertura.</li>
+        <li>Se valida que la cuenta no genere costos de apertura ni mantenimiento.</li>
+        <li>Se asigna número de cuenta y se genera tarjeta de débito.</li>
+      </ul>
+    </li>
+    <li><strong>Gestión de Transacciones</strong>
+      <ul>
+        <li>Extracciones y transferencias ilimitadas y sin comisión.</li>
+        <li>Actualización de saldo en tiempo real (integración DB2).</li>
+      </ul>
+    </li>
+    <li><strong>Adelanto de Sueldo</strong>
+      <ul>
+        <li>El empleado solicita adelanto vía portal.</li>
+        <li>El sistema verifica límite máximo (ej. 30 % del sueldo).</li>
+        <li>Se registra el movimiento sin costos y se protege contra embargos mediante cifra neta bloqueada.</li>
+      </ul>
+    </li>
+    <li><strong>Control y Protección de Haberes</strong>
+      <ul>
+        <li>Se aplica regla de "bloqueo judicial" que evita débitos por embargo.</li>
+        <li>Se envía notificación automática al área legal cuando se detecta orden de embargo.</li>
+      </ul>
+    </li>
+    <li><strong>Reportes y Auditoría</strong>
+      <ul>
+        <li>Generación mensual de informe de uso, volúmenes y alertas de riesgo.</li>
+        <li>Auditoría de cumplimiento con normativa del BCRA y de RSE.</li>
+      </ul>
+    </li>
+  </ol>
+</section>
+
+<!-- ========================================================== -->
+<!-- FOOTER -->
+<!-- ========================================================== -->
+<footer>
+  <p>Resolución generada para el Parcial de Análisis de Sistemas K151 – 02/07/26</p>
+</footer>
+
 </body>
 </html>
