@@ -7,7 +7,7 @@ const CLASES_DATA = [
     {
         id: 'clase01',
         key: 'clase-01-definiciones-iniciales',
-        emoji: '🌐',
+        emoji: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20A14.5 14.5 0 0 0 12 2"/><path d="M2 12h20"/></svg>`,
         numero: '01',
         titulo: 'Definiciones iniciales',
         color: 'sky',
@@ -24,26 +24,29 @@ const CLASES_DATA = [
     {
         id: 'clase02',
         key: 'clase-02-procesos-de-negocio',
-        emoji: '🔄',
+        emoji: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>`,
         numero: '02',
         titulo: 'Procesos de negocio',
         color: 'emerald',
         secciones: [
-            { anchor: 'fundamentos',           label: 'Fundamentos y conceptos' },
-            { anchor: 'vision-procesos',        label: 'Visión funcional vs. procesos' },
-            { anchor: 'clasificacion',          label: 'Clasificación (ISO 9001)' },
-            { anchor: 'modelo-gestion',         label: 'Modelo de gestión' },
-            { anchor: 'fases',                  label: 'Fases de gestión' },
-            { anchor: 'modelado',               label: 'Modelado (SIPOC / BPMN)' },
-            { anchor: 'caso-termilagro',        label: '🏭 Caso Termilagro' },
-            { anchor: 'practica-clasificacion', label: '⚡ Laboratorio: Clasificación' },
-            { anchor: 'examen-autoevaluacion',  label: '📋 Autoevaluación' },
+            { anchor: 'fundamentos',           label: 'Fundamentos y conceptos',         icon: 'book-open' },
+            { anchor: 'vision-procesos',        label: 'Visión funcional vs. procesos',   icon: 'eye' },
+            { anchor: 'clasificacion',          label: 'Clasificación (ISO 9001)',         icon: 'layers' },
+            { anchor: 'modelo-gestion',         label: 'Modelo de gestión',               icon: 'git-merge' },
+            { anchor: 'fases',                  label: 'Fases de gestión',                icon: 'list-ordered' },
+            { anchor: 'modelado',               label: 'Modelado (SIPOC / BPMN)',         icon: 'workflow' },
+            { anchor: 'caso-termilagro',        label: 'Caso Termilagro S.A.',            icon: 'factory' },
+            { anchor: 'ventas-compras',         label: 'Ventas vs. Compras',              icon: 'arrow-left-right' },
+            { anchor: 'practica-clasificacion', label: 'Laboratorio: Clasificación',      icon: 'flask-conical' },
+            { anchor: 'examen-autoevaluacion',  label: 'Trivia de autoevaluación',        icon: 'help-circle' },
+            { anchor: 'examen-final',           label: 'Examen final',                    icon: 'graduation-cap' },
+            { anchor: 'materiales',             label: 'Materiales de la clase',          icon: 'paperclip' },
         ]
     },
     {
         id: 'clase03',
         key: 'clase-03-informe-de-reconocimiento',
-        emoji: '📋',
+        emoji: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>`,
         numero: '03',
         titulo: 'Informe de reconocimiento',
         color: 'amber',
@@ -60,11 +63,27 @@ const CLASES_DATA = [
         ]
     },
     {
+        id: 'clase07',
+        key: 'clase-07-planificacion',
+        emoji: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h10"/><path d="M6 12h9"/><path d="M11 18h7"/><path d="M3 6h.01"/><path d="M3 12h.01"/><path d="M3 18h.01"/></svg>`,
+        numero: '07',
+        titulo: 'Planificación de proyectos',
+        color: 'orange',
+        secciones: [
+            { anchor: 'fundamentos',        label: 'Fundamentos y triple restricción' },
+            { anchor: 'wbs',                label: 'WBS / EDT' },
+            { anchor: 'cpm-pert',           label: 'CPM y PERT' },
+            { anchor: 'gantt',              label: 'Diagrama de Gantt' },
+            { anchor: 'agilidad',           label: 'Metodologías ágiles' },
+            { anchor: 'agil-vs-tradicional',label: 'Ágil vs. predictivo' },
+        ]
+    },
+    {
         id: 'clase06',
         key: 'clase-06-requerimientos-funcionales-y-no-funcionales',
-        emoji: '📐',
+        emoji: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="4" y1="21" y2="14"/><line x1="4" x2="4" y1="10" y2="3"/><line x1="12" x2="12" y1="21" y2="12"/><line x1="12" x2="12" y1="8" y2="3"/><line x1="20" x2="20" y1="21" y2="16"/><line x1="20" x2="20" y1="12" y2="3"/><line x1="1" x2="7" y1="14" y2="14"/><line x1="9" x2="15" y1="8" y2="8"/><line x1="17" x2="23" y1="16" y2="16"/></svg>`,
         numero: '06',
-        titulo: 'Requerimientos funcionales y no funcionales',
+        titulo: 'Ingeniería de requerimientos',
         color: 'violet',
         secciones: [
             { anchor: 'fundamentos',            label: 'Fundamentos y metodología' },
@@ -80,7 +99,7 @@ const CLASES_DATA = [
     {
         id: 'clase10',
         key: 'clase-10-casos-de-uso',
-        emoji: '🎯',
+        emoji: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>`,
         numero: '10',
         titulo: 'Casos de uso',
         color: 'indigo',
@@ -98,7 +117,7 @@ const CLASES_DATA = [
     {
         id: 'clase12',
         key: 'clase-12-historias-de-usuario',
-        emoji: '📝',
+        emoji: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z"/><path d="M15 3v4a2 2 0 0 0 2 2h4"/><path d="M8 12h.01"/><path d="M12 12h4"/><path d="M8 16h.01"/><path d="M12 16h4"/></svg>`,
         numero: '12',
         titulo: 'Historias de usuario',
         color: 'emerald',
@@ -114,7 +133,7 @@ const CLASES_DATA = [
     {
         id: 'examen',
         key: 'examen',
-        emoji: '🎓',
+        emoji: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/><path d="M8 11h8"/><path d="M8 7h6"/></svg>`,
         numero: '📝',
         titulo: 'Repaso para el examen',
         color: 'rose',
@@ -137,6 +156,7 @@ function getRelativePaths() {
         clase02: isSubPage ? '../clase-02-procesos-de-negocio/index.html' : './clases/clase-02-procesos-de-negocio/index.html',
         clase03: isSubPage ? '../clase-03-informe-de-reconocimiento/index.html' : './clases/clase-03-informe-de-reconocimiento/index.html',
         clase06: isSubPage ? '../clase-06-requerimientos-funcionales-y-no-funcionales/index.html' : './clases/clase-06-requerimientos-funcionales-y-no-funcionales/index.html',
+        clase07: isSubPage ? '../clase-07-planificacion/index.html' : './clases/clase-07-planificacion/index.html',
         clase10: isSubPage ? '../clase-10-casos-de-uso/index.html' : './clases/clase-10-casos-de-uso/index.html',
         clase12: isSubPage ? '../clase-12-historias-de-usuario/index.html' : './clases/clase-12-historias-de-usuario/index.html',
         examen: isSubPage ? '../examen/index.html' : './clases/examen/index.html'
@@ -161,7 +181,7 @@ function getHeaderHTML(paths) {
             <!-- MENÚ DE CLASES -->
             <div class="relative">
                 <button id="btn-menu-clases" class="flex items-center gap-2 px-3.5 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-semibold transition-all duration-300 shadow-xs text-slate-700 dark:text-slate-200" title="Ver clases">
-                    <span class="text-base leading-none">📚</span>
+                    <span class="text-base leading-none"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span>
                     <span class="hidden sm:inline">Clases</span>
                     <svg id="menu-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="transition-transform duration-300">
                         <polyline points="6 9 12 15 18 9"></polyline>
@@ -173,73 +193,83 @@ function getHeaderHTML(paths) {
                         <div class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider px-3 py-2">Ir a otra clase</div>
                         
                         <a href="${paths.clase01}" class="flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
-                            <span class="text-2xl group-hover:scale-110 transition-transform duration-200">🌐</span>
+                            <span class="w-9 h-9 flex items-center justify-center rounded-lg bg-sky-100 dark:bg-sky-950 text-sky-600 dark:text-sky-400 group-hover:scale-110 transition-transform duration-200 flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20A14.5 14.5 0 0 0 12 2"/><path d="M2 12h20"/></svg></span>
                             <div class="flex-1">
                                 <div class="text-[10px] font-bold text-sky-600 dark:text-sky-400 uppercase tracking-wider">Clase 01</div>
                                 <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">Definiciones iniciales</div>
                                 <div class="text-xs text-slate-500 dark:text-slate-400">TGS, SI, rol del analista</div>
                             </div>
-                            <span class="text-slate-400 group-hover:translate-x-1 transition-transform duration-200">→</span>
+                            <svg class="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
                         </a>
 
                         <a href="${paths.clase02}" class="flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
-                            <span class="text-2xl group-hover:scale-110 transition-transform duration-200">🔄</span>
+                            <span class="w-9 h-9 flex items-center justify-center rounded-lg bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform duration-200 flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg></span>
                             <div class="flex-1">
-                                <div class="text-[10px] font-bold text-sky-600 dark:text-sky-400 uppercase tracking-wider">Clase 02</div>
-                                <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">Procesos de negocio</div>
+                                <div class="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Clase 02</div>
+                                <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Procesos de negocio</div>
                                 <div class="text-xs text-slate-500 dark:text-slate-400">ISO 9001, SIPOC, BPMN</div>
                             </div>
-                            <span class="text-slate-400 group-hover:translate-x-1 transition-transform duration-200">→</span>
+                            <svg class="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
                         </a>
 
                         <a href="${paths.clase03}" class="flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
-                            <span class="text-2xl group-hover:scale-110 transition-transform duration-200">📋</span>
+                            <span class="w-9 h-9 flex items-center justify-center rounded-lg bg-amber-100 dark:bg-amber-950 text-amber-600 dark:text-amber-400 group-hover:scale-110 transition-transform duration-200 flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></span>
                             <div class="flex-1">
                                 <div class="text-[10px] font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider">Clase 03</div>
                                 <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">Informe de reconocimiento</div>
                                 <div class="text-xs text-slate-500 dark:text-slate-400">Estructura UTN, carta al sponsor, datos faltantes</div>
                             </div>
-                            <span class="text-slate-400 group-hover:translate-x-1 transition-transform duration-200">→</span>
+                            <svg class="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
                         </a>
                         
                         <a href="${paths.clase06}" class="flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
-                            <span class="text-2xl group-hover:scale-110 transition-transform duration-200">📋</span>
+                            <span class="w-9 h-9 flex items-center justify-center rounded-lg bg-violet-100 dark:bg-violet-950 text-violet-600 dark:text-violet-400 group-hover:scale-110 transition-transform duration-200 flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="4" y1="21" y2="14"/><line x1="4" x2="4" y1="10" y2="3"/><line x1="12" x2="12" y1="21" y2="12"/><line x1="12" x2="12" y1="8" y2="3"/><line x1="20" x2="20" y1="21" y2="16"/><line x1="20" x2="20" y1="12" y2="3"/><line x1="1" x2="7" y1="14" y2="14"/><line x1="9" x2="15" y1="8" y2="8"/><line x1="17" x2="23" y1="16" y2="16"/></svg></span>
                             <div class="flex-1">
-                                <div class="text-[10px] font-bold text-sky-600 dark:text-sky-400 uppercase tracking-wider">Clase 06</div>
-                                <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">Ingeniería de requerimientos</div>
+                                <div class="text-[10px] font-bold text-violet-600 dark:text-violet-400 uppercase tracking-wider">Clase 06</div>
+                                <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">Ingeniería de requerimientos</div>
                                 <div class="text-xs text-slate-500 dark:text-slate-400">Funcionales y no funcionales</div>
                             </div>
-                            <span class="text-slate-400 group-hover:translate-x-1 transition-transform duration-200">→</span>
+                            <svg class="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                        </a>
+
+                        <a href="${paths.clase07}" class="flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
+                            <span class="w-9 h-9 flex items-center justify-center rounded-lg bg-orange-100 dark:bg-orange-950 text-orange-600 dark:text-orange-400 group-hover:scale-110 transition-transform duration-200 flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h10"/><path d="M6 12h9"/><path d="M11 18h7"/><path d="M3 6h.01"/><path d="M3 12h.01"/><path d="M3 18h.01"/></svg></span>
+                            <div class="flex-1">
+                                <div class="text-[10px] font-bold text-orange-600 dark:text-orange-400 uppercase tracking-wider">Clase 07</div>
+                                <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">Planificación de proyectos</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">CPM, PERT, Gantt, Scrum</div>
+                            </div>
+                            <svg class="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
                         </a>
 
                         <a href="${paths.clase10}" class="flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
-                            <span class="text-2xl group-hover:scale-110 transition-transform duration-200">🎭</span>
+                            <span class="w-9 h-9 flex items-center justify-center rounded-lg bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 group-hover:scale-110 transition-transform duration-200 flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg></span>
                             <div class="flex-1">
-                                <div class="text-[10px] font-bold text-sky-600 dark:text-sky-400 uppercase tracking-wider">Clase 10</div>
-                                <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">Casos de uso</div>
+                                <div class="text-[10px] font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">Clase 10</div>
+                                <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">Casos de uso</div>
                                 <div class="text-xs text-slate-500 dark:text-slate-400">UML, actores, relaciones</div>
                             </div>
-                            <span class="text-slate-400 group-hover:translate-x-1 transition-transform duration-200">→</span>
+                            <svg class="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
                         </a>
 
                         <a href="${paths.clase12}" class="flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
-                            <span class="text-2xl group-hover:scale-110 transition-transform duration-200">📝</span>
+                            <span class="w-9 h-9 flex items-center justify-center rounded-lg bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform duration-200 flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z"/><path d="M15 3v4a2 2 0 0 0 2 2h4"/><path d="M8 12h.01"/><path d="M12 12h4"/><path d="M8 16h.01"/><path d="M12 16h4"/></svg></span>
                             <div class="flex-1">
                                 <div class="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Clase 12</div>
                                 <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Historias de usuario</div>
                                 <div class="text-xs text-slate-500 dark:text-slate-400">INVEST, BDD, Story points</div>
                             </div>
-                            <span class="text-slate-400 group-hover:translate-x-1 transition-transform duration-200">→</span>
+                            <svg class="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
                         </a>
 
                         <a href="${paths.examen}" class="flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
-                            <span class="text-2xl group-hover:scale-110 transition-transform duration-200">🎓</span>
+                            <span class="w-9 h-9 flex items-center justify-center rounded-lg bg-rose-100 dark:bg-rose-950 text-rose-600 dark:text-rose-400 group-hover:scale-110 transition-transform duration-200 flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/><path d="M8 11h8"/><path d="M8 7h6"/></svg></span>
                             <div class="flex-1">
-                                <div class="text-[10px] font-bold text-sky-600 dark:text-sky-400 uppercase tracking-wider">Repaso</div>
-                                <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">Conceptos & parciales</div>
+                                <div class="text-[10px] font-bold text-rose-600 dark:text-rose-400 uppercase tracking-wider">Repaso</div>
+                                <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors">Conceptos & parciales</div>
                                 <div class="text-xs text-slate-500 dark:text-slate-400">Machete de parciales UTN</div>
                             </div>
-                            <span class="text-slate-400 group-hover:translate-x-1 transition-transform duration-200">→</span>
+                            <svg class="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
                         </a>
                     </div>
                 </div>
@@ -283,6 +313,13 @@ function loadHeader() {
         initializeMenu();
     }
     loadSidebar();
+    // Mejorar títulos de secciones y habilitar colapsado después de cargar header/sidebar
+    if (typeof window.enhanceSectionTitles === 'function') {
+        // Ejecutar en el siguiente tick para asegurar que el DOM de la página esté listo
+        setTimeout(() => {
+            try { window.enhanceSectionTitles(); } catch (e) { console.error('Error al mejorar títulos de sección', e); }
+        }, 20);
+    }
 }
 
 // ============================================================
@@ -306,6 +343,7 @@ function getSidebarHTML(paths) {
         violet:  { badge: 'bg-violet-100 dark:bg-violet-950 text-violet-700 dark:text-violet-300', border: 'border-violet-500', dot: 'bg-violet-500' },
         indigo:  { badge: 'bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300', border: 'border-indigo-500', dot: 'bg-indigo-500' },
         rose:    { badge: 'bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-300',     border: 'border-rose-500',   dot: 'bg-rose-500' },
+        orange:  { badge: 'bg-orange-100 dark:bg-orange-950 text-orange-700 dark:text-orange-300', border: 'border-orange-500', dot: 'bg-orange-500' },
     };
 
     const clasesHTML = CLASES_DATA.map(clase => {
@@ -315,9 +353,10 @@ function getSidebarHTML(paths) {
         const basePath = baseUrl.replace('index.html', '');
 
         const seccionesHTML = clase.secciones.map(sec => {
+            const iconTag = `<span class="w-1.5 h-1.5 rounded-full ${c.dot} flex-shrink-0 opacity-50 group-hover:opacity-100 transition-opacity duration-150"></span>`;
             return `<a href="${basePath}index.html#${sec.anchor}"
                 class="flex items-center gap-2 px-3 py-1.5 text-xs rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-100 transition-all duration-150 group">
-                <span class="w-1 h-1 rounded-full ${c.dot} flex-shrink-0 opacity-60 group-hover:opacity-100"></span>
+                ${iconTag}
                 ${sec.label}
             </a>`;
         }).join('');
@@ -331,7 +370,7 @@ function getSidebarHTML(paths) {
                         ? `${c.badge} font-semibold`
                         : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium'}"
             >
-                <span class="text-lg leading-none flex-shrink-0">${clase.emoji}</span>
+                <span class="w-5 h-5 flex-shrink-0 flex items-center justify-center text-sky-600 dark:text-sky-300">${clase.emoji}</span>
                 <div class="flex-1 min-w-0">
                     <div class="text-[10px] font-bold uppercase tracking-wider opacity-60">Clase ${clase.numero}</div>
                     <div class="text-xs leading-tight truncate">${clase.titulo}</div>
@@ -472,5 +511,95 @@ function initializeMenu() {
     }
 }
 
+function enhanceSectionTitles() {
+    const sections = document.querySelectorAll('main section');
+    sections.forEach((section, idx) => {
+        // Buscar el contenedor de cabecera (suele ser div.border-b)
+        const headerDiv = section.querySelector('div.border-b') || section.querySelector('h2')?.parentElement;
+        if (!headerDiv) return;
+        const h2 = headerDiv.querySelector('h2');
+        if (!h2) return;
+
+        // Extraer y limpiar el texto del título
+        const original = h2.textContent.trim();
+        // Remover emojis/puntuación inicial y prefijo numérico si existe
+        let cleaned = original.replace(/^[^0-9A-Za-zÁÉÍÓÚÜÑáéíóúüñ]+/, '').replace(/^\s*(\d+)[\.\-\)]?\s*/, '');
+        // Guardar número (si el título original tenía número) o calcular por índice
+        const numberMatch = original.match(/^\s*(\d+)[\.\-\)]/);
+        const number = numberMatch ? numberMatch[1] : (idx + 1).toString();
+
+        // Normalizar a sentence case salvo acrónimos (si todo en mayúsculas, respetar)
+        let text = cleaned;
+        if (text && text === text.toUpperCase()) {
+            // Posible acrónimo (INVEST, BDD...) -> mantener
+            text = text;
+        } else {
+            text = text.trim().toLowerCase();
+            if (text.length > 0) text = text.charAt(0).toUpperCase() + text.slice(1);
+        }
+
+        const gradientStyle = 'background: linear-gradient(90deg, #0e7490, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline-block; font-size: 1.25rem; line-height: 1.75rem; font-weight: 800;';
+
+        // Reemplazar el h2 por una versión con número estilizado y botón de colapsado
+        h2.innerHTML = `
+            <div class="flex items-center justify-between gap-3">
+                <div class="flex items-center gap-3">
+                    <span class="inline-flex items-center justify-center min-w-[2rem] h-8 px-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-base font-extrabold text-slate-600 dark:text-slate-300 tabular-nums section-number">${number}</span>
+                    <span class="section-title-text ml-1" style="${gradientStyle}">${text}</span>
+                </div>
+                <button aria-expanded="true" class="toggle-section-btn text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 transition-transform" title="Minimizar/Expandir sección">
+                    <svg class="w-4 h-4 transform transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+            </div>
+        `;
+
+        const toggleBtn = headerDiv.querySelector('.toggle-section-btn');
+        const headerIndex = Array.from(section.children).indexOf(headerDiv);
+        const contentChildren = Array.from(section.children).slice(headerIndex + 1);
+
+        // Estado inicial (expandido)
+        section.__expanded = true;
+
+        const applyCollapseState = (expanded) => {
+            // Solo ocultar/mostrar el contenido posterior al header; el encabezado mantiene su espaciado
+            contentChildren.forEach(el => {
+                el.classList.toggle('hidden', !expanded);
+            });
+
+            section.classList.toggle('section-collapsed', !expanded);
+
+            // Rotar cheurón
+            const svg = toggleBtn.querySelector('svg');
+            if (svg) svg.style.transform = expanded ? 'rotate(0deg)' : 'rotate(180deg)';
+
+            toggleBtn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+            section.__expanded = expanded;
+        };
+
+        toggleBtn?.addEventListener('click', (e) => {
+            e.preventDefault();
+            applyCollapseState(!section.__expanded);
+        });
+
+        // Hacer que click en el header también active el toggle
+        // pero IGNORAR clicks en elementos interactivos (botones, enlaces, inputs, etc.) para no interferir con controles internos
+        headerDiv.style.cursor = 'pointer';
+        headerDiv.addEventListener('click', (e) => {
+            if (e.target.closest('.toggle-section-btn')) return;
+            if (e.target.closest('button, a, input, textarea, select, label, .tgs-dot')) return;
+            // si se hace click en cualquier otro lugar del header, toggle
+            applyCollapseState(!section.__expanded);
+        });
+
+        // Inicializar estado (asegurar consistencia)
+        applyCollapseState(true);
+
+        // Hacer que el control del carrusel u otros botones no colapsen la sección accidentalmente
+        // (si en algún caso se quiere que un botón concreto colapse, añadir la clase "collapse-toggle" a ese botón en el HTML)
+    });
+}
+
+// Exponer y ejecutar desde el ámbito global
+window.enhanceSectionTitles = enhanceSectionTitles;
 window.loadHeader = loadHeader;
 window.loadSidebar = loadSidebar;

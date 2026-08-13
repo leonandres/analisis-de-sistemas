@@ -1,13 +1,17 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Repaso de conceptos clave para el parcial de Análisis de Sistemas - UTN.BA">
-    <title>Repaso de Examen | Análisis de Sistemas</title>
+    <title>Repaso para el examen | Análisis de sistemas</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = { darkMode: 'class' }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default', securityLevel: 'loose' });
     </script>
     <link rel="stylesheet" href="../../styles.css">
     <!-- Favicon SVG -->
@@ -26,20 +30,33 @@
 
             <!-- CONTENIDO PRINCIPAL -->
             <main class="lg:col-span-3 space-y-8">
-                
-                <!-- El contenido de Ventas vs Compras ha sido trasladado a la Clase 06 de Requerimientos -->
 
-                <!-- SECCIÓN 2: INFORME DE RECONOCIMIENTO -->
+                <!-- HERO TITLE -->
+                <div class="bg-gradient-to-r from-rose-600 to-red-700 rounded-2xl p-6 text-white shadow-lg relative overflow-hidden">
+                    <div class="absolute -right-10 -bottom-10 opacity-15 text-9xl select-none">🎓</div>
+                    <span class="px-2.5 py-1 text-[10px] font-black uppercase tracking-wider bg-white/20 rounded-md backdrop-blur-md">Repaso final</span>
+                    <h1 class="text-2xl md:text-3xl font-extrabold mt-2">Repaso para el examen</h1>
+                    <p class="text-rose-100 text-sm mt-2 max-w-2xl leading-relaxed">
+                        Simuladores interactivos de los parciales K2001 (2024), casos prácticos resueltos y conceptos clave de informe de reconocimiento, casos de uso y agilidad.
+                    </p>
+                </div>
+
+                <!-- SECCIÓN: INFORME DE RECONOCIMIENTO -->
                 <section id="informe-reconocimiento" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
-                        <div class="mt-4 p-4 bg-gradient-to-r from-amber-500/10 to-orange-500/10 rounded-xl border border-amber-500/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-                            <div>
-                                <h4 class="font-bold text-slate-800 dark:text-slate-100 text-sm">📚 Clase Completa Dedicada</h4>
-                                <p class="text-xs text-slate-600 dark:text-slate-400">Accedé a la guía completa, técnicas de relevamiento y checklists de validación.</p>
-                            </div>
-                            <a href="../clase-03-informe-de-reconocimiento/index.html" class="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs rounded-xl shadow-xs transition-all flex-shrink-0">
-                                Ver Clase 03 ➔
-                            </a>
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 uppercase tracking-wider">Estudio preliminar</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">Informe de reconocimiento</h2>
+                        <p class="text-sm text-slate-500 mt-1">Primer entregable formal para validar el entendimiento con el sponsor del proyecto.</p>
+                    </div>
+
+                    <div class="mb-6 p-4 bg-gradient-to-r from-amber-500/10 to-orange-500/10 rounded-xl border border-amber-500/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                        <div>
+                            <h4 class="font-bold text-slate-800 dark:text-slate-100 text-sm">Clase completa dedicada</h4>
+                            <p class="text-xs text-slate-600 dark:text-slate-400">Guía completa, técnicas de relevamiento y checklists de validación.</p>
                         </div>
+                        <a href="../clase-03-informe-de-reconocimiento/index.html" class="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs rounded-xl shadow-xs transition-all flex-shrink-0">
+                            Ver Clase 03 ➔
+                        </a>
                     </div>
 
                     <div class="space-y-4 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
@@ -114,48 +131,65 @@
                     </div>
                 </section>
 
-                <!-- SECCIÓN 4: CASOS DE USO -->
+                <!-- SECCIÓN: CASOS DE USO -->
                 <section id="casos-uso" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
-                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
-                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-sky-100 dark:bg-sky-950 text-sky-800 dark:text-sky-300 uppercase tracking-wider">UML & Requerimientos</span>
-                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">Casos de Uso (Conceptos Fundamentales)</h2>
-                        <p class="text-sm text-slate-500 mt-1">Conceptos base para entender la próxima clase de Casos de Uso.</p>
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <div>
+                            <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-indigo-100 dark:bg-indigo-950 text-indigo-800 dark:text-indigo-300 uppercase tracking-wider">UML · Requerimientos</span>
+                            <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">Casos de uso (conceptos clave)</h2>
+                            <p class="text-sm text-slate-500 mt-1">Conceptos que aparecen en el 1° parcial y en la especificación narrativa.</p>
+                        </div>
+                        <a href="../clase-10-casos-de-uso/index.html" class="px-3.5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-xl shadow-sm transition-all flex-shrink-0">
+                            Ver Clase 10 ➔
+                        </a>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-250 dark:border-slate-800">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800">
                             <span class="text-lg">🎭</span>
                             <h4 class="font-extrabold text-xs uppercase text-slate-800 dark:text-slate-200 mt-2 mb-1">Actor</h4>
                             <p class="text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed">
-                                Un rol externo al sistema que interactúa con él (ej: Ciudadano, Secretario, Jefe de Proyectos). <em>¡Ojo! Un actor no es una persona, es un rol.</em>
+                                Rol externo al sistema que interactúa con él. <em>No es una persona: es un rol</em> (ej: Secretario, Ciudadano).
                             </p>
                         </div>
 
-                        <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-250 dark:border-slate-800">
+                        <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800">
                             <span class="text-lg">🎬</span>
                             <h4 class="font-extrabold text-xs uppercase text-slate-800 dark:text-slate-200 mt-2 mb-1">Escenario</h4>
                             <p class="text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed">
-                                Una interacción específica actor-sistema. Un Caso de Uso agrupa múltiples escenarios (flujos exitosos y de error/excepción).
+                                Secuencia de pasos actor-sistema. Un caso de uso agrupa escenarios exitosos y alternativos/excepciones.
                             </p>
                         </div>
 
-                        <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-250 dark:border-slate-800">
+                        <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800">
                             <span class="text-lg">🔗</span>
-                            <h4 class="font-extrabold text-xs uppercase text-slate-800 dark:text-slate-200 mt-2 mb-1">Relación Include</h4>
+                            <h4 class="font-extrabold text-xs uppercase text-slate-800 dark:text-slate-200 mt-2 mb-1">Include</h4>
                             <p class="text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed">
-                                Relación obligatoria donde un Caso de Uso base requiere la ejecución de otro sub-caso (ej: Generar Expediente &lt;&lt;include&gt;&gt; Iniciar Sesión).
+                                Relación <strong>obligatoria</strong>: el caso base siempre ejecuta el incluido. Ej: Generar expediente &lt;&lt;include&gt;&gt; Iniciar Sesión.
+                            </p>
+                        </div>
+
+                        <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800">
+                            <span class="text-lg">↗️</span>
+                            <h4 class="font-extrabold text-xs uppercase text-slate-800 dark:text-slate-200 mt-2 mb-1">Extend</h4>
+                            <p class="text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed">
+                                Relación <strong>opcional</strong>: extiende el flujo base bajo una condición. Ej: Giro en descubierto &lt;&lt;extend&gt;&gt; Realizar retiro.
                             </p>
                         </div>
                     </div>
+
+                    <div class="mt-4 p-4 bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900/40 rounded-xl text-xs text-slate-700 dark:text-slate-300">
+                        <strong class="text-amber-800 dark:text-amber-300">Tip de examen:</strong> al especificar un caso que incluye otro, el paso 1 del curso normal debe decir <em>"Se ejecuta con éxito el caso de uso Iniciar Sesión"</em>. No describir interacciones físicas (insertar tarjeta, etc.).
+                    </div>
                 </section>
 
-                <!-- SECCIÓN 5: 1° PARCIAL INTERACTIVO -->
+                <!-- SECCIÓN: 1° PARCIAL INTERACTIVO -->
                 <section id="parcial-1" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
                     <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                         <div>
-                            <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-indigo-100 dark:bg-indigo-950 text-indigo-800 dark:text-indigo-300 uppercase tracking-wider">Simulador Oficial</span>
-                            <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">📝 1° Parcial Interactivo (08/07/2024)</h2>
-                            <p class="text-sm text-slate-500 mt-1">Primer Parcial Tema 1 - Curso K2001. Resolvé las consignas de teoría y práctica.</p>
+                            <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-indigo-100 dark:bg-indigo-950 text-indigo-800 dark:text-indigo-300 uppercase tracking-wider">Simulador oficial</span>
+                            <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">1° Parcial interactivo (08/07/2024)</h2>
+                            <p class="text-sm text-slate-500 mt-1">Primer parcial Tema 1 — Curso K2001. Teoría, V/F y casos prácticos resueltos.</p>
                         </div>
                         <a href="resolucion_parciales.md" target="_blank" class="px-3.5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-xl shadow-sm transition-all flex items-center gap-1.5 cursor-pointer">
                             <span>📄 Descargar Guía Resuelta</span>
@@ -189,17 +223,27 @@
 
                                 <!-- Pregunta 2: Procesos Operativos -->
                                 <div class="p-4 bg-slate-50 dark:bg-slate-800/30 rounded-xl border border-slate-200 dark:border-slate-800">
-                                    <strong class="text-xs text-slate-800 dark:text-slate-200 font-sans block mb-2">2. Los procesos de negocio...</strong>
+                                    <strong class="text-xs text-slate-800 dark:text-slate-200 font-sans block mb-2">2. Los procesos de negocio operativos...</strong>
                                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-sans">
                                         <button onclick="verificarRespuestaSimple(this, true, 'p2-explicacion')" class="p-2.5 bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 rounded-lg text-left text-slate-750 dark:text-slate-350 cursor-pointer">
-                                            Operativos: tienen como propósito la creación de valor y el logro de objetivos.
+                                            Tienen como propósito la creación de valor y el logro de objetivos del negocio.
                                         </button>
                                         <button onclick="verificarRespuestaSimple(this, false, 'p2-explicacion')" class="p-2.5 bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 rounded-lg text-left text-slate-755 dark:text-slate-355 cursor-pointer">
-                                            De soporte: tienen contacto directo con el cliente final y facturan los ingresos.
+                                            Son de soporte: tienen contacto directo con el cliente final y facturan los ingresos.
                                         </button>
                                     </div>
                                     <div id="p2-explicacion" class="hidden mt-3 p-3 bg-slate-100 dark:bg-slate-800 rounded-xl text-xs text-slate-700 dark:text-slate-300">
-                                        Los procesos <strong>Operativos</strong> son los responsables directos de generar y entregar valor al cliente externo de la organización.
+                                        Los procesos <strong>operativos</strong> son los responsables directos de generar y entregar valor al cliente externo de la organización.
+                                    </div>
+                                </div>
+
+                                <!-- Pregunta 3: Escenario en CU -->
+                                <div class="p-4 bg-slate-50 dark:bg-slate-800/30 rounded-xl border border-slate-200 dark:border-slate-800 font-sans">
+                                    <strong class="text-xs text-slate-800 dark:text-slate-200">3. En CU, un escenario es...</strong>
+                                    <textarea id="p3-respuesta" class="w-full mt-2 p-3 text-xs bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl focus:ring-1 focus:ring-indigo-500 outline-none text-slate-700 dark:text-slate-300 min-h-[3rem]" placeholder="Completá el enunciado..."></textarea>
+                                    <button onclick="toggleRespuestaCatedra('p3-catedra')" class="mt-2 text-xs text-indigo-600 dark:text-indigo-400 font-bold hover:underline cursor-pointer">Ver respuesta de la cátedra ➔</button>
+                                    <div id="p3-catedra" class="hidden mt-3 p-3 bg-emerald-50 dark:bg-emerald-950/20 text-emerald-800 dark:text-emerald-300 border border-emerald-100 dark:border-emerald-900/50 rounded-xl text-xs">
+                                        <strong>Respuesta:</strong> Una posible secuencia de pasos o interacción entre el actor y el sistema. Un caso de uso está compuesto por un conjunto de escenarios (exitosos y alternativos/excepciones).
                                     </div>
                                 </div>
 
@@ -216,6 +260,16 @@
                                     </div>
                                     <div id="p4-explicacion" class="hidden mt-3 p-3 bg-slate-100 dark:bg-slate-800 rounded-xl text-xs text-slate-700 dark:text-slate-300">
                                         La primera opción es correcta porque representa restricciones tecnológicas internas de la propia organización (programación en C++ y uso de framework corporativo). La segunda opción contiene un requerimiento de calidad (rendimiento) y uno externo (ley).
+                                    </div>
+                                </div>
+
+                                <!-- Pregunta 5: Ciclo de vida incremental -->
+                                <div class="p-4 bg-slate-50 dark:bg-slate-800/30 rounded-xl border border-slate-200 dark:border-slate-800 font-sans">
+                                    <strong class="text-xs text-slate-800 dark:text-slate-200">5. En el ciclo de vida incremental (ágil)...</strong>
+                                    <textarea id="p5-respuesta" class="w-full mt-2 p-3 text-xs bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl focus:ring-1 focus:ring-indigo-500 outline-none text-slate-700 dark:text-slate-300 min-h-[3rem]" placeholder="Completá el enunciado..."></textarea>
+                                    <button onclick="toggleRespuestaCatedra('p5-catedra')" class="mt-2 text-xs text-indigo-600 dark:text-indigo-400 font-bold hover:underline cursor-pointer">Ver respuesta de la cátedra ➔</button>
+                                    <div id="p5-catedra" class="hidden mt-3 p-3 bg-emerald-50 dark:bg-emerald-950/20 text-emerald-800 dark:text-emerald-300 border border-emerald-100 dark:border-emerald-900/50 rounded-xl text-xs">
+                                        <strong>Respuesta:</strong> Se acepta que los requerimientos cambien incluso en las etapas tardías del desarrollo y se aprovecha el cambio para proporcionar ventaja competitiva al cliente.
                                     </div>
                                 </div>
                             </div>
@@ -243,6 +297,23 @@
                                     </div>
                                 </div>
 
+                                <!-- Q7 -->
+                                <div class="p-4 bg-slate-50 dark:bg-slate-800/30 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col justify-between font-sans">
+                                    <div>
+                                        <span class="text-[9px] font-bold text-slate-400">PREGUNTA 7</span>
+                                        <p class="text-xs text-slate-800 dark:text-slate-250 mt-1 font-medium">"La jerarquía sistémica es la propiedad de un sistema que se define en función del nivel jerárquico establecido en el organigrama de la organización."</p>
+                                    </div>
+                                    <div class="mt-4">
+                                        <div class="flex gap-2">
+                                            <button onclick="verificarVF(this, false, 'q7-just')" class="flex-1 py-1.5 bg-white dark:bg-slate-900 hover:bg-slate-100 border border-slate-200 dark:border-slate-800 rounded-lg text-xs font-semibold cursor-pointer">Verdadero</button>
+                                            <button onclick="verificarVF(this, true, 'q7-just')" class="flex-1 py-1.5 bg-white dark:bg-slate-900 hover:bg-slate-100 border border-slate-200 dark:border-slate-800 rounded-lg text-xs font-semibold cursor-pointer">Falso</button>
+                                        </div>
+                                        <div id="q7-just" class="hidden mt-2.5 p-2.5 bg-emerald-50 dark:bg-emerald-950/20 text-emerald-800 dark:text-emerald-300 border border-emerald-100 dark:border-emerald-900/50 rounded-lg text-[10px]">
+                                            <strong>Justificación:</strong> Falso. La jerarquía sistémica se refiere a que los sistemas están compuestos por subsistemas y forman parte de un suprasistema. No guarda relación directa con el organigrama administrativo.
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <!-- Q8 -->
                                 <div class="p-4 bg-slate-50 dark:bg-slate-800/30 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col justify-between font-sans">
                                     <div>
@@ -256,6 +327,23 @@
                                         </div>
                                         <div id="q8-just" class="hidden mt-2.5 p-2.5 bg-emerald-50 dark:bg-emerald-950/20 text-emerald-800 dark:text-emerald-300 border border-emerald-100 dark:border-emerald-900/50 rounded-lg text-[10px]">
                                             <strong>Justificación:</strong> Falso. El tiempo de generación es un requerimiento no funcional de calidad (rendimiento), y el tipo de letra es no funcional de usabilidad.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Q10 -->
+                                <div class="p-4 bg-slate-50 dark:bg-slate-800/30 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col justify-between font-sans">
+                                    <div>
+                                        <span class="text-[9px] font-bold text-slate-400">PREGUNTA 10</span>
+                                        <p class="text-xs text-slate-800 dark:text-slate-250 mt-1 font-medium">"En el enfoque de gestión por procesos el 'trabajo' de la organización lo define su estructura jerárquica."</p>
+                                    </div>
+                                    <div class="mt-4">
+                                        <div class="flex gap-2">
+                                            <button onclick="verificarVF(this, false, 'q10-just')" class="flex-1 py-1.5 bg-white dark:bg-slate-900 hover:bg-slate-100 border border-slate-200 dark:border-slate-800 rounded-lg text-xs font-semibold cursor-pointer">Verdadero</button>
+                                            <button onclick="verificarVF(this, true, 'q10-just')" class="flex-1 py-1.5 bg-white dark:bg-slate-900 hover:bg-slate-100 border border-slate-200 dark:border-slate-800 rounded-lg text-xs font-semibold cursor-pointer">Falso</button>
+                                        </div>
+                                        <div id="q10-just" class="hidden mt-2.5 p-2.5 bg-emerald-50 dark:bg-emerald-950/20 text-emerald-800 dark:text-emerald-300 border border-emerald-100 dark:border-emerald-900/50 rounded-lg text-[10px]">
+                                            <strong>Justificación:</strong> Falso. La gestión por procesos define el trabajo de forma transversal a través del flujo de valor. La estructura jerárquica define la autoridad administrativa vertical, no el flujo de los procesos.
                                         </div>
                                     </div>
                                 </div>
@@ -296,57 +384,144 @@
 
                         <!-- Caso de Estudio: Casos de Uso (Generar Expediente) -->
                         <div>
-                            <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm mb-3">Parte IV: Caso Práctico - Casos de Uso</h3>
-                            
-                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                                <!-- Diagrama UML -->
-                                <div class="p-4 bg-slate-50 dark:bg-slate-800/30 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col items-center">
-                                    <strong class="text-xs text-slate-800 dark:text-slate-200 font-sans mb-3">UML Diagramado con Mermaid</strong>
-                                    <div class="mermaid text-xs w-full flex justify-center">
+                            <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm mb-3">Parte IV: Caso Práctico — Casos de Uso (Parcial K2001)</h3>
+                            <p class="text-xs text-slate-500 mb-4">Consigna del parcial: modelar el diagrama de casos de uso y redactar la especificación narrativa de <strong>Generar expediente</strong> según la minuta del sistema legislativo.</p>
+
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+                                <!-- Diagrama UML del parcial -->
+                                <div class="p-4 bg-slate-50 dark:bg-slate-800/30 rounded-xl border border-slate-200 dark:border-slate-800">
+                                    <strong class="text-xs text-slate-800 dark:text-slate-200 font-sans block mb-3">Diagrama de casos de uso (respuesta del parcial)</strong>
+                                    <div class="mermaid w-full flex justify-center text-[10px]">
                                         graph TD
                                             sec((Secretario))
-                                            jefe((Jefe de Proyectos))
+                                            jefe((Jefe Adm. Anteproyectos))
                                             ciu((Ciudadano))
-                                            
+
                                             uc1(Generar expediente)
                                             uc2(Iniciar Sesión)
-                                            uc3(Consultar Proyectos Rechazados)
-                                            uc4(Seguimiento de Proyecto)
-                                            
+                                            uc3(Consultar proyectos rechazados)
+                                            uc4(Seguimiento de un proyecto presentado)
+
                                             sec --> uc1
                                             jefe --> uc3
                                             ciu --> uc4
-                                            
+
                                             uc1 -.->|&lt;&lt;include&gt;&gt;| uc2
                                             uc3 -.->|&lt;&lt;include&gt;&gt;| uc2
                                     </div>
+                                    <p class="text-[10px] text-slate-500 mt-3 text-center">Actores: círculos · Casos de uso: óvalos · Include: flecha punteada</p>
                                 </div>
 
-                                <!-- Especificación del Caso de Uso -->
+                                <!-- Checklist del diagrama -->
                                 <div class="p-4 bg-slate-50 dark:bg-slate-800/30 rounded-xl border border-slate-200 dark:border-slate-800">
-                                    <strong class="text-xs text-slate-800 dark:text-slate-200 font-sans block mb-2">Especificación de "Generar Expediente":</strong>
-                                    <div class="text-[10px] text-slate-600 dark:text-slate-400 space-y-2">
-                                        <p><strong>Actor:</strong> Secretario</p>
-                                        <p><strong>Precondición:</strong> El Secretario está logueado en el sistema.</p>
-                                        <p><strong>Curso Alternativo de Error Clave (Materia incorrecta):</strong></p>
-                                        <div class="p-2.5 bg-red-50/30 dark:bg-red-950/10 border border-red-200 dark:border-red-900/50 rounded-lg">
-                                            <em>7.a. La materia no corresponde a la Cámara de Origen:</em><br>
-                                            1. El sistema muestra: "No corresponde iniciar el proyecto en esta cámara".<br>
-                                            2. El Secretario confirma la lectura y el sistema regresa al menú principal.
-                                        </div>
-                                    </div>
+                                    <strong class="text-xs text-slate-800 dark:text-slate-200 font-sans block mb-3">Elementos del diagrama (parcial K2001)</strong>
+                                    <ul class="space-y-2 text-[11px] font-sans text-slate-700 dark:text-slate-300">
+                                        <li class="flex gap-2 p-2.5 bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-900/40 rounded-lg">
+                                            <span class="text-emerald-600 dark:text-emerald-400 font-bold">✓</span>
+                                            <span><strong>Generar expediente</strong> &lt;&lt;include&gt;&gt; <strong>Iniciar Sesión</strong> — relación obligatoria</span>
+                                        </li>
+                                        <li class="flex gap-2 p-2.5 bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-900/40 rounded-lg">
+                                            <span class="text-emerald-600 dark:text-emerald-400 font-bold">✓</span>
+                                            <span><strong>Consultar proyectos rechazados</strong> &lt;&lt;include&gt;&gt; <strong>Iniciar Sesión</strong></span>
+                                        </li>
+                                        <li class="flex gap-2 p-2.5 bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-900/40 rounded-lg">
+                                            <span class="text-emerald-600 dark:text-emerald-400 font-bold">✓</span>
+                                            <span><strong>Seguimiento de un proyecto presentado</strong> — iniciado por Ciudadano, sin include</span>
+                                        </li>
+                                        <li class="flex gap-2 p-2.5 bg-red-50/30 dark:bg-red-950/10 border border-red-200 dark:border-red-900/40 rounded-lg">
+                                            <span class="text-red-600 dark:text-red-400 font-bold">✗</span>
+                                            <span>Error común: poner <em>Jefe de Proyectos</em> en lugar de <em>Jefe de Administración de Anteproyectos</em></span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Especificación narrativa completa -->
+                            <div class="p-4 bg-slate-50 dark:bg-slate-800/30 rounded-xl border border-slate-200 dark:border-slate-800">
+                                <strong class="text-xs text-slate-800 dark:text-slate-200 font-sans block mb-3">Especificación narrativa: Generar expediente</strong>
+                                <div class="overflow-x-auto text-[11px] font-sans">
+                                    <table class="w-full text-left border-collapse border border-slate-200 dark:border-slate-800 rounded-lg">
+                                        <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-slate-650 dark:text-slate-400">
+                                            <tr>
+                                                <td class="p-2.5 font-semibold bg-slate-100/50 dark:bg-slate-900/40 w-1/4">Actor</td>
+                                                <td class="p-2.5">Secretario</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-2.5 font-semibold bg-slate-100/50 dark:bg-slate-900/40">Precondición</td>
+                                                <td class="p-2.5">El Secretario ha iniciado sesión exitosamente en el sistema.</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="mt-4 overflow-x-auto text-[11px] font-sans">
+                                    <table class="w-full text-left border-collapse border border-slate-200 dark:border-slate-800 rounded-lg">
+                                        <thead>
+                                            <tr class="bg-indigo-50 dark:bg-slate-800 text-indigo-900 dark:text-indigo-200">
+                                                <th class="p-2.5 border border-slate-200 dark:border-slate-800 font-bold w-1/2">Curso normal / básico</th>
+                                                <th class="p-2.5 border border-slate-200 dark:border-slate-800 font-bold w-1/2">Curso alternativo / excepciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-slate-650 dark:text-slate-400">
+                                            <tr>
+                                                <td class="p-2.5 align-top">1) Se ejecuta con éxito el CU <em>Iniciar Sesión</em>.</td>
+                                                <td class="p-2.5 align-top"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-2.5 align-top">2) El sistema solicita seleccionar el tipo de peticionante.</td>
+                                                <td class="p-2.5 align-top bg-amber-50/30 dark:bg-amber-950/10"><strong>3.a.</strong> Si el peticionante es "Ciudadano": el sistema solicita Nombre, Apellido, DNI, Fecha y Lugar de Nacimiento. El Secretario ingresa los datos y el flujo continúa en el paso 5.</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-2.5 align-top">3) El Secretario selecciona "Poder Ejecutivo" o "Parlamento".</td>
+                                                <td class="p-2.5 align-top"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-2.5 align-top">4) El sistema presenta el link al módulo de ingreso especial.</td>
+                                                <td class="p-2.5 align-top"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-2.5 align-top">5) El sistema solicita nombre del proyecto y materia.</td>
+                                                <td class="p-2.5 align-top"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-2.5 align-top">6) El Secretario ingresa los datos.</td>
+                                                <td class="p-2.5 align-top"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-2.5 align-top">7) El sistema verifica que la materia corresponda a la cámara iniciadora.</td>
+                                                <td class="p-2.5 align-top bg-red-50/30 dark:bg-red-950/10"><strong>7.a.</strong> La materia no corresponde a la Cámara de Origen:<br>1. Muestra: "No corresponde iniciar el proyecto en esta cámara".<br>2. El Secretario confirma y el sistema regresa al menú principal.</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-2.5 align-top">8) El sistema verifica que el proyecto no esté rechazado en el año legislativo actual.</td>
+                                                <td class="p-2.5 align-top bg-red-50/30 dark:bg-red-950/10"><strong>8.a.</strong> El proyecto figura como rechazado:<br>1. Muestra: "Proyecto rechazado, no puede presentarse hasta el próximo año legislativo".<br>2. Añade al archivo de rechazos y notifica a la Oficina de Administración.<br>3. Cancela la operación y vuelve al menú principal.</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-2.5 align-top">9) El sistema admite el proyecto y genera la carátula del expediente.</td>
+                                                <td class="p-2.5 align-top"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-2.5 align-top">10) El sistema asigna el proyecto al módulo de workflow de comisiones.</td>
+                                                <td class="p-2.5 align-top"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- SECCIÓN 6: 2° PARCIAL INTERACTIVO -->
+                <!-- SECCIÓN: 2° PARCIAL INTERACTIVO -->
                 <section id="parcial-2" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
-                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
-                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-indigo-100 dark:bg-indigo-950 text-indigo-800 dark:text-indigo-300 uppercase tracking-wider">Simulador Oficial</span>
-                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">📝 2° Parcial Interactivo (11/11/2024)</h2>
-                        <p class="text-sm text-slate-500 mt-1">Segundo Parcial Tema 1 - Curso K2001. Contenido ágil y de modelado estructural.</p>
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <div>
+                            <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-indigo-100 dark:bg-indigo-950 text-indigo-800 dark:text-indigo-300 uppercase tracking-wider">Simulador oficial</span>
+                            <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">2° Parcial interactivo (11/11/2024)</h2>
+                            <p class="text-sm text-slate-500 mt-1">Segundo parcial Tema 1 — Curso K2001. Agilidad, SCRUM y diagramas UML.</p>
+                        </div>
+                        <a href="../clase-12-historias-de-usuario/index.html" class="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-xl shadow-sm transition-all flex-shrink-0">
+                            Ver Clase 12 ➔
+                        </a>
                     </div>
 
                     <div class="space-y-6">
@@ -409,17 +584,18 @@
             </main>
         </div>
     </div>
-    
-    <footer class="bg-slate-900 text-slate-400 text-xs text-center p-4 mt-auto border-t border-slate-800 font-sans">
-        <p>© 2026 - Análisis de Sistemas - Repaso de Examen</p>
-    </footer>
+
+    <button id="btn-top" class="fixed bottom-6 right-6 z-40 w-12 h-12 bg-sky-600 hover:bg-sky-700 text-white rounded-full shadow-lg transition-all duration-300 flex items-center justify-center cursor-pointer" title="Volver al inicio">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
+    </button>
 
     <script src="../../component.js"></script>
     <script src="../../index.js"></script>
     <script src="index.js"></script>
 
-    <button id="btn-top" class="fixed bottom-6 right-6 z-40 w-12 h-12 bg-sky-600 hover:bg-sky-700 text-white rounded-full shadow-lg opacity-0 invisible transition-all duration-300 flex items-center justify-center cursor-pointer" title="Volver al inicio">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
-    </button>
+    
+    <footer class="bg-slate-900 text-slate-400 text-xs text-center p-4 mt-auto border-t border-slate-800 font-sans">
+        <p>© 2026 - Análisis de Sistemas - Repaso de Examen</p>
+    </footer>
 </body>
 </html>
