@@ -37,6 +37,85 @@
                     </p>
                 </div>
 
+                <!-- SECCIÓN 0: JERARQUÍA DE REQUERIMIENTOS ÁGILES -->
+                <section id="jerarquia" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-rose-100 dark:bg-rose-950 text-rose-800 dark:text-rose-300 uppercase tracking-wider">Marco General</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">0. Jerarquía de Requerimientos Ágiles</h2>
+                        <p class="text-sm text-slate-500 mt-1">Estructura propuesta por Dean Leffingwell, utilizada en SAFe (Scaled Agile Framework).</p>
+                    </div>
+
+                    <div class="space-y-4 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                            <div class="p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
+                                <span class="font-black text-rose-600 dark:text-rose-400">Strategic Theme (Iniciativa)</span>
+                                <p class="text-slate-600 dark:text-slate-400 mt-1">Objetivo estratégico. Ej: mejorar la experiencia académica.</p>
+                            </div>
+                            <div class="p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
+                                <span class="font-black text-rose-600 dark:text-rose-400">Epic (Épica)</span>
+                                <p class="text-slate-600 dark:text-slate-400 mt-1">Gran funcionalidad. Ej: acceso online a información académica.</p>
+                            </div>
+                            <div class="p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
+                                <span class="font-black text-rose-600 dark:text-rose-400">Feature</span>
+                                <p class="text-slate-600 dark:text-slate-400 mt-1">Funcionalidad concreta. Ej: consulta de calificaciones.</p>
+                            </div>
+                            <div class="p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
+                                <span class="font-black text-rose-600 dark:text-rose-400">User Story (Historia de Usuario)</span>
+                                <p class="text-slate-600 dark:text-slate-400 mt-1">Unidad mínima de valor. Ej: recibir avisos por mail al publicarse notas.</p>
+                            </div>
+                        </div>
+
+                        <div class="p-4 bg-slate-900 rounded-xl text-slate-200 text-xs">
+                            <p class="font-bold text-slate-100 mb-2">¿Por qué descomponer en niveles?</p>
+                            <ul class="list-disc list-inside space-y-1 text-slate-300">
+                                <li>Se trabaja con distintos niveles de detalle según el avance.</li>
+                                <li>Las épicas representan la visión general (no hace falta mucho detalle al principio).</li>
+                                <li>A medida que se avanza, se refinan en features e historias de usuario, manejables.</li>
+                                <li>Permite planificar de forma progresiva, con menor carga documental y más agilidad.</li>
+                            </ul>
+                            <p class="italic text-slate-400 mt-3">"The objective is vision, not specificity." — Dean Leffingwell, Agile Software Requirements</p>
+                        </div>
+
+                        <details class="group bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800 p-4">
+                            <summary class="cursor-pointer font-bold text-slate-800 dark:text-slate-200 text-sm">🧩 Ejemplo completo: de una Iniciativa a Historias de Usuario</summary>
+                            <div class="mt-4 space-y-3 text-xs">
+                                <div class="p-3 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+                                    <span class="font-bold text-rose-600 dark:text-rose-400">Iniciativa:</span> Modernización de servicios académicos digitales
+                                    <p class="text-slate-500 mt-1">Objetivo: brindar a los estudiantes una experiencia académica más ágil, accesible y autónoma.</p>
+                                    <p class="text-slate-500 mt-1">Épicas: Autogestión académica · Rediseño de la experiencia digital · Integración con sistemas externos · Comunicación institucional automatizada.</p>
+                                </div>
+                                <div class="p-3 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+                                    <span class="font-bold text-rose-600 dark:text-rose-400">Épica:</span> Plataforma de Autogestión Académica
+                                    <p class="text-slate-500 mt-1">Hipótesis de valor: mejora la experiencia estudiantil y reduce la carga administrativa.</p>
+                                </div>
+                                <div class="p-3 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+                                    <span class="font-bold text-rose-600 dark:text-rose-400">Feature #1:</span> Consulta de calificaciones
+                                    <p class="text-slate-500 mt-1">Criterios de aceptación: mostrar materias cursadas, notas parciales y finales; incluir descarga en PDF.</p>
+                                    <p class="mt-2 font-semibold text-slate-700 dark:text-slate-300">Historias de Usuario:</p>
+                                    <ul class="list-disc list-inside text-slate-500">
+                                        <li>Como estudiante, quiero ver mis calificaciones finales por materia, para saber si promocioné.</li>
+                                        <li>Como estudiante, quiero descargar un reporte de mis notas, para tenerlo como respaldo.</li>
+                                    </ul>
+                                </div>
+                                <div class="p-3 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+                                    <span class="font-bold text-rose-600 dark:text-rose-400">Feature #2:</span> Gestión de inscripciones
+                                    <p class="mt-2 font-semibold text-slate-700 dark:text-slate-300">Historias de Usuario:</p>
+                                    <ul class="list-disc list-inside text-slate-500">
+                                        <li>Como estudiante, quiero inscribirme a materias desde la web, para no tener que ir a la facultad.</li>
+                                        <li>Como estudiante, quiero visualizar los horarios disponibles antes de inscribirme, para organizar mi semana.</li>
+                                        <li>Como estudiante, quiero recibir confirmación por mail al inscribirme, para tener constancia.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </details>
+
+                        <div class="p-4 bg-sky-50/50 dark:bg-sky-950/20 rounded-xl border border-sky-200 dark:border-sky-900/40 text-xs">
+                            <strong class="text-sky-900 dark:text-sky-300 text-sm">💡 ¿Qué es un Product Backlog Item (PBI)?</strong>
+                            <p class="text-slate-700 dark:text-slate-300 mt-1">Una unidad de valor que representa algo que el sistema debe hacer o entregar. Puede redactarse con distintas técnicas (requerimientos, casos de uso, escenarios, historias de usuario) y debe contener al menos: <strong>descripción</strong>, <strong>estimación</strong> y un <strong>orden</strong> respecto a los demás PBI. El formato más usado para definirlo es la Historia de Usuario.</p>
+                        </div>
+                    </div>
+                </section>
+
                 <!-- SECCIÓN 1: CONCEPTO Y FILOSOFÍA -->
                 <section id="concepto" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
                     <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
@@ -63,7 +142,35 @@
                     </div>
                 </section>
 
-                <!-- SECCIÓN 2: FORMATO CANÓNICO (3 C) -->
+                <!-- SECCIÓN 1B: HU vs REQUERIMIENTO -->
+                <section id="vs-requerimientos" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 uppercase tracking-wider">Comparativa</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">1.1 Historias de Usuario ≠ Requerimiento</h2>
+                        <p class="text-sm text-slate-500 mt-1">Una historia de usuario busca entender el <em>para qué</em>; un requerimiento tradicional define el <em>cómo</em>.</p>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-xs border-collapse">
+                            <thead>
+                                <tr class="text-left border-b border-slate-200 dark:border-slate-800">
+                                    <th class="py-2 pr-4 font-bold text-slate-700 dark:text-slate-300"></th>
+                                    <th class="py-2 pr-4 font-bold text-emerald-700 dark:text-emerald-400">Historias de Usuario</th>
+                                    <th class="py-2 font-bold text-slate-600 dark:text-slate-400">Requerimientos</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-slate-600 dark:text-slate-400">
+                                <tr class="border-b border-slate-100 dark:border-slate-800/70"><td class="py-2 pr-4 font-semibold text-slate-700 dark:text-slate-300">Formato</td><td class="py-2 pr-4">Narrativo, centrado en el usuario</td><td class="py-2">Declarativo, centrado en el sistema</td></tr>
+                                <tr class="border-b border-slate-100 dark:border-slate-800/70"><td class="py-2 pr-4 font-semibold text-slate-700 dark:text-slate-300">Detalle inicial</td><td class="py-2 pr-4">Bajo, se completa en la conversación</td><td class="py-2">Alto, detallado desde el principio</td></tr>
+                                <tr class="border-b border-slate-100 dark:border-slate-800/70"><td class="py-2 pr-4 font-semibold text-slate-700 dark:text-slate-300">Lenguaje</td><td class="py-2 pr-4">Simple, claro, no técnico</td><td class="py-2">Técnico, formal</td></tr>
+                                <tr class="border-b border-slate-100 dark:border-slate-800/70"><td class="py-2 pr-4 font-semibold text-slate-700 dark:text-slate-300">Documentación</td><td class="py-2 pr-4">Ligera, fácil de modificar</td><td class="py-2">Pesada, difícil de actualizar</td></tr>
+                                <tr class="border-b border-slate-100 dark:border-slate-800/70"><td class="py-2 pr-4 font-semibold text-slate-700 dark:text-slate-300">Validación</td><td class="py-2 pr-4">Criterios de aceptación + conversación</td><td class="py-2">Revisión formal y aprobación</td></tr>
+                                <tr><td class="py-2 pr-4 font-semibold text-slate-700 dark:text-slate-300">Adaptabilidad</td><td class="py-2 pr-4">Alta, evoluciona con el equipo</td><td class="py-2">Baja, sujeta a gestión de cambios</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-4">Las historias priorizan la colaboración y la entrega de valor incremental. Los requerimientos tradicionales priorizan la especificación exhaustiva desde el principio.</p>
+                </section>
                 <section id="formato" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
                     <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
                         <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-sky-100 dark:bg-sky-950 text-sky-800 dark:text-sky-300 uppercase tracking-wider">Estructura Estándar</span>
@@ -92,6 +199,40 @@
                                 <p class="text-slate-600 dark:text-slate-400 mt-1">Criterios de aceptación para validar su cumplimiento.</p>
                             </div>
                         </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 2B: MÁS EJEMPLOS DE LAS 3 C -->
+                <section id="ejemplos-3cs" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-sky-100 dark:bg-sky-950 text-sky-800 dark:text-sky-300 uppercase tracking-wider">Práctica</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">2.1 Más ejemplos de Historias de Usuario con las 3 C</h2>
+                        <p class="text-sm text-slate-500 mt-1">La Conversation resuelve las dudas del equipo; la Confirmation deja los criterios de aceptación por escrito.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                        <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800 space-y-2">
+                            <p class="font-bold text-slate-800 dark:text-slate-200"><span class="text-sky-500">Card:</span> Como comprador, quiero pagar con tarjeta de crédito para evitar usar efectivo.</p>
+                            <p><span class="font-semibold text-slate-700 dark:text-slate-300">Conversation:</span> ¿Se valida el límite de la tarjeta antes de autorizar? → Sí, a través del gateway del operador de la tarjeta.</p>
+                            <p><span class="font-semibold text-slate-700 dark:text-slate-300">Confirmation:</span> Aceptar Visa y Mastercard · la transacción no debe demorar más de 5 segundos · mostrar mensaje de confirmación · registrar la operación en el historial.</p>
+                        </div>
+                        <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800 space-y-2">
+                            <p class="font-bold text-slate-800 dark:text-slate-200"><span class="text-sky-500">Card:</span> Como cliente del banco, quiero retirar dinero de mi cuenta para hacer pagos en efectivo.</p>
+                            <p><span class="font-semibold text-slate-700 dark:text-slate-300">Conversation:</span> ¿Existe un máximo por transacción? → Sí, $200 por transacción y $1.000 por día.</p>
+                            <p><span class="font-semibold text-slate-700 dark:text-slate-300">Confirmation:</span> Poder hacerlo en cualquier sucursal del banco · el saldo debe quedar actualizado · enviar correo con el saldo actualizado.</p>
+                        </div>
+                        <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800 space-y-2 md:col-span-2">
+                            <p class="font-bold text-slate-800 dark:text-slate-200"><span class="text-sky-500">Card:</span> Como consumidor, quiero ver mi consumo diario de energía para poder reducir mis costos y uso energético.</p>
+                            <p><span class="font-semibold text-slate-700 dark:text-slate-300">Conversation:</span> ¿Qué información se necesita ver? → Consumo diario en kWh en un gráfico de barras. ¿Con qué frecuencia se actualizan los datos? → Una vez por día, con datos del día anterior.</p>
+                            <p><span class="font-semibold text-slate-700 dark:text-slate-300">Confirmation:</span> Poder acceder desde cualquier dispositivo con conexión · visualizar el consumo diario de los últimos 45 días.</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 p-4 bg-emerald-50/50 dark:bg-emerald-950/20 rounded-xl border border-emerald-200 dark:border-emerald-900/40 text-xs">
+                        <strong class="text-emerald-900 dark:text-emerald-300 text-sm">✅ Ejemplo aplicando INVEST</strong>
+                        <p class="text-slate-700 dark:text-slate-300 mt-1"><strong>Card:</strong> Como estudiante, quiero recibir notificaciones cuando se publiquen mis notas, para estar al tanto de los resultados de las cursadas.</p>
+                        <p class="text-slate-700 dark:text-slate-300 mt-1"><strong>Conversation:</strong> ¿Cómo se le avisa al estudiante? → Por mail. ¿Cuándo se notifica? → Apenas el docente carga la nota.</p>
+                        <p class="text-slate-700 dark:text-slate-300 mt-1"><strong>Confirmation:</strong> Al cargarse una nota, el sistema envía la notificación por mail · la notificación incluye materia, nota y fecha · si se modifica la nota, se manda una nueva notificación.</p>
                     </div>
                 </section>
 
@@ -158,6 +299,81 @@
                     <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
                         Los <strong>Story Points</strong> representan una medida relativa que combina complejidad, riesgo y esfuerzo. No equivalen a horas hombre absolutas, sino al tamaño relativo de la tarea comparada con una historia base de referencia.
                     </p>
+                </section>
+
+                <!-- SECCIÓN 5B: EJERCICIOS PRÁCTICOS -->
+                <section id="ejercicios" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-rose-100 dark:bg-rose-950 text-rose-800 dark:text-rose-300 uppercase tracking-wider">Práctica</span>
+                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">6. Ejercicios Prácticos</h2>
+                        <p class="text-sm text-slate-500 mt-1">Detección y redacción de historias de usuario a partir de un enunciado.</p>
+                    </div>
+
+                    <div class="space-y-6 text-xs">
+                        <!-- Ejercicio 1 -->
+                        <details class="group bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800 p-4">
+                            <summary class="cursor-pointer font-bold text-slate-800 dark:text-slate-200 text-sm">Ejercicio 1 — Línea de crédito de electrodomésticos</summary>
+                            <p class="text-slate-600 dark:text-slate-400 mt-3 leading-relaxed">
+                                Un negocio de venta de electrodomésticos decidió implementar y otorgar una línea de crédito a sus clientes para la compra de productos. Los créditos son solicitados por los clientes al vendedor, al momento de realizar la compra, y deben ser autorizados por un representante de la gerencia de créditos. Son pagados por el cliente a través de débito automático en tarjetas de crédito. Si el crédito se acepta, se entrega el producto al cliente en forma inmediata. Cada mes se debitará de manera automática el pago de las cuotas de la tarjeta del cliente.
+                            </p>
+                            <p class="font-semibold text-slate-700 dark:text-slate-300 mt-3">Consigna: escribir 2 historias de usuario del ejercicio.</p>
+                            <div class="mt-3 p-3 bg-white dark:bg-slate-900 rounded-lg border border-emerald-200 dark:border-emerald-900/40">
+                                <p class="font-semibold text-emerald-700 dark:text-emerald-400 mb-1">Resolución</p>
+                                <ol class="list-decimal list-inside space-y-1 text-slate-600 dark:text-slate-400">
+                                    <li>Como cliente, quiero solicitar un crédito, para poder realizar una compra en cuotas.</li>
+                                    <li>Como representante de la gerencia de créditos, quiero poder aprobar créditos a los clientes, para que puedan realizar una compra.</li>
+                                </ol>
+                            </div>
+                        </details>
+
+                        <!-- Ejercicio 2 -->
+                        <details class="group bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800 p-4">
+                            <summary class="cursor-pointer font-bold text-slate-800 dark:text-slate-200 text-sm">Ejercicio 2 — Sanatorio "Buena Salud": turnos online</summary>
+                            <div class="text-slate-600 dark:text-slate-400 mt-3 leading-relaxed space-y-2">
+                                <p>El Sanatorio "Buena Salud" está planificando la implementación de un nuevo sistema web que permita a sus pacientes gestionar turnos de manera online, para reducir las llamadas telefónicas y los tiempos de espera.</p>
+                                <p>Cada paciente debe registrarse online (nombre, DNI, cobertura médica, correo) y recibe por mail un usuario y contraseña temporal a modificar en el primer ingreso. Al iniciar sesión puede: solicitar un nuevo turno, modificar o anular un turno ya asignado, y reimprimir el comprobante de un turno vigente.</p>
+                                <p>Al solicitar un turno se elige especialidad, día, horario y médico. El sistema valida disponibilidad y cobertura; si la cobertura no cubre el turno, se conecta con el posnet de la obra social. Al confirmar, se genera un comprobante en PDF. Las secretarías de sector acceden a un listado diario de turnos de su área, exportable en PDF. Toda la información se almacena en SQL Server.</p>
+                            </div>
+                            <p class="font-semibold text-slate-700 dark:text-slate-300 mt-3">Consigna: detectar y listar al menos 3 historias de usuario relevantes (formato: Como [rol], quiero [objetivo] para [beneficio]).</p>
+
+                            <div class="mt-3 p-3 bg-white dark:bg-slate-900 rounded-lg border border-emerald-200 dark:border-emerald-900/40">
+                                <p class="font-semibold text-emerald-700 dark:text-emerald-400 mb-1">Resolución — Historias detectadas</p>
+                                <ol class="list-decimal list-inside space-y-1 text-slate-600 dark:text-slate-400">
+                                    <li>Como paciente, quiero registrarme online, para obtener usuario y clave y así poder ingresar al sistema.</li>
+                                    <li>Como paciente, quiero solicitar un turno online, para evitar tener que llamar o ir personalmente.</li>
+                                    <li>Como paciente, quiero modificar un turno ya solicitado, para cambiar el horario por uno más conveniente.</li>
+                                    <li>Como paciente, quiero anular un turno que ya no voy a usar, para liberar ese espacio.</li>
+                                    <li>Como paciente, quiero reimprimir el comprobante de un turno ya asignado, para tenerlo disponible en papel.</li>
+                                    <li>Como paciente, quiero recibir por mail la confirmación del turno asignado, para asegurarme de haberlo obtenido.</li>
+                                    <li>Como paciente, quiero saber si mi cobertura está vigente, para saber si debo pagar el canon por la consulta.</li>
+                                    <li>Como secretaria, quiero obtener el listado diario de turnos, para organizar la atención diaria.</li>
+                                    <li>Como secretaria, quiero obtener el listado diario de turnos, para distribuirlo a los médicos.</li>
+                                </ol>
+                            </div>
+
+                            <p class="font-semibold text-slate-700 dark:text-slate-300 mt-4">Desarrollo con las 3 C de algunas de esas historias:</p>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mt-2">
+                                <div class="p-3 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+                                    <p class="font-bold text-slate-800 dark:text-slate-200">Historia 1 — Registro</p>
+                                    <p class="mt-1"><strong>Card:</strong> Como paciente, quiero registrarme online para obtener usuario y clave.</p>
+                                    <p class="mt-1"><strong>Conversation:</strong> ¿Qué datos completo? Nombre, DNI, cobertura, correo. ¿Cómo recibo las credenciales? Por correo electrónico.</p>
+                                    <p class="mt-1"><strong>Confirmation:</strong> Formulario online de registro · envío de credenciales por correo · cambio de contraseña obligatorio en el primer ingreso.</p>
+                                </div>
+                                <div class="p-3 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+                                    <p class="font-bold text-slate-800 dark:text-slate-200">Historia 5 — Reimpresión de comprobante</p>
+                                    <p class="mt-1"><strong>Card:</strong> Como paciente, quiero reimprimir el comprobante de un turno para tenerlo en papel o digital.</p>
+                                    <p class="mt-1"><strong>Conversation:</strong> ¿Se puede consultar el historial de turnos? Sí. ¿Se puede previsualizar antes de descargar? Sería útil.</p>
+                                    <p class="mt-1"><strong>Confirmation:</strong> Listado de turnos asignados · selección y generación de comprobante · formato PDF descargable e imprimible.</p>
+                                </div>
+                                <div class="p-3 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+                                    <p class="font-bold text-slate-800 dark:text-slate-200">Historia 8 — Listado de secretaría</p>
+                                    <p class="mt-1"><strong>Card:</strong> Como secretaria, quiero el listado diario de turnos para organizar la atención médica del día.</p>
+                                    <p class="mt-1"><strong>Conversation:</strong> ¿Qué información se muestra? Paciente, hora y médico asignado. ¿En qué formato? PDF.</p>
+                                    <p class="mt-1"><strong>Confirmation:</strong> Consulta de turnos por fecha y sector · listado con paciente, hora y médico · opción de imprimir o exportar en PDF.</p>
+                                </div>
+                            </div>
+                        </details>
+                    </div>
                 </section>
 
                 <!-- SECCIÓN 6: RECEPTÁCULO PARA MATERIAL FUTURO -->

@@ -54,12 +54,12 @@ const CLASES_DATA = [
             { anchor: 'concepto',              label: 'Concepto y propósito' },
             { anchor: 'etapas-proceso',         label: 'Etapas del proceso' },
             { anchor: 'estructura',             label: 'Estructura estándar (UTN)' },
-            { anchor: 'carta-sponsor',          label: '✉️ Carta al sponsor' },
-            { anchor: 'datos-faltantes',        label: '🔍 Sección de datos faltantes' },
+            { anchor: 'carta-sponsor',          label: 'Carta al sponsor' },
+            { anchor: 'datos-faltantes',        label: 'Sección de datos faltantes' },
             { anchor: 'tecnicas-relevamiento',  label: 'Técnicas de relevamiento' },
-            { anchor: 'caso-infoley',           label: '📋 Caso: InfoLey Web' },
-            { anchor: 'caso-juegos',            label: '🎰 Caso: Juegos del País S.H.' },
-            { anchor: 'checklist',              label: '✅ Checklist de validación' },
+            { anchor: 'caso-infoley',           label: 'Caso: InfoLey Web' },
+            { anchor: 'caso-juegos',            label: 'Caso: Juegos del País S.H.' },
+            { anchor: 'checklist',              label: 'Checklist de validación' },
         ]
     },
     {
@@ -122,11 +122,15 @@ const CLASES_DATA = [
         titulo: 'Historias de usuario',
         color: 'emerald',
         secciones: [
+            { anchor: 'jerarquia',          label: 'Jerarquía de requerimientos ágiles' },
             { anchor: 'concepto',           label: 'Concepto y filosofía ágil' },
+            { anchor: 'vs-requerimientos',  label: 'HU vs. Requerimiento' },
             { anchor: 'formato',            label: 'Formato canónico (3 C)' },
+            { anchor: 'ejemplos-3cs',       label: 'Más ejemplos (3 C)' },
             { anchor: 'invest',             label: 'Criterios INVEST' },
             { anchor: 'criterios-aceptacion', label: 'Criterios de aceptación (BDD)' },
             { anchor: 'estimacion',         label: 'Estimación & Story Points' },
+            { anchor: 'ejercicios',         label: '⚡ Ejercicios prácticos' },
             { anchor: 'material-nuevo',     label: '📥 Material complementario' },
         ]
     },
@@ -135,16 +139,27 @@ const CLASES_DATA = [
         key: 'examen',
         emoji: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/><path d="M8 11h8"/><path d="M8 7h6"/></svg>`,
         numero: '📝',
-        titulo: 'Repaso para el examen',
+        titulo: 'Primer examen parcial',
         color: 'rose',
         secciones: [
-            { anchor: 'informe-reconocimiento', label: 'Informe de reconocimiento' },
-            { anchor: 'ejemplo-informe',         label: '📋 Ejemplo: InfoLey Web' },
-            { anchor: 'casos-uso',               label: 'Casos de uso (conceptos)' },
-            { anchor: 'parcial-1',               label: '📝 1° Parcial interactivo' },
-            { anchor: 'parcial-2',               label: '📝 2° Parcial interactivo' },
+            { anchor: 'informe-reconocimiento',  label: 'V o F' },
+            { anchor: 'ejemplo-informe',         label: 'Informe de reconocimiento' },
+            { anchor: 'casos-uso',               label: 'Casos de uso e historias de usuario' },
+            { anchor: 'parcial-1',               label: 'Procesos de negocio' },
         ]
     },
+    {
+        id: 'parcial',
+        key: 'parcial',
+        emoji: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>`,
+        numero: '📊',
+        titulo: 'Parciales resueltos',
+        color: 'blue',
+        secciones: [
+            { anchor: 'parcial-1-resuelto', label: '1° Parcial - Resuelto' },
+            { anchor: 'parcial-2-resuelto', label: '2° Parcial - Resuelto' },
+        ]
+    }
 ];
 function getRelativePaths() {
     const path = window.location.pathname;
@@ -159,12 +174,33 @@ function getRelativePaths() {
         clase07: isSubPage ? '../clase-07-planificacion/index.html' : './clases/clase-07-planificacion/index.html',
         clase10: isSubPage ? '../clase-10-casos-de-uso/index.html' : './clases/clase-10-casos-de-uso/index.html',
         clase12: isSubPage ? '../clase-12-historias-de-usuario/index.html' : './clases/clase-12-historias-de-usuario/index.html',
-        examen: isSubPage ? '../examen/index.html' : './clases/examen/index.html'
+        examen: isSubPage ? '../examen/index.html' : './clases/examen/index.html',
+        parcial: isSubPage ? '../parcial/index.html' : './clases/parcial/index.html'
     };
 }
 
 function getHeaderHTML(paths) {
     return `
+<style>
+    /* Barra vertical animada al pasar el mouse sobre un ítem del menú */
+    .menu-item-link::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 3px;
+        height: 0%;
+        border-radius: 999px;
+        background: linear-gradient(180deg, #0ea5e9, #6366f1);
+        transition: height 0.25s ease, opacity 0.25s ease;
+        opacity: 0;
+    }
+    .menu-item-link:hover::before {
+        height: 60%;
+        opacity: 1;
+    }
+</style>
 <header class="fixed top-0 left-0 right-0 z-40 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md shadow-xs transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
         <div class="flex items-center gap-3">
@@ -192,7 +228,7 @@ function getHeaderHTML(paths) {
                     <div class="p-2 max-h-[80vh] overflow-y-auto">
                         <div class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider px-3 py-2">Ir a otra clase</div>
                         
-                        <a href="${paths.clase01}" class="flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
+                        <a href="${paths.clase01}" class="relative flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700 menu-item-link">
                             <span class="w-9 h-9 flex items-center justify-center rounded-lg bg-sky-100 dark:bg-sky-950 text-sky-600 dark:text-sky-400 group-hover:scale-110 transition-transform duration-200 flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20A14.5 14.5 0 0 0 12 2"/><path d="M2 12h20"/></svg></span>
                             <div class="flex-1">
                                 <div class="text-[10px] font-bold text-sky-600 dark:text-sky-400 uppercase tracking-wider">Clase 01</div>
@@ -202,7 +238,7 @@ function getHeaderHTML(paths) {
                             <svg class="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
                         </a>
 
-                        <a href="${paths.clase02}" class="flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
+                        <a href="${paths.clase02}" class="relative flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700 menu-item-link">
                             <span class="w-9 h-9 flex items-center justify-center rounded-lg bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform duration-200 flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg></span>
                             <div class="flex-1">
                                 <div class="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Clase 02</div>
@@ -212,7 +248,7 @@ function getHeaderHTML(paths) {
                             <svg class="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
                         </a>
 
-                        <a href="${paths.clase03}" class="flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
+                        <a href="${paths.clase03}" class="relative flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700 menu-item-link">
                             <span class="w-9 h-9 flex items-center justify-center rounded-lg bg-amber-100 dark:bg-amber-950 text-amber-600 dark:text-amber-400 group-hover:scale-110 transition-transform duration-200 flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></span>
                             <div class="flex-1">
                                 <div class="text-[10px] font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider">Clase 03</div>
@@ -222,7 +258,7 @@ function getHeaderHTML(paths) {
                             <svg class="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
                         </a>
                         
-                        <a href="${paths.clase06}" class="flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
+                        <a href="${paths.clase06}" class="relative flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700 menu-item-link">
                             <span class="w-9 h-9 flex items-center justify-center rounded-lg bg-violet-100 dark:bg-violet-950 text-violet-600 dark:text-violet-400 group-hover:scale-110 transition-transform duration-200 flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="4" y1="21" y2="14"/><line x1="4" x2="4" y1="10" y2="3"/><line x1="12" x2="12" y1="21" y2="12"/><line x1="12" x2="12" y1="8" y2="3"/><line x1="20" x2="20" y1="21" y2="16"/><line x1="20" x2="20" y1="12" y2="3"/><line x1="1" x2="7" y1="14" y2="14"/><line x1="9" x2="15" y1="8" y2="8"/><line x1="17" x2="23" y1="16" y2="16"/></svg></span>
                             <div class="flex-1">
                                 <div class="text-[10px] font-bold text-violet-600 dark:text-violet-400 uppercase tracking-wider">Clase 06</div>
@@ -232,7 +268,7 @@ function getHeaderHTML(paths) {
                             <svg class="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
                         </a>
 
-                        <a href="${paths.clase07}" class="flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
+                        <a href="${paths.clase07}" class="relative flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700 menu-item-link">
                             <span class="w-9 h-9 flex items-center justify-center rounded-lg bg-orange-100 dark:bg-orange-950 text-orange-600 dark:text-orange-400 group-hover:scale-110 transition-transform duration-200 flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h10"/><path d="M6 12h9"/><path d="M11 18h7"/><path d="M3 6h.01"/><path d="M3 12h.01"/><path d="M3 18h.01"/></svg></span>
                             <div class="flex-1">
                                 <div class="text-[10px] font-bold text-orange-600 dark:text-orange-400 uppercase tracking-wider">Clase 07</div>
@@ -242,7 +278,7 @@ function getHeaderHTML(paths) {
                             <svg class="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
                         </a>
 
-                        <a href="${paths.clase10}" class="flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
+                        <a href="${paths.clase10}" class="relative flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700 menu-item-link">
                             <span class="w-9 h-9 flex items-center justify-center rounded-lg bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 group-hover:scale-110 transition-transform duration-200 flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg></span>
                             <div class="flex-1">
                                 <div class="text-[10px] font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">Clase 10</div>
@@ -252,7 +288,7 @@ function getHeaderHTML(paths) {
                             <svg class="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
                         </a>
 
-                        <a href="${paths.clase12}" class="flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
+                        <a href="${paths.clase12}" class="relative flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700 menu-item-link">
                             <span class="w-9 h-9 flex items-center justify-center rounded-lg bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform duration-200 flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z"/><path d="M15 3v4a2 2 0 0 0 2 2h4"/><path d="M8 12h.01"/><path d="M12 12h4"/><path d="M8 16h.01"/><path d="M12 16h4"/></svg></span>
                             <div class="flex-1">
                                 <div class="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Clase 12</div>
@@ -262,12 +298,22 @@ function getHeaderHTML(paths) {
                             <svg class="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
                         </a>
 
-                        <a href="${paths.examen}" class="flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
+                        <a href="${paths.examen}" class="relative flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700 menu-item-link">
                             <span class="w-9 h-9 flex items-center justify-center rounded-lg bg-rose-100 dark:bg-rose-950 text-rose-600 dark:text-rose-400 group-hover:scale-110 transition-transform duration-200 flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/><path d="M8 11h8"/><path d="M8 7h6"/></svg></span>
                             <div class="flex-1">
                                 <div class="text-[10px] font-bold text-rose-600 dark:text-rose-400 uppercase tracking-wider">Repaso</div>
                                 <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors">Conceptos & parciales</div>
                                 <div class="text-xs text-slate-500 dark:text-slate-400">Machete de parciales UTN</div>
+                            </div>
+                            <svg class="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                        </a>
+
+                        <a href="${paths.parcial}" class="relative flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700 menu-item-link">
+                            <span class="w-9 h-9 flex items-center justify-center rounded-lg bg-blue-100 dark:bg-blue-950 text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform duration-200 flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></span>
+                            <div class="flex-1">
+                                <div class="text-[10px] font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider">Parciales</div>
+                                <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Parciales resueltos</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">1° y 2° parcial con resolución</div>
                             </div>
                             <svg class="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
                         </a>
@@ -353,7 +399,7 @@ function getSidebarHTML(paths) {
         const basePath = baseUrl.replace('index.html', '');
 
         const seccionesHTML = clase.secciones.map(sec => {
-            const iconTag = `<span class="w-1.5 h-1.5 rounded-full ${c.dot} flex-shrink-0 opacity-50 group-hover:opacity-100 transition-opacity duration-150"></span>`;
+            const iconTag = `<span class="seccion-dot w-1.5 h-1.5 rounded-full ${c.dot} flex-shrink-0 opacity-50 transition-all duration-200 ease-out group-hover:opacity-100 group-hover:h-3.5 group-hover:rounded-[2px]"></span>`;
             return `<a href="${basePath}index.html#${sec.anchor}"
                 class="flex items-center gap-2 px-3 py-1.5 text-xs rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-100 transition-all duration-150 group">
                 ${iconTag}
