@@ -438,13 +438,13 @@ function getSidebarHTML(paths) {
     const currentKey = getCurrentClaseKey();
 
     const colorMap = {
-        sky:     { badge: 'bg-sky-100 dark:bg-sky-950 text-sky-700 dark:text-sky-300',     border: 'border-sky-500',    dot: 'bg-sky-500' },
-        emerald: { badge: 'bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300', border: 'border-emerald-500', dot: 'bg-emerald-500' },
-        amber:   { badge: 'bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300',   border: 'border-amber-500',  dot: 'bg-amber-500' },
-        violet:  { badge: 'bg-violet-100 dark:bg-violet-950 text-violet-700 dark:text-violet-300', border: 'border-violet-500', dot: 'bg-violet-500' },
-        indigo:  { badge: 'bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300', border: 'border-indigo-500', dot: 'bg-indigo-500' },
-        rose:    { badge: 'bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-300',     border: 'border-rose-500',   dot: 'bg-rose-500' },
-        orange:  { badge: 'bg-orange-100 dark:bg-orange-950 text-orange-700 dark:text-orange-300', border: 'border-orange-500', dot: 'bg-orange-500' },
+        sky:     { badge: 'bg-sky-100 dark:bg-sky-950 text-sky-700 dark:text-sky-300',     border: 'border-sky-500',    dot: 'bg-sky-500', hoverText: 'group-hover:text-sky-600 dark:group-hover:text-sky-400' },
+        emerald: { badge: 'bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300', border: 'border-emerald-500', dot: 'bg-emerald-500', hoverText: 'group-hover:text-emerald-600 dark:group-hover:text-emerald-400' },
+        amber:   { badge: 'bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300',   border: 'border-amber-500',  dot: 'bg-amber-500', hoverText: 'group-hover:text-amber-600 dark:group-hover:text-amber-400' },
+        violet:  { badge: 'bg-violet-100 dark:bg-violet-950 text-violet-700 dark:text-violet-300', border: 'border-violet-500', dot: 'bg-violet-500', hoverText: 'group-hover:text-violet-600 dark:group-hover:text-violet-400' },
+        indigo:  { badge: 'bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300', border: 'border-indigo-500', dot: 'bg-indigo-500', hoverText: 'group-hover:text-indigo-600 dark:group-hover:text-indigo-400' },
+        rose:    { badge: 'bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-300',     border: 'border-rose-500',   dot: 'bg-rose-500', hoverText: 'group-hover:text-rose-600 dark:group-hover:text-rose-400' },
+        orange:  { badge: 'bg-orange-100 dark:bg-orange-950 text-orange-700 dark:text-orange-300', border: 'border-orange-500', dot: 'bg-orange-500', hoverText: 'group-hover:text-orange-600 dark:group-hover:text-orange-400' },
     };
 
     const clasesHTML = CLASES_DATA.map(clase => {
@@ -466,15 +466,16 @@ function getSidebarHTML(paths) {
         <div class="sidebar-clase-item" data-key="${clase.key}">
             <button
                 onclick="toggleSidebarClase('${clase.key}')"
-                class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-left transition-all duration-200 group
+                class="sidebar-clase-btn relative w-full flex items-center gap-3 pl-4 pr-3 py-2.5 rounded-xl text-left transition-all duration-200 group overflow-hidden
                     ${isActive
                         ? `${c.badge} font-semibold`
                         : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium'}"
             >
-                <span class="w-5 h-5 flex-shrink-0 flex items-center justify-center text-sky-600 dark:text-sky-300">${clase.emoji}</span>
+                <span class="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-0 rounded-full ${c.dot} transition-all duration-200 ease-out group-hover:h-3/5"></span>
+                <span class="w-5 h-5 flex-shrink-0 flex items-center justify-center text-sky-600 dark:text-sky-300 transition-all duration-200 group-hover:scale-110 ${c.hoverText}">${clase.emoji}</span>
                 <div class="flex-1 min-w-0">
-                    <div class="text-[10px] font-bold uppercase tracking-wider opacity-60">Clase ${clase.numero}</div>
-                    <div class="text-xs leading-tight truncate">${clase.titulo}</div>
+                    <div class="text-[10px] font-bold uppercase tracking-wider opacity-60 transition-colors duration-200 ${c.hoverText}">Clase ${clase.numero}</div>
+                    <div class="text-xs leading-tight truncate transition-colors duration-200 ${c.hoverText}">${clase.titulo}</div>
                 </div>
                 <svg class="sidebar-arrow flex-shrink-0 w-3.5 h-3.5 opacity-50 transition-transform duration-200 ${isActive ? 'rotate-180' : ''}" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                     <polyline points="6 9 12 15 18 9"></polyline>
