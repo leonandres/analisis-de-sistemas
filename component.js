@@ -54,12 +54,12 @@ const CLASES_DATA = [
             { anchor: 'concepto',              label: 'Concepto y propósito' },
             { anchor: 'etapas-proceso',         label: 'Etapas del proceso' },
             { anchor: 'estructura',             label: 'Estructura estándar (UTN)' },
-            { anchor: 'carta-sponsor',          label: '✉️ Carta al sponsor' },
-            { anchor: 'datos-faltantes',        label: '🔍 Sección de datos faltantes' },
+            { anchor: 'carta-sponsor',          label: 'Carta al sponsor' },
+            { anchor: 'datos-faltantes',        label: 'Sección de datos faltantes' },
             { anchor: 'tecnicas-relevamiento',  label: 'Técnicas de relevamiento' },
-            { anchor: 'caso-infoley',           label: '📋 Caso: InfoLey Web' },
-            { anchor: 'caso-juegos',            label: '🎰 Caso: Juegos del País S.H.' },
-            { anchor: 'checklist',              label: '✅ Checklist de validación' },
+            { anchor: 'caso-infoley',           label: 'Caso: InfoLey Web' },
+            { anchor: 'caso-juegos',            label: 'Caso: Juegos del País S.H.' },
+            { anchor: 'checklist',              label: 'Checklist de validación' },
         ]
     },
     {
@@ -122,29 +122,44 @@ const CLASES_DATA = [
         titulo: 'Historias de usuario',
         color: 'emerald',
         secciones: [
+            { anchor: 'jerarquia',          label: 'Jerarquía de requerimientos ágiles' },
             { anchor: 'concepto',           label: 'Concepto y filosofía ágil' },
+            { anchor: 'vs-requerimientos',  label: 'HU vs. Requerimiento' },
             { anchor: 'formato',            label: 'Formato canónico (3 C)' },
+            { anchor: 'ejemplos-3cs',       label: 'Más ejemplos (3 C)' },
             { anchor: 'invest',             label: 'Criterios INVEST' },
             { anchor: 'criterios-aceptacion', label: 'Criterios de aceptación (BDD)' },
             { anchor: 'estimacion',         label: 'Estimación & Story Points' },
-            { anchor: 'material-nuevo',     label: '📥 Material complementario' },
+            { anchor: 'ejercicios',         label: 'Ejercicios prácticos' },
+            { anchor: 'material-nuevo',     label: 'Material de lectura' },
         ]
     },
     {
         id: 'examen',
         key: 'examen',
         emoji: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/><path d="M8 11h8"/><path d="M8 7h6"/></svg>`,
-        numero: '📝',
-        titulo: 'Repaso para el examen',
+        numero: 'Repaso',
+        titulo: 'Primer examen parcial',
         color: 'rose',
         secciones: [
-            { anchor: 'informe-reconocimiento', label: 'Informe de reconocimiento' },
-            { anchor: 'ejemplo-informe',         label: '📋 Ejemplo: InfoLey Web' },
-            { anchor: 'casos-uso',               label: 'Casos de uso (conceptos)' },
-            { anchor: 'parcial-1',               label: '📝 1° Parcial interactivo' },
-            { anchor: 'parcial-2',               label: '📝 2° Parcial interactivo' },
+            { anchor: 'informe-reconocimiento',  label: 'V o F' },
+            { anchor: 'ejemplo-informe',         label: 'Informe de reconocimiento' },
+            { anchor: 'casos-uso',               label: 'Casos de uso e historias de usuario' },
+            { anchor: 'parcial-1',               label: 'Procesos de negocio' },
         ]
     },
+    {
+        id: 'parcial',
+        key: 'parcial',
+        emoji: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>`,
+        numero: '📊',
+        titulo: 'Parciales resueltos',
+        color: 'blue',
+        secciones: [
+            { anchor: 'parcial-1-resuelto', label: '1° Parcial - Resuelto' },
+            { anchor: 'parcial-2-resuelto', label: '2° Parcial - Resuelto' },
+        ]
+    }
 ];
 function getRelativePaths() {
     const path = window.location.pathname;
@@ -159,12 +174,33 @@ function getRelativePaths() {
         clase07: isSubPage ? '../clase-07-planificacion/index.html' : './clases/clase-07-planificacion/index.html',
         clase10: isSubPage ? '../clase-10-casos-de-uso/index.html' : './clases/clase-10-casos-de-uso/index.html',
         clase12: isSubPage ? '../clase-12-historias-de-usuario/index.html' : './clases/clase-12-historias-de-usuario/index.html',
-        examen: isSubPage ? '../examen/index.html' : './clases/examen/index.html'
+        examen: isSubPage ? '../examen/index.html' : './clases/examen/index.html',
+        parcial: isSubPage ? '../parcial/index.html' : './clases/parcial/index.html'
     };
 }
 
 function getHeaderHTML(paths) {
     return `
+<style>
+    /* Barra vertical animada al pasar el mouse sobre un ítem del menú */
+    .menu-item-link::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 3px;
+        height: 0%;
+        border-radius: 999px;
+        background: linear-gradient(180deg, #0ea5e9, #6366f1);
+        transition: height 0.25s ease, opacity 0.25s ease;
+        opacity: 0;
+    }
+    .menu-item-link:hover::before {
+        height: 60%;
+        opacity: 1;
+    }
+</style>
 <header class="fixed top-0 left-0 right-0 z-40 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md shadow-xs transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
         <div class="flex items-center gap-3">
@@ -192,7 +228,7 @@ function getHeaderHTML(paths) {
                     <div class="p-2 max-h-[80vh] overflow-y-auto">
                         <div class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider px-3 py-2">Ir a otra clase</div>
                         
-                        <a href="${paths.clase01}" class="flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
+                        <a href="${paths.clase01}" data-clase="clase01" class="relative flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700 menu-item-link">
                             <span class="w-9 h-9 flex items-center justify-center rounded-lg bg-sky-100 dark:bg-sky-950 text-sky-600 dark:text-sky-400 group-hover:scale-110 transition-transform duration-200 flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20A14.5 14.5 0 0 0 12 2"/><path d="M2 12h20"/></svg></span>
                             <div class="flex-1">
                                 <div class="text-[10px] font-bold text-sky-600 dark:text-sky-400 uppercase tracking-wider">Clase 01</div>
@@ -202,7 +238,7 @@ function getHeaderHTML(paths) {
                             <svg class="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
                         </a>
 
-                        <a href="${paths.clase02}" class="flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
+                        <a href="${paths.clase02}" data-clase="clase02" class="relative flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700 menu-item-link">
                             <span class="w-9 h-9 flex items-center justify-center rounded-lg bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform duration-200 flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg></span>
                             <div class="flex-1">
                                 <div class="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Clase 02</div>
@@ -212,7 +248,7 @@ function getHeaderHTML(paths) {
                             <svg class="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
                         </a>
 
-                        <a href="${paths.clase03}" class="flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
+                        <a href="${paths.clase03}" data-clase="clase03" class="relative flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700 menu-item-link">
                             <span class="w-9 h-9 flex items-center justify-center rounded-lg bg-amber-100 dark:bg-amber-950 text-amber-600 dark:text-amber-400 group-hover:scale-110 transition-transform duration-200 flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></span>
                             <div class="flex-1">
                                 <div class="text-[10px] font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider">Clase 03</div>
@@ -222,7 +258,7 @@ function getHeaderHTML(paths) {
                             <svg class="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
                         </a>
                         
-                        <a href="${paths.clase06}" class="flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
+                        <a href="${paths.clase06}" data-clase="clase06" class="relative flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700 menu-item-link">
                             <span class="w-9 h-9 flex items-center justify-center rounded-lg bg-violet-100 dark:bg-violet-950 text-violet-600 dark:text-violet-400 group-hover:scale-110 transition-transform duration-200 flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="4" y1="21" y2="14"/><line x1="4" x2="4" y1="10" y2="3"/><line x1="12" x2="12" y1="21" y2="12"/><line x1="12" x2="12" y1="8" y2="3"/><line x1="20" x2="20" y1="21" y2="16"/><line x1="20" x2="20" y1="12" y2="3"/><line x1="1" x2="7" y1="14" y2="14"/><line x1="9" x2="15" y1="8" y2="8"/><line x1="17" x2="23" y1="16" y2="16"/></svg></span>
                             <div class="flex-1">
                                 <div class="text-[10px] font-bold text-violet-600 dark:text-violet-400 uppercase tracking-wider">Clase 06</div>
@@ -232,7 +268,7 @@ function getHeaderHTML(paths) {
                             <svg class="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
                         </a>
 
-                        <a href="${paths.clase07}" class="flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
+                        <a href="${paths.clase07}" data-clase="clase07" class="relative flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700 menu-item-link">
                             <span class="w-9 h-9 flex items-center justify-center rounded-lg bg-orange-100 dark:bg-orange-950 text-orange-600 dark:text-orange-400 group-hover:scale-110 transition-transform duration-200 flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h10"/><path d="M6 12h9"/><path d="M11 18h7"/><path d="M3 6h.01"/><path d="M3 12h.01"/><path d="M3 18h.01"/></svg></span>
                             <div class="flex-1">
                                 <div class="text-[10px] font-bold text-orange-600 dark:text-orange-400 uppercase tracking-wider">Clase 07</div>
@@ -242,7 +278,7 @@ function getHeaderHTML(paths) {
                             <svg class="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
                         </a>
 
-                        <a href="${paths.clase10}" class="flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
+                        <a href="${paths.clase10}" data-clase="clase10" class="relative flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700 menu-item-link">
                             <span class="w-9 h-9 flex items-center justify-center rounded-lg bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 group-hover:scale-110 transition-transform duration-200 flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg></span>
                             <div class="flex-1">
                                 <div class="text-[10px] font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">Clase 10</div>
@@ -252,7 +288,7 @@ function getHeaderHTML(paths) {
                             <svg class="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
                         </a>
 
-                        <a href="${paths.clase12}" class="flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
+                        <a href="${paths.clase12}" data-clase="clase12" class="relative flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700 menu-item-link">
                             <span class="w-9 h-9 flex items-center justify-center rounded-lg bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform duration-200 flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z"/><path d="M15 3v4a2 2 0 0 0 2 2h4"/><path d="M8 12h.01"/><path d="M12 12h4"/><path d="M8 16h.01"/><path d="M12 16h4"/></svg></span>
                             <div class="flex-1">
                                 <div class="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Clase 12</div>
@@ -262,12 +298,22 @@ function getHeaderHTML(paths) {
                             <svg class="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
                         </a>
 
-                        <a href="${paths.examen}" class="flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
+                        <a href="${paths.examen}" data-clase="examen" class="relative flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700 menu-item-link">
                             <span class="w-9 h-9 flex items-center justify-center rounded-lg bg-rose-100 dark:bg-rose-950 text-rose-600 dark:text-rose-400 group-hover:scale-110 transition-transform duration-200 flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/><path d="M8 11h8"/><path d="M8 7h6"/></svg></span>
                             <div class="flex-1">
                                 <div class="text-[10px] font-bold text-rose-600 dark:text-rose-400 uppercase tracking-wider">Repaso</div>
                                 <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors">Conceptos & parciales</div>
                                 <div class="text-xs text-slate-500 dark:text-slate-400">Machete de parciales UTN</div>
+                            </div>
+                            <svg class="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                        </a>
+
+                        <a href="${paths.parcial}" data-clase="parcial" class="relative flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700 menu-item-link">
+                            <span class="w-9 h-9 flex items-center justify-center rounded-lg bg-blue-100 dark:bg-blue-950 text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform duration-200 flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></span>
+                            <div class="flex-1">
+                                <div class="text-[10px] font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider">Parciales</div>
+                                <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Parciales resueltos</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">1° y 2° parcial con resolución</div>
                             </div>
                             <svg class="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
                         </a>
@@ -305,7 +351,59 @@ function getHeaderHTML(paths) {
 `;
 }
 
+// ============================================================
+// ANIMACIONES (Animate.css vía CDN)
+// ============================================================
+function injectAnimateCSS() {
+    if (document.getElementById('animate-css-cdn')) return;
+    const link = document.createElement('link');
+    link.id = 'animate-css-cdn';
+    link.rel = 'stylesheet';
+    link.href = 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css';
+    document.head.appendChild(link);
+
+    if (document.getElementById('scroll-reveal-style')) return;
+    const style = document.createElement('style');
+    style.id = 'scroll-reveal-style';
+    style.textContent = `
+        .animate-reveal-pending { opacity: 0; }
+        @media (prefers-reduced-motion: reduce) {
+            .animate-reveal-pending { opacity: 1; }
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// Anima cada <section> del contenido al entrar en pantalla (una sola vez por sección).
+// Respeta prefers-reduced-motion: si el usuario lo pidió, las secciones aparecen sin animar.
+function enableScrollReveal() {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const sections = document.querySelectorAll('main section');
+    if (!sections.length) return;
+
+    if (prefersReducedMotion || typeof IntersectionObserver === 'undefined') {
+        sections.forEach(s => s.classList.remove('animate-reveal-pending'));
+        return;
+    }
+
+    sections.forEach(s => s.classList.add('animate-reveal-pending'));
+
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                el.classList.remove('animate-reveal-pending');
+                el.classList.add('animate__animated', 'animate__fadeInUp', 'animate__faster');
+                obs.unobserve(el);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+    sections.forEach(s => observer.observe(s));
+}
+
 function loadHeader() {
+    injectAnimateCSS();
     const headerContainer = document.getElementById('header-container');
     if (headerContainer) {
         const paths = getRelativePaths();
@@ -318,7 +416,10 @@ function loadHeader() {
         // Ejecutar en el siguiente tick para asegurar que el DOM de la página esté listo
         setTimeout(() => {
             try { window.enhanceSectionTitles(); } catch (e) { console.error('Error al mejorar títulos de sección', e); }
+            enableScrollReveal();
         }, 20);
+    } else {
+        enableScrollReveal();
     }
 }
 
@@ -353,7 +454,7 @@ function getSidebarHTML(paths) {
         const basePath = baseUrl.replace('index.html', '');
 
         const seccionesHTML = clase.secciones.map(sec => {
-            const iconTag = `<span class="w-1.5 h-1.5 rounded-full ${c.dot} flex-shrink-0 opacity-50 group-hover:opacity-100 transition-opacity duration-150"></span>`;
+            const iconTag = `<span class="seccion-dot w-1.5 h-1.5 rounded-full ${c.dot} flex-shrink-0 opacity-50 transition-all duration-200 ease-out group-hover:opacity-100 group-hover:h-3.5 group-hover:rounded-[2px]"></span>`;
             return `<a href="${basePath}index.html#${sec.anchor}"
                 class="flex items-center gap-2 px-3 py-1.5 text-xs rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-100 transition-all duration-150 group">
                 ${iconTag}
@@ -469,50 +570,142 @@ window.toggleSidebarClase = toggleSidebarClase;
 window.openMobileSidebar = openMobileSidebar;
 window.closeMobileSidebar = closeMobileSidebar;
 
+// Clases literales (Tailwind necesita ver el string completo) para el resaltado del ítem activo del menú
+const MENU_RING_MAP = {
+    sky:     { ring: 'ring-sky-300 dark:ring-sky-800',         text: 'text-sky-600 dark:text-sky-400' },
+    emerald: { ring: 'ring-emerald-300 dark:ring-emerald-800', text: 'text-emerald-600 dark:text-emerald-400' },
+    amber:   { ring: 'ring-amber-300 dark:ring-amber-800',     text: 'text-amber-600 dark:text-amber-400' },
+    violet:  { ring: 'ring-violet-300 dark:ring-violet-800',   text: 'text-violet-600 dark:text-violet-400' },
+    indigo:  { ring: 'ring-indigo-300 dark:ring-indigo-800',   text: 'text-indigo-600 dark:text-indigo-400' },
+    rose:    { ring: 'ring-rose-300 dark:ring-rose-800',       text: 'text-rose-600 dark:text-rose-400' },
+    orange:  { ring: 'ring-orange-300 dark:ring-orange-800',   text: 'text-orange-600 dark:text-orange-400' },
+    blue:    { ring: 'ring-blue-300 dark:ring-blue-800',       text: 'text-blue-600 dark:text-blue-400' },
+};
+
+function highlightCurrentClaseInMenu(menuClases) {
+    if (!menuClases) return;
+    const currentKey = getCurrentClaseKey();
+    const clase = currentKey ? CLASES_DATA.find(c => c.key === currentKey) : null;
+    menuClases.querySelectorAll('.menu-item-link').forEach(link => {
+        link.classList.remove('ring-1', 'ring-inset');
+        link.removeAttribute('aria-current');
+        const badge = link.querySelector('.menu-item-actual-badge');
+        if (badge) badge.remove();
+    });
+    if (!clase) return;
+    const activeLink = menuClases.querySelector(`.menu-item-link[data-clase="${clase.id}"]`);
+    const colors = MENU_RING_MAP[clase.color] || MENU_RING_MAP.sky;
+    if (activeLink) {
+        activeLink.classList.add('ring-1', 'ring-inset', ...colors.ring.split(' '));
+        activeLink.setAttribute('aria-current', 'page');
+        const label = activeLink.querySelector('.flex-1');
+        if (label) {
+            const tag = document.createElement('span');
+            tag.className = `menu-item-actual-badge text-[9px] font-black uppercase tracking-wider ${colors.text}`;
+            tag.textContent = 'Estás acá';
+            label.appendChild(document.createElement('br'));
+            label.appendChild(tag);
+        }
+    }
+}
+
 function initializeMenu() {
     const btnMenu = document.getElementById('btn-menu-clases');
     const menuClases = document.getElementById('menu-clases');
     const menuArrow = document.getElementById('menu-arrow');
-    
+
     if (btnMenu && menuClases) {
+        highlightCurrentClaseInMenu(menuClases);
+
+        const openMenu = () => {
+            menuClases.classList.remove('hidden');
+            setTimeout(() => {
+                menuClases.style.transform = 'scale(1)';
+                menuClases.style.opacity = '1';
+            }, 10);
+            if (menuArrow) menuArrow.style.transform = 'rotate(180deg)';
+            btnMenu.setAttribute('aria-expanded', 'true');
+        };
+
+        const closeMenu = ({ focusButton } = {}) => {
+            menuClases.style.transform = 'scale(0.95)';
+            menuClases.style.opacity = '0';
+            setTimeout(() => {
+                menuClases.classList.add('hidden');
+            }, 200);
+            if (menuArrow) menuArrow.style.transform = 'rotate(0deg)';
+            btnMenu.setAttribute('aria-expanded', 'false');
+            if (focusButton) btnMenu.focus();
+        };
+
+        btnMenu.setAttribute('aria-haspopup', 'true');
+        btnMenu.setAttribute('aria-expanded', 'false');
+        btnMenu.setAttribute('aria-controls', 'menu-clases');
+        menuClases.setAttribute('role', 'menu');
+
         btnMenu.addEventListener('click', (e) => {
             e.stopPropagation();
             const isHidden = menuClases.classList.contains('hidden');
-            
-            if (isHidden) {
-                menuClases.classList.remove('hidden');
-                setTimeout(() => {
-                    menuClases.style.transform = 'scale(1)';
-                    menuClases.style.opacity = '1';
-                }, 10);
-                if (menuArrow) menuArrow.style.transform = 'rotate(180deg)';
-            } else {
-                menuClases.style.transform = 'scale(0.95)';
-                menuClases.style.opacity = '0';
-                setTimeout(() => {
-                    menuClases.classList.add('hidden');
-                }, 200);
-                if (menuArrow) menuArrow.style.transform = 'rotate(0deg)';
+            if (isHidden) openMenu(); else closeMenu();
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!menuClases.classList.contains('hidden') &&
+                !btnMenu.contains(e.target) &&
+                !menuClases.contains(e.target)) {
+                closeMenu();
             }
         });
-        
-        document.addEventListener('click', (e) => {
-            if (!menuClases.classList.contains('hidden') && 
-                !btnMenu.contains(e.target) && 
-                !menuClases.contains(e.target)) {
-                menuClases.style.transform = 'scale(0.95)';
-                menuClases.style.opacity = '0';
-                setTimeout(() => {
-                    menuClases.classList.add('hidden');
-                }, 200);
-                if (menuArrow) menuArrow.style.transform = 'rotate(0deg)';
+
+        // Cerrar con Escape y devolver el foco al botón (accesibilidad de teclado)
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !menuClases.classList.contains('hidden')) {
+                closeMenu({ focusButton: true });
             }
         });
     }
 }
 
+// Degradado de subtítulos por color de tema de cada clase, con un juego de tonos para modo claro
+// (más profundo/saturado, contraste fuerte sobre fondo blanco) y otro para modo oscuro (más brillante/
+// luminoso, contraste fuerte sobre fondo oscuro). Se resuelven vía variables CSS, así el degradado
+// cambia solo al togglear el tema, sin recalcular nada en JS.
+const SECTION_GRADIENT_COLORS = {
+    sky:     { light: ['#0369a1', '#06b6d4'], dark: ['#38bdf8', '#22d3ee'] },
+    emerald: { light: ['#065f46', '#22c55e'], dark: ['#34d399', '#4ade80'] },
+    amber:   { light: ['#92400e', '#f59e0b'], dark: ['#fbbf24', '#fb923c'] },
+    violet:  { light: ['#5b21b6', '#a855f7'], dark: ['#c084fc', '#e879f9'] },
+    indigo:  { light: ['#3730a3', '#6366f1'], dark: ['#818cf8', '#a78bfa'] },
+    rose:    { light: ['#9f1239', '#f43f5e'], dark: ['#fb7185', '#f472b6'] },
+    orange:  { light: ['#9a3412', '#f97316'], dark: ['#fb923c', '#fbbf24'] },
+    blue:    { light: ['#1e3a8a', '#3b82f6'], dark: ['#60a5fa', '#38bdf8'] },
+};
+
+function injectSectionGradientStyles() {
+    if (document.getElementById('section-gradient-vars')) return;
+    const style = document.createElement('style');
+    style.id = 'section-gradient-vars';
+    const rootVars = Object.entries(SECTION_GRADIENT_COLORS)
+        .map(([color, tones]) => `--sg-${color}-from: ${tones.light[0]}; --sg-${color}-to: ${tones.light[1]};`)
+        .join(' ');
+    const darkVars = Object.entries(SECTION_GRADIENT_COLORS)
+        .map(([color, tones]) => `--sg-${color}-from: ${tones.dark[0]}; --sg-${color}-to: ${tones.dark[1]};`)
+        .join(' ');
+    style.textContent = `:root { ${rootVars} } html.dark { ${darkVars} }`;
+    document.head.appendChild(style);
+}
+
+function getCurrentClaseColorVarNames() {
+    const key = typeof getCurrentClaseKey === 'function' ? getCurrentClaseKey() : null;
+    const clase = key ? CLASES_DATA.find(c => c.key === key) : null;
+    const color = (clase && SECTION_GRADIENT_COLORS[clase.color]) ? clase.color : 'sky';
+    return { from: `var(--sg-${color}-from)`, to: `var(--sg-${color}-to)` };
+}
+
 function enhanceSectionTitles() {
-    const sections = document.querySelectorAll('main section');
+    const sections = document.querySelectorAll('main section:not([data-no-section-index])');
+    injectSectionGradientStyles();
+    const themeVars = getCurrentClaseColorVarNames();
     sections.forEach((section, idx) => {
         // Buscar el contenedor de cabecera (suele ser div.border-b)
         const headerDiv = section.querySelector('div.border-b') || section.querySelector('h2')?.parentElement;
@@ -520,32 +713,52 @@ function enhanceSectionTitles() {
         const h2 = headerDiv.querySelector('h2');
         if (!h2) return;
 
+        // Antes cada sección podía traer su propio degradado suelto (cian, índigo, rosa...) sin relación
+        // con el color de tema de la clase. Ahora se unifica: todos los subtítulos de una misma clase
+        // usan el degradado de su color de tema (SECTION_GRADIENT_MAP), salvo que el span tenga el
+        // atributo data-keep-gradient="true", en cuyo caso se respeta su clase original.
+        const existingGradientSpan = h2.querySelector('span[class*="bg-gradient-to-r"]');
+        const keepOriginal = existingGradientSpan && existingGradientSpan.getAttribute('data-keep-gradient') === 'true';
+        const customGradientClasses = keepOriginal ? existingGradientSpan.getAttribute('class') : null;
+
         // Extraer y limpiar el texto del título
         const original = h2.textContent.trim();
-        // Remover emojis/puntuación inicial y prefijo numérico si existe
-        let cleaned = original.replace(/^[^0-9A-Za-zÁÉÍÓÚÜÑáéíóúüñ]+/, '').replace(/^\s*(\d+)[\.\-\)]?\s*/, '');
+        // Remover emojis/puntuación inicial y prefijo numérico si existe (admite "1.", "1)", "1-" y también "1 - " con espacios)
+        let cleaned = original.replace(/^[^0-9A-Za-zÁÉÍÓÚÜÑáéíóúüñ]+/, '').replace(/^\s*(\d+)\s*[\.\-\)]?\s*/, '');
         // Guardar número (si el título original tenía número) o calcular por índice
-        const numberMatch = original.match(/^\s*(\d+)[\.\-\)]/);
+        const numberMatch = original.match(/^\s*(\d+)\s*[\.\-\)]/);
         const number = numberMatch ? numberMatch[1] : (idx + 1).toString();
 
-        // Normalizar a sentence case salvo acrónimos (si todo en mayúsculas, respetar)
-        let text = cleaned;
-        if (text && text === text.toUpperCase()) {
-            // Posible acrónimo (INVEST, BDD...) -> mantener
-            text = text;
-        } else {
-            text = text.trim().toLowerCase();
-            if (text.length > 0) text = text.charAt(0).toUpperCase() + text.slice(1);
+        // Normalizar SOLO si el título entero viene gritado en mayúsculas (ej. copiado de un PDF/Word).
+        // Si ya viene bien escrito en el HTML (como este proyecto lo hace), se respeta tal cual:
+        // así evitamos que el algoritmo de sentence-case rompa mayúsculas iniciales después de
+        // signos de apertura como ¿ o ¡ (ej. "¿Qué es..." no debe convertirse en "¿qué es...").
+        let text = cleaned.trim();
+        if (text && text === text.toUpperCase() && text !== text.toLowerCase()) {
+            text = text.replace(/\S+/g, (word) => {
+                const core = word.replace(/[^A-Za-zÁÉÍÓÚÜÑáéíóúüñ]/g, '');
+                // Palabra de 2+ letras, toda en mayúsculas -> es una sigla, no tocarla
+                if (core.length >= 2 && core === core.toUpperCase() && core !== core.toLowerCase()) {
+                    return word;
+                }
+                return word.toLowerCase();
+            });
+            // Poner en mayúscula la primera LETRA del título, no el primer carácter
+            // (que puede ser ¿, ¡, comillas, etc.)
+            text = text.replace(/[A-Za-zÁÉÍÓÚÜÑáéíóúüñ]/, (letter) => letter.toUpperCase());
         }
 
-        const gradientStyle = 'background: linear-gradient(90deg, #0e7490, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline-block; font-size: 1.25rem; line-height: 1.75rem; font-weight: 800;';
+        const defaultGradientStyle = `background: linear-gradient(120deg, ${themeVars.from}, ${themeVars.to}); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline-block; font-size: 1.25rem; line-height: 1.75rem; font-weight: 800;`;
+        const titleSpanMarkup = customGradientClasses
+            ? `<span class="section-title-text ml-1 text-xl leading-7 font-extrabold inline-block ${customGradientClasses}">${text}</span>`
+            : `<span class="section-title-text ml-1" style="${defaultGradientStyle}">${text}</span>`;
 
         // Reemplazar el h2 por una versión con número estilizado y botón de colapsado
         h2.innerHTML = `
             <div class="flex items-center justify-between gap-3">
                 <div class="flex items-center gap-3">
                     <span class="inline-flex items-center justify-center min-w-[2rem] h-8 px-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-base font-extrabold text-slate-600 dark:text-slate-300 tabular-nums section-number">${number}</span>
-                    <span class="section-title-text ml-1" style="${gradientStyle}">${text}</span>
+                    ${titleSpanMarkup}
                 </div>
                 <button aria-expanded="true" class="toggle-section-btn text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 transition-transform" title="Minimizar/Expandir sección">
                     <svg class="w-4 h-4 transform transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>

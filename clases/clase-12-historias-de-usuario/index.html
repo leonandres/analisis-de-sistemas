@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Clase 12: Historias de Usuario - Metodologías Ágiles UTN.BA">
-    <title>Clase 12: Historias de Usuario | Análisis de Sistemas</title>
+    <meta name="theme-color" content="#059669">
+    <meta property="og:title" content="Clase 12: Historias de usuario | Análisis de sistemas">
+    <meta property="og:description" content="Jerarquía de requerimientos, las 3 C, INVEST y criterios de aceptación — todo lo que necesitás para escribir buenas historias de usuario.">
+    <meta property="og:type" content="article">
+    <title>Clase 12: Historias de usuario | Análisis de sistemas</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = { darkMode: 'class' }
@@ -15,164 +19,591 @@
 </head>
 <body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-200">
 
+    <!-- Enlace de accesibilidad: permite a usuarios de teclado/lector de pantalla saltar
+         directo al contenido, sin tener que tabular por todo el menú de navegación -->
+    <a href="#contenido-principal" class="skip-link">Saltar al contenido</a>
+
+    <!-- BARRA DE PROGRESO DE LECTURA -->
+    <div id="reading-progress-track" class="fixed top-0 left-0 w-full h-1 z-[60] bg-slate-200/60 dark:bg-slate-800/60" role="progressbar" aria-label="Progreso de lectura" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <div id="reading-progress-bar" class="h-full w-0 bg-gradient-to-r from-emerald-500 via-emerald-500 to-emerald-500 transition-[width] duration-150 ease-out"></div>
+    </div>
+
     <div id="header-container"></div>
 
     <div class="main-content-wrapper flex-1 w-full pt-20">
-        
-        <div class="max-w-7xl mx-auto w-full p-4 md:p-6 grid grid-cols-1 lg:grid-cols-4 gap-6 flex-1">        
-            
+
+        <div class="max-w-7xl mx-auto w-full p-4 md:p-6 grid grid-cols-1 lg:grid-cols-4 gap-6 flex-1">
+
             <!-- SIDEBAR GLOBAL DINÁMICO -->
-            <nav id="sidebar-container" class="lg:col-span-1 space-y-2"></nav>
+            <nav id="sidebar-container" class="lg:col-span-1 space-y-2" aria-label="Navegación de secciones de la clase"></nav>
 
             <!-- CONTENIDO PRINCIPAL -->
-            <main class="lg:col-span-3 space-y-8">
-                
+            <main id="contenido-principal" class="lg:col-span-3 space-y-8">
+
                 <!-- HERO TITLE -->
-                <div class="bg-gradient-to-r from-emerald-600 to-teal-700 rounded-2xl p-6 text-white shadow-lg relative overflow-hidden">
-                    <div class="absolute -right-10 -bottom-10 opacity-15 text-9xl select-none">📝</div>
+                <div class="bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-2xl p-7 md:p-9 text-white shadow-lg relative overflow-hidden">
+                    <svg class="absolute -right-8 -bottom-10 w-56 h-56 opacity-[0.12] select-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
                     <span class="px-2.5 py-1 text-[10px] font-black uppercase tracking-wider bg-white/20 rounded-md backdrop-blur-md">Unidad 12</span>
-                    <h1 class="text-2xl md:text-3xl font-extrabold mt-2">Historias de Usuario (User Stories)</h1>
-                    <p class="text-emerald-100 text-sm mt-2 max-w-2xl leading-relaxed">
-                        Técnica de elicitación y especificación de necesidades en entornos ágiles (Scrum, Kanban). Foco en el valor de negocio entregado al usuario final.
+                    <h1 class="text-3xl md:text-4xl font-extrabold mt-3 leading-tight">Historias de Usuario</h1>
+                    <p class="text-emerald-50 text-base mt-3 max-w-2xl leading-relaxed">
+                        Antes de que exista una sola línea de código, un equipo ágil necesita ponerse de acuerdo en algo mucho más simple: <strong class="font-bold">qué necesita la persona que va a usar el sistema</strong>. Las historias de usuario son la forma más liviana de dejar eso por escrito, sin perder la conversación en el camino.
                     </p>
+                    <div class="flex flex-wrap gap-2 mt-5 relative">
+                        <a href="#jerarquia" class="px-3 py-1.5 text-xs font-semibold bg-white/15 hover:bg-white/25 rounded-full backdrop-blur-md transition-colors border border-white/20">1. Jerarquía</a>
+                        <a href="#formato" class="px-3 py-1.5 text-xs font-semibold bg-white/15 hover:bg-white/25 rounded-full backdrop-blur-md transition-colors border border-white/20">4. Las 3 C</a>
+                        <a href="#invest" class="px-3 py-1.5 text-xs font-semibold bg-white/15 hover:bg-white/25 rounded-full backdrop-blur-md transition-colors border border-white/20">6. INVEST</a>
+                        <a href="#criterios-aceptacion" class="px-3 py-1.5 text-xs font-semibold bg-white/15 hover:bg-white/25 rounded-full backdrop-blur-md transition-colors border border-white/20">7. Criterios de aceptación</a>
+                        <a href="#ejercicios" class="px-3 py-1.5 text-xs font-semibold bg-white/15 hover:bg-white/25 rounded-full backdrop-blur-md transition-colors border border-white/20">9. Ejercicios</a>
+                        <a href="#material-nuevo" class="px-3 py-1.5 text-xs font-semibold bg-white/15 hover:bg-white/25 rounded-full backdrop-blur-md transition-colors border border-white/20">10. Material (PDF)</a>
+                    </div>
                 </div>
 
-                <!-- SECCIÓN 1: CONCEPTO Y FILOSOFÍA -->
-                <section id="concepto" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
-                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
-                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 uppercase tracking-wider">Fundamento Ágil</span>
-                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">1. Concepto y Filosofía Ágil</h2>
-                        <p class="text-sm text-slate-500 mt-1">Representación breve de un requerimiento desde la perspectiva del usuario final.</p>
+                <!-- SECCIÓN 0: JERARQUÍA DE REQUERIMIENTOS ÁGILES -->
+                <section id="jerarquia" class="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-5 mb-6">
+                        <div>
+                            <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 uppercase tracking-wider">Panorama general</span>
+                            <h2 class="text-2xl font-bold mt-2"><span class="bg-gradient-to-r from-emerald-600 to-emerald-500 dark:from-emerald-400 dark:to-emerald-400 bg-clip-text text-transparent">1 - Antes de la historia: la jerarquía de requerimientos ágiles</span></h2>
+                        </div>
                     </div>
 
-                    <div class="space-y-4 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                    <div class="space-y-5 text-base text-slate-600 dark:text-slate-400 leading-relaxed">
                         <p>
-                            Una <strong>Historia de Usuario (HU)</strong> es una descripción corta, clara y sencilla de una necesidad del usuario expresada en su propio lenguaje. A diferencia de las especificaciones tradicionales pesadas, la historia de usuario busca ser una <em>"invitación a la conversación"</em> entre el equipo de desarrollo y el Product Owner.
+                            Ninguna historia de usuario nace sola. Detrás de cada "Como... quiero... para..." hay una cadena de decisiones que empieza mucho más arriba: en la estrategia de la organización. Dean Leffingwell, el creador de SAFe (Scaled Agile Framework), propuso pensar los requerimientos como una pirámide de cuatro niveles, donde cada nivel se apoya en el anterior y se vuelve más concreto a medida que baja.
                         </p>
 
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
-                                <strong class="text-slate-900 dark:text-slate-100 text-sm">📋 Requerimiento Tradicional</strong>
-                                <p class="text-slate-600 dark:text-slate-400 mt-1">"El sistema deberá permitir la consulta de saldo mediante el protocolo HTTPS enviando un token JWT..."</p>
+                                <span class="font-black text-emerald-600 dark:text-emerald-400 text-sm">Strategic Theme (Iniciativa)</span>
+                                <p class="text-slate-600 dark:text-slate-400 mt-1.5 text-sm leading-relaxed">Un objetivo estratégico, del tamaño de la organización entera. <span class="italic">Ej.: mejorar la experiencia académica.</span></p>
                             </div>
-                            <div class="p-4 bg-emerald-50/50 dark:bg-emerald-950/20 rounded-xl border border-emerald-200 dark:border-emerald-900/40">
-                                <strong class="text-emerald-900 dark:text-emerald-300 text-sm">✨ Historia de Usuario (Ágil)</strong>
-                                <p class="text-slate-700 dark:text-slate-300 mt-1">"Como cliente bancario quiero consultar mi saldo desde el móvil para saber si me alcanza antes de pagar."</p>
+                            <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
+                                <span class="font-black text-emerald-600 dark:text-emerald-400 text-sm">Epic (Épica)</span>
+                                <p class="text-slate-600 dark:text-slate-400 mt-1.5 text-sm leading-relaxed">Una gran funcionalidad que empieza a darle forma a ese objetivo. <span class="italic">Ej.: acceso online a información académica.</span></p>
+                            </div>
+                            <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
+                                <span class="font-black text-emerald-600 dark:text-emerald-400 text-sm">Feature</span>
+                                <p class="text-slate-600 dark:text-slate-400 mt-1.5 text-sm leading-relaxed">Una funcionalidad concreta, ya reconocible como algo que se puede construir. <span class="italic">Ej.: consulta de calificaciones.</span></p>
+                            </div>
+                            <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
+                                <span class="font-black text-emerald-600 dark:text-emerald-400 text-sm">User story (Historia de usuario)</span>
+                                <p class="text-slate-600 dark:text-slate-400 mt-1.5 text-sm leading-relaxed">La unidad mínima de valor: lo más chico que se puede entregar y que igual le sirve a alguien. <span class="italic">Ej.: recibir un aviso por mail cuando se publica una nota.</span></p>
+                            </div>
+                        </div>
+
+                        <p>
+                            ¿Para qué molestarse en distinguir estos niveles? Porque el detalle que hace falta cambia según en qué altura de la pirámide estemos parados. Una épica se puede describir en un párrafo: todavía no hace falta saber cómo se va a construir. A medida que el equipo se acerca al momento de trabajarla, esa épica se parte en features, y las features se parten en historias de usuario, cada una lo bastante chica como para entrar en un solo sprint. Es una forma de posponer el detalle hasta el último momento responsable, en lugar de intentar adivinarlo todo por adelantado.
+                        </p>
+
+                        <div class="p-5 bg-slate-900 rounded-xl text-slate-200">
+                            <p class="font-bold text-slate-100 mb-3">¿Por qué descomponer en niveles?</p>
+                            <ul class="space-y-2 text-slate-300 text-sm">
+                                <li class="flex gap-2"><span class="text-emerald-400 font-bold">·</span> Se trabaja con distintos niveles de detalle según el avance del proyecto.</li>
+                                <li class="flex gap-2"><span class="text-emerald-400 font-bold">·</span> Las épicas representan la visión general: no hace falta mucho detalle al principio.</li>
+                                <li class="flex gap-2"><span class="text-emerald-400 font-bold">·</span> A medida que se avanza, se refinan en features e historias de usuario manejables.</li>
+                                <li class="flex gap-2"><span class="text-emerald-400 font-bold">·</span> Esto permite planificar de forma progresiva, con menor carga documental y más agilidad.</li>
+                            </ul>
+                            <p class="italic text-slate-400 mt-4 text-sm border-l-2 border-emerald-500 pl-3">"The objective is vision, not specificity." — Dean Leffingwell, <span class="not-italic">Agile Software Requirements</span></p>
+                        </div>
+
+                        <details class="group bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800 p-5 open:bg-white dark:open:bg-slate-900 transition-colors">
+                            <summary class="cursor-pointer font-bold text-slate-800 dark:text-slate-200 text-base flex items-center gap-2">
+                                <svg class="w-4 h-4 text-emerald-500 transition-transform group-open:rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                                Recorrido completo: de una iniciativa a sus historias de usuario
+                            </summary>
+                            <div class="mt-4 space-y-3 text-sm">
+                                <div class="p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+                                    <span class="font-bold text-emerald-600 dark:text-emerald-400">Iniciativa:</span> Modernización de servicios académicos digitales
+                                    <p class="text-slate-500 dark:text-slate-400 mt-1.5">Objetivo: brindar a los estudiantes una experiencia académica más ágil, accesible y autónoma, digitalizando inscripciones, consultas, notificaciones y gestión personal.</p>
+                                    <p class="text-slate-500 dark:text-slate-400 mt-1.5">Épicas: Autogestión académica · Rediseño de la experiencia digital del estudiante · Integración con sistemas externos · Comunicación institucional automatizada.</p>
+                                </div>
+                                <div class="p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+                                    <span class="font-bold text-emerald-600 dark:text-emerald-400">Épica:</span> Plataforma de autogestión académica
+                                    <p class="text-slate-500 dark:text-slate-400 mt-1.5">Hipótesis de valor: mejora la experiencia estudiantil y reduce la carga administrativa.</p>
+                                </div>
+                                <div class="p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+                                    <span class="font-bold text-emerald-600 dark:text-emerald-400">Feature #1:</span> Consulta de calificaciones
+                                    <p class="text-slate-500 dark:text-slate-400 mt-1.5">Criterios de aceptación: mostrar materias cursadas, notas parciales y finales; incluir descarga en PDF.</p>
+                                    <p class="mt-2.5 font-semibold text-slate-700 dark:text-slate-300">Se parte en historias de usuario:</p>
+                                    <ul class="space-y-1 text-slate-500 dark:text-slate-400 mt-1">
+                                        <li>· Como estudiante, quiero ver mis calificaciones finales por materia, para saber si promocioné.</li>
+                                        <li>· Como estudiante, quiero descargar un reporte de mis notas, para tenerlo como respaldo.</li>
+                                    </ul>
+                                </div>
+                                <div class="p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+                                    <span class="font-bold text-emerald-600 dark:text-emerald-400">Feature #2:</span> Gestión de inscripciones
+                                    <p class="mt-2.5 font-semibold text-slate-700 dark:text-slate-300">Se parte en historias de usuario:</p>
+                                    <ul class="space-y-1 text-slate-500 dark:text-slate-400 mt-1">
+                                        <li>· Como estudiante, quiero inscribirme a materias desde la web, para no tener que ir a la facultad.</li>
+                                        <li>· Como estudiante, quiero visualizar los horarios disponibles antes de inscribirme, para organizar mi semana.</li>
+                                        <li>· Como estudiante, quiero recibir confirmación por mail al inscribirme, para tener constancia.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </details>
+
+                        <div class="p-5 bg-emerald-50/60 dark:bg-emerald-950/20 rounded-xl border border-emerald-200 dark:border-emerald-900/40 flex gap-4">
+                            <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-900/60 text-emerald-600 dark:text-emerald-400 flex-shrink-0">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
+                            </span>
+                            <div>
+                                <strong class="text-emerald-900 dark:text-emerald-300 text-base">¿Qué es un Product Backlog Item (PBI)?</strong>
+                                <p class="text-slate-700 dark:text-slate-300 mt-1.5 text-sm leading-relaxed">Es el nombre genérico que reciben todos estos niveles cuando entran al backlog: una unidad de valor que representa algo que el sistema debe hacer o entregar. Puede redactarse con distintas técnicas —requerimientos, casos de uso, escenarios, historias de usuario— pero siempre debe tener al menos tres cosas: una <strong>descripción</strong>, una <strong>estimación</strong> y un <strong>orden</strong> respecto a los demás ítems del backlog. En la práctica, el formato más usado para escribirlo es, justamente, la historia de usuario.</p>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- SECCIÓN 2: FORMATO CANÓNICO (3 C) -->
-                <section id="formato" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
-                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
-                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-sky-100 dark:bg-sky-950 text-sky-800 dark:text-sky-300 uppercase tracking-wider">Estructura Estándar</span>
-                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">2. El Formato Canónico y las 3 C</h2>
-                        <p class="text-sm text-slate-500 mt-1">Estructura sintáctica y modelo de Card, Conversation, Confirmation por Ron Jeffries.</p>
+                <!-- SECCIÓN 1: CONCEPTO Y FILOSOFÍA -->
+                <section id="concepto" class="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-5 mb-6">
+                        <div>
+                            <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 uppercase tracking-wider">Fundamento ágil</span>
+                            <h2 class="text-2xl font-bold mt-2"><span class="bg-gradient-to-r from-emerald-600 to-emerald-500 dark:from-emerald-400 dark:to-emerald-400 bg-clip-text text-transparent">2 - ¿Qué es, en el fondo, una Historia de Usuario?</span></h2>
+                        </div>
                     </div>
 
-                    <div class="space-y-4 text-xs">
-                        <div class="p-4 bg-slate-900 text-slate-100 font-mono rounded-xl shadow-inner space-y-2">
-                            <span class="text-sky-400 font-bold">COMO</span> [Rol de Usuario]<br>
-                            <span class="text-emerald-400 font-bold">QUIERO</span> [Acción / Funcionalidad]<br>
-                            <span class="text-amber-400 font-bold">PARA</span> [Beneficio de Negocio / Valor]
+                    <div class="space-y-4 text-base text-slate-600 dark:text-slate-400 leading-relaxed">
+                        <p>
+                            Una <strong>historia de usuario (HU)</strong> es una descripción corta, clara y sencilla de una necesidad, contada en el lenguaje del propio usuario. No es un contrato ni una especificación cerrada: es, como la definió Ron Jeffries, una <em>"invitación a la conversación"</em> entre quien conoce el problema —el Product Owner— y quien va a construir la solución —el equipo de desarrollo—.
+                        </p>
+
+                        <img src="assets/images/historia-del-usuario.png" alt="Historia de usuario" class="rounded-xl shadow-lg border border-slate-200 dark:border-slate-800">
+
+                        <p>
+                            Esa diferencia de espíritu es lo que más cuesta internalizar cuando se viene de escribir requerimientos tradicionales. Un requerimiento intenta cerrar toda ambigüedad por escrito, de una sola vez. Una historia de usuario acepta que va a quedar información sin decir, a propósito, porque esa información se termina de completar hablando, no documentando.
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+                            <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
+                                <div class="flex items-center gap-2 mb-1.5">
+                                    <svg class="w-4 h-4 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></svg>
+                                    <strong class="text-slate-900 dark:text-slate-100 text-sm">Requerimiento tradicional</strong>
+                                </div>
+                                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">"El sistema deberá permitir la consulta de saldo mediante el protocolo HTTPS enviando un token JWT..."</p>
+                            </div>
+                            <div class="p-4 bg-emerald-50/50 dark:bg-emerald-950/20 rounded-xl border border-emerald-200 dark:border-emerald-900/40">
+                                <div class="flex items-center gap-2 mb-1.5">
+                                    <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1-8.313-12.454z"/></svg>
+                                    <strong class="text-emerald-900 dark:text-emerald-300 text-sm">Historia de usuario (ágil)</strong>
+                                </div>
+                                <p class="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">"Como cliente bancario quiero consultar mi saldo desde el móvil para saber si me alcanza antes de pagar."</p>
+                            </div>
                         </div>
+
+                        <p>
+                            Notá que la segunda versión no menciona protocolos ni tokens: eso todavía no importa. Lo que importa es que el equipo entienda <em>quién</em> necesita <em>qué</em> y <em>por qué</em> — el resto se resuelve en el camino, con la conversación y con las decisiones técnicas que el equipo esté mejor preparado para tomar.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 1B: HU vs REQUERIMIENTO -->
+                <section id="vs-requerimientos" class="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-5 mb-6">
+                        <div>
+                            <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 uppercase tracking-wider">Comparativa</span>
+                            <h2 class="text-2xl font-bold mt-2"><span class="bg-gradient-to-r from-emerald-600 to-emerald-500 dark:from-emerald-400 dark:to-emerald-400 bg-clip-text text-transparent">3 - Historia de usuario ≠ requerimiento</span></h2>
+                        </div>
+                    </div>
+
+                    <p class="text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-5">
+                        No son dos nombres para lo mismo. Una historia de usuario busca entender <strong>el para qué</strong>; un requerimiento tradicional define <strong>el cómo</strong>. Esa diferencia de enfoque se nota en cada uno de estos seis ejes:
+                    </p>
+
+                    <div class="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800">
+                        <table class="w-full text-sm border-collapse">
+                            <thead>
+                                <tr class="text-left bg-slate-50 dark:bg-slate-800/60">
+                                    <th class="py-3 px-4 font-bold text-slate-700 dark:text-slate-300"></th>
+                                    <th class="py-3 px-4 font-bold text-emerald-700 dark:text-emerald-400">Historia de usuario</th>
+                                    <th class="py-3 px-4 font-bold text-slate-600 dark:text-slate-400">Requerimiento tradicional</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-slate-600 dark:text-slate-400">
+                                <tr class="border-t border-slate-100 dark:border-slate-800/70"><td class="py-3 px-4 font-semibold text-slate-700 dark:text-slate-300">Formato</td><td class="py-3 px-4">Narrativo, centrado en el usuario</td><td class="py-3 px-4">Declarativo, centrado en el sistema</td></tr>
+                                <tr class="border-t border-slate-100 dark:border-slate-800/70"><td class="py-3 px-4 font-semibold text-slate-700 dark:text-slate-300">Detalle inicial</td><td class="py-3 px-4">Bajo — se completa en la conversación</td><td class="py-3 px-4">Alto — detallado desde el principio</td></tr>
+                                <tr class="border-t border-slate-100 dark:border-slate-800/70"><td class="py-3 px-4 font-semibold text-slate-700 dark:text-slate-300">Lenguaje</td><td class="py-3 px-4">Simple, claro, no técnico</td><td class="py-3 px-4">Técnico, formal</td></tr>
+                                <tr class="border-t border-slate-100 dark:border-slate-800/70"><td class="py-3 px-4 font-semibold text-slate-700 dark:text-slate-300">Documentación</td><td class="py-3 px-4">Ligera, fácil de modificar</td><td class="py-3 px-4">Pesada, difícil de actualizar</td></tr>
+                                <tr class="border-t border-slate-100 dark:border-slate-800/70"><td class="py-3 px-4 font-semibold text-slate-700 dark:text-slate-300">Validación</td><td class="py-3 px-4">Criterios de aceptación + conversación</td><td class="py-3 px-4">Revisión formal y aprobación</td></tr>
+                                <tr class="border-t border-slate-100 dark:border-slate-800/70"><td class="py-3 px-4 font-semibold text-slate-700 dark:text-slate-300">Adaptabilidad</td><td class="py-3 px-4">Alta — evoluciona con el equipo</td><td class="py-3 px-4">Baja — sujeta a gestión de cambios</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mt-4 leading-relaxed">En síntesis: las historias priorizan la colaboración y la entrega incremental de valor. Los requerimientos tradicionales priorizan la especificación exhaustiva desde el día uno. Ninguno de los dos es "el correcto" en abstracto — depende de cuánta incertidumbre tenga el proyecto por delante.</p>
+                </section>
+
+                <!-- SECCIÓN 2: FORMATO CANÓNICO (3 C) -->
+                <section id="formato" class="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-5 mb-6">
+                        <div>
+                            <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 uppercase tracking-wider">Estructura estándar</span>
+                            <h2 class="text-2xl font-bold mt-2"><span class="bg-gradient-to-r from-emerald-600 to-emerald-500 dark:from-emerald-400 dark:to-emerald-400 bg-clip-text text-transparent">4 - El formato canónico y las 3 C</span></h2>
+                        </div>
+                    </div>
+
+                    <div class="space-y-5 text-base text-slate-600 dark:text-slate-400 leading-relaxed">
+                        <p>Toda historia de usuario bien escrita responde a la misma estructura de tres partes, casi un mantra que conviene memorizar:</p>
+
+                        <div class="p-5 bg-slate-900 text-slate-100 font-mono rounded-xl shadow-inner space-y-2 text-sm">
+                            <div><span class="text-sky-400 font-bold">COMO</span> [Rol de usuario]</div>
+                            <div><span class="text-emerald-400 font-bold">QUIERO</span> [Acción / funcionalidad]</div>
+                            <div><span class="text-amber-400 font-bold">PARA</span> [Beneficio de negocio / valor]</div>
+                        </div>
+
+                        <p>Pero el texto de la tarjeta es apenas la punta del iceberg. Ron Jeffries describió el ciclo de vida completo de una historia con el modelo de las <strong>3 C</strong>, y entender las tres partes es lo que evita que una historia se convierta en un simple título sin sustancia:</p>
 
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                             <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800">
-                                <span class="font-bold text-slate-900 dark:text-slate-100 text-sm">🗂️ 1. Card (Tarjeta)</span>
-                                <p class="text-slate-600 dark:text-slate-400 mt-1">Resumen físico o digital de la intención funcional.</p>
+                                <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 mb-2">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>
+                                </span>
+                                <p class="font-bold text-slate-900 dark:text-slate-100 text-sm">1. Card (tarjeta)</p>
+                                <p class="text-slate-600 dark:text-slate-400 mt-1 text-sm leading-relaxed">Debe ser tan atómica que se pueda escribir en una tarjeta física del tablero: una declaración breve, clara y comprensible.</p>
                             </div>
                             <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800">
-                                <span class="font-bold text-slate-900 dark:text-slate-100 text-sm">💬 2. Conversation</span>
-                                <p class="text-slate-600 dark:text-slate-400 mt-1">Diálogo constante entre PO, analista y desarrolladores.</p>
+                                <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 mb-2">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                                </span>
+                                <p class="font-bold text-slate-900 dark:text-slate-100 text-sm">2. Conversation</p>
+                                <p class="text-slate-600 dark:text-slate-400 mt-1 text-sm leading-relaxed">Es el resultado de una conversación real entre el equipo de trabajo y el Product Owner, donde se completa lo que la tarjeta no dice.</p>
                             </div>
                             <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800">
-                                <span class="font-bold text-slate-900 dark:text-slate-100 text-sm">✅ 3. Confirmation</span>
-                                <p class="text-slate-600 dark:text-slate-400 mt-1">Criterios de aceptación para validar su cumplimiento.</p>
+                                <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 mb-2">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg>
+                                </span>
+                                <p class="font-bold text-slate-900 dark:text-slate-100 text-sm">3. Confirmation</p>
+                                <p class="text-slate-600 dark:text-slate-400 mt-1 text-sm leading-relaxed">Queda redactada como una lista de condiciones —los criterios de aceptación— que le dicen al equipo cuándo la historia puede darse por terminada.</p>
                             </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 2B: MÁS EJEMPLOS DE LAS 3 C -->
+                <section id="ejemplos-3cs" class="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-5 mb-6">
+                        <div>
+                            <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 uppercase tracking-wider">En práctica</span>
+                            <h2 class="text-2xl font-bold mt-2"><span class="bg-gradient-to-r from-emerald-600 to-emerald-500 dark:from-emerald-400 dark:to-emerald-400 bg-clip-text text-transparent">5 - Las 3 C en acción: cuatro ejemplos resueltos</span></h2>
+                        </div>
+                    </div>
+
+                    <p class="text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-5">La teoría se entiende rápido; lo que cuesta es acostumbrar el ojo a ver dónde termina la tarjeta y dónde empieza la conversación. Estos cuatro casos muestran el mismo patrón aplicado a dominios bien distintos — pagos, banca y consumo energético — para que el formato deje de sentirse como una fórmula y empiece a sentirse como una herramienta de pensamiento.</p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                        <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800 space-y-2.5">
+                            <p class="font-bold text-slate-800 dark:text-slate-200 leading-relaxed"><span class="text-emerald-500">Card —</span> Como comprador, quiero pagar con tarjeta de crédito para evitar usar efectivo.</p>
+                            <p class="leading-relaxed"><span class="font-semibold text-slate-700 dark:text-slate-300">Conversation:</span> ¿Se valida el límite de la tarjeta antes de autorizar? → Sí, a través del gateway del operador de la tarjeta.</p>
+                            <p class="leading-relaxed"><span class="font-semibold text-slate-700 dark:text-slate-300">Confirmation:</span> Aceptar Visa y Mastercard · la transacción no debe demorar más de 5 segundos · mostrar mensaje de confirmación · registrar la operación en el historial.</p>
+                        </div>
+                        <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800 space-y-2.5">
+                            <p class="font-bold text-slate-800 dark:text-slate-200 leading-relaxed"><span class="text-emerald-500">Card —</span> Como cliente del banco, quiero retirar dinero de mi cuenta para hacer pagos en efectivo.</p>
+                            <p class="leading-relaxed"><span class="font-semibold text-slate-700 dark:text-slate-300">Conversation:</span> ¿Existe un máximo por transacción? → Sí, $200 por transacción y $1.000 por día.</p>
+                            <p class="leading-relaxed"><span class="font-semibold text-slate-700 dark:text-slate-300">Confirmation:</span> Poder hacerlo en cualquier sucursal del banco · el saldo debe quedar actualizado · enviar correo con el saldo actualizado.</p>
+                        </div>
+                        <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800 space-y-2.5 md:col-span-2">
+                            <p class="font-bold text-slate-800 dark:text-slate-200 leading-relaxed"><span class="text-emerald-500">Card —</span> Como consumidor, quiero ver mi consumo diario de energía para poder reducir mis costos y uso energético.</p>
+                            <p class="leading-relaxed"><span class="font-semibold text-slate-700 dark:text-slate-300">Conversation:</span> ¿Qué información se necesita ver? → Consumo diario en kWh en un gráfico de barras. ¿Con qué frecuencia se actualizan los datos? → Una vez por día, con datos del día anterior.</p>
+                            <p class="leading-relaxed"><span class="font-semibold text-slate-700 dark:text-slate-300">Confirmation:</span> Poder acceder desde cualquier dispositivo con conexión · visualizar el consumo diario de los últimos 45 días.</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 p-5 bg-emerald-50/50 dark:bg-emerald-950/20 rounded-xl border border-emerald-200 dark:border-emerald-900/40 flex gap-4">
+                        <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-900/60 text-emerald-600 dark:text-emerald-400 flex-shrink-0">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+                        </span>
+                        <div class="text-sm">
+                            <strong class="text-emerald-900 dark:text-emerald-300 text-base">Un ejemplo pensado para conectar con INVEST</strong>
+                            <p class="text-slate-700 dark:text-slate-300 mt-1.5 leading-relaxed"><strong>Card:</strong> Como estudiante, quiero recibir notificaciones cuando se publiquen mis notas, para estar al tanto de los resultados de las cursadas.</p>
+                            <p class="text-slate-700 dark:text-slate-300 mt-1.5 leading-relaxed"><strong>Conversation:</strong> ¿Cómo se le avisa al estudiante? → Por mail. ¿Cuándo se notifica? → Apenas el docente carga la nota.</p>
+                            <p class="text-slate-700 dark:text-slate-300 mt-1.5 leading-relaxed"><strong>Confirmation:</strong> Al cargarse una nota, el sistema envía la notificación por mail · la notificación incluye materia, nota y fecha · si se modifica la nota, se manda una nueva notificación.</p>
                         </div>
                     </div>
                 </section>
 
                 <!-- SECCIÓN 3: CRITERIOS INVEST -->
-                <section id="invest" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
-                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
-                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-indigo-100 dark:bg-indigo-950 text-indigo-800 dark:text-indigo-300 uppercase tracking-wider">Calidad de Requisitos</span>
-                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">3. Criterios de Calidad INVEST</h2>
-                        <p class="text-sm text-slate-500 mt-1">Principios creados por Bill Wake para evaluar la madurez de una Historia de Usuario.</p>
+                <section id="invest" class="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-5 mb-6">
+                        <div>
+                            <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 uppercase tracking-wider">Calidad de requisitos</span>
+                            <h2 class="text-2xl font-bold mt-2"><span class="bg-gradient-to-r from-emerald-600 to-emerald-500 dark:from-emerald-400 dark:to-emerald-400 bg-clip-text text-transparent">6 - Criterios de calidad INVEST</span></h2>
+                        </div>
                     </div>
 
-                    <div class="grid grid-cols-2 md:grid-cols-3 gap-3 text-xs">
-                        <div class="p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
-                            <span class="font-black text-indigo-600 dark:text-indigo-400">I - Independent</span>
-                            <p class="text-slate-600 dark:text-slate-400 mt-1">Independiente de otras historias para facilitar la priorización.</p>
+                    <p class="text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-5">
+                        Bill Wake propuso este acrónimo para responder una pregunta muy concreta: ¿cómo sé si la historia que acabo de escribir está lista para entrar al sprint, o todavía necesita trabajo? Las seis letras son seis preguntas que conviene hacerse antes de dar una historia por terminada.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
+                            <span class="font-black text-emerald-600 dark:text-emerald-400 text-sm">I · Independent</span>
+                            <p class="text-slate-600 dark:text-slate-400 mt-1.5 text-sm leading-relaxed">Independiente de otras historias, para poder priorizarla y entregarla sin esperar a que otra termine.</p>
                         </div>
-                        <div class="p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
-                            <span class="font-black text-indigo-600 dark:text-indigo-400">N - Negotiable</span>
-                            <p class="text-slate-600 dark:text-slate-400 mt-1">Negociable entre PO y equipo; no es un contrato cerrado.</p>
+                        <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
+                            <span class="font-black text-emerald-600 dark:text-emerald-400 text-sm">N · Negotiable</span>
+                            <p class="text-slate-600 dark:text-slate-400 mt-1.5 text-sm leading-relaxed">Negociable entre el Product Owner y el equipo — no es un contrato cerrado, sino un punto de partida.</p>
                         </div>
-                        <div class="p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
-                            <span class="font-black text-indigo-600 dark:text-indigo-400">V - Valuable</span>
-                            <p class="text-slate-600 dark:text-slate-400 mt-1">Debe aportar un valor concreto para el usuario o negocio.</p>
+                        <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
+                            <span class="font-black text-emerald-600 dark:text-emerald-400 text-sm">V · Valuable</span>
+                            <p class="text-slate-600 dark:text-slate-400 mt-1.5 text-sm leading-relaxed">Debe aportar un valor concreto y reconocible para el usuario o el negocio, nunca solo trabajo técnico interno.</p>
                         </div>
-                        <div class="p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
-                            <span class="font-black text-indigo-600 dark:text-indigo-400">E - Estimable</span>
-                            <p class="text-slate-600 dark:text-slate-400 mt-1">El equipo debe poder estimar su tamaño o esfuerzo.</p>
+                        <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
+                            <span class="font-black text-emerald-600 dark:text-emerald-400 text-sm">E · Estimable</span>
+                            <p class="text-slate-600 dark:text-slate-400 mt-1.5 text-sm leading-relaxed">El equipo tiene que poder estimar su tamaño o esfuerzo — si no puede, algo en la historia todavía no está claro.</p>
                         </div>
-                        <div class="p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
-                            <span class="font-black text-indigo-600 dark:text-indigo-400">S - Small</span>
-                            <p class="text-slate-600 dark:text-slate-400 mt-1">Pequeña para ser completada en un único Sprint.</p>
+                        <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
+                            <span class="font-black text-emerald-600 dark:text-emerald-400 text-sm">S · Small</span>
+                            <p class="text-slate-600 dark:text-slate-400 mt-1.5 text-sm leading-relaxed">Suficientemente pequeña como para completarse dentro de un único sprint.</p>
                         </div>
-                        <div class="p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
-                            <span class="font-black text-indigo-600 dark:text-indigo-400">T - Testable</span>
-                            <p class="text-slate-600 dark:text-slate-400 mt-1">Verificable mediante pruebas claras de aceptación.</p>
+                        <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
+                            <span class="font-black text-emerald-600 dark:text-emerald-400 text-sm">T · Testable</span>
+                            <p class="text-slate-600 dark:text-slate-400 mt-1.5 text-sm leading-relaxed">Verificable mediante pruebas o criterios de aceptación claros que digan cuándo está realmente hecha.</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 p-5 bg-emerald-50/50 dark:bg-emerald-950/20 rounded-xl border border-emerald-200 dark:border-emerald-900/40">
+                        <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed"><strong>Una pista útil:</strong> si una historia no es Estimable, casi siempre es porque es demasiado grande, o porque al equipo le falta conocimiento funcional o técnico para dimensionarla. En ese caso, el problema no se resuelve estimando "a ojo" — se resuelve conversando un poco más, o partiendo la historia en otras más chicas.</p>
+                    </div>
+
+                    <div class="mt-5 p-5 bg-white dark:bg-slate-950 rounded-xl border border-slate-200 dark:border-slate-800">
+                        <p class="font-bold text-slate-800 dark:text-slate-200 text-sm mb-3">INVEST aplicado a una historia real</p>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 italic leading-relaxed mb-3">"Como estudiante, quiero recibir notificaciones cuando se publiquen mis notas, para estar al tanto de los resultados de las cursadas."</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-sm">
+                            <p class="text-slate-600 dark:text-slate-400"><strong class="text-emerald-600 dark:text-emerald-400">Independiente:</strong> no depende de otros módulos; se puede desarrollar y probar aparte.</p>
+                            <p class="text-slate-600 dark:text-slate-400"><strong class="text-emerald-600 dark:text-emerald-400">Negociable:</strong> se puede acordar si el mail se envía al instante o al finalizar el día.</p>
+                            <p class="text-slate-600 dark:text-slate-400"><strong class="text-emerald-600 dark:text-emerald-400">Valiosa:</strong> evita que el estudiante tenga que entrar a revisar sus notas varias veces.</p>
+                            <p class="text-slate-600 dark:text-slate-400"><strong class="text-emerald-600 dark:text-emerald-400">Estimable:</strong> la funcionalidad es concreta — detectar la carga de una nota y enviar un mail.</p>
+                            <p class="text-slate-600 dark:text-slate-400"><strong class="text-emerald-600 dark:text-emerald-400">Pequeña:</strong> se puede entregar en un solo sprint, como historia puntual.</p>
+                            <p class="text-slate-600 dark:text-slate-400"><strong class="text-emerald-600 dark:text-emerald-400">Testeable:</strong> se prueba cargando una nota y verificando que el mail llegue.</p>
                         </div>
                     </div>
                 </section>
 
                 <!-- SECCIÓN 4: CRITERIOS DE ACEPTACIÓN -->
-                <section id="criterios-aceptacion" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
-                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
-                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-teal-100 dark:bg-teal-950 text-teal-800 dark:text-teal-300 uppercase tracking-wider">BDD & Escenarios</span>
-                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">4. Criterios de Aceptación (Given - When - Then)</h2>
-                        <p class="text-sm text-slate-500 mt-1">Especificación mediante ejemplos orientados al comportamiento (BDD/Gherkin).</p>
+                <section id="criterios-aceptacion" class="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-5 mb-6">
+                        <div>
+                            <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 uppercase tracking-wider">BDD & escenarios</span>
+                            <h2 class="text-2xl font-bold mt-2"><span class="bg-gradient-to-r from-emerald-600 to-emerald-500 dark:from-emerald-400 dark:to-emerald-400 bg-clip-text text-transparent">7 - Criterios de aceptación: Dado — Cuando — Entonces</span></h2>
+                        </div>
                     </div>
 
-                    <div class="p-4 bg-slate-50 dark:bg-slate-950 rounded-xl border border-slate-200 dark:border-slate-800 font-mono text-xs text-slate-700 dark:text-slate-300 space-y-2">
-                        <div><strong class="text-sky-500">Escenario 1:</strong> Pago exitoso con tarjeta de crédito</div>
+                    <p class="text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-5">
+                        Si la Confirmation es la lista de condiciones que cierran una historia, el formato <strong>Given–When–Then</strong> (Dado–Cuando–Entonces) de Gherkin es la forma más popular de escribir esas condiciones sin ambigüedad. Cada escenario describe un contexto de partida, una acción disparadora y el resultado esperado — casi como un pequeño guion de prueba escrito en lenguaje natural.
+                    </p>
+
+                    <div class="p-5 bg-slate-50 dark:bg-slate-950 rounded-xl border border-slate-200 dark:border-slate-800 font-mono text-sm text-slate-700 dark:text-slate-300 space-y-2.5">
+                        <div><strong class="text-emerald-500">Escenario 1:</strong> Pago exitoso con tarjeta de crédito</div>
                         <div><span class="text-purple-400 font-bold">DADO</span> que el cliente tiene una tarjeta válida con saldo suficiente</div>
                         <div><span class="text-amber-400 font-bold">CUANDO</span> hace clic en "Confirmar Compra"</div>
                         <div><span class="text-emerald-400 font-bold">ENTONCES</span> el sistema emite el comprobante y envía un correo de confirmación.</div>
                     </div>
+
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mt-4 leading-relaxed">Escribir los criterios así, como escenarios concretos, tiene una ventaja práctica: casi sin cambios se pueden convertir en casos de prueba, lo que acerca al equipo de desarrollo y al de testing a hablar exactamente el mismo idioma.</p>
                 </section>
 
                 <!-- SECCIÓN 5: ESTIMACIÓN -->
-                <section id="estimacion" class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
-                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
-                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-purple-100 dark:bg-purple-950 text-purple-800 dark:text-purple-300 uppercase tracking-wider">Métricas Ágiles</span>
-                        <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">5. Estimación mediante Story Points</h2>
-                        <p class="text-sm text-slate-500 mt-1">Planning Poker y escala de Fibonacci (1, 2, 3, 5, 8, 13, 21).</p>
-                    </div>
-
-                    <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                        Los <strong>Story Points</strong> representan una medida relativa que combina complejidad, riesgo y esfuerzo. No equivalen a horas hombre absolutas, sino al tamaño relativo de la tarea comparada con una historia base de referencia.
-                    </p>
-                </section>
-
-                <!-- SECCIÓN 6: RECEPTÁCULO PARA MATERIAL FUTURO -->
-                <section id="material-nuevo" class="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-slate-900 dark:to-slate-900/90 p-6 rounded-xl border-2 border-dashed border-emerald-400 dark:border-emerald-800 scroll-mt-24">
-                    <div class="flex items-center gap-3 mb-4">
-                        <span class="text-3xl">📂</span>
+                <section id="estimacion" class="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-5 mb-6">
                         <div>
-                            <h2 class="text-lg font-bold text-emerald-900 dark:text-emerald-300">Contenedor de Material Cátedra / Apuntes</h2>
-                            <p class="text-xs text-emerald-700 dark:text-emerald-400">Espacio reservado para incorporar las filminas, ejemplos de parcial y consignas adicionales cuando se provea el material.</p>
+                            <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 uppercase tracking-wider">Métricas ágiles</span>
+                            <h2 class="text-2xl font-bold mt-2"><span class="bg-gradient-to-r from-emerald-600 to-emerald-500 dark:from-emerald-400 dark:to-emerald-400 bg-clip-text text-transparent">8 - Estimación mediante Story Points</span></h2>
                         </div>
                     </div>
 
-                    <div id="contenedor-material-usuario" class="p-6 bg-white dark:bg-slate-950 rounded-xl border border-emerald-200 dark:border-emerald-900/50 text-center text-slate-500 dark:text-slate-400 text-xs">
-                        <p class="font-semibold text-slate-700 dark:text-slate-300 mb-1">⏳ Esperando Material Complementario</p>
-                        <p>Cuando compartas las notas, PDFs o ejercicios de Historias de Usuario, se integrarán en esta sección dinámicamente.</p>
+                    <div class="space-y-4 text-base text-slate-600 dark:text-slate-400 leading-relaxed">
+                        <p>
+                            Los <strong>Story Points</strong> son una medida relativa que combina complejidad, riesgo y esfuerzo en un solo número. La clave está en la palabra "relativa": no equivalen a horas-hombre absolutas, sino al tamaño de una tarea comparado con una historia base de referencia que el equipo ya conoce bien.
+                        </p>
+                        <p>
+                            La técnica más usada para llegar a ese número en grupo se llama <strong>Planning Poker</strong>: cada integrante del equipo elige en simultáneo una carta de la escala de Fibonacci (1, 2, 3, 5, 8, 13, 21...) y todas se revelan al mismo tiempo. Si hay diferencias grandes entre las cartas, eso es una señal —no un problema— de que conviene conversar un poco más antes de comprometerse con un número.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 6: EJERCICIOS PRÁCTICOS -->
+                <section id="ejercicios" class="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-5 mb-6">
+                        <div>
+                            <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 uppercase tracking-wider">Manos a la obra</span>
+                            <h2 class="text-2xl font-bold mt-2"><span class="bg-gradient-to-r from-emerald-600 to-emerald-500 dark:from-emerald-400 dark:to-emerald-400 bg-clip-text text-transparent">9 - Ejercicios prácticos</span></h2>
+                        </div>
+                    </div>
+
+                    <p class="text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-5">
+                        La única forma real de aprender a detectar historias de usuario es practicando con un enunciado de negocio, tal como llegaría de un cliente: con ruido, con detalles de más y de menos. Los dos casos siguientes están pensados para eso — leelos como si fueras el analista al que le encargan destilar el backlog inicial.
+                    </p>
+
+                    <div class="space-y-5 text-sm">
+                        <!-- Ejercicio 1 -->
+                        <details class="group bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800 p-5 open:bg-white dark:open:bg-slate-900 transition-colors">
+                            <summary class="cursor-pointer font-bold text-slate-800 dark:text-slate-200 text-base flex items-center gap-2">
+                                <svg class="w-4 h-4 text-emerald-500 transition-transform group-open:rotate-90 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                                Ejercicio 1 — Línea de crédito de electrodomésticos
+                            </summary>
+                            <p class="text-slate-600 dark:text-slate-400 mt-4 leading-relaxed">
+                                Un negocio de venta de electrodomésticos decidió implementar y otorgar una línea de crédito a sus clientes para la compra de productos. Los créditos son solicitados por los clientes al vendedor, al momento de realizar la compra, y deben ser autorizados por un representante de la gerencia de créditos. Son pagados por el cliente a través de débito automático en tarjetas de crédito. Si el crédito se acepta, se entrega el producto al cliente en forma inmediata. Cada mes se debitará de manera automática el pago de las cuotas de la tarjeta del cliente.
+                            </p>
+                            <p class="font-semibold text-slate-700 dark:text-slate-300 mt-4">Consigna: escribir 2 historias de usuario del ejercicio.</p>
+                            <div class="mt-3 p-4 bg-white dark:bg-slate-900 rounded-lg border border-emerald-200 dark:border-emerald-900/40">
+                                <p class="font-semibold text-emerald-700 dark:text-emerald-400 mb-2">Resolución</p>
+                                <ol class="list-decimal list-inside space-y-1.5 text-slate-600 dark:text-slate-400 leading-relaxed">
+                                    <li>Como cliente, quiero solicitar un crédito, para poder realizar una compra en cuotas.</li>
+                                    <li>Como representante de la gerencia de créditos, quiero poder aprobar créditos a los clientes, para que puedan realizar una compra.</li>
+                                </ol>
+                            </div>
+                        </details>
+
+                        <!-- Ejercicio 2 -->
+                        <details class="group bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800 p-5 open:bg-white dark:open:bg-slate-900 transition-colors">
+                            <summary class="cursor-pointer font-bold text-slate-800 dark:text-slate-200 text-base flex items-center gap-2">
+                                <svg class="w-4 h-4 text-emerald-500 transition-transform group-open:rotate-90 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                                Ejercicio 2 — Sanatorio "Buena Salud": turnos online
+                            </summary>
+                            <div class="text-slate-600 dark:text-slate-400 mt-4 leading-relaxed space-y-3">
+                                <p>El Sanatorio "Buena Salud" está planificando la implementación de un nuevo sistema web que permita a sus pacientes gestionar turnos de manera online, para reducir las llamadas telefónicas y los tiempos de espera.</p>
+                                <p>Cada paciente debe registrarse online (nombre, DNI, cobertura médica, correo) y recibe por mail un usuario y contraseña temporal a modificar en el primer ingreso. Al iniciar sesión puede: solicitar un nuevo turno, modificar o anular un turno ya asignado, y reimprimir el comprobante de un turno vigente.</p>
+                                <p>Al solicitar un turno se elige especialidad, día, horario y médico. El sistema valida disponibilidad y cobertura; si la cobertura no cubre el turno, se conecta con el posnet de la obra social. Al confirmar, se genera un comprobante en PDF. Las secretarías de sector acceden a un listado diario de turnos de su área, exportable en PDF. Toda la información se almacena en SQL Server.</p>
+                            </div>
+                            <p class="font-semibold text-slate-700 dark:text-slate-300 mt-4">Consigna: detectar y listar al menos 3 historias de usuario relevantes (formato: Como [rol], quiero [objetivo] para [beneficio]).</p>
+
+                            <div class="mt-3 p-4 bg-white dark:bg-slate-900 rounded-lg border border-emerald-200 dark:border-emerald-900/40">
+                                <p class="font-semibold text-emerald-700 dark:text-emerald-400 mb-2">Resolución — historias detectadas</p>
+                                <ol class="list-decimal list-inside space-y-1.5 text-slate-600 dark:text-slate-400 leading-relaxed">
+                                    <li>Como paciente, quiero registrarme online, para obtener usuario y clave y así poder ingresar al sistema.</li>
+                                    <li>Como paciente, quiero solicitar un turno online, para evitar tener que llamar o ir personalmente.</li>
+                                    <li>Como paciente, quiero modificar un turno ya solicitado, para cambiar el horario por uno más conveniente.</li>
+                                    <li>Como paciente, quiero anular un turno que ya no voy a usar, para liberar ese espacio.</li>
+                                    <li>Como paciente, quiero reimprimir el comprobante de un turno ya asignado, para tenerlo disponible en papel.</li>
+                                    <li>Como paciente, quiero recibir por mail la confirmación del turno asignado, para asegurarme de haberlo obtenido.</li>
+                                    <li>Como paciente, quiero saber si mi cobertura está vigente, para saber si debo pagar el canon por la consulta.</li>
+                                    <li>Como secretaria, quiero obtener el listado diario de turnos, para organizar la atención diaria.</li>
+                                    <li>Como secretaria, quiero obtener el listado diario de turnos, para distribuirlo a los médicos.</li>
+                                </ol>
+                            </div>
+
+                            <p class="font-semibold text-slate-700 dark:text-slate-300 mt-5">Tres de esas historias, desarrolladas con las 3 C:</p>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mt-3">
+                                <div class="p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+                                    <p class="font-bold text-slate-800 dark:text-slate-200">Historia 1 — Registro</p>
+                                    <p class="mt-2 leading-relaxed"><strong>Card:</strong> Como paciente, quiero registrarme online para obtener usuario y clave.</p>
+                                    <p class="mt-2 leading-relaxed"><strong>Conversation:</strong> ¿Qué datos completo? Nombre, DNI, cobertura, correo. ¿Cómo recibo las credenciales? Por correo electrónico.</p>
+                                    <p class="mt-2 leading-relaxed"><strong>Confirmation:</strong> Formulario online de registro · envío de credenciales por correo · cambio de contraseña obligatorio en el primer ingreso.</p>
+                                </div>
+                                <div class="p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+                                    <p class="font-bold text-slate-800 dark:text-slate-200">Historia 5 — Reimpresión de comprobante</p>
+                                    <p class="mt-2 leading-relaxed"><strong>Card:</strong> Como paciente, quiero reimprimir el comprobante de un turno para tenerlo en papel o digital.</p>
+                                    <p class="mt-2 leading-relaxed"><strong>Conversation:</strong> ¿Se puede consultar el historial de turnos? Sí. ¿Se puede previsualizar antes de descargar? Sería útil.</p>
+                                    <p class="mt-2 leading-relaxed"><strong>Confirmation:</strong> Listado de turnos asignados · selección y generación de comprobante · formato PDF descargable e imprimible.</p>
+                                </div>
+                                <div class="p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+                                    <p class="font-bold text-slate-800 dark:text-slate-200">Historia 8 — Listado de secretaría</p>
+                                    <p class="mt-2 leading-relaxed"><strong>Card:</strong> Como secretaria, quiero el listado diario de turnos para organizar la atención médica del día.</p>
+                                    <p class="mt-2 leading-relaxed"><strong>Conversation:</strong> ¿Qué información se muestra? Paciente, hora y médico asignado. ¿En qué formato? PDF.</p>
+                                    <p class="mt-2 leading-relaxed"><strong>Confirmation:</strong> Consulta de turnos por fecha y sector · listado con paciente, hora y médico · opción de imprimir o exportar en PDF.</p>
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+                </section>
+
+                <!-- SÍNTESIS FINAL -->
+                <section data-no-section-index class="bg-slate-900 dark:bg-slate-950 p-6 md:p-8 rounded-xl border border-slate-800 relative overflow-hidden">
+                    <svg class="absolute -right-10 -top-10 w-52 h-52 opacity-[0.06] select-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 2l2.4 7.2H22l-6 4.6 2.3 7.2-6.3-4.5-6.3 4.5 2.3-7.2-6-4.6h7.6z"/></svg>
+                    <div class="flex items-center gap-3 mb-5">
+                        <span class="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-white/10 text-emerald-400 flex-shrink-0">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10Z"/><path d="m9 12 2 2 4-4"/></svg>
+                        </span>
+                        <h2 class="text-lg font-bold text-white">En síntesis: lo que te tiene que quedar de esta clase</h2>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 text-sm text-slate-300">
+                        <div class="flex gap-2"><span class="text-emerald-400 font-bold flex-shrink-0">✓</span><span>Una historia de usuario no reemplaza la conversación: la invita.</span></div>
+                        <div class="flex gap-2"><span class="text-emerald-400 font-bold flex-shrink-0">✓</span><span>El formato "Como / Quiero / Para" siempre apunta al valor, no a la implementación.</span></div>
+                        <div class="flex gap-2"><span class="text-emerald-400 font-bold flex-shrink-0">✓</span><span>Las 3 C (Card, Conversation, Confirmation) son el ciclo de vida completo, no solo la tarjeta.</span></div>
+                        <div class="flex gap-2"><span class="text-emerald-400 font-bold flex-shrink-0">✓</span><span>INVEST es un chequeo de calidad, no una fórmula matemática — si algo falla, se conversa o se parte.</span></div>
+                        <div class="flex gap-2"><span class="text-emerald-400 font-bold flex-shrink-0">✓</span><span>Given–When–Then convierte los criterios de aceptación en escenarios casi listos para testear.</span></div>
+                        <div class="flex gap-2"><span class="text-emerald-400 font-bold flex-shrink-0">✓</span><span>Los Story Points miden tamaño relativo, nunca horas — por eso se estiman en equipo.</span></div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 10: MATERIAL DE CÁTEDRA (PDFs) -->
+                <section id="material-nuevo" class="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-5 mb-6">
+                        <div>
+                            <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 uppercase tracking-wider">Material de cátedra</span>
+                            <h2 class="text-2xl font-bold mt-2"><span class="bg-gradient-to-r from-emerald-600 to-emerald-500 dark:from-emerald-400 dark:to-emerald-400 bg-clip-text text-transparent">10 - Material</span></h2>
+                        </div>
+                    </div>
+
+                    <p class="text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+                        Todo lo de arriba está basado en estas dos presentaciones. Si algo quedó dando vueltas o preferís volver a la fuente original tal como la dio la cátedra, las tenés acá abajo, sin salir de la página.
+                    </p>
+
+                    <!-- Selector de documento -->
+                    <div id="pdf-tabs" class="flex flex-wrap gap-2 mb-4" role="tablist">
+                        <button type="button" data-pdf-target="pdf-panel-hu" class="pdf-tab-btn active-tab flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold border transition-all duration-200 bg-emerald-600 text-white border-emerald-600 shadow-sm" role="tab" aria-selected="true">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+                            Historias de usuario
+                        </button>
+                        <button type="button" data-pdf-target="pdf-panel-agilidad" class="pdf-tab-btn flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold border transition-all duration-200 bg-slate-50 dark:bg-slate-800/60 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800" role="tab" aria-selected="false">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/></svg>
+                            Introducción a la agilidad
+                        </button>
+                    </div>
+
+                    <!-- Panel PDF 1 -->
+                    <div id="pdf-panel-hu" class="pdf-panel">
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-2 px-1">
+                            <p class="text-sm font-semibold text-slate-700 dark:text-slate-300">Historias de usuario</p>
+                            <div class="flex gap-3">
+                                <a href="assets/pdfs/1-presentacion-historias-de-usuario.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-700 dark:text-emerald-400 hover:underline">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                                    Abrir en pestaña nueva
+                                </a>
+                                <a href="assets/pdfs/1-presentacion-historias-de-usuario.pdf" download class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-700 dark:text-emerald-400 hover:underline">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+                                    Descargar
+                                </a>
+                            </div>
+                        </div>
+                        <div class="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-950 shadow-inner">
+                            <iframe
+                                src="assets/pdfs/1-presentacion-historias-de-usuario.pdf"
+                                title="Presentación: Historias de usuario"
+                                class="w-full h-[75vh] min-h-[420px] border-0">
+                                <p class="p-4 text-sm text-slate-600 dark:text-slate-400">
+                                    Tu navegador no puede mostrar el PDF embebido.
+                                    <a class="text-emerald-600 dark:text-emerald-400 underline" href="assets/pdfs/1-presentacion-historias-de-usuario.pdf" target="_blank" rel="noopener">Abrilo en una pestaña nueva</a>.
+                                </p>
+                            </iframe>
+                        </div>
+                    </div>
+
+                    <!-- Panel PDF 2 -->
+                    <div id="pdf-panel-agilidad" class="pdf-panel hidden">
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-2 px-1">
+                            <p class="text-sm font-semibold text-slate-700 dark:text-slate-300">Introducción a la agilidad</p>
+                            <div class="flex gap-3">
+                                <a href="assets/pdfs/2-presentacion-agilidad.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-700 dark:text-emerald-400 hover:underline">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                                    Abrir en pestaña nueva
+                                </a>
+                                <a href="assets/pdfs/2-presentacion-agilidad.pdf" download class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-700 dark:text-emerald-400 hover:underline">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+                                    Descargar
+                                </a>
+                            </div>
+                        </div>
+                        <div class="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-950 shadow-inner">
+                            <iframe
+                                data-src="assets/pdfs/2-presentacion-agilidad.pdf"
+                                title="Presentación: Introducción a la agilidad"
+                                class="w-full h-[75vh] min-h-[420px] border-0">
+                                <p class="p-4 text-sm text-slate-600 dark:text-slate-400">
+                                    Tu navegador no puede mostrar el PDF embebido.
+                                    <a class="text-emerald-600 dark:text-emerald-400 underline" href="assets/pdfs/2-presentacion-agilidad.pdf" target="_blank" rel="noopener">Abrilo en una pestaña nueva</a>.
+                                </p>
+                            </iframe>
+                        </div>
                     </div>
                 </section>
 
@@ -180,17 +611,84 @@
         </div>
     </div>
 
-    <button id="btn-top" class="fixed bottom-6 right-6 z-40 w-12 h-12 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full shadow-lg transition-all duration-300 flex items-center justify-center cursor-pointer" title="Volver al inicio">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
+    <button id="btn-top" class="fixed bottom-6 right-6 z-40 w-12 h-12 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full shadow-lg transition-all duration-300 flex items-center justify-center cursor-pointer" title="Volver al inicio" aria-label="Volver al inicio de la página">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg>
     </button>
 
     <script src="../../component.js"></script>
     <script src="../../index.js"></script>
     <script src="index.js"></script>
 
+    <script>
+        // Barra de progreso de lectura
+        (function () {
+            const bar = document.getElementById('reading-progress-bar');
+            const track = document.getElementById('reading-progress-track');
+            if (!bar) return;
+            const update = () => {
+                const scrollTop = window.scrollY;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+                const clamped = Math.min(100, Math.max(0, pct));
+                bar.style.width = clamped + '%';
+                if (track) track.setAttribute('aria-valuenow', Math.round(clamped));
+            };
+            window.addEventListener('scroll', update, { passive: true });
+            window.addEventListener('resize', update);
+            update();
+        })();
+
+        // Pestañas del visor de PDFs (sección 10 - Material de cátedra)
+        (function () {
+            const tabs = document.querySelectorAll('.pdf-tab-btn');
+            const panels = document.querySelectorAll('.pdf-panel');
+            if (!tabs.length || !panels.length) return;
+
+            function activatePanel(targetId) {
+                panels.forEach(panel => {
+                    const isTarget = panel.id === targetId;
+                    // Se fuerza con la clase Y con el estilo inline, para que no dependa
+                    // de que Tailwind haya generado/aplicado bien la utilidad "hidden".
+                    panel.classList.toggle('hidden', !isTarget);
+                    panel.style.display = isTarget ? '' : 'none';
+
+                    if (isTarget) {
+                        // Carga diferida real por JS: el iframe de la pestaña que aún no se
+                        // abrió no tiene "src" (solo "data-src"), así que nunca descarga el PDF
+                        // hasta que el usuario efectivamente clickea esa pestaña.
+                        const iframe = panel.querySelector('iframe[data-src]');
+                        if (iframe) {
+                            iframe.src = iframe.getAttribute('data-src');
+                            iframe.removeAttribute('data-src');
+                        }
+                    }
+                });
+            }
+
+            tabs.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    tabs.forEach(b => {
+                        b.classList.remove('active-tab', 'bg-emerald-600', 'text-white', 'border-emerald-600', 'shadow-sm');
+                        b.classList.add('bg-slate-50', 'dark:bg-slate-800/60', 'text-slate-600', 'dark:text-slate-300', 'border-slate-200', 'dark:border-slate-700');
+                        b.setAttribute('aria-selected', 'false');
+                    });
+                    btn.classList.add('active-tab', 'bg-emerald-600', 'text-white', 'border-emerald-600', 'shadow-sm');
+                    btn.classList.remove('bg-slate-50', 'dark:bg-slate-800/60', 'text-slate-600', 'dark:text-slate-300', 'border-slate-200', 'dark:border-slate-700');
+                    btn.setAttribute('aria-selected', 'true');
+
+                    activatePanel(btn.getAttribute('data-pdf-target'));
+                });
+            });
+
+            // Estado inicial: asegura que solo el panel marcado como activo se vea al cargar la página
+            const initialActiveBtn = document.querySelector('.pdf-tab-btn.active-tab') || tabs[0];
+            activatePanel(initialActiveBtn.getAttribute('data-pdf-target'));
+        })();
+    </script>
+
 
     <footer class="bg-slate-900 text-slate-400 text-xs text-center p-4 mt-auto border-t border-slate-800">
-        <p>© 2026 - Análisis de Sistemas - Clase 12: Historias de Usuario</p>
+        <p>© 2026 - Análisis de sistemas - Clase 12: Historias de usuario</p>
     </footer>
 </body>
 </html>

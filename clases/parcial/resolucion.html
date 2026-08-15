@@ -216,57 +216,57 @@
 
   <div class="mermaid-wrapper">
     <div class="mermaid">
-      graph TB
-        subgraph "Sistema de Préstamos"
-          CU1[Analizar solicitud de préstamo]
-          CU2[Verificar incobrables]
-          CU3[Solicitar datos del cliente]
-          CU4[Validar ingresos]
-          CU5[Solicitar monto y tipo]
-          CU6[Valuar propiedad]
-          CU7[Calcular CFT]
-          CU8[Generar préstamo preliminar]
-          CU9[Derivar a Responsable de Activas]
-          CU10[Aprobar/Rechazar préstamo]
-          CU11[Registrarse]
-          CU12[Iniciar sesión]
-          CU13[Consultar préstamos]
-          CU14[Registrar reclamo]
-          CU15[Revisar reclamos]
-          CU16[Aprobar/Rechazar reclamo]
-          CU17[Desembolsar fondos]
-          CU18[Autenticarse]
-        end
+      graph LR
+          subgraph "Sistema de Préstamos"
+              CU1((Analizar solicitud de préstamo))
+              CU2((Verificar incobrables))
+              CU3((Solicitar datos del cliente))
+              CU4((Validar ingresos))
+              CU5((Solicitar monto y tipo))
+              CU6((Valuar propiedad))
+              CU7((Calcular CFT))
+              CU8((Generar préstamo preliminar))
+              CU9((Derivar a Responsable de Activas))
+              CU10((Aprobar/Rechazar préstamo))
+              CU11((Registrarse))
+              CU12((Iniciar sesión))
+              CU13((Consultar préstamos))
+              CU14((Registrar reclamo))
+              CU15((Revisar reclamos))
+              CU16((Aprobar/Rechazar reclamo))
+              CU17((Desembolsar fondos))
+              CU18((Autenticarse))
+          end
 
-        AC[Analista de Crédito]
-        C[Cliente]
-        AL[Analista Legal]
-        ST[Supervisor de Tesorería]
-        RA[Responsable de Activas]
+          AC["<b>👤</b><br/>Analista de Crédito"]
+          C["<b>👤</b><br/>Cliente"]
+          AL["<b>👤</b><br/>Analista Legal"]
+          ST["<b>👤</b><br/>Supervisor Tesorería"]
+          RA["<b>👤</b><br/>Responsable Activas"]
 
-        AC --> CU18
-        AC --> CU1
-        CU1 --> CU2
-        CU2 --> CU3
-        CU3 --> CU4
-        CU4 --> CU5
-        CU5 --> CU6
-        CU6 --> CU7
-        CU7 --> CU8
-        CU8 --> CU9
-        CU9 --> CU10
+          AC --> CU18
+          AC --> CU1
+          CU1 --> CU2
+          CU2 --> CU3
+          CU3 --> CU4
+          CU4 --> CU5
+          CU5 --> CU6
+          CU6 --> CU7
+          CU7 --> CU8
+          CU8 --> CU9
+          CU9 --> CU10
 
-        C --> CU11
-        C --> CU12
-        C --> CU13
-        C --> CU14
+          C --> CU11
+          C --> CU12
+          C --> CU13
+          C --> CU14
 
-        AL --> CU15
-        AL --> CU16
+          AL --> CU15
+          AL --> CU16
 
-        ST --> CU17
+          ST --> CU17
 
-        RA --> CU10
+          RA --> CU10
     </div>
   </div>
 
