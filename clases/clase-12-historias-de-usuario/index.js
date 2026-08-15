@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Configurar título en el header dinámico
     const tituloClase = document.getElementById('titulo-clase');
     if (tituloClase) {
-        tituloClase.textContent = 'Clase 12: Historias de Usuario';
+        tituloClase.textContent = 'Clase 12: Historias de usuario';
     }
 
     // Resaltado de navegación activa según scroll

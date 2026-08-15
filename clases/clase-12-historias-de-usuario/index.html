@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Clase 12: Historias de Usuario - Metodologías Ágiles UTN.BA">
+    <meta name="theme-color" content="#059669">
+    <meta property="og:title" content="Clase 12: Historias de usuario | Análisis de sistemas">
+    <meta property="og:description" content="Jerarquía de requerimientos, las 3 C, INVEST y criterios de aceptación — todo lo que necesitás para escribir buenas historias de usuario.">
+    <meta property="og:type" content="article">
     <title>Clase 12: Historias de usuario | Análisis de sistemas</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -15,9 +19,13 @@
 </head>
 <body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-200">
 
+    <!-- Enlace de accesibilidad: permite a usuarios de teclado/lector de pantalla saltar
+         directo al contenido, sin tener que tabular por todo el menú de navegación -->
+    <a href="#contenido-principal" class="skip-link">Saltar al contenido</a>
+
     <!-- BARRA DE PROGRESO DE LECTURA -->
-    <div id="reading-progress-track" class="fixed top-0 left-0 w-full h-1 z-[60] bg-slate-200/60 dark:bg-slate-800/60">
-        <div id="reading-progress-bar" class="h-full w-0 bg-gradient-to-r from-emerald-500 via-teal-500 to-sky-500 transition-[width] duration-150 ease-out"></div>
+    <div id="reading-progress-track" class="fixed top-0 left-0 w-full h-1 z-[60] bg-slate-200/60 dark:bg-slate-800/60" role="progressbar" aria-label="Progreso de lectura" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <div id="reading-progress-bar" class="h-full w-0 bg-gradient-to-r from-emerald-500 via-emerald-500 to-emerald-500 transition-[width] duration-150 ease-out"></div>
     </div>
 
     <div id="header-container"></div>
@@ -27,13 +35,13 @@
         <div class="max-w-7xl mx-auto w-full p-4 md:p-6 grid grid-cols-1 lg:grid-cols-4 gap-6 flex-1">
 
             <!-- SIDEBAR GLOBAL DINÁMICO -->
-            <nav id="sidebar-container" class="lg:col-span-1 space-y-2"></nav>
+            <nav id="sidebar-container" class="lg:col-span-1 space-y-2" aria-label="Navegación de secciones de la clase"></nav>
 
             <!-- CONTENIDO PRINCIPAL -->
-            <main class="lg:col-span-3 space-y-8">
+            <main id="contenido-principal" class="lg:col-span-3 space-y-8">
 
                 <!-- HERO TITLE -->
-                <div class="bg-gradient-to-r from-emerald-600 to-teal-700 rounded-2xl p-7 md:p-9 text-white shadow-lg relative overflow-hidden">
+                <div class="bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-2xl p-7 md:p-9 text-white shadow-lg relative overflow-hidden">
                     <svg class="absolute -right-8 -bottom-10 w-56 h-56 opacity-[0.12] select-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
                     <span class="px-2.5 py-1 text-[10px] font-black uppercase tracking-wider bg-white/20 rounded-md backdrop-blur-md">Unidad 12</span>
                     <h1 class="text-3xl md:text-4xl font-extrabold mt-3 leading-tight">Historias de Usuario</h1>
@@ -46,18 +54,16 @@
                         <a href="#invest" class="px-3 py-1.5 text-xs font-semibold bg-white/15 hover:bg-white/25 rounded-full backdrop-blur-md transition-colors border border-white/20">6. INVEST</a>
                         <a href="#criterios-aceptacion" class="px-3 py-1.5 text-xs font-semibold bg-white/15 hover:bg-white/25 rounded-full backdrop-blur-md transition-colors border border-white/20">7. Criterios de aceptación</a>
                         <a href="#ejercicios" class="px-3 py-1.5 text-xs font-semibold bg-white/15 hover:bg-white/25 rounded-full backdrop-blur-md transition-colors border border-white/20">9. Ejercicios</a>
+                        <a href="#material-nuevo" class="px-3 py-1.5 text-xs font-semibold bg-white/15 hover:bg-white/25 rounded-full backdrop-blur-md transition-colors border border-white/20">10. Material (PDF)</a>
                     </div>
                 </div>
 
                 <!-- SECCIÓN 0: JERARQUÍA DE REQUERIMIENTOS ÁGILES -->
                 <section id="jerarquia" class="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
-                    <div class="flex items-start gap-4 border-b border-slate-100 dark:border-slate-800 pb-5 mb-6">
-                        <span class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-rose-100 dark:bg-rose-950 text-rose-600 dark:text-rose-400 flex-shrink-0">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>
-                        </span>
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-5 mb-6">
                         <div>
-                            <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-rose-100 dark:bg-rose-950 text-rose-800 dark:text-rose-300 uppercase tracking-wider">Panorama general</span>
-                            <h2 class="text-2xl font-bold mt-2"><span class="bg-gradient-to-r from-rose-600 to-orange-500 dark:from-rose-400 dark:to-orange-400 bg-clip-text text-transparent">1 - Antes de la historia: la jerarquía de requerimientos ágiles</span></h2>
+                            <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 uppercase tracking-wider">Panorama general</span>
+                            <h2 class="text-2xl font-bold mt-2"><span class="bg-gradient-to-r from-emerald-600 to-emerald-500 dark:from-emerald-400 dark:to-emerald-400 bg-clip-text text-transparent">1 - Antes de la historia: la jerarquía de requerimientos ágiles</span></h2>
                         </div>
                     </div>
 
@@ -68,19 +74,19 @@
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
-                                <span class="font-black text-rose-600 dark:text-rose-400 text-sm">Strategic Theme (Iniciativa)</span>
+                                <span class="font-black text-emerald-600 dark:text-emerald-400 text-sm">Strategic Theme (Iniciativa)</span>
                                 <p class="text-slate-600 dark:text-slate-400 mt-1.5 text-sm leading-relaxed">Un objetivo estratégico, del tamaño de la organización entera. <span class="italic">Ej.: mejorar la experiencia académica.</span></p>
                             </div>
                             <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
-                                <span class="font-black text-rose-600 dark:text-rose-400 text-sm">Epic (Épica)</span>
+                                <span class="font-black text-emerald-600 dark:text-emerald-400 text-sm">Epic (Épica)</span>
                                 <p class="text-slate-600 dark:text-slate-400 mt-1.5 text-sm leading-relaxed">Una gran funcionalidad que empieza a darle forma a ese objetivo. <span class="italic">Ej.: acceso online a información académica.</span></p>
                             </div>
                             <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
-                                <span class="font-black text-rose-600 dark:text-rose-400 text-sm">Feature</span>
+                                <span class="font-black text-emerald-600 dark:text-emerald-400 text-sm">Feature</span>
                                 <p class="text-slate-600 dark:text-slate-400 mt-1.5 text-sm leading-relaxed">Una funcionalidad concreta, ya reconocible como algo que se puede construir. <span class="italic">Ej.: consulta de calificaciones.</span></p>
                             </div>
                             <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
-                                <span class="font-black text-rose-600 dark:text-rose-400 text-sm">User story (Historia de usuario)</span>
+                                <span class="font-black text-emerald-600 dark:text-emerald-400 text-sm">User story (Historia de usuario)</span>
                                 <p class="text-slate-600 dark:text-slate-400 mt-1.5 text-sm leading-relaxed">La unidad mínima de valor: lo más chico que se puede entregar y que igual le sirve a alguien. <span class="italic">Ej.: recibir un aviso por mail cuando se publica una nota.</span></p>
                             </div>
                         </div>
@@ -92,31 +98,31 @@
                         <div class="p-5 bg-slate-900 rounded-xl text-slate-200">
                             <p class="font-bold text-slate-100 mb-3">¿Por qué descomponer en niveles?</p>
                             <ul class="space-y-2 text-slate-300 text-sm">
-                                <li class="flex gap-2"><span class="text-rose-400 font-bold">·</span> Se trabaja con distintos niveles de detalle según el avance del proyecto.</li>
-                                <li class="flex gap-2"><span class="text-rose-400 font-bold">·</span> Las épicas representan la visión general: no hace falta mucho detalle al principio.</li>
-                                <li class="flex gap-2"><span class="text-rose-400 font-bold">·</span> A medida que se avanza, se refinan en features e historias de usuario manejables.</li>
-                                <li class="flex gap-2"><span class="text-rose-400 font-bold">·</span> Esto permite planificar de forma progresiva, con menor carga documental y más agilidad.</li>
+                                <li class="flex gap-2"><span class="text-emerald-400 font-bold">·</span> Se trabaja con distintos niveles de detalle según el avance del proyecto.</li>
+                                <li class="flex gap-2"><span class="text-emerald-400 font-bold">·</span> Las épicas representan la visión general: no hace falta mucho detalle al principio.</li>
+                                <li class="flex gap-2"><span class="text-emerald-400 font-bold">·</span> A medida que se avanza, se refinan en features e historias de usuario manejables.</li>
+                                <li class="flex gap-2"><span class="text-emerald-400 font-bold">·</span> Esto permite planificar de forma progresiva, con menor carga documental y más agilidad.</li>
                             </ul>
-                            <p class="italic text-slate-400 mt-4 text-sm border-l-2 border-rose-500 pl-3">"The objective is vision, not specificity." — Dean Leffingwell, <span class="not-italic">Agile Software Requirements</span></p>
+                            <p class="italic text-slate-400 mt-4 text-sm border-l-2 border-emerald-500 pl-3">"The objective is vision, not specificity." — Dean Leffingwell, <span class="not-italic">Agile Software Requirements</span></p>
                         </div>
 
                         <details class="group bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800 p-5 open:bg-white dark:open:bg-slate-900 transition-colors">
                             <summary class="cursor-pointer font-bold text-slate-800 dark:text-slate-200 text-base flex items-center gap-2">
-                                <svg class="w-4 h-4 text-rose-500 transition-transform group-open:rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                                <svg class="w-4 h-4 text-emerald-500 transition-transform group-open:rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
                                 Recorrido completo: de una iniciativa a sus historias de usuario
                             </summary>
                             <div class="mt-4 space-y-3 text-sm">
                                 <div class="p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
-                                    <span class="font-bold text-rose-600 dark:text-rose-400">Iniciativa:</span> Modernización de servicios académicos digitales
+                                    <span class="font-bold text-emerald-600 dark:text-emerald-400">Iniciativa:</span> Modernización de servicios académicos digitales
                                     <p class="text-slate-500 dark:text-slate-400 mt-1.5">Objetivo: brindar a los estudiantes una experiencia académica más ágil, accesible y autónoma, digitalizando inscripciones, consultas, notificaciones y gestión personal.</p>
                                     <p class="text-slate-500 dark:text-slate-400 mt-1.5">Épicas: Autogestión académica · Rediseño de la experiencia digital del estudiante · Integración con sistemas externos · Comunicación institucional automatizada.</p>
                                 </div>
                                 <div class="p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
-                                    <span class="font-bold text-rose-600 dark:text-rose-400">Épica:</span> Plataforma de autogestión académica
+                                    <span class="font-bold text-emerald-600 dark:text-emerald-400">Épica:</span> Plataforma de autogestión académica
                                     <p class="text-slate-500 dark:text-slate-400 mt-1.5">Hipótesis de valor: mejora la experiencia estudiantil y reduce la carga administrativa.</p>
                                 </div>
                                 <div class="p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
-                                    <span class="font-bold text-rose-600 dark:text-rose-400">Feature #1:</span> Consulta de calificaciones
+                                    <span class="font-bold text-emerald-600 dark:text-emerald-400">Feature #1:</span> Consulta de calificaciones
                                     <p class="text-slate-500 dark:text-slate-400 mt-1.5">Criterios de aceptación: mostrar materias cursadas, notas parciales y finales; incluir descarga en PDF.</p>
                                     <p class="mt-2.5 font-semibold text-slate-700 dark:text-slate-300">Se parte en historias de usuario:</p>
                                     <ul class="space-y-1 text-slate-500 dark:text-slate-400 mt-1">
@@ -125,7 +131,7 @@
                                     </ul>
                                 </div>
                                 <div class="p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
-                                    <span class="font-bold text-rose-600 dark:text-rose-400">Feature #2:</span> Gestión de inscripciones
+                                    <span class="font-bold text-emerald-600 dark:text-emerald-400">Feature #2:</span> Gestión de inscripciones
                                     <p class="mt-2.5 font-semibold text-slate-700 dark:text-slate-300">Se parte en historias de usuario:</p>
                                     <ul class="space-y-1 text-slate-500 dark:text-slate-400 mt-1">
                                         <li>· Como estudiante, quiero inscribirme a materias desde la web, para no tener que ir a la facultad.</li>
@@ -136,12 +142,12 @@
                             </div>
                         </details>
 
-                        <div class="p-5 bg-sky-50/60 dark:bg-sky-950/20 rounded-xl border border-sky-200 dark:border-sky-900/40 flex gap-4">
-                            <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-sky-100 dark:bg-sky-900/60 text-sky-600 dark:text-sky-400 flex-shrink-0">
+                        <div class="p-5 bg-emerald-50/60 dark:bg-emerald-950/20 rounded-xl border border-emerald-200 dark:border-emerald-900/40 flex gap-4">
+                            <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-900/60 text-emerald-600 dark:text-emerald-400 flex-shrink-0">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
                             </span>
                             <div>
-                                <strong class="text-sky-900 dark:text-sky-300 text-base">¿Qué es un Product Backlog Item (PBI)?</strong>
+                                <strong class="text-emerald-900 dark:text-emerald-300 text-base">¿Qué es un Product Backlog Item (PBI)?</strong>
                                 <p class="text-slate-700 dark:text-slate-300 mt-1.5 text-sm leading-relaxed">Es el nombre genérico que reciben todos estos niveles cuando entran al backlog: una unidad de valor que representa algo que el sistema debe hacer o entregar. Puede redactarse con distintas técnicas —requerimientos, casos de uso, escenarios, historias de usuario— pero siempre debe tener al menos tres cosas: una <strong>descripción</strong>, una <strong>estimación</strong> y un <strong>orden</strong> respecto a los demás ítems del backlog. En la práctica, el formato más usado para escribirlo es, justamente, la historia de usuario.</p>
                             </div>
                         </div>
@@ -150,13 +156,10 @@
 
                 <!-- SECCIÓN 1: CONCEPTO Y FILOSOFÍA -->
                 <section id="concepto" class="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
-                    <div class="flex items-start gap-4 border-b border-slate-100 dark:border-slate-800 pb-5 mb-6">
-                        <span class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex-shrink-0">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
-                        </span>
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-5 mb-6">
                         <div>
                             <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 uppercase tracking-wider">Fundamento ágil</span>
-                            <h2 class="text-2xl font-bold mt-2"><span class="bg-gradient-to-r from-emerald-600 to-teal-500 dark:from-emerald-400 dark:to-teal-400 bg-clip-text text-transparent">2 - ¿Qué es, en el fondo, una Historia de Usuario?</span></h2>
+                            <h2 class="text-2xl font-bold mt-2"><span class="bg-gradient-to-r from-emerald-600 to-emerald-500 dark:from-emerald-400 dark:to-emerald-400 bg-clip-text text-transparent">2 - ¿Qué es, en el fondo, una Historia de Usuario?</span></h2>
                         </div>
                     </div>
 
@@ -164,6 +167,9 @@
                         <p>
                             Una <strong>historia de usuario (HU)</strong> es una descripción corta, clara y sencilla de una necesidad, contada en el lenguaje del propio usuario. No es un contrato ni una especificación cerrada: es, como la definió Ron Jeffries, una <em>"invitación a la conversación"</em> entre quien conoce el problema —el Product Owner— y quien va a construir la solución —el equipo de desarrollo—.
                         </p>
+
+                        <img src="assets/images/historia-del-usuario.png" alt="Historia de usuario" class="rounded-xl shadow-lg border border-slate-200 dark:border-slate-800">
+
                         <p>
                             Esa diferencia de espíritu es lo que más cuesta internalizar cuando se viene de escribir requerimientos tradicionales. Un requerimiento intenta cerrar toda ambigüedad por escrito, de una sola vez. Una historia de usuario acepta que va a quedar información sin decir, a propósito, porque esa información se termina de completar hablando, no documentando.
                         </p>
@@ -193,13 +199,10 @@
 
                 <!-- SECCIÓN 1B: HU vs REQUERIMIENTO -->
                 <section id="vs-requerimientos" class="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
-                    <div class="flex items-start gap-4 border-b border-slate-100 dark:border-slate-800 pb-5 mb-6">
-                        <span class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-amber-100 dark:bg-amber-950 text-amber-600 dark:text-amber-400 flex-shrink-0">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h3a2 2 0 0 1 2 2v7"/><path d="M11 18H8a2 2 0 0 1-2-2V9"/></svg>
-                        </span>
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-5 mb-6">
                         <div>
-                            <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 uppercase tracking-wider">Comparativa</span>
-                            <h2 class="text-2xl font-bold mt-2"><span class="bg-gradient-to-r from-amber-600 to-orange-500 dark:from-amber-400 dark:to-orange-400 bg-clip-text text-transparent">3 - Historia de Usuario ≠ Requerimiento</span></h2>
+                            <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 uppercase tracking-wider">Comparativa</span>
+                            <h2 class="text-2xl font-bold mt-2"><span class="bg-gradient-to-r from-emerald-600 to-emerald-500 dark:from-emerald-400 dark:to-emerald-400 bg-clip-text text-transparent">3 - Historia de usuario ≠ requerimiento</span></h2>
                         </div>
                     </div>
 
@@ -212,7 +215,7 @@
                             <thead>
                                 <tr class="text-left bg-slate-50 dark:bg-slate-800/60">
                                     <th class="py-3 px-4 font-bold text-slate-700 dark:text-slate-300"></th>
-                                    <th class="py-3 px-4 font-bold text-emerald-700 dark:text-emerald-400">Historia de Usuario</th>
+                                    <th class="py-3 px-4 font-bold text-emerald-700 dark:text-emerald-400">Historia de usuario</th>
                                     <th class="py-3 px-4 font-bold text-slate-600 dark:text-slate-400">Requerimiento tradicional</th>
                                 </tr>
                             </thead>
@@ -231,13 +234,10 @@
 
                 <!-- SECCIÓN 2: FORMATO CANÓNICO (3 C) -->
                 <section id="formato" class="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
-                    <div class="flex items-start gap-4 border-b border-slate-100 dark:border-slate-800 pb-5 mb-6">
-                        <span class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-sky-100 dark:bg-sky-950 text-sky-600 dark:text-sky-400 flex-shrink-0">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="7" x="3" y="3" rx="1"/><rect width="9" height="7" x="3" y="14" rx="1"/><rect width="5" height="7" x="16" y="14" rx="1"/></svg>
-                        </span>
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-5 mb-6">
                         <div>
-                            <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-sky-100 dark:bg-sky-950 text-sky-800 dark:text-sky-300 uppercase tracking-wider">Estructura estándar</span>
-                            <h2 class="text-2xl font-bold mt-2"><span class="bg-gradient-to-r from-sky-600 to-blue-500 dark:from-sky-400 dark:to-blue-400 bg-clip-text text-transparent">4 - El formato canónico y las 3 C</span></h2>
+                            <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 uppercase tracking-wider">Estructura estándar</span>
+                            <h2 class="text-2xl font-bold mt-2"><span class="bg-gradient-to-r from-emerald-600 to-emerald-500 dark:from-emerald-400 dark:to-emerald-400 bg-clip-text text-transparent">4 - El formato canónico y las 3 C</span></h2>
                         </div>
                     </div>
 
@@ -257,7 +257,7 @@
                                 <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 mb-2">
                                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>
                                 </span>
-                                <p class="font-bold text-slate-900 dark:text-slate-100 text-sm">1. Card (Tarjeta)</p>
+                                <p class="font-bold text-slate-900 dark:text-slate-100 text-sm">1. Card (tarjeta)</p>
                                 <p class="text-slate-600 dark:text-slate-400 mt-1 text-sm leading-relaxed">Debe ser tan atómica que se pueda escribir en una tarjeta física del tablero: una declaración breve, clara y comprensible.</p>
                             </div>
                             <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800">
@@ -280,13 +280,10 @@
 
                 <!-- SECCIÓN 2B: MÁS EJEMPLOS DE LAS 3 C -->
                 <section id="ejemplos-3cs" class="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
-                    <div class="flex items-start gap-4 border-b border-slate-100 dark:border-slate-800 pb-5 mb-6">
-                        <span class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-sky-100 dark:bg-sky-950 text-sky-600 dark:text-sky-400 flex-shrink-0">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/></svg>
-                        </span>
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-5 mb-6">
                         <div>
-                            <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-sky-100 dark:bg-sky-950 text-sky-800 dark:text-sky-300 uppercase tracking-wider">En práctica</span>
-                            <h2 class="text-2xl font-bold mt-2"><span class="bg-gradient-to-r from-cyan-600 to-sky-500 dark:from-cyan-400 dark:to-sky-400 bg-clip-text text-transparent">5 - Las 3 C en acción: cuatro ejemplos resueltos</span></h2>
+                            <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 uppercase tracking-wider">En práctica</span>
+                            <h2 class="text-2xl font-bold mt-2"><span class="bg-gradient-to-r from-emerald-600 to-emerald-500 dark:from-emerald-400 dark:to-emerald-400 bg-clip-text text-transparent">5 - Las 3 C en acción: cuatro ejemplos resueltos</span></h2>
                         </div>
                     </div>
 
@@ -294,17 +291,17 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                         <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800 space-y-2.5">
-                            <p class="font-bold text-slate-800 dark:text-slate-200 leading-relaxed"><span class="text-sky-500">Card —</span> Como comprador, quiero pagar con tarjeta de crédito para evitar usar efectivo.</p>
+                            <p class="font-bold text-slate-800 dark:text-slate-200 leading-relaxed"><span class="text-emerald-500">Card —</span> Como comprador, quiero pagar con tarjeta de crédito para evitar usar efectivo.</p>
                             <p class="leading-relaxed"><span class="font-semibold text-slate-700 dark:text-slate-300">Conversation:</span> ¿Se valida el límite de la tarjeta antes de autorizar? → Sí, a través del gateway del operador de la tarjeta.</p>
                             <p class="leading-relaxed"><span class="font-semibold text-slate-700 dark:text-slate-300">Confirmation:</span> Aceptar Visa y Mastercard · la transacción no debe demorar más de 5 segundos · mostrar mensaje de confirmación · registrar la operación en el historial.</p>
                         </div>
                         <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800 space-y-2.5">
-                            <p class="font-bold text-slate-800 dark:text-slate-200 leading-relaxed"><span class="text-sky-500">Card —</span> Como cliente del banco, quiero retirar dinero de mi cuenta para hacer pagos en efectivo.</p>
+                            <p class="font-bold text-slate-800 dark:text-slate-200 leading-relaxed"><span class="text-emerald-500">Card —</span> Como cliente del banco, quiero retirar dinero de mi cuenta para hacer pagos en efectivo.</p>
                             <p class="leading-relaxed"><span class="font-semibold text-slate-700 dark:text-slate-300">Conversation:</span> ¿Existe un máximo por transacción? → Sí, $200 por transacción y $1.000 por día.</p>
                             <p class="leading-relaxed"><span class="font-semibold text-slate-700 dark:text-slate-300">Confirmation:</span> Poder hacerlo en cualquier sucursal del banco · el saldo debe quedar actualizado · enviar correo con el saldo actualizado.</p>
                         </div>
                         <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800 space-y-2.5 md:col-span-2">
-                            <p class="font-bold text-slate-800 dark:text-slate-200 leading-relaxed"><span class="text-sky-500">Card —</span> Como consumidor, quiero ver mi consumo diario de energía para poder reducir mis costos y uso energético.</p>
+                            <p class="font-bold text-slate-800 dark:text-slate-200 leading-relaxed"><span class="text-emerald-500">Card —</span> Como consumidor, quiero ver mi consumo diario de energía para poder reducir mis costos y uso energético.</p>
                             <p class="leading-relaxed"><span class="font-semibold text-slate-700 dark:text-slate-300">Conversation:</span> ¿Qué información se necesita ver? → Consumo diario en kWh en un gráfico de barras. ¿Con qué frecuencia se actualizan los datos? → Una vez por día, con datos del día anterior.</p>
                             <p class="leading-relaxed"><span class="font-semibold text-slate-700 dark:text-slate-300">Confirmation:</span> Poder acceder desde cualquier dispositivo con conexión · visualizar el consumo diario de los últimos 45 días.</p>
                         </div>
@@ -325,13 +322,10 @@
 
                 <!-- SECCIÓN 3: CRITERIOS INVEST -->
                 <section id="invest" class="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
-                    <div class="flex items-start gap-4 border-b border-slate-100 dark:border-slate-800 pb-5 mb-6">
-                        <span class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex-shrink-0">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
-                        </span>
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-5 mb-6">
                         <div>
-                            <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-indigo-100 dark:bg-indigo-950 text-indigo-800 dark:text-indigo-300 uppercase tracking-wider">Calidad de requisitos</span>
-                            <h2 class="text-2xl font-bold mt-2"><span class="bg-gradient-to-r from-indigo-600 to-violet-500 dark:from-indigo-400 dark:to-violet-400 bg-clip-text text-transparent">6 - Criterios de calidad INVEST</span></h2>
+                            <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 uppercase tracking-wider">Calidad de requisitos</span>
+                            <h2 class="text-2xl font-bold mt-2"><span class="bg-gradient-to-r from-emerald-600 to-emerald-500 dark:from-emerald-400 dark:to-emerald-400 bg-clip-text text-transparent">6 - Criterios de calidad INVEST</span></h2>
                         </div>
                     </div>
 
@@ -341,32 +335,32 @@
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
-                            <span class="font-black text-indigo-600 dark:text-indigo-400 text-sm">I · Independent</span>
+                            <span class="font-black text-emerald-600 dark:text-emerald-400 text-sm">I · Independent</span>
                             <p class="text-slate-600 dark:text-slate-400 mt-1.5 text-sm leading-relaxed">Independiente de otras historias, para poder priorizarla y entregarla sin esperar a que otra termine.</p>
                         </div>
                         <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
-                            <span class="font-black text-indigo-600 dark:text-indigo-400 text-sm">N · Negotiable</span>
+                            <span class="font-black text-emerald-600 dark:text-emerald-400 text-sm">N · Negotiable</span>
                             <p class="text-slate-600 dark:text-slate-400 mt-1.5 text-sm leading-relaxed">Negociable entre el Product Owner y el equipo — no es un contrato cerrado, sino un punto de partida.</p>
                         </div>
                         <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
-                            <span class="font-black text-indigo-600 dark:text-indigo-400 text-sm">V · Valuable</span>
+                            <span class="font-black text-emerald-600 dark:text-emerald-400 text-sm">V · Valuable</span>
                             <p class="text-slate-600 dark:text-slate-400 mt-1.5 text-sm leading-relaxed">Debe aportar un valor concreto y reconocible para el usuario o el negocio, nunca solo trabajo técnico interno.</p>
                         </div>
                         <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
-                            <span class="font-black text-indigo-600 dark:text-indigo-400 text-sm">E · Estimable</span>
+                            <span class="font-black text-emerald-600 dark:text-emerald-400 text-sm">E · Estimable</span>
                             <p class="text-slate-600 dark:text-slate-400 mt-1.5 text-sm leading-relaxed">El equipo tiene que poder estimar su tamaño o esfuerzo — si no puede, algo en la historia todavía no está claro.</p>
                         </div>
                         <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
-                            <span class="font-black text-indigo-600 dark:text-indigo-400 text-sm">S · Small</span>
+                            <span class="font-black text-emerald-600 dark:text-emerald-400 text-sm">S · Small</span>
                             <p class="text-slate-600 dark:text-slate-400 mt-1.5 text-sm leading-relaxed">Suficientemente pequeña como para completarse dentro de un único sprint.</p>
                         </div>
                         <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
-                            <span class="font-black text-indigo-600 dark:text-indigo-400 text-sm">T · Testable</span>
+                            <span class="font-black text-emerald-600 dark:text-emerald-400 text-sm">T · Testable</span>
                             <p class="text-slate-600 dark:text-slate-400 mt-1.5 text-sm leading-relaxed">Verificable mediante pruebas o criterios de aceptación claros que digan cuándo está realmente hecha.</p>
                         </div>
                     </div>
 
-                    <div class="mt-5 p-5 bg-indigo-50/50 dark:bg-indigo-950/20 rounded-xl border border-indigo-200 dark:border-indigo-900/40">
+                    <div class="mt-5 p-5 bg-emerald-50/50 dark:bg-emerald-950/20 rounded-xl border border-emerald-200 dark:border-emerald-900/40">
                         <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed"><strong>Una pista útil:</strong> si una historia no es Estimable, casi siempre es porque es demasiado grande, o porque al equipo le falta conocimiento funcional o técnico para dimensionarla. En ese caso, el problema no se resuelve estimando "a ojo" — se resuelve conversando un poco más, o partiendo la historia en otras más chicas.</p>
                     </div>
 
@@ -374,25 +368,22 @@
                         <p class="font-bold text-slate-800 dark:text-slate-200 text-sm mb-3">INVEST aplicado a una historia real</p>
                         <p class="text-sm text-slate-600 dark:text-slate-400 italic leading-relaxed mb-3">"Como estudiante, quiero recibir notificaciones cuando se publiquen mis notas, para estar al tanto de los resultados de las cursadas."</p>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-sm">
-                            <p class="text-slate-600 dark:text-slate-400"><strong class="text-indigo-600 dark:text-indigo-400">Independiente:</strong> no depende de otros módulos; se puede desarrollar y probar aparte.</p>
-                            <p class="text-slate-600 dark:text-slate-400"><strong class="text-indigo-600 dark:text-indigo-400">Negociable:</strong> se puede acordar si el mail se envía al instante o al finalizar el día.</p>
-                            <p class="text-slate-600 dark:text-slate-400"><strong class="text-indigo-600 dark:text-indigo-400">Valiosa:</strong> evita que el estudiante tenga que entrar a revisar sus notas varias veces.</p>
-                            <p class="text-slate-600 dark:text-slate-400"><strong class="text-indigo-600 dark:text-indigo-400">Estimable:</strong> la funcionalidad es concreta — detectar la carga de una nota y enviar un mail.</p>
-                            <p class="text-slate-600 dark:text-slate-400"><strong class="text-indigo-600 dark:text-indigo-400">Pequeña:</strong> se puede entregar en un solo sprint, como historia puntual.</p>
-                            <p class="text-slate-600 dark:text-slate-400"><strong class="text-indigo-600 dark:text-indigo-400">Testeable:</strong> se prueba cargando una nota y verificando que el mail llegue.</p>
+                            <p class="text-slate-600 dark:text-slate-400"><strong class="text-emerald-600 dark:text-emerald-400">Independiente:</strong> no depende de otros módulos; se puede desarrollar y probar aparte.</p>
+                            <p class="text-slate-600 dark:text-slate-400"><strong class="text-emerald-600 dark:text-emerald-400">Negociable:</strong> se puede acordar si el mail se envía al instante o al finalizar el día.</p>
+                            <p class="text-slate-600 dark:text-slate-400"><strong class="text-emerald-600 dark:text-emerald-400">Valiosa:</strong> evita que el estudiante tenga que entrar a revisar sus notas varias veces.</p>
+                            <p class="text-slate-600 dark:text-slate-400"><strong class="text-emerald-600 dark:text-emerald-400">Estimable:</strong> la funcionalidad es concreta — detectar la carga de una nota y enviar un mail.</p>
+                            <p class="text-slate-600 dark:text-slate-400"><strong class="text-emerald-600 dark:text-emerald-400">Pequeña:</strong> se puede entregar en un solo sprint, como historia puntual.</p>
+                            <p class="text-slate-600 dark:text-slate-400"><strong class="text-emerald-600 dark:text-emerald-400">Testeable:</strong> se prueba cargando una nota y verificando que el mail llegue.</p>
                         </div>
                     </div>
                 </section>
 
                 <!-- SECCIÓN 4: CRITERIOS DE ACEPTACIÓN -->
                 <section id="criterios-aceptacion" class="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
-                    <div class="flex items-start gap-4 border-b border-slate-100 dark:border-slate-800 pb-5 mb-6">
-                        <span class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-teal-100 dark:bg-teal-950 text-teal-600 dark:text-teal-400 flex-shrink-0">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/></svg>
-                        </span>
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-5 mb-6">
                         <div>
-                            <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-teal-100 dark:bg-teal-950 text-teal-800 dark:text-teal-300 uppercase tracking-wider">BDD & escenarios</span>
-                            <h2 class="text-2xl font-bold mt-2"><span class="bg-gradient-to-r from-teal-600 to-emerald-500 dark:from-teal-400 dark:to-emerald-400 bg-clip-text text-transparent">7 - Criterios de aceptación: Dado — Cuando — Entonces</span></h2>
+                            <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 uppercase tracking-wider">BDD & escenarios</span>
+                            <h2 class="text-2xl font-bold mt-2"><span class="bg-gradient-to-r from-emerald-600 to-emerald-500 dark:from-emerald-400 dark:to-emerald-400 bg-clip-text text-transparent">7 - Criterios de aceptación: Dado — Cuando — Entonces</span></h2>
                         </div>
                     </div>
 
@@ -401,7 +392,7 @@
                     </p>
 
                     <div class="p-5 bg-slate-50 dark:bg-slate-950 rounded-xl border border-slate-200 dark:border-slate-800 font-mono text-sm text-slate-700 dark:text-slate-300 space-y-2.5">
-                        <div><strong class="text-sky-500">Escenario 1:</strong> Pago exitoso con tarjeta de crédito</div>
+                        <div><strong class="text-emerald-500">Escenario 1:</strong> Pago exitoso con tarjeta de crédito</div>
                         <div><span class="text-purple-400 font-bold">DADO</span> que el cliente tiene una tarjeta válida con saldo suficiente</div>
                         <div><span class="text-amber-400 font-bold">CUANDO</span> hace clic en "Confirmar Compra"</div>
                         <div><span class="text-emerald-400 font-bold">ENTONCES</span> el sistema emite el comprobante y envía un correo de confirmación.</div>
@@ -412,13 +403,10 @@
 
                 <!-- SECCIÓN 5: ESTIMACIÓN -->
                 <section id="estimacion" class="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
-                    <div class="flex items-start gap-4 border-b border-slate-100 dark:border-slate-800 pb-5 mb-6">
-                        <span class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-purple-100 dark:bg-purple-950 text-purple-600 dark:text-purple-400 flex-shrink-0">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
-                        </span>
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-5 mb-6">
                         <div>
-                            <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-purple-100 dark:bg-purple-950 text-purple-800 dark:text-purple-300 uppercase tracking-wider">Métricas ágiles</span>
-                            <h2 class="text-2xl font-bold mt-2"><span class="bg-gradient-to-r from-purple-600 to-fuchsia-500 dark:from-purple-400 dark:to-fuchsia-400 bg-clip-text text-transparent">8 - Estimación mediante Story Points</span></h2>
+                            <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 uppercase tracking-wider">Métricas ágiles</span>
+                            <h2 class="text-2xl font-bold mt-2"><span class="bg-gradient-to-r from-emerald-600 to-emerald-500 dark:from-emerald-400 dark:to-emerald-400 bg-clip-text text-transparent">8 - Estimación mediante Story Points</span></h2>
                         </div>
                     </div>
 
@@ -434,13 +422,10 @@
 
                 <!-- SECCIÓN 6: EJERCICIOS PRÁCTICOS -->
                 <section id="ejercicios" class="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
-                    <div class="flex items-start gap-4 border-b border-slate-100 dark:border-slate-800 pb-5 mb-6">
-                        <span class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-rose-100 dark:bg-rose-950 text-rose-600 dark:text-rose-400 flex-shrink-0">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg>
-                        </span>
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-5 mb-6">
                         <div>
-                            <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-rose-100 dark:bg-rose-950 text-rose-800 dark:text-rose-300 uppercase tracking-wider">Manos a la obra</span>
-                            <h2 class="text-2xl font-bold mt-2"><span class="bg-gradient-to-r from-rose-600 to-pink-500 dark:from-rose-400 dark:to-pink-400 bg-clip-text text-transparent">9 - Ejercicios prácticos</span></h2>
+                            <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 uppercase tracking-wider">Manos a la obra</span>
+                            <h2 class="text-2xl font-bold mt-2"><span class="bg-gradient-to-r from-emerald-600 to-emerald-500 dark:from-emerald-400 dark:to-emerald-400 bg-clip-text text-transparent">9 - Ejercicios prácticos</span></h2>
                         </div>
                     </div>
 
@@ -452,7 +437,7 @@
                         <!-- Ejercicio 1 -->
                         <details class="group bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800 p-5 open:bg-white dark:open:bg-slate-900 transition-colors">
                             <summary class="cursor-pointer font-bold text-slate-800 dark:text-slate-200 text-base flex items-center gap-2">
-                                <svg class="w-4 h-4 text-rose-500 transition-transform group-open:rotate-90 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                                <svg class="w-4 h-4 text-emerald-500 transition-transform group-open:rotate-90 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
                                 Ejercicio 1 — Línea de crédito de electrodomésticos
                             </summary>
                             <p class="text-slate-600 dark:text-slate-400 mt-4 leading-relaxed">
@@ -471,7 +456,7 @@
                         <!-- Ejercicio 2 -->
                         <details class="group bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800 p-5 open:bg-white dark:open:bg-slate-900 transition-colors">
                             <summary class="cursor-pointer font-bold text-slate-800 dark:text-slate-200 text-base flex items-center gap-2">
-                                <svg class="w-4 h-4 text-rose-500 transition-transform group-open:rotate-90 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                                <svg class="w-4 h-4 text-emerald-500 transition-transform group-open:rotate-90 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
                                 Ejercicio 2 — Sanatorio "Buena Salud": turnos online
                             </summary>
                             <div class="text-slate-600 dark:text-slate-400 mt-4 leading-relaxed space-y-3">
@@ -522,7 +507,7 @@
                 </section>
 
                 <!-- SÍNTESIS FINAL -->
-                <section class="bg-slate-900 dark:bg-slate-950 p-6 md:p-8 rounded-xl border border-slate-800 relative overflow-hidden">
+                <section data-no-section-index class="bg-slate-900 dark:bg-slate-950 p-6 md:p-8 rounded-xl border border-slate-800 relative overflow-hidden">
                     <svg class="absolute -right-10 -top-10 w-52 h-52 opacity-[0.06] select-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 2l2.4 7.2H22l-6 4.6 2.3 7.2-6.3-4.5-6.3 4.5 2.3-7.2-6-4.6h7.6z"/></svg>
                     <div class="flex items-center gap-3 mb-5">
                         <span class="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-white/10 text-emerald-400 flex-shrink-0">
@@ -540,21 +525,85 @@
                     </div>
                 </section>
 
-                <!-- SECCIÓN 7: RECEPTÁCULO PARA MATERIAL FUTURO -->
-                <section id="material-nuevo" class="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-slate-900 dark:to-slate-900/90 p-6 md:p-8 rounded-xl border-2 border-dashed border-emerald-400 dark:border-emerald-800 scroll-mt-24">
-                    <div class="flex items-center gap-4 mb-4">
-                        <span class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white/70 dark:bg-slate-950/60 text-emerald-600 dark:text-emerald-400 flex-shrink-0">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2"/></svg>
-                        </span>
+                <!-- SECCIÓN 10: MATERIAL DE CÁTEDRA (PDFs) -->
+                <section id="material-nuevo" class="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-5 mb-6">
                         <div>
-                            <h2 class="text-lg font-bold text-emerald-900 dark:text-emerald-300">Contenedor de material de cátedra / apuntes</h2>
-                            <p class="text-sm text-emerald-700 dark:text-emerald-400 mt-0.5">Espacio reservado para incorporar filminas, ejemplos de parcial y consignas adicionales cuando se provea el material.</p>
+                            <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 uppercase tracking-wider">Material de cátedra</span>
+                            <h2 class="text-2xl font-bold mt-2"><span class="bg-gradient-to-r from-emerald-600 to-emerald-500 dark:from-emerald-400 dark:to-emerald-400 bg-clip-text text-transparent">10 - Material</span></h2>
                         </div>
                     </div>
 
-                    <div id="contenedor-material-usuario" class="p-6 bg-white dark:bg-slate-950 rounded-xl border border-emerald-200 dark:border-emerald-900/50 text-center text-slate-500 dark:text-slate-400 text-sm">
-                        <p class="font-semibold text-slate-700 dark:text-slate-300 mb-1">Esperando material complementario</p>
-                        <p>Cuando compartas las notas, PDFs o ejercicios de Historias de Usuario, se integrarán en esta sección dinámicamente.</p>
+                    <p class="text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+                        Todo lo de arriba está basado en estas dos presentaciones. Si algo quedó dando vueltas o preferís volver a la fuente original tal como la dio la cátedra, las tenés acá abajo, sin salir de la página.
+                    </p>
+
+                    <!-- Selector de documento -->
+                    <div id="pdf-tabs" class="flex flex-wrap gap-2 mb-4" role="tablist">
+                        <button type="button" data-pdf-target="pdf-panel-hu" class="pdf-tab-btn active-tab flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold border transition-all duration-200 bg-emerald-600 text-white border-emerald-600 shadow-sm" role="tab" aria-selected="true">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+                            Historias de usuario
+                        </button>
+                        <button type="button" data-pdf-target="pdf-panel-agilidad" class="pdf-tab-btn flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold border transition-all duration-200 bg-slate-50 dark:bg-slate-800/60 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800" role="tab" aria-selected="false">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/></svg>
+                            Introducción a la agilidad
+                        </button>
+                    </div>
+
+                    <!-- Panel PDF 1 -->
+                    <div id="pdf-panel-hu" class="pdf-panel">
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-2 px-1">
+                            <p class="text-sm font-semibold text-slate-700 dark:text-slate-300">Historias de usuario</p>
+                            <div class="flex gap-3">
+                                <a href="assets/pdfs/1-presentacion-historias-de-usuario.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-700 dark:text-emerald-400 hover:underline">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                                    Abrir en pestaña nueva
+                                </a>
+                                <a href="assets/pdfs/1-presentacion-historias-de-usuario.pdf" download class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-700 dark:text-emerald-400 hover:underline">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+                                    Descargar
+                                </a>
+                            </div>
+                        </div>
+                        <div class="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-950 shadow-inner">
+                            <iframe
+                                src="assets/pdfs/1-presentacion-historias-de-usuario.pdf"
+                                title="Presentación: Historias de usuario"
+                                class="w-full h-[75vh] min-h-[420px] border-0">
+                                <p class="p-4 text-sm text-slate-600 dark:text-slate-400">
+                                    Tu navegador no puede mostrar el PDF embebido.
+                                    <a class="text-emerald-600 dark:text-emerald-400 underline" href="assets/pdfs/1-presentacion-historias-de-usuario.pdf" target="_blank" rel="noopener">Abrilo en una pestaña nueva</a>.
+                                </p>
+                            </iframe>
+                        </div>
+                    </div>
+
+                    <!-- Panel PDF 2 -->
+                    <div id="pdf-panel-agilidad" class="pdf-panel hidden">
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-2 px-1">
+                            <p class="text-sm font-semibold text-slate-700 dark:text-slate-300">Introducción a la agilidad</p>
+                            <div class="flex gap-3">
+                                <a href="assets/pdfs/2-presentacion-agilidad.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-700 dark:text-emerald-400 hover:underline">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                                    Abrir en pestaña nueva
+                                </a>
+                                <a href="assets/pdfs/2-presentacion-agilidad.pdf" download class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-700 dark:text-emerald-400 hover:underline">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+                                    Descargar
+                                </a>
+                            </div>
+                        </div>
+                        <div class="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-950 shadow-inner">
+                            <iframe
+                                data-src="assets/pdfs/2-presentacion-agilidad.pdf"
+                                title="Presentación: Introducción a la agilidad"
+                                class="w-full h-[75vh] min-h-[420px] border-0">
+                                <p class="p-4 text-sm text-slate-600 dark:text-slate-400">
+                                    Tu navegador no puede mostrar el PDF embebido.
+                                    <a class="text-emerald-600 dark:text-emerald-400 underline" href="assets/pdfs/2-presentacion-agilidad.pdf" target="_blank" rel="noopener">Abrilo en una pestaña nueva</a>.
+                                </p>
+                            </iframe>
+                        </div>
                     </div>
                 </section>
 
@@ -562,8 +611,8 @@
         </div>
     </div>
 
-    <button id="btn-top" class="fixed bottom-6 right-6 z-40 w-12 h-12 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full shadow-lg transition-all duration-300 flex items-center justify-center cursor-pointer" title="Volver al inicio">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
+    <button id="btn-top" class="fixed bottom-6 right-6 z-40 w-12 h-12 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full shadow-lg transition-all duration-300 flex items-center justify-center cursor-pointer" title="Volver al inicio" aria-label="Volver al inicio de la página">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg>
     </button>
 
     <script src="../../component.js"></script>
@@ -574,16 +623,66 @@
         // Barra de progreso de lectura
         (function () {
             const bar = document.getElementById('reading-progress-bar');
+            const track = document.getElementById('reading-progress-track');
             if (!bar) return;
             const update = () => {
                 const scrollTop = window.scrollY;
                 const docHeight = document.documentElement.scrollHeight - window.innerHeight;
                 const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-                bar.style.width = Math.min(100, Math.max(0, pct)) + '%';
+                const clamped = Math.min(100, Math.max(0, pct));
+                bar.style.width = clamped + '%';
+                if (track) track.setAttribute('aria-valuenow', Math.round(clamped));
             };
             window.addEventListener('scroll', update, { passive: true });
             window.addEventListener('resize', update);
             update();
+        })();
+
+        // Pestañas del visor de PDFs (sección 10 - Material de cátedra)
+        (function () {
+            const tabs = document.querySelectorAll('.pdf-tab-btn');
+            const panels = document.querySelectorAll('.pdf-panel');
+            if (!tabs.length || !panels.length) return;
+
+            function activatePanel(targetId) {
+                panels.forEach(panel => {
+                    const isTarget = panel.id === targetId;
+                    // Se fuerza con la clase Y con el estilo inline, para que no dependa
+                    // de que Tailwind haya generado/aplicado bien la utilidad "hidden".
+                    panel.classList.toggle('hidden', !isTarget);
+                    panel.style.display = isTarget ? '' : 'none';
+
+                    if (isTarget) {
+                        // Carga diferida real por JS: el iframe de la pestaña que aún no se
+                        // abrió no tiene "src" (solo "data-src"), así que nunca descarga el PDF
+                        // hasta que el usuario efectivamente clickea esa pestaña.
+                        const iframe = panel.querySelector('iframe[data-src]');
+                        if (iframe) {
+                            iframe.src = iframe.getAttribute('data-src');
+                            iframe.removeAttribute('data-src');
+                        }
+                    }
+                });
+            }
+
+            tabs.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    tabs.forEach(b => {
+                        b.classList.remove('active-tab', 'bg-emerald-600', 'text-white', 'border-emerald-600', 'shadow-sm');
+                        b.classList.add('bg-slate-50', 'dark:bg-slate-800/60', 'text-slate-600', 'dark:text-slate-300', 'border-slate-200', 'dark:border-slate-700');
+                        b.setAttribute('aria-selected', 'false');
+                    });
+                    btn.classList.add('active-tab', 'bg-emerald-600', 'text-white', 'border-emerald-600', 'shadow-sm');
+                    btn.classList.remove('bg-slate-50', 'dark:bg-slate-800/60', 'text-slate-600', 'dark:text-slate-300', 'border-slate-200', 'dark:border-slate-700');
+                    btn.setAttribute('aria-selected', 'true');
+
+                    activatePanel(btn.getAttribute('data-pdf-target'));
+                });
+            });
+
+            // Estado inicial: asegura que solo el panel marcado como activo se vea al cargar la página
+            const initialActiveBtn = document.querySelector('.pdf-tab-btn.active-tab') || tabs[0];
+            activatePanel(initialActiveBtn.getAttribute('data-pdf-target'));
         })();
     </script>
 
