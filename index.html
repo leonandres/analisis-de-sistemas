@@ -20,19 +20,19 @@
     .theme-glow-1 {
         position: fixed; top: -8rem; right: -6rem;
         width: 520px; height: 520px; border-radius: 9999px;
-        background: color-mix(in oklch, var(--p, #0ea5e9) 20%, transparent);
+        background: color-mix(in oklch, oklch(var(--p, 66% 0.14 235)) 20%, transparent);
         filter: blur(130px); pointer-events: none; z-index: 0;
     }
     .theme-glow-2 {
         position: fixed; bottom: -8rem; left: -6rem;
         width: 520px; height: 520px; border-radius: 9999px;
-        background: color-mix(in oklch, var(--s, #10b981) 20%, transparent);
+        background: color-mix(in oklch, oklch(var(--s, 66% 0.16 165)) 20%, transparent);
         filter: blur(130px); pointer-events: none; z-index: 0;
     }
     .theme-glow-3 {
         position: fixed; top: 33%; left: 50%; transform: translateX(-50%);
         width: 600px; height: 600px; border-radius: 9999px;
-        background: color-mix(in oklch, var(--a, #6366f1) 10%, transparent);
+        background: color-mix(in oklch, oklch(var(--a, 58% 0.20 275)) 10%, transparent);
         filter: blur(150px); pointer-events: none; z-index: 0;
     }
 </style>
