@@ -27,37 +27,43 @@ document.addEventListener('DOMContentLoaded', function() {
     // ==========================================
     // 2. CONFIGURAR BOTÓN DE TEMA (OSCURO/CLARO)
     // ==========================================
-    const btnTema = document.getElementById('btn-tema');
-    if (btnTema) {
-        btnTema.addEventListener('click', function() {
-            document.documentElement.classList.toggle('dark');
-            const isDark = document.documentElement.classList.contains('dark');
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            console.log(`🔄 Tema cambiado a: ${isDark ? '🌙 oscuro' : '☀️ claro'}`);
+    const themeSelect = document.getElementById('theme-select');
+    if (themeSelect) {
+        themeSelect.addEventListener('change', function(e) {
+            const theme = e.target.value;
+            document.documentElement.setAttribute('data-theme', theme);
+            
+            if (theme === 'dark' || theme === 'dim') {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+            
+            localStorage.setItem('theme', theme);
+            console.log(`🔄 Tema cambiado a: ${theme}`);
         });
-        console.log('✅ Botón de tema configurado');
+        console.log('✅ Selector de tema configurado');
     } else {
-        console.warn('⚠️ No se encontró el botón de tema (#btn-tema)');
+        console.warn('⚠️ No se encontró el selector de tema (#theme-select)');
     }
 
     // ==========================================
     // 3. CARGAR TEMA GUARDADO EN localStorage
     // ==========================================
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    
+    if (savedTheme === 'dark' || savedTheme === 'dim') {
         document.documentElement.classList.add('dark');
-        console.log('🌙 Tema oscuro cargado desde localStorage');
-    } else if (savedTheme === 'light') {
-        document.documentElement.classList.remove('dark');
-        console.log('☀️ Tema claro cargado desde localStorage');
+        console.log(`🌙 Tema ${savedTheme} cargado`);
     } else {
-        // Si no hay preferencia guardada, usar el tema del sistema
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            document.documentElement.classList.add('dark');
-            console.log('🌙 Tema oscuro según preferencia del sistema');
-        } else {
-            console.log('☀️ Tema claro por defecto');
-        }
+        document.documentElement.classList.remove('dark');
+        console.log(`☀️ Tema ${savedTheme} cargado`);
+    }
+
+    if (themeSelect) {
+        themeSelect.value = savedTheme;
     }
 
     // ==========================================
