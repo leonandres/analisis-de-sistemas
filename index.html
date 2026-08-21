@@ -60,40 +60,57 @@
                 </div>
             </div>
             <div class="flex items-center gap-3">
-                <select id="theme-select" class="select select-bordered select-sm w-full max-w-xs">
-                    <optgroup label="── Claros ──">
-                        <option value="light">Claro</option>
-                        <option value="cupcake">Cupcake (Pastel rosado)</option>
-                        <option value="bumblebee">Bumblebee (Amarillo/Negro)</option>
-                        <option value="emerald">Emerald (Verde)</option>
-                        <option value="retro">Retro (Clásico)</option>
-                        <option value="garden">Garden (Rosa suave)</option>
-                        <option value="lofi">Lo-Fi (Gris cálido)</option>
-                        <option value="pastel">Pastel (Lavanda)</option>
-                        <option value="fantasy">Fantasy (Violeta)</option>
-                        <option value="autumn">Autumn (Naranja cálido)</option>
-                        <option value="acid">Acid (Verde neón)</option>
-                        <option value="lemonade">Lemonade (Verde lima)</option>
-                        <option value="winter">Winter (Azul frío)</option>
-                        <option value="nord">Nord (Gris azulado)</option>
-                        <option value="cyberpunk">Cyberpunk (Amarillo brillante)</option>
-                        <option value="valentine">Valentine (Rosa chicle)</option>
-                        <option value="wireframe">Wireframe (Sin color)</option>
+                <!-- Botón de alternado rápido Sol / Luna -->
+                <button id="btn-tema" class="relative w-10 h-10 flex items-center justify-center bg-base-100 hover:bg-base-300 border border-base-300 rounded-xl text-sm font-medium transition-all duration-300 hover:scale-105 flex-shrink-0 cursor-pointer" title="Alternar claro / oscuro">
+                    <svg id="icon-sol" class="w-5 h-5 text-amber-500 transition-all duration-500 rotate-0 scale-100 dark:rotate-90 dark:scale-0 absolute" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg id="icon-luna" class="w-5 h-5 text-sky-400 transition-all duration-500 -rotate-90 scale-0 dark:rotate-0 dark:scale-100 absolute" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <select id="theme-select" class="select select-bordered select-sm w-full max-w-xs cursor-pointer">
+                    <optgroup label="── ☀️ Claros ──">
+                        <option value="light">☀️ Claro</option>
+                        <option value="cupcake">🧁 Cupcake (Pastel rosado)</option>
+                        <option value="bumblebee">🐝 Bumblebee (Amarillo/Negro)</option>
+                        <option value="emerald">🌲 Emerald (Verde)</option>
+                        <option value="retro">📜 Retro (Clásico)</option>
+                        <option value="garden">🪴 Garden (Rosa suave)</option>
+                        <option value="lofi">📼 Lo-Fi (Gris cálido)</option>
+                        <option value="pastel">🎨 Pastel (Lavanda)</option>
+                        <option value="fantasy">🦄 Fantasy (Violeta)</option>
+                        <option value="autumn">🍂 Autumn (Naranja cálido)</option>
+                        <option value="acid">🧪 Acid (Verde neón)</option>
+                        <option value="lemonade">🍋 Lemonade (Verde lima)</option>
+                        <option value="winter">❄️ Winter (Azul frío)</option>
+                        <option value="nord">🧊 Nord (Gris azulado)</option>
+                        <option value="cyberpunk">⚡ Cyberpunk (Amarillo brillante)</option>
+                        <option value="valentine">💖 Valentine (Rosa chicle)</option>
+                        <option value="wireframe">📐 Wireframe (Sin color)</option>
                     </optgroup>
-                    <optgroup label="── Oscuros ──">
-                        <option value="dark">Oscuro</option>
-                        <option value="synthwave">Synthwave (Neón)</option>
-                        <option value="halloween">Halloween (Naranja)</option>
-                        <option value="forest">Forest (Verde oscuro)</option>
-                        <option value="aqua">Aqua (Azul vibrante)</option>
-                        <option value="black">Black (Negro puro)</option>
-                        <option value="luxury">Luxury (Negro/Dorado)</option>
-                        <option value="dracula">Dracula (Morado/Gris)</option>
-                        <option value="business">Business (Azul oscuro)</option>
-                        <option value="night">Night (Noche profunda)</option>
-                        <option value="coffee">Coffee (Marrón/Café)</option>
-                        <option value="dim">Dim (Gris azulado oscuro)</option>
-                        <option value="sunset">Sunset (Naranja/Rojo oscuro)</option>
+                    <optgroup label="── 🌙 Oscuros ──">
+                        <option value="dark">🌙 Oscuro</option>
+                        <option value="synthwave">🌆 Synthwave (Neón)</option>
+                        <option value="halloween">🎃 Halloween (Naranja)</option>
+                        <option value="forest">🌳 Forest (Verde oscuro)</option>
+                        <option value="aqua">🌊 Aqua (Azul vibrante)</option>
+                        <option value="black">🖤 Black (Negro puro)</option>
+                        <option value="luxury">👑 Luxury (Negro/Dorado)</option>
+                        <option value="dracula">🧛 Dracula (Morado/Gris)</option>
+                        <option value="business">💼 Business (Azul oscuro)</option>
+                        <option value="night">🌌 Night (Noche profunda)</option>
+                        <option value="coffee">☕ Coffee (Marrón/Café)</option>
+                        <option value="dim">🌁 Dim (Gris azulado oscuro)</option>
+                        <option value="sunset">🌅 Sunset (Naranja/Rojo oscuro)</option>
                     </optgroup>
                 </select>
             </div>

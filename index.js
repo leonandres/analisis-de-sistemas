@@ -25,46 +25,82 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ==========================================
-    // 2. CONFIGURAR BOTÓN DE TEMA (OSCURO/CLARO)
+    // 2. CONFIGURAR SELECTOR Y BOTÓN DE TEMA (OSCURO/CLARO)
     // ==========================================
+    const DARK_THEMES = [
+        'dark', 'synthwave', 'halloween', 'forest', 'aqua', 
+        'black', 'luxury', 'dracula', 'business', 'night', 
+        'coffee', 'dim', 'sunset'
+    ];
+
+    function applyTheme(theme) {
+        if (!theme) theme = 'light';
+        document.documentElement.setAttribute('data-theme', theme);
+        
+        if (DARK_THEMES.includes(theme)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+        
+        localStorage.setItem('theme', theme);
+        
+        const themeSelect = document.getElementById('theme-select');
+        if (themeSelect && themeSelect.value !== theme) {
+            themeSelect.value = theme;
+        }
+
+        // Actualizar ícono y nombre activo en el botón desplegable de temas
+        const activeIconContainer = document.getElementById('theme-active-icon');
+        const activeNameContainer = document.getElementById('theme-active-name');
+        if (typeof THEME_ICONS !== 'undefined' && THEME_ICONS[theme]) {
+            if (activeIconContainer) activeIconContainer.innerHTML = THEME_ICONS[theme];
+        }
+        if (typeof ALL_THEMES !== 'undefined') {
+            const foundTheme = ALL_THEMES.find(t => t.id === theme);
+            if (activeNameContainer && foundTheme) {
+                activeNameContainer.textContent = foundTheme.name.split(' ')[0];
+            }
+        }
+
+        // Marcar el check en el panel desplegable
+        const themeMenuPanel = document.getElementById('theme-menu-panel');
+        if (themeMenuPanel) {
+            themeMenuPanel.querySelectorAll('.theme-option-btn').forEach(btn => {
+                const isCurrent = btn.getAttribute('data-theme-id') === theme;
+                const check = btn.querySelector('.theme-check-icon');
+                if (check) {
+                    if (isCurrent) check.classList.remove('hidden');
+                    else check.classList.add('hidden');
+                }
+            });
+        }
+    }
+
+    window.applyTheme = applyTheme;
+
     const themeSelect = document.getElementById('theme-select');
     if (themeSelect) {
         themeSelect.addEventListener('change', function(e) {
-            const theme = e.target.value;
-            document.documentElement.setAttribute('data-theme', theme);
-            
-            if (theme === 'dark' || theme === 'dim') {
-                document.documentElement.classList.add('dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-            }
-            
-            localStorage.setItem('theme', theme);
-            console.log(`🔄 Tema cambiado a: ${theme}`);
+            applyTheme(e.target.value);
+            console.log(`🔄 Tema cambiado a: ${e.target.value}`);
         });
-        console.log('✅ Selector de tema configurado');
-    } else {
-        console.warn('⚠️ No se encontró el selector de tema (#theme-select)');
+    }
+
+    const btnTema = document.getElementById('btn-tema');
+    if (btnTema) {
+        btnTema.addEventListener('click', function() {
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            const isDark = DARK_THEMES.includes(currentTheme);
+            applyTheme(isDark ? 'light' : 'dark');
+        });
     }
 
     // ==========================================
     // 3. CARGAR TEMA GUARDADO EN localStorage
     // ==========================================
     const savedTheme = localStorage.getItem('theme') || 'light';
-    
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    
-    if (savedTheme === 'dark' || savedTheme === 'dim') {
-        document.documentElement.classList.add('dark');
-        console.log(`🌙 Tema ${savedTheme} cargado`);
-    } else {
-        document.documentElement.classList.remove('dark');
-        console.log(`☀️ Tema ${savedTheme} cargado`);
-    }
-
-    if (themeSelect) {
-        themeSelect.value = savedTheme;
-    }
+    applyTheme(savedTheme);
 
     // ==========================================
     // 4. BOTÓN PARA VOLVER ARRIBA (SCROLL TO TOP)
