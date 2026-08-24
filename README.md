@@ -53,11 +53,11 @@ GitHub renderiza estos bloques de color directamente en tu pantalla:
 Para clonar la web y trabajar en los archivos de forma local:
 
 ```bash
-git clone https://github.com
+git clone https://github.com/leonandres/analisis-de-sistemas.git
 cd analisis-de-sistemas
 ```
 
-#### Control de versiones y automatización (Opcional)
+#### Control de versiones y automatización (opcional)
 El repositorio utiliza Node.js (`v22.18.0`) únicamente para gestionar los lanzamientos técnicos en el historial de cambios mediante `standard-version`.
 
 1. Instalar la dependencia de desarrollo:
