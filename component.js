@@ -135,6 +135,25 @@ const CLASES_DATA = [
         ]
     },
     {
+        id: 'clase13',
+        key: 'clase-13-DFD',
+        emoji: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><rect x="15" y="3" width="6" height="6" rx="1"/><path d="M6 9v3a3 3 0 0 0 3 3h6"/><path d="M18 9V6"/></svg>`,
+        numero: '13',
+        titulo: 'Diagramas de flujo de datos (DFD)',
+        color: 'cyan',
+        secciones: [
+            { anchor: 'fundamentos',        label: 'Fundamentos y diagrama de contexto' },
+            { anchor: 'simbologia',         label: 'Simbología y componentes' },
+            { anchor: 'tabla-eventos',      label: 'Tabla de eventos' },
+            { anchor: 'reglas-balanceo',    label: 'Reglas de construcción y balanceo' },
+            { anchor: 'caso-estudio',       label: 'Caso resuelto: Ventas y stock' },
+            { anchor: 'ejercicio-clinica',  label: 'Caso práctico: Clínica Villa Maipú' },
+            { anchor: 'laboratorio-errores',label: '⚡ Cazador de errores en DFD' },
+            { anchor: 'autoevaluacion',     label: '📋 Trivia de autoevaluación' },
+            { anchor: 'materiales',         label: 'Materiales y guías de cátedra' },
+        ]
+    },
+    {
         id: 'examen',
         key: 'examen',
         emoji: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/><path d="M8 11h8"/><path d="M8 7h6"/></svg>`,
@@ -174,6 +193,7 @@ function getRelativePaths() {
         clase07: isSubPage ? '../clase-07-planificacion/index.html' : './clases/clase-07-planificacion/index.html',
         clase10: isSubPage ? '../clase-10-casos-de-uso/index.html' : './clases/clase-10-casos-de-uso/index.html',
         clase12: isSubPage ? '../clase-12-historias-de-usuario/index.html' : './clases/clase-12-historias-de-usuario/index.html',
+        clase13: isSubPage ? '../clase-13-DFD/index.html' : './clases/clase-13-DFD/index.html',
         examen: isSubPage ? '../examen/index.html' : './clases/examen/index.html',
         parcial: isSubPage ? '../parcial/index.html' : './clases/parcial/index.html'
     };
@@ -366,6 +386,16 @@ function getHeaderHTML(paths) {
                                 <div class="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Clase 12</div>
                                 <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Historias de usuario</div>
                                 <div class="text-xs text-slate-500 dark:text-slate-400">INVEST, BDD, Story points</div>
+                            </div>
+                            <svg class="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                        </a>
+
+                        <a href="${paths.clase13}" data-clase="clase13" class="relative flex items-center gap-4 p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-all duration-200 group border border-transparent hover:border-slate-200 dark:hover:border-slate-700 menu-item-link">
+                            <span class="w-9 h-9 flex items-center justify-center rounded-lg bg-cyan-100 dark:bg-cyan-950 text-cyan-600 dark:text-cyan-400 group-hover:scale-110 transition-transform duration-200 flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><rect x="15" y="3" width="6" height="6" rx="1"/><path d="M6 9v3a3 3 0 0 0 3 3h6"/><path d="M18 9V6"/></svg></span>
+                            <div class="flex-1">
+                                <div class="text-[10px] font-bold text-cyan-600 dark:text-cyan-400 uppercase tracking-wider">Clase 13</div>
+                                <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">Diagramas de flujo de datos (DFD)</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">Diagrama de contexto, tabla de eventos y DFD</div>
                             </div>
                             <svg class="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
                         </a>
@@ -680,6 +710,7 @@ function getSidebarHTML(paths) {
         indigo:  { badge: 'bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300', border: 'border-indigo-500', dot: 'bg-indigo-500', hoverText: 'group-hover:text-indigo-600 dark:group-hover:text-indigo-400' },
         rose:    { badge: 'bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-300',     border: 'border-rose-500',   dot: 'bg-rose-500', hoverText: 'group-hover:text-rose-600 dark:group-hover:text-rose-400' },
         orange:  { badge: 'bg-orange-100 dark:bg-orange-950 text-orange-700 dark:text-orange-300', border: 'border-orange-500', dot: 'bg-orange-500', hoverText: 'group-hover:text-orange-600 dark:group-hover:text-orange-400' },
+        cyan:    { badge: 'bg-cyan-100 dark:bg-cyan-950 text-cyan-700 dark:text-cyan-300',     border: 'border-cyan-500',   dot: 'bg-cyan-500', hoverText: 'group-hover:text-cyan-600 dark:group-hover:text-cyan-400' },
     };
 
     const clasesHTML = CLASES_DATA.map(clase => {
@@ -816,6 +847,7 @@ const MENU_RING_MAP = {
     rose:    { ring: 'ring-rose-300 dark:ring-rose-800',       text: 'text-rose-600 dark:text-rose-400' },
     orange:  { ring: 'ring-orange-300 dark:ring-orange-800',   text: 'text-orange-600 dark:text-orange-400' },
     blue:    { ring: 'ring-blue-300 dark:ring-blue-800',       text: 'text-blue-600 dark:text-blue-400' },
+    cyan:    { ring: 'ring-cyan-300 dark:ring-cyan-800',       text: 'text-cyan-600 dark:text-cyan-400' },
 };
 
 function highlightCurrentClaseInMenu(menuClases) {
