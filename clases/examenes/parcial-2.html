@@ -21,24 +21,25 @@
 
             <main class="lg:col-span-3 space-y-8">
 
+                <!-- Botón volver -->
+                <a href="index.html" class="inline-flex items-center justify-center w-9 h-9 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-xl transition-colors" title="Volver a Examen & Parciales">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+                </a>
+
                 <!-- HERO -->
                 <div class="bg-gradient-to-r from-emerald-600 to-teal-700 rounded-2xl p-6 text-white shadow-lg relative overflow-hidden">
                     <div class="absolute -right-10 -bottom-10 opacity-15 text-9xl select-none">📝</div>
-                    <a href="index.html" class="inline-flex items-center gap-1.5 text-emerald-200 hover:text-white text-xs font-semibold mb-3 transition-colors">
-                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-                        Volver a Examen &amp; Parciales
-                    </a>
-                    <span class="px-2.5 py-1 text-[10px] font-black uppercase tracking-wider bg-white/20 rounded-md backdrop-blur-md">Simulador oficial</span>
+                    <span class="px-2.5 py-1 text-[10px] font-black uppercase tracking-wider bg-white/20 rounded-md backdrop-blur-md">2° Parcial K2001</span>
                     <h1 class="text-2xl md:text-3xl font-extrabold mt-2">2° Parcial interactivo</h1>
                     <p class="text-emerald-100 text-sm mt-2 max-w-2xl leading-relaxed">
-                        Segundo parcial Tema 1 — Curso K2001 (11/11/2024). Agilidad, SCRUM y diagramas UML.
+                        Segundo parcial Tema 1 (11/11/2024). Agilidad, SCRUM y diagramas UML.
                     </p>
                 </div>
 
                 <!-- Link a clase relacionada -->
                 <div class="flex justify-end">
                     <a href="../clase-12-historias-de-usuario/index.html" class="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-xl shadow-sm transition-all flex items-center gap-1.5">
-                        Ver Clase 12 — Historias de Usuario ➔
+                        Ver Clase 12 — Historias de usuario ➔
                     </a>
                 </div>
 
@@ -53,17 +54,17 @@
                             <strong class="text-xs text-slate-800 dark:text-slate-200 font-sans block mb-2">1. El Product Backlog es...</strong>
                             <div class="grid grid-cols-1 gap-2 text-xs font-sans">
                                 <button onclick="verificarRespuestaSimple(this, false, 'pb-explicacion')" class="p-2.5 bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 rounded-lg text-left cursor-pointer">
-                                    Armado y priorizado por el Scrum Master para el siguiente Sprint.
+                                    Armado y priorizado por el Scrum Master para el siguiente sprint.
                                 </button>
                                 <button onclick="verificarRespuestaSimple(this, false, 'pb-explicacion')" class="p-2.5 bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 rounded-lg text-left cursor-pointer">
-                                    Una lista de tareas técnicas que el equipo de desarrollo debe completar antes del Sprint.
+                                    Una lista de tareas técnicas que el equipo de desarrollo debe completar antes del sprint.
                                 </button>
                                 <button onclick="verificarRespuestaSimple(this, true, 'pb-explicacion')" class="p-2.5 bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 rounded-lg text-left font-semibold cursor-pointer">
                                     Ninguna de las anteriores (Es gestionado y ordenado por el Product Owner).
                                 </button>
                             </div>
                             <div id="pb-explicacion" class="hidden mt-3 p-3 bg-slate-100 dark:bg-slate-800 rounded-xl text-xs text-slate-700 dark:text-slate-300 font-sans">
-                                El Product Backlog es responsabilidad del <strong>Product Owner</strong>. El Scrum Master ayuda a facilitar el proceso pero no posee ni prioriza el Backlog. La lista de tareas para el Sprint actual es el <strong>Sprint Backlog</strong>.
+                                El Product Backlog es responsabilidad del <strong>Product Owner</strong>. El Scrum Master ayuda a facilitar el proceso pero no posee ni prioriza el Backlog. La lista de tareas para el sprint actual es el <strong>sprint backlog</strong>.
                             </div>
                         </div>
 
@@ -75,7 +76,7 @@
                                 <button onclick="verificarVF(this, true, 'planning-just')" class="flex-1 py-2 bg-white dark:bg-slate-900 hover:bg-slate-100 border border-slate-200 dark:border-slate-800 rounded-lg font-semibold cursor-pointer">Falso</button>
                             </div>
                             <div id="planning-just" class="hidden mt-3 p-3 bg-emerald-50 dark:bg-emerald-950/20 text-emerald-800 dark:text-emerald-300 border border-emerald-100 dark:border-emerald-900/50 rounded-xl text-xs">
-                                <strong>Justificación:</strong> Falso. En la Sprint Planning solo se planifica el alcance del <strong>Sprint entrante</strong> (normalmente de 2 a 4 semanas), no de todo el proyecto.
+                                <strong>Justificación:</strong> Falso. En la sprint planning solo se planifica el alcance del <strong>sprint entrante</strong> (normalmente de 2 a 4 semanas), no de todo el proyecto.
                             </div>
                         </div>
 
@@ -84,10 +85,10 @@
                             <strong class="text-xs text-slate-800 dark:text-slate-200 font-sans block mb-2">3. ¿Cuáles son los diagramas estructurales en UML?</strong>
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-sans">
                                 <button onclick="verificarRespuestaSimple(this, false, 'structural-explicacion')" class="p-2.5 bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 rounded-lg text-left cursor-pointer">
-                                    Diagramas de Casos de Uso y Secuencia.
+                                    Diagramas de casos de uso y secuencia.
                                 </button>
                                 <button onclick="verificarRespuestaSimple(this, true, 'structural-explicacion')" class="p-2.5 bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 rounded-lg text-left font-semibold cursor-pointer">
-                                    Diagramas de Clases y Despliegue.
+                                    Diagramas de clases y despliegue.
                                 </button>
                             </div>
                             <div id="structural-explicacion" class="hidden mt-3 p-3 bg-slate-100 dark:bg-slate-800 rounded-xl text-xs text-slate-700 dark:text-slate-300">
@@ -107,7 +108,7 @@
     </button>
 
     <footer class="bg-slate-900 text-slate-400 text-xs text-center p-4 mt-auto border-t border-slate-800 font-sans">
-        <p>© 2026 - Análisis de Sistemas - 2° Parcial K2001</p>
+        <p>© 2026 - Análisis de Sistemas - 2° Parcial</p>
     </footer>
 
     <script src="../../component.js"></script>
