@@ -25,40 +25,82 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ==========================================
-    // 2. CONFIGURAR BOTÓN DE TEMA (OSCURO/CLARO)
+    // 2. CONFIGURAR SELECTOR Y BOTÓN DE TEMA (OSCURO/CLARO)
     // ==========================================
+    const DARK_THEMES = [
+        'dark', 'synthwave', 'halloween', 'forest', 'aqua', 
+        'black', 'luxury', 'dracula', 'business', 'night', 
+        'coffee', 'dim', 'sunset'
+    ];
+
+    function applyTheme(theme) {
+        if (!theme) theme = 'light';
+        document.documentElement.setAttribute('data-theme', theme);
+        
+        if (DARK_THEMES.includes(theme)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+        
+        localStorage.setItem('theme', theme);
+        
+        const themeSelect = document.getElementById('theme-select');
+        if (themeSelect && themeSelect.value !== theme) {
+            themeSelect.value = theme;
+        }
+
+        // Actualizar ícono y nombre activo en el botón desplegable de temas
+        const activeIconContainer = document.getElementById('theme-active-icon');
+        const activeNameContainer = document.getElementById('theme-active-name');
+        if (typeof THEME_ICONS !== 'undefined' && THEME_ICONS[theme]) {
+            if (activeIconContainer) activeIconContainer.innerHTML = THEME_ICONS[theme];
+        }
+        if (typeof ALL_THEMES !== 'undefined') {
+            const foundTheme = ALL_THEMES.find(t => t.id === theme);
+            if (activeNameContainer && foundTheme) {
+                activeNameContainer.textContent = foundTheme.name.split(' ')[0];
+            }
+        }
+
+        // Marcar el check en el panel desplegable
+        const themeMenuPanel = document.getElementById('theme-menu-panel');
+        if (themeMenuPanel) {
+            themeMenuPanel.querySelectorAll('.theme-option-btn').forEach(btn => {
+                const isCurrent = btn.getAttribute('data-theme-id') === theme;
+                const check = btn.querySelector('.theme-check-icon');
+                if (check) {
+                    if (isCurrent) check.classList.remove('hidden');
+                    else check.classList.add('hidden');
+                }
+            });
+        }
+    }
+
+    window.applyTheme = applyTheme;
+
+    const themeSelect = document.getElementById('theme-select');
+    if (themeSelect) {
+        themeSelect.addEventListener('change', function(e) {
+            applyTheme(e.target.value);
+            console.log(`🔄 Tema cambiado a: ${e.target.value}`);
+        });
+    }
+
     const btnTema = document.getElementById('btn-tema');
     if (btnTema) {
         btnTema.addEventListener('click', function() {
-            document.documentElement.classList.toggle('dark');
-            const isDark = document.documentElement.classList.contains('dark');
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            console.log(`🔄 Tema cambiado a: ${isDark ? '🌙 oscuro' : '☀️ claro'}`);
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            const isDark = DARK_THEMES.includes(currentTheme);
+            applyTheme(isDark ? 'light' : 'dark');
         });
-        console.log('✅ Botón de tema configurado');
-    } else {
-        console.warn('⚠️ No se encontró el botón de tema (#btn-tema)');
     }
 
     // ==========================================
     // 3. CARGAR TEMA GUARDADO EN localStorage
     // ==========================================
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        document.documentElement.classList.add('dark');
-        console.log('🌙 Tema oscuro cargado desde localStorage');
-    } else if (savedTheme === 'light') {
-        document.documentElement.classList.remove('dark');
-        console.log('☀️ Tema claro cargado desde localStorage');
-    } else {
-        // Si no hay preferencia guardada, usar el tema del sistema
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            document.documentElement.classList.add('dark');
-            console.log('🌙 Tema oscuro según preferencia del sistema');
-        } else {
-            console.log('☀️ Tema claro por defecto');
-        }
-    }
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    applyTheme(savedTheme);
 
     // ==========================================
     // 4. BOTÓN PARA VOLVER ARRIBA (SCROLL TO TOP)

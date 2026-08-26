@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Clase 13: Diagramas de flujo de datos (DFD), diagrama de contexto y tabla de eventos - Análisis de sistemas UTN.BA">
+    <meta name="theme-color" content="#06b6d4">
+    <meta property="og:title" content="Clase 13: Diagramas de flujo de datos (DFD) | Análisis de sistemas">
+    <meta property="og:description" content="Diagrama de contexto, tabla de eventos, demoras, reglas de balanceo y casos prácticos resueltos.">
+    <meta property="og:type" content="article">
+    <title>Clase 13: Diagramas de flujo de datos (DFD) | Análisis de sistemas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { darkMode: 'class' }
+    </script>
+    <link rel="stylesheet" href="../../styles.css">
+    <!-- Favicon SVG -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-200">
+
+    <!-- Enlace de accesibilidad -->
+    <a href="#contenido-principal" class="skip-link">Saltar al contenido</a>
+
+    <!-- BARRA DE PROGRESO DE LECTURA -->
+    <div id="reading-progress-track" class="fixed top-0 left-0 w-full h-1 z-[60] bg-slate-200/60 dark:bg-slate-800/60" role="progressbar" aria-label="Progreso de lectura" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <div id="reading-progress-bar" class="h-full w-0 bg-gradient-to-r from-cyan-500 via-sky-500 to-blue-500 transition-[width] duration-150 ease-out"></div>
+    </div>
+
+    <div id="header-container"></div>
+
+    <div class="main-content-wrapper flex-1 w-full pt-20">
+
+        <div class="max-w-7xl mx-auto w-full p-4 md:p-6 grid grid-cols-1 lg:grid-cols-4 gap-6 flex-1">
+
+            <!-- SIDEBAR GLOBAL DINÁMICO -->
+            <nav id="sidebar-container" class="lg:col-span-1 space-y-2" aria-label="Navegación de secciones de la clase"></nav>
+
+            <!-- CONTENIDO PRINCIPAL -->
+            <main id="contenido-principal" class="lg:col-span-3 space-y-8">
+
+                <!-- HERO BANNER -->
+                <div class="bg-gradient-to-r from-cyan-600 via-sky-600 to-blue-700 rounded-2xl p-7 md:p-9 text-white shadow-lg relative overflow-hidden">
+                    <svg class="absolute -right-8 -bottom-10 w-56 h-56 opacity-[0.15] select-none pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><rect x="15" y="3" width="6" height="6" rx="1"/><path d="M6 9v3a3 3 0 0 0 3 3h6"/><path d="M18 9V6"/></svg>
+                    <span class="px-2.5 py-1 text-[10px] font-black uppercase tracking-wider bg-white/20 rounded-md backdrop-blur-md">Unidad 13</span>
+                    <h1 class="text-3xl md:text-4xl font-extrabold mt-3 leading-tight">Diagramas de flujo de datos (DFD)</h1>
+                    <p class="text-cyan-50 text-base mt-3 max-w-2xl leading-relaxed">
+                        El modelado estructurado por excelencia: comprendé el flujo de la información, el límite del sistema a través del <strong class="font-bold text-white">diagrama de contexto</strong>, la especificación de sucesos con la <strong class="font-bold text-white">tabla de eventos</strong> y la descomposición multinivel con <strong class="font-bold text-white">reglas estrictas de balanceo</strong>.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-5 relative">
+                        <a href="#fundamentos" class="px-3 py-1.5 text-xs font-semibold bg-white/15 hover:bg-white/25 rounded-full backdrop-blur-md transition-colors border border-white/20">1. Fundamentos y DC</a>
+                        <a href="#simbologia" class="px-3 py-1.5 text-xs font-semibold bg-white/15 hover:bg-white/25 rounded-full backdrop-blur-md transition-colors border border-white/20">2. Simbología</a>
+                        <a href="#tabla-eventos" class="px-3 py-1.5 text-xs font-semibold bg-white/15 hover:bg-white/25 rounded-full backdrop-blur-md transition-colors border border-white/20">3. Tabla de eventos</a>
+                        <a href="#reglas-balanceo" class="px-3 py-1.5 text-xs font-semibold bg-white/15 hover:bg-white/25 rounded-full backdrop-blur-md transition-colors border border-white/20">4. Reglas de balanceo</a>
+                        <a href="#caso-estudio" class="px-3 py-1.5 text-xs font-semibold bg-white/15 hover:bg-white/25 rounded-full backdrop-blur-md transition-colors border border-white/20">5. Caso: Ventas y stock</a>
+                        <a href="#ejercicio-clinica" class="px-3 py-1.5 text-xs font-semibold bg-white/15 hover:bg-white/25 rounded-full backdrop-blur-md transition-colors border border-white/20">6. Clínica Villa Maipú</a>
+                        <a href="#laboratorio-errores" class="px-3 py-1.5 text-xs font-semibold bg-white/15 hover:bg-white/25 rounded-full backdrop-blur-md transition-colors border border-white/20">7. Cazador de errores</a>
+                        <a href="#autoevaluacion" class="px-3 py-1.5 text-xs font-semibold bg-white/15 hover:bg-white/25 rounded-full backdrop-blur-md transition-colors border border-white/20">8. Trivia</a>
+                        <a href="#materiales" class="px-3 py-1.5 text-xs font-semibold bg-white/15 hover:bg-white/25 rounded-full backdrop-blur-md transition-colors border border-white/20">9. Guías (PDF)</a>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN 1: FUNDAMENTOS Y DIAGRAMA DE CONTEXTO -->
+                <section id="fundamentos" class="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-5 mb-6">
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-cyan-100 dark:bg-cyan-950 text-cyan-800 dark:text-cyan-300 uppercase tracking-wider">Conceptos iniciales</span>
+                        <h2 class="text-2xl font-bold mt-2"><span class="bg-gradient-to-r from-cyan-600 to-blue-600 dark:from-cyan-400 dark:to-blue-400 bg-clip-text text-transparent">1 - Fundamentos y diagrama de contexto</span></h2>
+                    </div>
+
+                    <div class="space-y-5 text-base text-slate-600 dark:text-slate-400 leading-relaxed">
+                        <p>
+                            El <strong class="text-slate-800 dark:text-slate-200">diagrama de flujo de datos (DFD)</strong> es la técnica gráfica central del análisis estructurado de sistemas. Su propósito es representar cómo viaja y se transforma la información a través de procesos, almacenes de datos y entidades externas, sin detenerse en detalles de implementación tecnológica (lenguajes de programación, hardware o soportes físicos).
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
+                                <span class="font-bold text-cyan-600 dark:text-cyan-400 text-sm">Lógica de procesos</span>
+                                <p class="text-slate-600 dark:text-slate-400 mt-1.5 text-xs leading-relaxed">Describe <strong class="text-slate-700 dark:text-slate-300">qué hace el sistema</strong> y cómo transforma datos de entrada en datos de salida, garantizando independencia funcional.</p>
+                            </div>
+                            <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
+                                <span class="font-bold text-cyan-600 dark:text-cyan-400 text-sm">Límite y alcance</span>
+                                <p class="text-slate-600 dark:text-slate-400 mt-1.5 text-xs leading-relaxed">Define claramente qué queda dentro de la responsabilidad del sistema y qué interactúa desde el medio ambiente (contexto).</p>
+                            </div>
+                            <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
+                                <span class="font-bold text-cyan-600 dark:text-cyan-400 text-sm">Mantenibilidad</span>
+                                <p class="text-slate-600 dark:text-slate-400 mt-1.5 text-xs leading-relaxed">Al aislar funciones en procesos desacoplados, ante un cambio en el negocio solo se modifica el proceso involucrado.</p>
+                            </div>
+                        </div>
+
+                        <!-- DIAGRAMA DE CONTEXTO EXPLICACIÓN -->
+                        <div class="p-5 bg-cyan-50/50 dark:bg-cyan-950/20 rounded-xl border border-cyan-200 dark:border-cyan-900/40">
+                            <div class="flex items-start gap-3">
+                                <span class="p-2 rounded-lg bg-cyan-100 dark:bg-cyan-900 text-cyan-600 dark:text-cyan-300 flex-shrink-0">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20A14.5 14.5 0 0 0 12 2"/><path d="M2 12h20"/></svg>
+                                </span>
+                                <div>
+                                    <h3 class="font-bold text-cyan-900 dark:text-cyan-200 text-base">¿Qué es el diagrama de contexto (DC o DFD nivel 0)?</h3>
+                                    <p class="text-slate-600 dark:text-slate-400 text-sm mt-1 leading-relaxed">
+                                        Es la visión más abstracta del sistema. Muestra el sistema completo como un único proceso central (denominado con el nombre general del sistema o proceso 0) y su interacción con las entidades externas mediante los flujos de datos entrantes y salientes.
+                                    </p>
+                                    <ul class="mt-3 space-y-1.5 text-xs text-slate-600 dark:text-slate-400">
+                                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-500"></span> <strong class="text-slate-700 dark:text-slate-300">No muestra demoras internas:</strong> Los almacenes propios del sistema quedan encapsulados dentro de la burbuja central.</li>
+                                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-500"></span> <strong class="text-slate-700 dark:text-slate-300">Establece el alcance:</strong> Todo lo que no esté en los flujos del DC queda fuera del proyecto.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- RELACIÓN ENTRE MODELOS ESTRUCTURADOS -->
+                        <div class="p-5 bg-slate-900 rounded-xl text-slate-200">
+                            <h3 class="font-bold text-slate-100 text-base mb-3 flex items-center gap-2">
+                                <svg class="w-5 h-5 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                                Ecosistema de modelos del análisis estructurado
+                            </h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 text-xs">
+                                <div class="p-3 bg-slate-800/80 rounded-lg border border-slate-700">
+                                    <span class="font-bold text-cyan-400 block mb-1">DFD (Nivel 0 a N)</span>
+                                    <p class="text-slate-300">Modela el flujo de datos, demoras y procesos transformadores.</p>
+                                </div>
+                                <div class="p-3 bg-slate-800/80 rounded-lg border border-slate-700">
+                                    <span class="font-bold text-sky-400 block mb-1">DD (Diccionario de datos)</span>
+                                    <p class="text-slate-300">Define con precisión la composición y tipos de cada flujo y almacén.</p>
+                                </div>
+                                <div class="p-3 bg-slate-800/80 rounded-lg border border-slate-700">
+                                    <span class="font-bold text-emerald-400 block mb-1">DER (Entidad-relación)</span>
+                                    <p class="text-slate-300">Especifica la estructura de entidades y relaciones de las demoras.</p>
+                                </div>
+                                <div class="p-3 bg-slate-800/80 rounded-lg border border-slate-700">
+                                    <span class="font-bold text-amber-400 block mb-1">Tablas de decisión</span>
+                                    <p class="text-slate-300">Especifican la lógica interna de los procesos primitivos (hojas).</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 2: SIMBOLOGÍA Y COMPONENTES FORMALES -->
+                <section id="simbologia" class="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-5 mb-6">
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-sky-100 dark:bg-sky-950 text-sky-800 dark:text-sky-300 uppercase tracking-wider">Notación formal</span>
+                        <h2 class="text-2xl font-bold mt-2"><span class="bg-gradient-to-r from-sky-600 to-cyan-600 dark:from-sky-400 dark:to-cyan-400 bg-clip-text text-transparent">2 - Simbología y componentes formales</span></h2>
+                    </div>
+
+                    <div class="space-y-6 text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                        <p>
+                            En la cátedra de Análisis de Sistemas (UTN.BA) se utiliza la notación canónica basada en Yourdon / DeMarco y Gane & Sarson. A continuación se detallan los 4 elementos fundamentales y sus reglas obligatorias:
+                        </p>
+
+                        <!-- TARJETAS DE SIMBOLOGÍA -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+                            <!-- ELEMENTO 1: ENTIDAD EXTERNA -->
+                            <div class="p-5 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800 space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <h3 class="font-bold text-slate-800 dark:text-slate-100 text-base flex items-center gap-2">
+                                        <span class="w-3 h-3 rounded-sm bg-cyan-500"></span>
+                                        Entidad externa (EE)
+                                    </h3>
+                                    <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300">Contexto</span>
+                                </div>
+                                <div class="flex justify-center py-3">
+                                    <!-- SVG ENTIDAD EXTERNA & DUPLICADA -->
+                                    <div class="flex gap-4 items-center">
+                                        <svg width="120" height="54" viewBox="0 0 120 54" class="drop-shadow-xs">
+                                            <rect x="2" y="2" width="116" height="50" rx="4" fill="#f0f9ff" stroke="#0284c7" stroke-width="2" class="dark:fill-slate-900 dark:stroke-cyan-400"/>
+                                            <text x="60" y="31" text-anchor="middle" font-size="12" font-weight="bold" fill="#0369a1" class="dark:fill-cyan-300">CLIENTE</text>
+                                        </svg>
+                                        <svg width="120" height="54" viewBox="0 0 120 54" class="drop-shadow-xs">
+                                            <rect x="2" y="2" width="116" height="50" rx="4" fill="#f0f9ff" stroke="#0284c7" stroke-width="2" class="dark:fill-slate-900 dark:stroke-cyan-400"/>
+                                            <line x1="98" y1="52" x2="118" y2="32" stroke="#0284c7" stroke-width="2" class="dark:stroke-cyan-400"/>
+                                            <text x="54" y="31" text-anchor="middle" font-size="12" font-weight="bold" fill="#0369a1" class="dark:fill-cyan-300">CLIENTE</text>
+                                            <text x="110" y="47" text-anchor="middle" font-size="9" fill="#0284c7" class="dark:fill-cyan-400">a</text>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <ul class="space-y-1.5 text-xs text-slate-600 dark:text-slate-400">
+                                    <li>· <strong class="text-slate-800 dark:text-slate-200">Definición:</strong> Personas, áreas/departamentos, organizaciones o sistemas externos que originan o reciben información.</li>
+                                    <li>· <strong class="text-slate-800 dark:text-slate-200">Nombre:</strong> Siempre en singular (ej.: <em>Cliente</em>, <em>Gerente</em>, <em>Proveedor</em>).</li>
+                                    <li>· <strong class="text-slate-800 dark:text-slate-200">Puras vs. No puras:</strong> Pura si solo emite o solo recibe; no pura (impura) si emite y recibe datos.</li>
+                                    <li>· <strong class="text-slate-800 dark:text-slate-200">Duplicadas:</strong> Para evitar cruce de líneas en el gráfico, se repite la caja agregándole una raya diagonal cruzada en la esquina inferior derecha.</li>
+                                </ul>
+                            </div>
+
+                            <!-- ELEMENTO 2: PROCESO -->
+                            <div class="p-5 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800 space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <h3 class="font-bold text-slate-800 dark:text-slate-100 text-base flex items-center gap-2">
+                                        <span class="w-3 h-3 rounded-full bg-blue-500"></span>
+                                        Proceso
+                                    </h3>
+                                    <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300">Transformación</span>
+                                </div>
+                                <div class="flex justify-center py-3">
+                                    <!-- SVG PROCESO -->
+                                    <div class="flex gap-4 items-center">
+                                        <svg width="120" height="70" viewBox="0 0 120 70" class="drop-shadow-xs">
+                                            <circle cx="60" cy="35" r="32" fill="#eff6ff" stroke="#2563eb" stroke-width="2" class="dark:fill-slate-900 dark:stroke-blue-400"/>
+                                            <line x1="28" y1="26" x2="92" y2="26" stroke="#2563eb" stroke-width="1" stroke-dasharray="2,2" class="dark:stroke-blue-400"/>
+                                            <text x="60" y="20" text-anchor="middle" font-size="10" font-weight="bold" fill="#1d4ed8" class="dark:fill-blue-300">1.0</text>
+                                            <text x="60" y="42" text-anchor="middle" font-size="9.5" font-weight="semibold" fill="#1e40af" class="dark:fill-blue-200">Realizar</text>
+                                            <text x="60" y="54" text-anchor="middle" font-size="9.5" font-weight="semibold" fill="#1e40af" class="dark:fill-blue-200">venta</text>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <ul class="space-y-1.5 text-xs text-slate-600 dark:text-slate-400">
+                                    <li>· <strong class="text-slate-800 dark:text-slate-200">Definición:</strong> Función lógica interna que transforma entradas en salidas para dar respuesta a un evento.</li>
+                                    <li>· <strong class="text-slate-800 dark:text-slate-200">Nombre:</strong> Frase verbal con verbo en infinitivo + objeto (ej.: <em>Realizar venta</em>, <em>Calcular balance</em>).</li>
+                                    <li>· <strong class="text-slate-800 dark:text-slate-200">Identificador:</strong> Número de nivel + número de proceso (ej.: 1.0, 1.1, 2.0).</li>
+                                    <li>· <strong class="text-slate-800 dark:text-slate-200">Proceso temporal:</strong> Activado por una condición de tiempo (reloj del sistema) sin requerir flujo de entrada externo.</li>
+                                </ul>
+                            </div>
+
+                            <!-- ELEMENTO 3: FLUJO DE DATOS -->
+                            <div class="p-5 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800 space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <h3 class="font-bold text-slate-800 dark:text-slate-100 text-base flex items-center gap-2">
+                                        <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+                                        Flujo de datos y estímulos
+                                    </h3>
+                                    <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300">Movimiento</span>
+                                </div>
+                                <div class="flex justify-center py-3">
+                                    <!-- SVG FLUJOS -->
+                                    <svg width="240" height="50" viewBox="0 0 240 50">
+                                        <line x1="10" y1="25" x2="220" y2="25" stroke="#059669" stroke-width="2" marker-end="url(#arrow-flow)" class="dark:stroke-emerald-400"/>
+                                        <defs>
+                                            <marker id="arrow-flow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                                                <path d="M0,0 L0,6 L8,3 z" fill="#059669" class="dark:fill-emerald-400"/>
+                                            </marker>
+                                        </defs>
+                                        <text x="115" y="18" text-anchor="middle" font-size="11" font-weight="bold" fill="#047857" class="dark:fill-emerald-300">Producto solicitado</text>
+                                    </svg>
+                                </div>
+                                <ul class="space-y-1.5 text-xs text-slate-600 dark:text-slate-400">
+                                    <li>· <strong class="text-slate-800 dark:text-slate-200">Definición:</strong> Intercambio de paquetes de información entre procesos, entidades y almacenes.</li>
+                                    <li>· <strong class="text-slate-800 dark:text-slate-200">Nombre:</strong> Sustantivo + adjetivo representativo (ej.: <em>Factura emitida</em>, <em>Stock verificado</em>).</li>
+                                    <li>· <strong class="text-slate-800 dark:text-slate-200">Prohibido:</strong> Usar palabras genéricas como <em>"datos"</em>, <em>"información"</em>, <em>"archivo"</em> o soportes físicos (<em>"papel"</em>).</li>
+                                    <li>· <strong class="text-slate-800 dark:text-slate-200">Estímulo o flujo activador:</strong> Flujo proveniente del contexto que despierta y arranca un proceso.</li>
+                                </ul>
+                            </div>
+
+                            <!-- ELEMENTO 4: DEMORA / ALMACÉN DE DATOS -->
+                            <div class="p-5 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800 space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <h3 class="font-bold text-slate-800 dark:text-slate-100 text-base flex items-center gap-2">
+                                        <span class="w-3 h-3 rounded-sm bg-amber-500"></span>
+                                        Demora / Almacén de datos
+                                    </h3>
+                                    <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300">Persistencia</span>
+                                </div>
+                                <div class="flex justify-center py-3">
+                                    <!-- SVG DEMORA & DUPLICADA -->
+                                    <div class="flex gap-4 items-center">
+                                        <svg width="110" height="46" viewBox="0 0 110 46">
+                                            <line x1="2" y1="2" x2="108" y2="2" stroke="#d97706" stroke-width="2" class="dark:stroke-amber-400"/>
+                                            <line x1="2" y1="44" x2="108" y2="44" stroke="#d97706" stroke-width="2" class="dark:stroke-amber-400"/>
+                                            <line x1="28" y1="2" x2="28" y2="44" stroke="#d97706" stroke-width="1.5" class="dark:stroke-amber-400"/>
+                                            <text x="14" y="27" text-anchor="middle" font-size="11" font-weight="bold" fill="#b45309" class="dark:fill-amber-300">D1</text>
+                                            <text x="68" y="27" text-anchor="middle" font-size="11" font-weight="bold" fill="#92400e" class="dark:fill-amber-200">STOCK</text>
+                                        </svg>
+                                        <svg width="110" height="46" viewBox="0 0 110 46">
+                                            <line x1="2" y1="2" x2="108" y2="2" stroke="#d97706" stroke-width="2" class="dark:stroke-amber-400"/>
+                                            <line x1="2" y1="44" x2="108" y2="44" stroke="#d97706" stroke-width="2" class="dark:stroke-amber-400"/>
+                                            <line x1="2" y1="2" x2="2" y2="44" stroke="#d97706" stroke-width="2" class="dark:stroke-amber-400"/>
+                                            <line x1="6" y1="2" x2="6" y2="44" stroke="#d97706" stroke-width="2" class="dark:stroke-amber-400"/>
+                                            <line x1="30" y1="2" x2="30" y2="44" stroke="#d97706" stroke-width="1.5" class="dark:stroke-amber-400"/>
+                                            <text x="18" y="27" text-anchor="middle" font-size="11" font-weight="bold" fill="#b45309" class="dark:fill-amber-300">D1</text>
+                                            <text x="70" y="27" text-anchor="middle" font-size="11" font-weight="bold" fill="#92400e" class="dark:fill-amber-200">STOCK</text>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <ul class="space-y-1.5 text-xs text-slate-600 dark:text-slate-400">
+                                    <li>· <strong class="text-slate-800 dark:text-slate-200">Definición:</strong> Información retenida o demorada para su uso diferido por parte de los procesos.</li>
+                                    <li>· <strong class="text-slate-800 dark:text-slate-200">Nombre:</strong> Sustantivo en plural representativo del conjunto de datos (ej.: <em>D1 Facturas</em>, <em>D2 Clientes</em>).</li>
+                                    <li>· <strong class="text-slate-800 dark:text-slate-200">Operaciones:</strong> Flecha hacia la demora = Inserción/Actualización/Baja. Flecha desde la demora = Consulta/Lectura.</li>
+                                    <li>· <strong class="text-slate-800 dark:text-slate-200">Demora duplicada:</strong> Se dibuja una doble barra vertical cerrada en el extremo izquierdo.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 3: TABLA DE EVENTOS -->
+                <section id="tabla-eventos" class="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-5 mb-6">
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-indigo-100 dark:bg-indigo-950 text-indigo-800 dark:text-indigo-300 uppercase tracking-wider">Matriz de sucesos</span>
+                        <h2 class="text-2xl font-bold mt-2"><span class="bg-gradient-to-r from-indigo-600 to-cyan-600 dark:from-indigo-400 dark:to-cyan-400 bg-clip-text text-transparent">3 - Tabla de eventos (TE)</span></h2>
+                    </div>
+
+                    <div class="space-y-5 text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                        <p>
+                            Un <strong class="text-slate-800 dark:text-slate-200">evento</strong> es un suceso ante el cual el sistema debe producir una respuesta computable. La tabla de eventos es el puente directo entre el relevamiento y el diseño del DFD.
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800">
+                                <span class="font-bold text-indigo-600 dark:text-indigo-400 text-sm">Eventos externos</span>
+                                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Originados por una <strong class="text-slate-700 dark:text-slate-300">entidad externa</strong> a través de un <strong class="text-slate-700 dark:text-slate-300">flujo activador (estímulo)</strong>.</p>
+                            </div>
+                            <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800">
+                                <span class="font-bold text-indigo-600 dark:text-indigo-400 text-sm">Eventos temporales</span>
+                                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Originados por una <strong class="text-slate-700 dark:text-slate-300">condición de tiempo</strong> (ej.: "todos los viernes", "el último día del mes"). En la columna de estímulo se indica con un guion <code class="text-xs font-mono bg-slate-200 dark:bg-slate-700 px-1 py-0.5 rounded">--</code>.</p>
+                            </div>
+                        </div>
+
+                        <!-- ESTRUCTURA DE LA TABLA DE EVENTOS -->
+                        <div class="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800 shadow-xs">
+                            <table class="w-full text-left text-xs border-collapse">
+                                <thead>
+                                    <tr class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-bold border-b border-slate-200 dark:border-slate-700">
+                                        <th class="p-3">Tipo</th>
+                                        <th class="p-3">Descripción</th>
+                                        <th class="p-3">Estímulo (Entrada)</th>
+                                        <th class="p-3">Respuesta (Salida)</th>
+                                        <th class="p-3">Entidad destino/origen</th>
+                                        <th class="p-3">Función / Proceso</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100 dark:divide-slate-800 text-slate-600 dark:text-slate-400">
+                                    <tr class="hover:bg-slate-50/60 dark:hover:bg-slate-800/30">
+                                        <td class="p-3"><span class="px-2 py-0.5 rounded font-bold bg-cyan-100 dark:bg-cyan-950 text-cyan-700 dark:text-cyan-300">Externo</span></td>
+                                        <td class="p-3">El cliente solicita compra de producto</td>
+                                        <td class="p-3 font-semibold text-slate-800 dark:text-slate-200">Producto solicitado</td>
+                                        <td class="p-3">Factura emitida / Producto faltante</td>
+                                        <td class="p-3">Cliente / Dto. Compras</td>
+                                        <td class="p-3 font-semibold text-indigo-600 dark:text-indigo-400">Realizar venta</td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50/60 dark:hover:bg-slate-800/30">
+                                        <td class="p-3"><span class="px-2 py-0.5 rounded font-bold bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300">Temporal</span></td>
+                                        <td class="p-3">Todos los viernes se realiza informe de ventas</td>
+                                        <td class="p-3 font-mono font-bold text-slate-400">--</td>
+                                        <td class="p-3">Ventas realizadas</td>
+                                        <td class="p-3">Gerente</td>
+                                        <td class="p-3 font-semibold text-indigo-600 dark:text-indigo-400">Calcular ventas realizadas</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 4: REGLAS DE CONSTRUCCIÓN Y BALANCEO -->
+                <section id="reglas-balanceo" class="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-5 mb-6">
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-rose-100 dark:bg-rose-950 text-rose-800 dark:text-rose-300 uppercase tracking-wider">Consistencia</span>
+                        <h2 class="text-2xl font-bold mt-2"><span class="bg-gradient-to-r from-rose-600 to-cyan-600 dark:from-rose-400 dark:to-cyan-400 bg-clip-text text-transparent">4 - Reglas de construcción y balanceo</span></h2>
+                    </div>
+
+                    <div class="space-y-6 text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                        <p>
+                            Para que un DFD sea sintácticamente válido y conceptualmente correcto, deben cumplirse las reglas universales de conservación de flujos y conexiones permitidas:
+                        </p>
+
+                        <!-- GRID DE ANOMALÍAS Y PROHIBICIONES -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                            <!-- ANOMALÍAS -->
+                            <div class="p-4 bg-rose-50/50 dark:bg-rose-950/20 rounded-xl border border-rose-200 dark:border-rose-900/40 space-y-3">
+                                <h3 class="font-bold text-rose-900 dark:text-rose-300 text-sm flex items-center gap-2">
+                                    <svg class="w-4 h-4 text-rose-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                                    Anomalías de procesos (errores críticos)
+                                </h3>
+                                <ul class="space-y-2 text-xs">
+                                    <li class="p-2.5 bg-white dark:bg-slate-900 rounded-lg border border-rose-100 dark:border-rose-900/30">
+                                        <strong class="text-rose-700 dark:text-rose-400 block mb-0.5">Agujero negro (Black hole):</strong>
+                                        El proceso tiene flujos de entrada pero ninguna salida. La información desaparece.
+                                    </li>
+                                    <li class="p-2.5 bg-white dark:bg-slate-900 rounded-lg border border-rose-100 dark:border-rose-900/30">
+                                        <strong class="text-rose-700 dark:text-rose-400 block mb-0.5">Generación espontánea o milagro (Miracle):</strong>
+                                        El proceso tiene flujos de salida sin ninguna entrada (salvo procesos temporales justificados).
+                                    </li>
+                                    <li class="p-2.5 bg-white dark:bg-slate-900 rounded-lg border border-rose-100 dark:border-rose-900/30">
+                                        <strong class="text-rose-700 dark:text-rose-400 block mb-0.5">Agujero gris (Grey hole):</strong>
+                                        Las salidas generadas no pueden deducirse lógicamente con las entradas disponibles.
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- CONEXIONES ILEGALES -->
+                            <div class="p-4 bg-amber-50/50 dark:bg-amber-950/20 rounded-xl border border-amber-200 dark:border-amber-900/40 space-y-3">
+                                <h3 class="font-bold text-amber-900 dark:text-amber-300 text-sm flex items-center gap-2">
+                                    <svg class="w-4 h-4 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+                                    Conexiones directas prohibidas
+                                </h3>
+                                <ul class="space-y-2 text-xs">
+                                    <li class="p-2.5 bg-white dark:bg-slate-900 rounded-lg border border-amber-100 dark:border-amber-900/30">
+                                        <strong class="text-amber-800 dark:text-amber-400 block mb-0.5">EE ➔ EE directa:</strong>
+                                        Las entidades externas no se conectan entre sí (lo que ocurre fuera del sistema no se modela en el DFD).
+                                    </li>
+                                    <li class="p-2.5 bg-white dark:bg-slate-900 rounded-lg border border-amber-100 dark:border-amber-900/30">
+                                        <strong class="text-amber-800 dark:text-amber-400 block mb-0.5">EE ➔ Demora directa:</strong>
+                                        Una entidad externa no puede escribir ni consultar una base de datos sin un proceso intermedio que procese o valide.
+                                    </li>
+                                    <li class="p-2.5 bg-white dark:bg-slate-900 rounded-lg border border-amber-100 dark:border-amber-900/30">
+                                        <strong class="text-amber-800 dark:text-amber-400 block mb-0.5">Demora ➔ Demora directa:</strong>
+                                        Los almacenes no se comunican entre sí sin un proceso mediador.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- REGLAS DE BALANCEO -->
+                        <div class="p-5 bg-slate-900 rounded-xl text-slate-200 space-y-3">
+                            <h3 class="font-bold text-cyan-400 text-base flex items-center gap-2">
+                                <svg class="w-5 h-5 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                                Reglas de oro del balanceo (DC vs. TE vs. DFD Nivel 1)
+                            </h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+                                <div class="p-3 bg-slate-800 rounded-lg border border-slate-700">
+                                    <strong class="text-slate-100 block mb-1">1. Mismas entidades</strong>
+                                    <p class="text-slate-400">Todas las EE del Diagrama de Contexto deben existir en el DFD y en la Tabla de Eventos.</p>
+                                </div>
+                                <div class="p-3 bg-slate-800 rounded-lg border border-slate-700">
+                                    <strong class="text-slate-100 block mb-1">2. Mismos flujos</strong>
+                                    <p class="text-slate-400">Todos los flujos entrantes y salientes del DC deben aparecer en el DFD Nivel 1 con idéntico nombre.</p>
+                                </div>
+                                <div class="p-3 bg-slate-800 rounded-lg border border-slate-700">
+                                    <strong class="text-slate-100 block mb-1">3. Mismos procesos</strong>
+                                    <p class="text-slate-400">Cada proceso del DFD Nivel 1 debe corresponder exactamente a una función de la Tabla de Eventos.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 5: CASO DE ESTUDIO RESUELTO: VENTAS Y CONTROL DE STOCK -->
+                <section id="caso-estudio" class="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-5 mb-6">
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 uppercase tracking-wider">Caso resuelto oficial</span>
+                        <h2 class="text-2xl font-bold mt-2"><span class="bg-gradient-to-r from-emerald-600 to-cyan-600 dark:from-emerald-400 dark:to-cyan-400 bg-clip-text text-transparent">5 - Caso resuelto: Ventas y stock</span></h2>
+                    </div>
+
+                    <div class="space-y-6 text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                        <!-- NARRATIVA -->
+                        <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border-l-4 border-cyan-500 text-slate-700 dark:text-slate-300 text-xs leading-relaxed italic">
+                            "Cuando un cliente solicita un producto, para realizar una venta, se verifica el stock (información disponible en el archivo de stock disponible); si existe el producto, se emite la factura correspondiente entregando al cliente dicho comprobante, junto con el producto. Si no existe el producto, se da aviso al Departamento de Compras para que éste se encargue de la reposición del stock. Todos los viernes se realiza un informe de las ventas realizadas, para lo que también se consulta el stock de los productos más vendidos (del mismo archivo de stock). El informe se emite por duplicado, el original se envía al Gerente y el duplicado se archiva."
+                        </div>
+
+                        <!-- DIAGRAMA DE CONTEXTO (DC) -->
+                        <div>
+                            <h3 class="font-bold text-slate-800 dark:text-slate-200 text-base mb-3 flex items-center gap-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-cyan-500"></span>
+                                Diagrama de contexto (DC / DFD Nivel 0)
+                            </h3>
+                            <div class="p-4 bg-slate-50 dark:bg-slate-950 rounded-xl border border-slate-200 dark:border-slate-800 flex justify-center overflow-x-auto">
+                                <svg width="680" height="240" viewBox="0 0 680 240" class="max-w-full">
+                                    <!-- Entidad Cliente (Izquierda) -->
+                                    <rect x="20" y="70" width="120" height="60" rx="4" fill="#f0f9ff" stroke="#0284c7" stroke-width="2" class="dark:fill-slate-900 dark:stroke-cyan-400"/>
+                                    <text x="80" y="105" text-anchor="middle" font-size="12" font-weight="bold" fill="#0369a1" class="dark:fill-cyan-300">CLIENTE</text>
+
+                                    <!-- Proceso Central: Sistema de Ventas -->
+                                    <circle cx="340" cy="100" r="60" fill="#eff6ff" stroke="#2563eb" stroke-width="2" class="dark:fill-slate-900 dark:stroke-blue-400"/>
+                                    <text x="340" y="95" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e40af" class="dark:fill-blue-200">SISTEMA</text>
+                                    <text x="340" y="112" text-anchor="middle" font-size="11" font-weight="semibold" fill="#1d4ed8" class="dark:fill-blue-300">DE VENTAS</text>
+
+                                    <!-- Entidad Dto. Compras (Arriba derecha) -->
+                                    <rect x="530" y="20" width="130" height="50" rx="4" fill="#f0f9ff" stroke="#0284c7" stroke-width="2" class="dark:fill-slate-900 dark:stroke-cyan-400"/>
+                                    <text x="595" y="50" text-anchor="middle" font-size="11" font-weight="bold" fill="#0369a1" class="dark:fill-cyan-300">DTO. COMPRAS</text>
+
+                                    <!-- Entidad Gerente (Abajo derecha) -->
+                                    <rect x="530" y="140" width="130" height="50" rx="4" fill="#f0f9ff" stroke="#0284c7" stroke-width="2" class="dark:fill-slate-900 dark:stroke-cyan-400"/>
+                                    <text x="595" y="170" text-anchor="middle" font-size="11" font-weight="bold" fill="#0369a1" class="dark:fill-cyan-300">GERENTE</text>
+
+                                    <!-- Flujo Entrada: Cliente -> Sistema -->
+                                    <path d="M140 90 L275 90" stroke="#059669" stroke-width="2" marker-end="url(#arrow-green)" class="dark:stroke-emerald-400"/>
+                                    <text x="207" y="82" text-anchor="middle" font-size="10" font-weight="bold" fill="#047857" class="dark:fill-emerald-300">Producto solicitado</text>
+
+                                    <!-- Flujo Salida: Sistema -> Cliente -->
+                                    <path d="M280 115 L145 115" stroke="#059669" stroke-width="2" marker-end="url(#arrow-green)" class="dark:stroke-emerald-400"/>
+                                    <text x="207" y="130" text-anchor="middle" font-size="10" font-weight="bold" fill="#047857" class="dark:fill-emerald-300">Factura emitida</text>
+
+                                    <!-- Flujo Salida: Sistema -> Dto Compras -->
+                                    <path d="M395 75 L525 45" stroke="#059669" stroke-width="2" marker-end="url(#arrow-green)" class="dark:stroke-emerald-400"/>
+                                    <text x="470" y="50" text-anchor="middle" font-size="10" font-weight="bold" fill="#047857" class="dark:fill-emerald-300">Producto faltante</text>
+
+                                    <!-- Flujo Salida: Sistema -> Gerente -->
+                                    <path d="M395 125 L525 160" stroke="#059669" stroke-width="2" marker-end="url(#arrow-green)" class="dark:stroke-emerald-400"/>
+                                    <text x="470" y="152" text-anchor="middle" font-size="10" font-weight="bold" fill="#047857" class="dark:fill-emerald-300">Ventas realizadas</text>
+
+                                    <defs>
+                                        <marker id="arrow-green" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                                            <path d="M0,0 L0,6 L8,3 z" fill="#059669" class="dark:fill-emerald-400"/>
+                                        </marker>
+                                    </defs>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <!-- DFD NIVEL 1 -->
+                        <div>
+                            <h3 class="font-bold text-slate-800 dark:text-slate-200 text-base mb-3 flex items-center gap-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
+                                DFD nivel 1 (Descomposición en procesos y demoras)
+                            </h3>
+                            <div class="p-4 bg-slate-50 dark:bg-slate-950 rounded-xl border border-slate-200 dark:border-slate-800 flex justify-center overflow-x-auto">
+                                <svg width="680" height="300" viewBox="0 0 680 300" class="max-w-full">
+                                    <!-- Entidad Cliente (Izquierda) -->
+                                    <rect x="20" y="60" width="110" height="50" rx="4" fill="#f0f9ff" stroke="#0284c7" stroke-width="2" class="dark:fill-slate-900 dark:stroke-cyan-400"/>
+                                    <text x="75" y="90" text-anchor="middle" font-size="11" font-weight="bold" fill="#0369a1" class="dark:fill-cyan-300">CLIENTE</text>
+
+                                    <!-- Proceso 1.0: Realizar venta -->
+                                    <circle cx="280" cy="85" r="42" fill="#eff6ff" stroke="#2563eb" stroke-width="2" class="dark:fill-slate-900 dark:stroke-blue-400"/>
+                                    <text x="280" y="75" text-anchor="middle" font-size="10" font-weight="bold" fill="#1d4ed8" class="dark:fill-blue-300">1.0</text>
+                                    <text x="280" y="90" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#1e40af" class="dark:fill-blue-200">Realizar</text>
+                                    <text x="280" y="102" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#1e40af" class="dark:fill-blue-200">venta</text>
+
+                                    <!-- Demora D1: STOCK (Centro) -->
+                                    <line x1="220" y1="180" x2="340" y2="180" stroke="#d97706" stroke-width="2" class="dark:stroke-amber-400"/>
+                                    <line x1="220" y1="215" x2="340" y2="215" stroke="#d97706" stroke-width="2" class="dark:stroke-amber-400"/>
+                                    <line x1="250" y1="180" x2="250" y2="215" stroke="#d97706" stroke-width="1.5" class="dark:stroke-amber-400"/>
+                                    <text x="235" y="202" text-anchor="middle" font-size="10" font-weight="bold" fill="#b45309" class="dark:fill-amber-300">D1</text>
+                                    <text x="295" y="202" text-anchor="middle" font-size="10" font-weight="bold" fill="#92400e" class="dark:fill-amber-200">STOCK</text>
+
+                                    <!-- Proceso 2.0: Calcular ventas realizadas (Abajo derecha) -->
+                                    <circle cx="480" cy="220" r="42" fill="#eff6ff" stroke="#2563eb" stroke-width="2" class="dark:fill-slate-900 dark:stroke-blue-400"/>
+                                    <text x="480" y="210" text-anchor="middle" font-size="10" font-weight="bold" fill="#1d4ed8" class="dark:fill-blue-300">2.0</text>
+                                    <text x="480" y="224" text-anchor="middle" font-size="9" font-weight="bold" fill="#1e40af" class="dark:fill-blue-200">Calcular ventas</text>
+                                    <text x="480" y="236" text-anchor="middle" font-size="9" font-weight="bold" fill="#1e40af" class="dark:fill-blue-200">realizadas</text>
+
+                                    <!-- Entidad Dto Compras (Arriba derecha) -->
+                                    <rect x="520" y="30" width="130" height="45" rx="4" fill="#f0f9ff" stroke="#0284c7" stroke-width="2" class="dark:fill-slate-900 dark:stroke-cyan-400"/>
+                                    <text x="585" y="57" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#0369a1" class="dark:fill-cyan-300">DTO. COMPRAS</text>
+
+                                    <!-- Entidad Gerente (Derecha abajo) -->
+                                    <rect x="570" y="200" width="95" height="45" rx="4" fill="#f0f9ff" stroke="#0284c7" stroke-width="2" class="dark:fill-slate-900 dark:stroke-cyan-400"/>
+                                    <text x="617" y="227" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#0369a1" class="dark:fill-cyan-300">GERENTE</text>
+
+                                    <!-- Flujos -->
+                                    <!-- Cliente -> 1.0 -->
+                                    <path d="M130 75 L235 75" stroke="#059669" stroke-width="2" marker-end="url(#arrow-green)" class="dark:stroke-emerald-400"/>
+                                    <text x="180" y="68" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#047857" class="dark:fill-emerald-300">Prod. solicitado</text>
+
+                                    <!-- 1.0 -> Cliente -->
+                                    <path d="M238 95 L135 95" stroke="#059669" stroke-width="2" marker-end="url(#arrow-green)" class="dark:stroke-emerald-400"/>
+                                    <text x="180" y="110" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#047857" class="dark:fill-emerald-300">Factura emitida</text>
+
+                                    <!-- 1.0 -> Dto Compras -->
+                                    <path d="M322 75 L515 50" stroke="#059669" stroke-width="2" marker-end="url(#arrow-green)" class="dark:stroke-emerald-400"/>
+                                    <text x="420" y="55" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#047857" class="dark:fill-emerald-300">Prod. faltante</text>
+
+                                    <!-- 1.0 <-> D1 Stock -->
+                                    <path d="M270 128 L270 175" stroke="#059669" stroke-width="1.5" marker-end="url(#arrow-green)" class="dark:stroke-emerald-400"/>
+                                    <path d="M290 175 L290 128" stroke="#059669" stroke-width="1.5" marker-end="url(#arrow-green)" class="dark:stroke-emerald-400"/>
+                                    <text x="280" y="152" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#047857" class="dark:fill-emerald-300">Stock</text>
+
+                                    <!-- D1 Stock -> 2.0 -->
+                                    <path d="M340 197 L435 210" stroke="#059669" stroke-width="1.5" marker-end="url(#arrow-green)" class="dark:stroke-emerald-400"/>
+                                    <text x="390" y="193" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#047857" class="dark:fill-emerald-300">Stock ventas</text>
+
+                                    <!-- 2.0 -> Gerente -->
+                                    <path d="M523 220 L565 220" stroke="#059669" stroke-width="2" marker-end="url(#arrow-green)" class="dark:stroke-emerald-400"/>
+                                    <text x="545" y="212" text-anchor="middle" font-size="9" font-weight="bold" fill="#047857" class="dark:fill-emerald-300">Ventas</text>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 6: CASO PRÁCTICO: CLÍNICA VILLA MAIPÚ -->
+                <section id="ejercicio-clinica" class="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-5 mb-6">
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-teal-100 dark:bg-teal-950 text-teal-800 dark:text-teal-300 uppercase tracking-wider">Ejercicio de parcial</span>
+                        <h2 class="text-2xl font-bold mt-2"><span class="bg-gradient-to-r from-teal-600 to-cyan-600 dark:from-teal-400 dark:to-cyan-400 bg-clip-text text-transparent">6 - Caso práctico: Clínica Villa Maipú</span></h2>
+                    </div>
+
+                    <div class="space-y-5 text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                        <p>
+                            Analicemos el caso clásico de la cátedra para practicar la extracción de entidades externas, eventos y demoras:
+                        </p>
+
+                        <div class="p-5 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800 space-y-3 text-xs leading-relaxed">
+                            <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm">Enunciado del relevamiento:</h3>
+                            <p>En la <strong>Clínica Villa Maipú</strong>, el proceso de reembolso está a cargo de Ricky White, del sector Reintegros.</p>
+                            <p>Cuando se recibe el <strong>Reembolso enviado por la Obra Social</strong>, la secretaria se queda con la copia del acuse de recibo, lo sella y lo archiva. Luego se lo envía a Federico Portero-Losas, analista de Reintegros, quien verifica que el importe sea el que se solicitó. Si el importe es correcto se genera una <strong>Solicitud de Transferencia de Cheques</strong> por duplicado (el original se archiva y el duplicado se envía a <strong>Tesorería</strong>). Si el importe es menor, se genera la Solicitud y además un <strong>Formulario de Reembolso</strong> que se envía a la <strong>Obra Social</strong> informando la diferencia.</p>
+                            <p>Aproximadamente el <strong>último día hábil del mes</strong>, la supervisora de Contabilidad ordena generar los movimientos de acreditación en las cuentas patrimoniales. Para ello se toman los reembolsos aceptados y se verifica en el <strong>Maestro de Prestaciones de Servicio</strong>. Si el código es "alta complejidad" o "especial", se emite un listado que se envía a <strong>Imputaciones Contables</strong>. Si es "Común", se graba en el diskette <em>'No Acreditados'</em>.</p>
+                            <p>El <strong>último día hábil del mes</strong> se generan para Aníbal Bighe, <strong>Director Técnico</strong> de la clínica, estadísticas sobre las Historias Clínicas (listado <em>'Historias Clínicas'</em> y listado <em>'Errores de Acreditación'</em> enviado a <strong>Administración</strong>).</p>
+                        </div>
+
+                        <!-- DESGLOSE GUIADO INTERACTIVO -->
+                        <details class="group bg-slate-50 dark:bg-slate-800/30 rounded-xl border border-slate-200 dark:border-slate-800 p-4 open:bg-white dark:open:bg-slate-900 transition-colors">
+                            <summary class="cursor-pointer font-bold text-slate-800 dark:text-slate-200 text-sm flex items-center justify-between">
+                                <span>Ver desglose de entidades externas, eventos y demoras</span>
+                                <svg class="w-4 h-4 text-cyan-500 transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                            </summary>
+                            <div class="mt-4 space-y-3 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs">
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                    <div class="p-3 bg-cyan-50 dark:bg-cyan-950/30 rounded-lg border border-cyan-200 dark:border-cyan-900/40">
+                                        <strong class="text-cyan-800 dark:text-cyan-300 block mb-1">Entidades externas</strong>
+                                        <ul class="space-y-1 text-slate-600 dark:text-slate-400">
+                                            <li>· Obra Social</li>
+                                            <li>· Tesorería</li>
+                                            <li>· Imputaciones Contables</li>
+                                            <li>· Administración</li>
+                                            <li>· Director Técnico</li>
+                                        </ul>
+                                    </div>
+                                    <div class="p-3 bg-blue-50 dark:bg-blue-950/30 rounded-lg border border-blue-200 dark:border-blue-900/40">
+                                        <strong class="text-blue-800 dark:text-blue-300 block mb-1">Eventos identificados</strong>
+                                        <ul class="space-y-1 text-slate-600 dark:text-slate-400">
+                                            <li>· <span class="font-semibold">Ext:</span> Obra Social envía reembolso.</li>
+                                            <li>· <span class="font-semibold">Temp:</span> Último día hábil: Generar movimientos de acreditación.</li>
+                                            <li>· <span class="font-semibold">Temp:</span> Último día hábil: Generar estadísticas de historias clínicas.</li>
+                                        </ul>
+                                    </div>
+                                    <div class="p-3 bg-amber-50 dark:bg-amber-950/30 rounded-lg border border-amber-200 dark:border-amber-900/40">
+                                        <strong class="text-amber-800 dark:text-amber-300 block mb-1">Demoras (Almacenes)</strong>
+                                        <ul class="space-y-1 text-slate-600 dark:text-slate-400">
+                                            <li>· D1 Reembolsos aceptados</li>
+                                            <li>· D2 Maestro prestaciones</li>
+                                            <li>· D3 No acreditados</li>
+                                            <li>· D4 Historias clínicas</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 7: CAZADOR DE ERRORES EN DFD (LABORATORIO) -->
+                <section id="laboratorio-errores" class="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-5 mb-6">
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 uppercase tracking-wider">Laboratorio interactivo</span>
+                        <h2 class="text-2xl font-bold mt-2"><span class="bg-gradient-to-r from-amber-600 to-cyan-600 dark:from-amber-400 dark:to-cyan-400 bg-clip-text text-transparent">7 - Cazador de errores en DFD</span></h2>
+                    </div>
+
+                    <div class="space-y-5 text-sm">
+                        <p class="text-slate-600 dark:text-slate-400">
+                            Poné a prueba tu ojo clínico. Leé la situación de modelado y detectá cuál es el error sintáctico o semántico:
+                        </p>
+
+                        <!-- CONTENEDOR DEL JUEGO -->
+                        <div class="p-5 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800">
+                            <div class="flex items-center justify-between mb-3 text-xs text-slate-500">
+                                <span id="lab-progress-text" class="font-bold text-cyan-600 dark:text-cyan-400">Caso 1 de 5</span>
+                                <span id="lab-score-text" class="font-semibold">Aciertos: 0</span>
+                            </div>
+
+                            <div id="lab-scenario-card" class="p-4 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 mb-4">
+                                <h3 id="lab-scenario-title" class="font-bold text-slate-800 dark:text-slate-100 text-sm mb-1">Cargando caso...</h3>
+                                <p id="lab-scenario-desc" class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed"></p>
+                            </div>
+
+                            <div id="lab-options-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                                <!-- Botones de opciones generados por JS -->
+                            </div>
+
+                            <div id="lab-feedback" class="hidden mt-4 p-4 rounded-xl text-xs"></div>
+
+                            <div class="mt-4 flex justify-end">
+                                <button id="btn-next-scenario" class="hidden px-4 py-2 bg-cyan-600 hover:bg-cyan-700 text-white rounded-xl text-xs font-bold transition-all">
+                                    Siguiente caso ➔
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 8: TRIVIA DE AUTOEVALUACIÓN -->
+                <section id="autoevaluacion" class="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-5 mb-6">
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-violet-100 dark:bg-violet-950 text-violet-800 dark:text-violet-300 uppercase tracking-wider">Evaluación</span>
+                        <h2 class="text-2xl font-bold mt-2"><span class="bg-gradient-to-r from-violet-600 to-cyan-600 dark:from-violet-400 dark:to-cyan-400 bg-clip-text text-transparent">8 - Trivia de autoevaluación</span></h2>
+                    </div>
+
+                    <div class="space-y-5 text-sm">
+                        <p class="text-slate-600 dark:text-slate-400">
+                            Preguntas típicas de examen parcial sobre DFD, tabla de eventos y diagrama de contexto:
+                        </p>
+
+                        <div id="quiz-container" class="space-y-4">
+                            <!-- Preguntas generadas por JS -->
+                        </div>
+
+                        <div id="quiz-results" class="hidden p-5 rounded-xl bg-slate-100 dark:bg-slate-800 text-center space-y-2">
+                            <h3 class="text-base font-bold text-slate-800 dark:text-slate-100">Resultado final</h3>
+                            <p id="quiz-score" class="text-sm text-cyan-600 dark:text-cyan-400 font-extrabold"></p>
+                            <button id="btn-retry-quiz" class="mt-2 px-4 py-2 bg-cyan-600 hover:bg-cyan-700 text-white text-xs font-bold rounded-xl transition-all">Reintentar trivia</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 9: MATERIALES Y GUÍAS DE CÁTEDRA -->
+                <section id="materiales" class="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 scroll-mt-24">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-5 mb-6">
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-cyan-100 dark:bg-cyan-950 text-cyan-800 dark:text-cyan-300 uppercase tracking-wider">Documentos oficiales</span>
+                        <h2 class="text-2xl font-bold mt-2"><span class="bg-gradient-to-r from-cyan-600 to-blue-600 dark:from-cyan-400 dark:to-blue-400 bg-clip-text text-transparent">9 - Materiales y guías de cátedra</span></h2>
+                    </div>
+
+                    <div class="space-y-4 text-sm">
+                        <p class="text-slate-600 dark:text-slate-400">
+                            Accedé directamente a los apuntes oficiales y presentaciones en PDF de la cátedra de Análisis de Sistemas:
+                        </p>
+
+                        <!-- PESTAÑAS DEL VISOR -->
+                        <div class="flex flex-wrap gap-2 border-b border-slate-200 dark:border-slate-800 pb-3" role="tablist">
+                            <button class="pdf-tab-btn active-tab px-4 py-2 rounded-xl text-xs font-bold bg-cyan-600 text-white border border-cyan-600 shadow-xs transition-all" data-pdf-target="panel-apunte" role="tab" aria-selected="true">
+                                Apunte: DC, TE y DFD
+                            </button>
+                            <button class="pdf-tab-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-50 dark:bg-slate-800/60 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all" data-pdf-target="panel-presentacion-dfd" role="tab" aria-selected="false">
+                                Presentación: DFD
+                            </button>
+                            <button class="pdf-tab-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-50 dark:bg-slate-800/60 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all" data-pdf-target="panel-presentacion-dc-te" role="tab" aria-selected="false">
+                                Presentación: DC y TE (2025)
+                            </button>
+                        </div>
+
+                        <!-- PANELES DE VISOR -->
+                        <!-- PANEL 1: APUNTE -->
+                        <div id="panel-apunte" class="pdf-panel rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-950">
+                            <div class="p-3 bg-slate-200/70 dark:bg-slate-800/80 flex items-center justify-between text-xs">
+                                <span class="font-bold text-slate-700 dark:text-slate-300">APUNTE - DC_TE_DFD.pdf</span>
+                                <a href="assets/pdfs/APUNTE - DC_TE_DFD.pdf" target="_blank" rel="noopener" class="text-cyan-600 dark:text-cyan-400 hover:underline font-semibold flex items-center gap-1">
+                                    Abrir en pestaña nueva <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                </a>
+                            </div>
+                            <iframe src="assets/pdfs/APUNTE - DC_TE_DFD.pdf" class="w-full h-[75vh] min-h-[420px] border-0" title="Apunte de Diagrama de Contexto, Tabla de Eventos y DFD">
+                                <p class="p-4 text-xs text-slate-500">Tu navegador no soporta PDFs embebidos. <a href="assets/pdfs/APUNTE - DC_TE_DFD.pdf" target="_blank" class="text-cyan-600 underline">Descargar archivo</a>.</p>
+                            </iframe>
+                        </div>
+
+                        <!-- PANEL 2: PRESENTACIÓN DFD -->
+                        <div id="panel-presentacion-dfd" class="pdf-panel hidden rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-950">
+                            <div class="p-3 bg-slate-200/70 dark:bg-slate-800/80 flex items-center justify-between text-xs">
+                                <span class="font-bold text-slate-700 dark:text-slate-300">PRESENTACION - Diagrama de Flujo de Datos (DFD).pdf</span>
+                                <a href="assets/pdfs/PRESENTACION - Diagrama de Flujo de Datos (DFD).pdf" target="_blank" rel="noopener" class="text-cyan-600 dark:text-cyan-400 hover:underline font-semibold flex items-center gap-1">
+                                    Abrir en pestaña nueva <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                </a>
+                            </div>
+                            <iframe data-src="assets/pdfs/PRESENTACION - Diagrama de Flujo de Datos (DFD).pdf" class="w-full h-[75vh] min-h-[420px] border-0" title="Presentación de Diagrama de Flujo de Datos">
+                                <p class="p-4 text-xs text-slate-500">Tu navegador no soporta PDFs embebidos. <a href="assets/pdfs/PRESENTACION - Diagrama de Flujo de Datos (DFD).pdf" target="_blank" class="text-cyan-600 underline">Descargar archivo</a>.</p>
+                            </iframe>
+                        </div>
+
+                        <!-- PANEL 3: PRESENTACIÓN DC Y TE -->
+                        <div id="panel-presentacion-dc-te" class="pdf-panel hidden rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-950">
+                            <div class="p-4 bg-slate-50 dark:bg-slate-900 flex flex-col md:flex-row items-center justify-between gap-3 text-xs">
+                                <div>
+                                    <strong class="text-slate-800 dark:text-slate-200 block text-sm font-bold">0080 - Presentación DC y TE 2025.pptx</strong>
+                                    <span class="text-slate-500">Presentación de diapositivas de la cátedra (Ing. Ramiro Garbarini).</span>
+                                </div>
+                                <a href="assets/pdfs/0080 - Presentación DC y TE 2025.pptx" download class="px-4 py-2 bg-cyan-600 hover:bg-cyan-700 text-white rounded-xl font-bold flex items-center gap-1.5 transition-colors">
+                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                    Descargar presentación (.pptx)
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- BOTÓN VOLVER ARRIBA -->
+    <button id="btn-top" class="fixed bottom-6 right-6 z-40 w-12 h-12 bg-cyan-600 hover:bg-cyan-700 text-white rounded-full shadow-lg transition-all duration-300 flex items-center justify-center cursor-pointer" title="Volver al inicio" aria-label="Volver al inicio de la página">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg>
+    </button>
+
+    <footer class="bg-slate-900 text-slate-400 text-xs text-center p-4 mt-auto border-t border-slate-800">
+        <p>© 2026 - Análisis de sistemas - Clase 13: Diagramas de flujo de datos (DFD)</p>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="../../component.js"></script>
+    <script src="../../index.js"></script>
+    <script src="index.js"></script>
+
+    <script>
+        // Barra de progreso de lectura
+        (function () {
+            const bar = document.getElementById('reading-progress-bar');
+            const track = document.getElementById('reading-progress-track');
+            if (!bar) return;
+            const update = () => {
+                const scrollTop = window.scrollY;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+                const clamped = Math.min(100, Math.max(0, pct));
+                bar.style.width = clamped + '%';
+                if (track) track.setAttribute('aria-valuenow', Math.round(clamped));
+            };
+            window.addEventListener('scroll', update, { passive: true });
+            window.addEventListener('resize', update);
+            update();
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{
+  "name": "analisis-de-sistemas",
+  "version": "1.0.0",
+  "description": "Temas:\r ## Ingeniería de requerimientos \r ## Casos de uso\r ## Historias de usuario",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "release": "standard-version"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leonandres/analisis-de-sistemas.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leonandres/analisis-de-sistemas/issues"
+  },
+  "homepage": "https://github.com/leonandres/analisis-de-sistemas#readme",
+  "devDependencies": {
+    "standard-version": "^9.5.0"
+  }
+}
