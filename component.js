@@ -268,6 +268,48 @@ const ALL_THEMES = [
     { id: 'sunset', name: 'Sunset', group: 'Oscuros' }
 ];
 
+function getThemeSwitcherHTML() {
+    return `
+    <div class="relative">
+        <button id="btn-theme-menu" class="relative w-10 h-10 flex items-center justify-center bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-medium transition-all duration-300 hover:scale-105 flex-shrink-0 cursor-pointer" title="Ver galería de temas">
+            <span id="theme-active-icon" class="w-5 h-5 flex items-center justify-center flex-shrink-0">
+                ${THEME_ICONS.light}
+            </span>
+        </button>
+
+        <div id="theme-menu-panel" class="hidden absolute top-full right-0 mt-2 w-72 bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-800 overflow-hidden transition-all duration-300 origin-top-right scale-95 opacity-0 z-50 p-2 max-h-[75vh] overflow-y-auto">
+            <div class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider px-3 py-1.5">Temas claros</div>
+            <div class="space-y-0.5 mb-2">
+                ${ALL_THEMES.filter(t => t.group === 'Claros').map(t => `
+                    <button type="button" data-theme-id="${t.id}" class="theme-option-btn w-full flex items-center justify-between px-3 py-2 text-xs rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-700 dark:text-slate-200 group">
+                        <div class="flex items-center gap-2.5 min-w-0">
+                            <span class="w-6 h-6 flex items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200/60 dark:border-slate-700/60 group-hover:scale-110 transition-transform flex-shrink-0">
+                                ${THEME_ICONS[t.id] || THEME_ICONS.light}
+                            </span>
+                            <span class="truncate font-medium">${t.name}</span>
+                        </div>
+                        <span class="theme-check-icon hidden text-sky-500 font-bold">✓</span>
+                    </button>
+                `).join('')}
+            </div>
+            <div class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider px-3 py-1.5 border-t border-slate-100 dark:border-slate-800 pt-2">Temas oscuros</div>
+            <div class="space-y-0.5">
+                ${ALL_THEMES.filter(t => t.group === 'Oscuros').map(t => `
+                    <button type="button" data-theme-id="${t.id}" class="theme-option-btn w-full flex items-center justify-between px-3 py-2 text-xs rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-700 dark:text-slate-200 group">
+                        <div class="flex items-center gap-2.5 min-w-0">
+                            <span class="w-6 h-6 flex items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200/60 dark:border-slate-700/60 group-hover:scale-110 transition-transform flex-shrink-0">
+                                ${THEME_ICONS[t.id] || THEME_ICONS.dark}
+                            </span>
+                            <span class="truncate font-medium">${t.name}</span>
+                        </div>
+                        <span class="theme-check-icon hidden text-sky-500 font-bold">✓</span>
+                    </button>
+                `).join('')}
+            </div>
+        </div>
+    </div>`;
+}
+
 function getHeaderHTML(paths) {
     const themeItemsHTML = ALL_THEMES.map(t => {
         const iconSvg = THEME_ICONS[t.id] || THEME_ICONS.light;
@@ -432,46 +474,7 @@ function getHeaderHTML(paths) {
 
         <!-- CONTROL DE TEMAS -->
         <div class="flex items-center gap-2">
-            <!-- BOTÓN: menú desplegable con íconos vectoriales para TODOS los temas -->
-            <div class="relative">
-                <button id="btn-theme-menu" class="relative w-10 h-10 flex items-center justify-center bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-medium transition-all duration-300 hover:scale-105 flex-shrink-0 cursor-pointer" title="Ver galería de temas">
-                    <span id="theme-active-icon" class="w-5 h-5 flex items-center justify-center flex-shrink-0">
-                        ${THEME_ICONS.light}
-                    </span>
-                </button>
-
-                <div id="theme-menu-panel" class="hidden absolute top-full right-0 mt-2 w-72 bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-800 overflow-hidden transition-all duration-300 origin-top-right scale-95 opacity-0 z-50 p-2 max-h-[75vh] overflow-y-auto">
-                    <div class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider px-3 py-1.5">Temas claros</div>
-                    <div class="space-y-0.5 mb-2">
-                        ${ALL_THEMES.filter(t => t.group === 'Claros').map(t => `
-                            <button type="button" data-theme-id="${t.id}" class="theme-option-btn w-full flex items-center justify-between px-3 py-2 text-xs rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-700 dark:text-slate-200 group">
-                                <div class="flex items-center gap-2.5 min-w-0">
-                                    <span class="w-6 h-6 flex items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200/60 dark:border-slate-700/60 group-hover:scale-110 transition-transform flex-shrink-0">
-                                        ${THEME_ICONS[t.id] || THEME_ICONS.light}
-                                    </span>
-                                    <span class="truncate font-medium">${t.name}</span>
-                                </div>
-                                <span class="theme-check-icon hidden text-sky-500 font-bold">✓</span>
-                            </button>
-                        `).join('')}
-                    </div>
-                    <div class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider px-3 py-1.5 border-t border-slate-100 dark:border-slate-800 pt-2">Temas oscuros</div>
-                    <div class="space-y-0.5">
-                        ${ALL_THEMES.filter(t => t.group === 'Oscuros').map(t => `
-                            <button type="button" data-theme-id="${t.id}" class="theme-option-btn w-full flex items-center justify-between px-3 py-2 text-xs rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-700 dark:text-slate-200 group">
-                                <div class="flex items-center gap-2.5 min-w-0">
-                                    <span class="w-6 h-6 flex items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200/60 dark:border-slate-700/60 group-hover:scale-110 transition-transform flex-shrink-0">
-                                        ${THEME_ICONS[t.id] || THEME_ICONS.dark}
-                                    </span>
-                                    <span class="truncate font-medium">${t.name}</span>
-                                </div>
-                                <span class="theme-check-icon hidden text-sky-500 font-bold">✓</span>
-                            </button>
-                        `).join('')}
-                    </div>
-                    </div>
-                </div>
-            </div>
+            ${getThemeSwitcherHTML()}
         </div>
     </div>
     <div class="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-sky-400 via-indigo-500 to-emerald-400 opacity-95"></div>
@@ -1137,3 +1140,9 @@ function enhanceSectionTitles() {
 window.enhanceSectionTitles = enhanceSectionTitles;
 window.loadHeader = loadHeader;
 window.loadSidebar = loadSidebar;
+window.initializeMenu = initializeMenu;
+window.getThemeSwitcherHTML = getThemeSwitcherHTML;
+window.THEME_ICONS = THEME_ICONS;
+window.ALL_THEMES = ALL_THEMES;
+window.injectThemeGlows = injectThemeGlows;
+window.injectThemeStyles = injectThemeStyles;
