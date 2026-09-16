@@ -22,6 +22,19 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     } else {
         console.log('ℹ️ Esta página usa header estático, no se carga header dinámico');
+        if (typeof window.injectThemeStyles === 'function') {
+            window.injectThemeStyles();
+        }
+        if (typeof window.injectThemeGlows === 'function') {
+            window.injectThemeGlows();
+        }
+        const themeSwitcherContainer = document.getElementById('theme-switcher-container');
+        if (themeSwitcherContainer && typeof window.getThemeSwitcherHTML === 'function') {
+            themeSwitcherContainer.innerHTML = window.getThemeSwitcherHTML();
+        }
+        if (typeof window.initializeMenu === 'function') {
+            window.initializeMenu();
+        }
     }
 
     // ==========================================
