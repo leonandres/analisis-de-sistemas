@@ -269,11 +269,13 @@ const ALL_THEMES = [
 ];
 
 function getThemeSwitcherHTML() {
+    const currentTheme = (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) || 'retro';
+    const activeIcon = THEME_ICONS[currentTheme] || THEME_ICONS.retro;
     return `
     <div class="relative">
         <button id="btn-theme-menu" class="relative w-10 h-10 flex items-center justify-center bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-medium transition-all duration-300 hover:scale-105 flex-shrink-0 cursor-pointer" title="Ver galería de temas">
             <span id="theme-active-icon" class="w-5 h-5 flex items-center justify-center flex-shrink-0">
-                ${THEME_ICONS.light}
+                ${activeIcon}
             </span>
         </button>
 
@@ -650,6 +652,65 @@ function injectThemeStyles() {
         html[data-theme].dark .text-slate-100,
         html[data-theme].dark .text-slate-200 {
             color: oklch(var(--bc)) !important;
+        }
+
+        /* HERO BANNERS: Títulos con gradiente cromático armónico y complementario a cada tema */
+        html[data-theme] main > div[class*="bg-gradient"] h1,
+        html[data-theme] main > div.bg-gradient-to-r h1,
+        html[data-theme] div[class*="bg-gradient-to-r"] h1,
+        html[data-theme] div[class*="bg-gradient-to-br"] h1,
+        html[data-theme] .bg-gradient-to-r h1,
+        html[data-theme] .bg-gradient-to-br h1,
+        html[data-theme] [class*="bg-gradient"] h1,
+        html[data-theme] div.text-white h1 {
+            background: linear-gradient(120deg, 
+                #ffffff 0%, 
+                color-mix(in srgb, oklch(var(--a)) 75%, #ffffff) 45%, 
+                color-mix(in srgb, oklch(var(--s)) 60%, #ffffff) 100%
+            ) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+            filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.45));
+            font-weight: 900 !important;
+            display: inline-block;
+        }
+
+        html[data-theme].dark main > div[class*="bg-gradient"] h1,
+        html[data-theme].dark main > div.bg-gradient-to-r h1,
+        html[data-theme].dark div[class*="bg-gradient-to-r"] h1,
+        html[data-theme].dark div[class*="bg-gradient-to-br"] h1,
+        html[data-theme].dark .bg-gradient-to-r h1,
+        html[data-theme].dark .bg-gradient-to-br h1,
+        html[data-theme].dark [class*="bg-gradient"] h1,
+        html[data-theme].dark div.text-white h1 {
+            background: linear-gradient(120deg, 
+                #ffffff 0%, 
+                color-mix(in srgb, oklch(var(--a)) 90%, #ffffff) 50%, 
+                color-mix(in srgb, oklch(var(--s)) 80%, #ffffff) 100%
+            ) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+            filter: drop-shadow(0 2px 14px color-mix(in srgb, oklch(var(--a)) 40%, rgba(0,0,0,0.6)));
+        }
+
+        html[data-theme] main > div[class*="bg-gradient"] p,
+        html[data-theme] main > div.bg-gradient-to-r p,
+        html[data-theme] div[class*="bg-gradient-to-r"] p,
+        html[data-theme] div[class*="bg-gradient-to-br"] p,
+        html[data-theme] [class*="bg-gradient"] p,
+        html[data-theme] div.text-white p {
+            color: color-mix(in srgb, oklch(var(--a)) 15%, #f8fafc) !important;
+            -webkit-text-fill-color: color-mix(in srgb, oklch(var(--a)) 15%, #f8fafc) !important;
+        }
+
+        html[data-theme] main > div[class*="bg-gradient"] span,
+        html[data-theme] main > div.bg-gradient-to-r span,
+        html[data-theme] div[class*="bg-gradient-to-r"] span,
+        html[data-theme] div[class*="bg-gradient-to-br"] span,
+        html[data-theme] [class*="bg-gradient"] span {
+            color: color-mix(in srgb, oklch(var(--a)) 70%, #ffffff) !important;
         }
 
         html[data-theme] span[class*="bg-sky-100"],

@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
     ];
 
     function applyTheme(theme) {
-        if (!theme) theme = 'light';
+        if (!theme) theme = 'retro';
         document.documentElement.setAttribute('data-theme', theme);
         
         if (DARK_THEMES.includes(theme)) {
@@ -103,16 +103,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const btnTema = document.getElementById('btn-tema');
     if (btnTema) {
         btnTema.addEventListener('click', function() {
-            const currentTheme = localStorage.getItem('theme') || 'light';
+            const currentTheme = localStorage.getItem('theme') || 'retro';
             const isDark = DARK_THEMES.includes(currentTheme);
-            applyTheme(isDark ? 'light' : 'dark');
+            applyTheme(isDark ? 'retro' : 'dark');
         });
     }
 
     // ==========================================
-    // 3. CARGAR TEMA GUARDADO EN localStorage
+    // 3. CARGAR TEMA GUARDADO EN localStorage (Retro por defecto)
     // ==========================================
-    const savedTheme = localStorage.getItem('theme') || 'light';
+    const savedTheme = localStorage.getItem('theme') || 'retro';
     applyTheme(savedTheme);
 
     // ==========================================
