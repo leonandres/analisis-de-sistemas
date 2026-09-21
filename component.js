@@ -655,14 +655,8 @@ function injectThemeStyles() {
         }
 
         /* HERO BANNERS: Títulos con gradiente cromático armónico y complementario a cada tema */
-        html[data-theme] main > div[class*="bg-gradient"] h1,
-        html[data-theme] main > div.bg-gradient-to-r h1,
-        html[data-theme] div[class*="bg-gradient-to-r"] h1,
-        html[data-theme] div[class*="bg-gradient-to-br"] h1,
-        html[data-theme] .bg-gradient-to-r h1,
-        html[data-theme] .bg-gradient-to-br h1,
-        html[data-theme] [class*="bg-gradient"] h1,
-        html[data-theme] div.text-white h1 {
+        html[data-theme] main > div:first-child[class*="bg-gradient"] h1,
+        html[data-theme] main > div:first-child.bg-gradient-to-r h1 {
             background: linear-gradient(120deg, 
                 #ffffff 0%, 
                 color-mix(in srgb, oklch(var(--a)) 75%, #ffffff) 45%, 
@@ -676,14 +670,8 @@ function injectThemeStyles() {
             display: inline-block;
         }
 
-        html[data-theme].dark main > div[class*="bg-gradient"] h1,
-        html[data-theme].dark main > div.bg-gradient-to-r h1,
-        html[data-theme].dark div[class*="bg-gradient-to-r"] h1,
-        html[data-theme].dark div[class*="bg-gradient-to-br"] h1,
-        html[data-theme].dark .bg-gradient-to-r h1,
-        html[data-theme].dark .bg-gradient-to-br h1,
-        html[data-theme].dark [class*="bg-gradient"] h1,
-        html[data-theme].dark div.text-white h1 {
+        html[data-theme].dark main > div:first-child[class*="bg-gradient"] h1,
+        html[data-theme].dark main > div:first-child.bg-gradient-to-r h1 {
             background: linear-gradient(120deg, 
                 #ffffff 0%, 
                 color-mix(in srgb, oklch(var(--a)) 90%, #ffffff) 50%, 
@@ -695,30 +683,15 @@ function injectThemeStyles() {
             filter: drop-shadow(0 2px 14px color-mix(in srgb, oklch(var(--a)) 40%, rgba(0,0,0,0.6)));
         }
 
-        html[data-theme] main > div[class*="bg-gradient"] p,
-        html[data-theme] main > div.bg-gradient-to-r p,
-        html[data-theme] div[class*="bg-gradient-to-r"] p,
-        html[data-theme] div[class*="bg-gradient-to-br"] p,
-        html[data-theme] [class*="bg-gradient"] p,
-        html[data-theme] div.text-white p {
+        html[data-theme] main > div:first-child[class*="bg-gradient"] p,
+        html[data-theme] main > div:first-child.bg-gradient-to-r p {
             color: color-mix(in srgb, oklch(var(--a)) 15%, #f8fafc) !important;
             -webkit-text-fill-color: color-mix(in srgb, oklch(var(--a)) 15%, #f8fafc) !important;
         }
 
-        html[data-theme] main > div[class*="bg-gradient"] span,
-        html[data-theme] main > div.bg-gradient-to-r span,
-        html[data-theme] div[class*="bg-gradient-to-r"] span,
-        html[data-theme] div[class*="bg-gradient-to-br"] span,
-        html[data-theme] [class*="bg-gradient"] span {
+        html[data-theme] main > div:first-child[class*="bg-gradient"] span.bg-white\/20,
+        html[data-theme] main > div:first-child.bg-gradient-to-r span.bg-white\/20 {
             color: color-mix(in srgb, oklch(var(--a)) 70%, #ffffff) !important;
-        }
-
-        html[data-theme] span[class*="bg-sky-100"],
-        html[data-theme] span[class*="bg-indigo-100"],
-        html[data-theme] span[class*="bg-emerald-100"],
-        html[data-theme] .badge-primary {
-            background-color: oklch(var(--p)) !important;
-            color: oklch(var(--pc)) !important;
         }
 
         html[data-theme] header#site-header {

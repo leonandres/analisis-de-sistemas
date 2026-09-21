@@ -9,6 +9,7 @@
     <script>
         tailwind.config = { darkMode: 'class' }
     </script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
     <link rel="stylesheet" href="../../styles.css">
 
     <!-- Favicon SVG -->
@@ -88,7 +89,7 @@
                                         <span class="text-xs text-sky-600 dark:text-sky-400 font-medium">Ludwig von Bertalanffy</span>
                                     </div>
                                 </div>
-                                <p class="text-xs md:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                                <p class="text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
                                     Un <strong>sistema</strong> es un conjunto de elementos interrelacionados e interdependientes que interactúan dentro de una estructura delimitada para alcanzar un <strong>objetivo común</strong>.
                                 </p>
                                 <div class="mt-4 p-3 bg-white/80 dark:bg-slate-950/60 rounded-xl text-xs border border-sky-100 dark:border-slate-800 text-slate-700 dark:text-slate-300 flex items-start gap-2">
@@ -108,11 +109,12 @@
                                         <span class="text-xs text-emerald-600 dark:text-emerald-400 font-medium">Equilibrio dinámico</span>
                                     </div>
                                 </div>
-                                <p class="text-xs md:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                                <p class="text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
                                     Es la propiedad que le permite al sistema autorregularse y mantener un equilibrio interno aceptable frente a las perturbaciones o cambios del entorno.
                                 </p>
-                                <div class="mt-4 p-3 bg-white/80 dark:bg-slate-950/60 rounded-xl text-xs border border-emerald-100 dark:border-slate-800 text-slate-700 dark:text-slate-300">
-                                    🔄 <strong>Ejemplo:</strong> Un termostato o una alerta automática en un sistema de stock cuando el inventario cae por debajo del mínimo de seguridad.
+                                <div class="mt-4 p-3 bg-white/80 dark:bg-slate-950/60 rounded-xl text-xs border border-emerald-100 dark:border-slate-800 text-slate-700 dark:text-slate-300 flex items-start gap-2">
+                                    <i data-lucide="refresh-cw" class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5"></i>
+                                    <span><strong>Ejemplo:</strong> Un termostato o una alerta automática en un sistema de stock cuando el inventario cae por debajo del mínimo de seguridad.</span>
                                 </div>
                             </div>
                         </div>
@@ -127,11 +129,12 @@
                                         <span class="text-xs text-amber-600 dark:text-amber-400 font-medium">Desgaste vs. Orden</span>
                                     </div>
                                 </div>
-                                <p class="text-xs md:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                                <p class="text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
                                     La <strong>Entropía</strong> es la tendencia natural de todo sistema cerrado hacia el desorden, caos o desintegración. La <strong>Neguentropía</strong> (entropía negativa) es la importación de energía e información del entorno para mantener el orden.
                                 </p>
-                                <div class="mt-4 p-3 bg-white/80 dark:bg-slate-950/60 rounded-xl text-xs border border-amber-100 dark:border-slate-800 text-slate-700 dark:text-slate-300">
-                                    ⚙️ <strong>En software:</strong> El mantenimiento preventivo y la refactorización introducen neguentropía para evitar que el código se degradar.
+                                <div class="mt-4 p-3 bg-white/80 dark:bg-slate-950/60 rounded-xl text-xs border border-amber-100 dark:border-slate-800 text-slate-700 dark:text-slate-300 flex items-start gap-2">
+                                    <i data-lucide="wrench" class="w-4 h-4 text-amber-500 flex-shrink-0 mt-0.5"></i>
+                                    <span><strong>En software:</strong> El mantenimiento preventivo y la refactorización introducen neguentropía para evitar que el código se degrade.</span>
                                 </div>
                             </div>
                         </div>
@@ -146,11 +149,12 @@
                                         <span class="text-xs text-purple-600 dark:text-purple-400 font-medium">El todo es más que las partes</span>
                                     </div>
                                 </div>
-                                <p class="text-xs md:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                                <p class="text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
                                     La <strong>Sinergia</strong> implica que la acción combinada de los subsistemas genera un resultado superior a la suma individual de sus partes. La <strong>Jerarquía sistémica</strong> ubica al sistema dentro de suprasistemas y compuesto por subsistemas.
                                 </p>
-                                <div class="mt-4 p-3 bg-white/80 dark:bg-slate-950/60 rounded-xl text-xs border border-purple-100 dark:border-slate-800 text-slate-700 dark:text-slate-300">
-                                    🎯 <strong>Regla de examen:</strong> La jerarquía sistémica es conceptual y no equivale obligatoriamente al organigrama de puestos administrativos.
+                                <div class="mt-4 p-3 bg-white/80 dark:bg-slate-950/60 rounded-xl text-xs border border-purple-100 dark:border-slate-800 text-slate-700 dark:text-slate-300 flex items-start gap-2">
+                                    <i data-lucide="bookmark" class="w-4 h-4 text-purple-500 flex-shrink-0 mt-0.5"></i>
+                                    <span><strong>Regla de examen:</strong> La jerarquía sistémica es conceptual y no equivale obligatoriamente al organigrama de puestos administrativos.</span>
                                 </div>
                             </div>
                         </div>
@@ -188,7 +192,9 @@
                         <!-- ELEM 1 -->
                         <div id="elem-slide-0" class="elem-slide transition-all duration-500 transform translate-x-0 opacity-100">
                             <div class="p-6 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-2xl flex items-start gap-4">
-                                <span class="p-4 bg-sky-100 dark:bg-sky-950 text-sky-600 dark:text-sky-400 rounded-2xl text-3xl">📥</span>
+                                <span class="p-4 bg-sky-100 dark:bg-sky-950 text-sky-600 dark:text-sky-400 rounded-2xl flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="arrow-down-to-line" class="w-8 h-8"></i>
+                                </span>
                                 <div>
                                     <span class="text-[10px] font-extrabold uppercase text-sky-600 dark:text-sky-400 tracking-wider">Elemento 1 de 6</span>
                                     <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 mt-0.5">Entradas (Inputs)</h3>
@@ -202,7 +208,9 @@
                         <!-- ELEM 2 -->
                         <div id="elem-slide-1" class="elem-slide hidden transition-all duration-500 transform translate-x-full opacity-0">
                             <div class="p-6 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-2xl flex items-start gap-4">
-                                <span class="p-4 bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 rounded-2xl text-3xl">⚙️</span>
+                                <span class="p-4 bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 rounded-2xl flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="cpu" class="w-8 h-8"></i>
+                                </span>
                                 <div>
                                     <span class="text-[10px] font-extrabold uppercase text-indigo-600 dark:text-indigo-400 tracking-wider">Elemento 2 de 6</span>
                                     <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 mt-0.5">Procesamiento (Transformación)</h3>
@@ -216,7 +224,9 @@
                         <!-- ELEM 3 -->
                         <div id="elem-slide-2" class="elem-slide hidden transition-all duration-500 transform translate-x-full opacity-0">
                             <div class="p-6 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-2xl flex items-start gap-4">
-                                <span class="p-4 bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 rounded-2xl text-3xl">📤</span>
+                                <span class="p-4 bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 rounded-2xl flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="arrow-up-from-line" class="w-8 h-8"></i>
+                                </span>
                                 <div>
                                     <span class="text-[10px] font-extrabold uppercase text-emerald-600 dark:text-emerald-400 tracking-wider">Elemento 3 de 6</span>
                                     <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 mt-0.5">Salidas (Outputs)</h3>
@@ -230,7 +240,9 @@
                         <!-- ELEM 4 -->
                         <div id="elem-slide-3" class="elem-slide hidden transition-all duration-500 transform translate-x-full opacity-0">
                             <div class="p-6 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-2xl flex items-start gap-4">
-                                <span class="p-4 bg-amber-100 dark:bg-amber-950 text-amber-600 dark:text-amber-400 rounded-2xl text-3xl">🔄</span>
+                                <span class="p-4 bg-amber-100 dark:bg-amber-950 text-amber-600 dark:text-amber-400 rounded-2xl flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="refresh-cw" class="w-8 h-8"></i>
+                                </span>
                                 <div>
                                     <span class="text-[10px] font-extrabold uppercase text-amber-600 dark:text-amber-400 tracking-wider">Elemento 4 de 6</span>
                                     <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 mt-0.5">Retroalimentación (Feedback)</h3>
@@ -244,7 +256,9 @@
                         <!-- ELEM 5 -->
                         <div id="elem-slide-4" class="elem-slide hidden transition-all duration-500 transform translate-x-full opacity-0">
                             <div class="p-6 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-2xl flex items-start gap-4">
-                                <span class="p-4 bg-purple-100 dark:bg-purple-950 text-purple-600 dark:text-purple-400 rounded-2xl text-3xl">🧱</span>
+                                <span class="p-4 bg-purple-100 dark:bg-purple-950 text-purple-600 dark:text-purple-400 rounded-2xl flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="square-dashed" class="w-8 h-8"></i>
+                                </span>
                                 <div>
                                     <span class="text-[10px] font-extrabold uppercase text-purple-600 dark:text-purple-400 tracking-wider">Elemento 5 de 6</span>
                                     <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 mt-0.5">Límite / Frontera</h3>
@@ -258,7 +272,9 @@
                         <!-- ELEM 6 -->
                         <div id="elem-slide-5" class="elem-slide hidden transition-all duration-500 transform translate-x-full opacity-0">
                             <div class="p-6 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-2xl flex items-start gap-4">
-                                <span class="p-4 bg-teal-100 dark:bg-teal-950 text-teal-600 dark:text-teal-400 rounded-2xl text-3xl">🌍</span>
+                                <span class="p-4 bg-teal-100 dark:bg-teal-950 text-teal-600 dark:text-teal-400 rounded-2xl flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="globe" class="w-8 h-8"></i>
+                                </span>
                                 <div>
                                     <span class="text-[10px] font-extrabold uppercase text-teal-600 dark:text-teal-400 tracking-wider">Elemento 6 de 6</span>
                                     <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 mt-0.5">Ambiente / Entorno</h3>
@@ -287,9 +303,14 @@
                             <div class="flip-card-inner relative w-full h-full rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800">
                                 <!-- FRONT -->
                                 <div class="flip-card-front absolute inset-0 bg-gradient-to-br from-sky-50 to-indigo-50 dark:from-slate-800 dark:to-slate-900 rounded-2xl p-5 flex flex-col justify-between items-center text-center">
-                                    <span class="text-4xl">🔄</span>
+                                    <span class="w-14 h-14 flex items-center justify-center bg-sky-100 dark:bg-sky-950 text-sky-500 dark:text-sky-400 rounded-2xl">
+                                        <i data-lucide="activity" class="w-8 h-8"></i>
+                                    </span>
                                     <h3 class="font-extrabold text-base text-slate-855 dark:text-slate-100">Homeostasis</h3>
-                                    <span class="text-[10px] text-sky-600 dark:text-sky-400 font-bold uppercase tracking-wider">Haz clic para girar ➔</span>
+                                    <span class="text-[10px] text-sky-600 dark:text-sky-400 font-bold uppercase tracking-wider flex items-center gap-1">
+                                        Haz clic para girar
+                                        <i data-lucide="rotate-cw" class="w-3 h-3"></i>
+                                    </span>
                                 </div>
                                 <!-- BACK -->
                                 <div class="flip-card-back absolute inset-0 bg-sky-600 text-white rounded-2xl p-5 flex flex-col justify-center items-center text-center text-sm space-y-2 overflow-y-auto">
@@ -304,9 +325,14 @@
                             <div class="flip-card-inner relative w-full h-full rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800">
                                 <!-- FRONT -->
                                 <div class="flip-card-front absolute inset-0 bg-gradient-to-br from-amber-50 to-orange-50 dark:from-slate-800 dark:to-slate-900 rounded-2xl p-5 flex flex-col justify-between items-center text-center">
-                                    <span class="text-4xl">📉</span>
+                                    <span class="w-14 h-14 flex items-center justify-center bg-amber-100 dark:bg-amber-950 text-amber-500 dark:text-amber-400 rounded-2xl">
+                                        <i data-lucide="trending-down" class="w-8 h-8"></i>
+                                    </span>
                                     <h3 class="font-extrabold text-base text-slate-855 dark:text-slate-100">Entropía</h3>
-                                    <span class="text-[10px] text-amber-600 dark:text-amber-400 font-bold uppercase tracking-wider">Haz clic para girar ➔</span>
+                                    <span class="text-[10px] text-amber-600 dark:text-amber-400 font-bold uppercase tracking-wider flex items-center gap-1">
+                                        Haz clic para girar
+                                        <i data-lucide="rotate-cw" class="w-3 h-3"></i>
+                                    </span>
                                 </div>
                                 <!-- BACK -->
                                 <div class="flip-card-back absolute inset-0 bg-amber-600 text-white rounded-2xl p-5 flex flex-col justify-center items-center text-center text-sm space-y-2 overflow-y-auto">
@@ -321,15 +347,21 @@
                             <div class="flip-card-inner relative w-full h-full rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800">
                                 <!-- FRONT -->
                                 <div class="flip-card-front absolute inset-0 bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-slate-800 dark:to-slate-900 rounded-2xl p-5 flex flex-col justify-between items-center text-center">
-                                    <span class="text-4xl">✨</span>
+                                    <span class="w-14 h-14 flex items-center justify-center bg-purple-100 dark:bg-purple-950 text-purple-500 dark:text-purple-400 rounded-2xl">
+                                        <i data-lucide="zap" class="w-8 h-8"></i>
+                                    </span>
                                     <h3 class="font-extrabold text-base text-slate-855 dark:text-slate-100">Sinergia</h3>
-                                    <span class="text-[10px] text-purple-600 dark:text-purple-400 font-bold uppercase tracking-wider">Haz clic para girar ➔</span>
+                                    <span class="text-[10px] text-purple-600 dark:text-purple-400 font-bold uppercase tracking-wider flex items-center gap-1">
+                                        Haz clic para girar
+                                        <i data-lucide="rotate-cw" class="w-3 h-3"></i>
+                                    </span>
                                 </div>
                                 <!-- BACK -->
                                 <div class="flip-card-back absolute inset-0 bg-purple-600 text-white rounded-2xl p-5 flex flex-col justify-center items-center text-center text-sm space-y-2 overflow-y-auto">
                                     <strong class="font-bold text-base border-b border-purple-400 pb-1 w-full block">Sinergia</strong>
                                     <p class="leading-relaxed text-slate-50 font-medium">Propiedad por la cual la interacción combinada de las partes produce un efecto colectivo mayor a la suma individual (1 + 1 = 3).</p>
                                 </div>
+            
                             </div>
                         </div>
 
@@ -391,53 +423,65 @@
                     <!-- CONTENIDO DE NIVELES -->
                     <div id="content-si-tps" class="content-si p-5 bg-slate-50 dark:bg-slate-800/40 rounded-2xl border border-slate-200 dark:border-slate-800">
                         <div class="flex items-center gap-3 mb-2">
-                            <span class="text-2xl">🖥️</span>
+                            <span class="w-10 h-10 flex items-center justify-center bg-sky-100 dark:bg-sky-950 text-sky-600 dark:text-sky-400 rounded-xl flex-shrink-0">
+                                <i data-lucide="monitor" class="w-5 h-5"></i>
+                            </span>
                             <h3 class="font-bold text-slate-800 dark:text-slate-100 text-base">TPS (Transaction Processing System) - Nivel operativo</h3>
                         </div>
                         <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
                             Sistemas de procesamiento transaccional diario. Se caracterizan por manejar grandes volúmenes de datos rutinarios con alta velocidad y exactitud.
                         </p>
-                        <div class="p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 text-xs">
-                            💡 <strong>Ejemplos típicos:</strong> Punto de Venta (POS), sistema de facturación, registro de asistencia, cobro por caja.
+                        <div class="p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 text-xs flex items-start gap-2">
+                            <i data-lucide="lightbulb" class="w-4 h-4 text-sky-500 flex-shrink-0 mt-0.5"></i>
+                            <span><strong>Ejemplos típicos:</strong> Punto de Venta (POS), sistema de facturación, registro de asistencia, cobro por caja.</span>
                         </div>
                     </div>
 
                     <div id="content-si-mis" class="content-si hidden p-5 bg-slate-50 dark:bg-slate-800/40 rounded-2xl border border-slate-200 dark:border-slate-800">
                         <div class="flex items-center gap-3 mb-2">
-                            <span class="text-2xl">📊</span>
+                            <span class="w-10 h-10 flex items-center justify-center bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 rounded-xl flex-shrink-0">
+                                <i data-lucide="bar-chart-2" class="w-5 h-5"></i>
+                            </span>
                             <h3 class="font-bold text-slate-800 dark:text-slate-100 text-base">MIS (Management Information System) - Nivel táctico</h3>
                         </div>
                         <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
                             Sistemas de información gerencial para mandos medios y jefes de departamento. Suministran reportes periódicos estructurados a partir de los datos consolidados del TPS.
                         </p>
-                        <div class="p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 text-xs">
-                            💡 <strong>Ejemplos típicos:</strong> Reportes semanales de ventas por sucursal, inventarios mensuales, análisis de desvíos presupuestarios.
+                        <div class="p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 text-xs flex items-start gap-2">
+                            <i data-lucide="lightbulb" class="w-4 h-4 text-indigo-500 flex-shrink-0 mt-0.5"></i>
+                            <span><strong>Ejemplos típicos:</strong> Reportes semanales de ventas por sucursal, inventarios mensuales, análisis de desvíos presupuestarios.</span>
                         </div>
                     </div>
 
                     <div id="content-si-dss" class="content-si hidden p-5 bg-slate-50 dark:bg-slate-800/40 rounded-2xl border border-slate-200 dark:border-slate-800">
                         <div class="flex items-center gap-3 mb-2">
-                            <span class="text-2xl">📈</span>
+                            <span class="w-10 h-10 flex items-center justify-center bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 rounded-xl flex-shrink-0">
+                                <i data-lucide="trending-up" class="w-5 h-5"></i>
+                            </span>
                             <h3 class="font-bold text-slate-800 dark:text-slate-100 text-base">DSS (Decision Support System) - Nivel gerencial</h3>
                         </div>
                         <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
                             Sistemas de soporte a decisiones semiestructuradas. Permiten realizar simulaciones y modelos dinámicos (análisis del tipo "¿qué pasa si...?").
                         </p>
-                        <div class="p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 text-xs">
-                            💡 <strong>Ejemplos típicos:</strong> Modelos de optimización de rutas de distribución, proyección de ventas ajustada a inflación y demanda.
+                        <div class="p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 text-xs flex items-start gap-2">
+                            <i data-lucide="lightbulb" class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5"></i>
+                            <span><strong>Ejemplos típicos:</strong> Modelos de optimización de rutas de distribución, proyección de ventas ajustada a inflación y demanda.</span>
                         </div>
                     </div>
 
                     <div id="content-si-ess" class="content-si hidden p-5 bg-slate-50 dark:bg-slate-800/40 rounded-2xl border border-slate-200 dark:border-slate-800">
                         <div class="flex items-center gap-3 mb-2">
-                            <span class="text-2xl">👑</span>
+                            <span class="w-10 h-10 flex items-center justify-center bg-amber-100 dark:bg-amber-950 text-amber-600 dark:text-amber-400 rounded-xl flex-shrink-0">
+                                <i data-lucide="crown" class="w-5 h-5"></i>
+                            </span>
                             <h3 class="font-bold text-slate-800 dark:text-slate-100 text-base">ESS / EIS (Executive Support System) - Nivel estratégico</h3>
                         </div>
                         <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
                             Sistemas de soporte para la alta dirección y directores. Presentan información resumida con gráficos intuitivos, tableros de control (dashboards) e indicadores clave de desempeño (KPIs).
                         </p>
-                        <div class="p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 text-xs">
-                            💡 <strong>Ejemplos típicos:</strong> Dashboard gerencial con rentabilidad consolidada por país y nivel de satisfacción del cliente.
+                        <div class="p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 text-xs flex items-start gap-2">
+                            <i data-lucide="lightbulb" class="w-4 h-4 text-amber-500 flex-shrink-0 mt-0.5"></i>
+                            <span><strong>Ejemplos típicos:</strong> Dashboard gerencial con rentabilidad consolidada por país y nivel de satisfacción del cliente.</span>
                         </div>
                     </div>
                 </section>
@@ -452,7 +496,10 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                         <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800">
-                            <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm mb-2">🎯 Responsabilidades principales</h3>
+                            <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm mb-2 flex items-center gap-1.5">
+                                <i data-lucide="crosshair" class="w-4 h-4 text-teal-500 flex-shrink-0"></i>
+                                Responsabilidades principales
+                            </h3>
                             <ul class="list-disc list-inside space-y-1.5 text-slate-600 dark:text-slate-400">
                                 <li>Relevar necesidades con los usuarios y el sponsor.</li>
                                 <li>Diagnosticar problemas y oportunidades de mejora.</li>
@@ -463,7 +510,10 @@
                         </div>
 
                         <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800">
-                            <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm mb-2">🤝 Habilidades interpersonales</h3>
+                            <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm mb-2 flex items-center gap-1.5">
+                                <i data-lucide="handshake" class="w-4 h-4 text-teal-500 flex-shrink-0"></i>
+                                Habilidades interpersonales
+                            </h3>
                             <ul class="list-disc list-inside space-y-1.5 text-slate-600 dark:text-slate-400">
                                 <li>Escucha activa y capacidad de negociación.</li>
                                 <li>Empatía para comprender la operativa diaria del usuario.</li>
@@ -479,7 +529,10 @@
                     <div class="border-b border-slate-100 dark:border-slate-800 pb-4 mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
                         <div>
                             <span class="text-[10px] font-extrabold px-2.5 py-1 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 uppercase tracking-wider">Simulador interactivo</span>
-                            <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-1">🧪 Autoevaluación de conceptos</h2>
+                            <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mt-1 flex items-center gap-2">
+                                <i data-lucide="flask-conical" class="w-5 h-5 text-amber-500"></i>
+                                Autoevaluación de conceptos
+                            </h2>
                             <p class="text-xs text-slate-500 mt-0.5">Respondé y comprobá tu resultado al instante.</p>
                         </div>
                         <div class="px-3 py-1.5 bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900 rounded-xl text-xs font-bold text-amber-700 dark:text-amber-300">
@@ -553,7 +606,6 @@
     <script src="../../component.js"></script>
     <script src="../../index.js"></script>
     <script src="index.js"></script>
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
     <script>lucide.createIcons();</script>
 
 
