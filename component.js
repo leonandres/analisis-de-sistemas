@@ -1081,11 +1081,14 @@ function enhanceSectionTitles() {
 
         // Extraer y limpiar el texto del título
         const original = h2.textContent.trim();
-        // Remover emojis/puntuación inicial y prefijo numérico si existe (admite "1.", "1)", "1-" y también "1 - " con espacios)
-        let cleaned = original.replace(/^[^0-9A-Za-zÁÉÍÓÚÜÑáéíóúüñ]+/, '').replace(/^\s*(\d+)\s*[\.\-\)]?\s*/, '');
         // Guardar número (si el título original tenía número) o calcular por índice
-        const numberMatch = original.match(/^\s*(\d+)\s*[\.\-\)]/);
+        const numberMatch = original.match(/^\s*(?:[^0-9A-Za-zÁÉÍÓÚÜÑáéíóúüñ¿¡«“"]+\s*)?(\d+)\s*[\.\-\)]/);
         const number = numberMatch ? numberMatch[1] : (idx + 1).toString();
+        // Remover emojis/puntuación inicial y prefijo numérico si existe (preservando signos de apertura ¿, ¡ y comillas)
+        let cleaned = original
+            .replace(/^[^0-9A-Za-zÁÉÍÓÚÜÑáéíóúüñ¿¡«“"]+/, '')
+            .replace(/^\s*(\d+)\s*[\.\-\)]?\s*/, '')
+            .replace(/^[^0-9A-Za-zÁÉÍÓÚÜÑáéíóúüñ¿¡«“"]+/, '');
 
         // Normalizar SOLO si el título entero viene gritado en mayúsculas (ej. copiado de un PDF/Word).
         // Si ya viene bien escrito en el HTML (como este proyecto lo hace), se respeta tal cual:
