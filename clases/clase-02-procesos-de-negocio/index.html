@@ -685,7 +685,10 @@
                         
                         <div class="space-y-4">
                             <div class="p-4 bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-900/50 rounded-lg">
-                                <strong class="text-red-900 dark:text-red-300 block mb-2 text-sm font-bold uppercase">🎯 Procesos Estratégicos</strong>
+                                <strong class="text-red-900 dark:text-red-300 flex items-center gap-2 mb-2 text-sm font-bold uppercase">
+                                    <i data-lucide="target" class="w-4 h-4 text-red-600 dark:text-red-400"></i>
+                                    <span>Procesos Estratégicos</span>
+                                </strong>
                                 <div class="flex flex-wrap gap-2">
                                     <span class="px-3 py-1 bg-white dark:bg-slate-800 border border-red-300 dark:border-red-800 rounded-md text-xs font-medium text-slate-700 dark:text-slate-300">Planeación estratégica</span>
                                     <span class="px-3 py-1 bg-white dark:bg-slate-800 border border-red-300 dark:border-red-800 rounded-md text-xs font-medium text-slate-700 dark:text-slate-300">Análisis de Mercado</span>
@@ -693,7 +696,10 @@
                             </div>
 
                             <div class="p-4 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900/50 rounded-lg">
-                                <strong class="text-emerald-900 dark:text-emerald-300 block mb-2 text-sm font-bold uppercase">⚙️ Procesos Operativos</strong>
+                                <strong class="text-emerald-900 dark:text-emerald-300 flex items-center gap-2 mb-2 text-sm font-bold uppercase">
+                                    <i data-lucide="settings" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+                                    <span>Procesos Operativos</span>
+                                </strong>
                                 <div class="flex flex-wrap gap-2">
                                     <span class="px-3 py-1 bg-white dark:bg-slate-800 border border-emerald-300 dark:border-emerald-800 rounded-md text-xs font-medium text-slate-700 dark:text-slate-300">Producción</span>
                                     <span class="px-3 py-1 bg-white dark:bg-slate-800 border border-emerald-300 dark:border-emerald-800 rounded-md text-xs font-medium text-slate-700 dark:text-slate-300">Venta</span>
@@ -702,7 +708,10 @@
                             </div>
 
                             <div class="p-4 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50 rounded-lg">
-                                <strong class="text-amber-900 dark:text-amber-300 block mb-2 text-sm font-bold uppercase">🛠️ Procesos de Soporte / Apoyo</strong>
+                                <strong class="text-amber-900 dark:text-amber-300 flex items-center gap-2 mb-2 text-sm font-bold uppercase">
+                                    <i data-lucide="wrench" class="w-4 h-4 text-amber-600 dark:text-amber-400"></i>
+                                    <span>Procesos de Soporte / Apoyo</span>
+                                </strong>
                                 <div class="flex flex-wrap gap-2">
                                     <span class="px-3 py-1 bg-white dark:bg-slate-800 border border-amber-300 dark:border-amber-800 rounded-md text-xs font-medium text-slate-700 dark:text-slate-300">Gestión de RRHH</span>
                                     <span class="px-3 py-1 bg-white dark:bg-slate-800 border border-amber-300 dark:border-amber-800 rounded-md text-xs font-medium text-slate-700 dark:text-slate-300">Compras</span>
@@ -922,15 +931,21 @@
                         <!-- Zonas de clasificación -->
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                             <div id="zone-estrategico" class="drop-zone p-4 bg-red-50 dark:bg-red-950/30 border-2 border-dashed border-red-300 dark:border-red-800 rounded-lg min-h-[120px] cursor-pointer transition-all hover:border-red-500">
-                                <h4 class="text-sm font-bold text-red-900 dark:text-red-300 mb-2 text-center"> Estratégicos</h4>
+                                <h4 class="text-sm font-bold text-red-900 dark:text-red-300 mb-2 text-center flex items-center justify-center gap-1.5">
+                                    <i data-lucide="target" class="w-4 h-4"></i> Estratégicos
+                                </h4>
                                 <div class="dropped-cards flex flex-col gap-2"></div>
                             </div>
                             <div id="zone-operativo" class="drop-zone p-4 bg-emerald-50 dark:bg-emerald-950/30 border-2 border-dashed border-emerald-300 dark:border-emerald-800 rounded-lg min-h-[120px] cursor-pointer transition-all hover:border-emerald-500">
-                                <h4 class="text-sm font-bold text-emerald-900 dark:text-emerald-300 mb-2 text-center">⚙️ Operativos</h4>
+                                <h4 class="text-sm font-bold text-emerald-900 dark:text-emerald-300 mb-2 text-center flex items-center justify-center gap-1.5">
+                                    <i data-lucide="settings" class="w-4 h-4"></i> Operativos
+                                </h4>
                                 <div class="dropped-cards flex flex-col gap-2"></div>
                             </div>
                             <div id="zone-soporte" class="drop-zone p-4 bg-amber-50 dark:bg-amber-950/30 border-2 border-dashed border-amber-300 dark:border-amber-800 rounded-lg min-h-[120px] cursor-pointer transition-all hover:border-amber-500">
-                                <h4 class="text-sm font-bold text-amber-900 dark:text-amber-300 mb-2 text-center">🛠️ Soporte</h4>
+                                <h4 class="text-sm font-bold text-amber-900 dark:text-amber-300 mb-2 text-center flex items-center justify-center gap-1.5">
+                                    <i data-lucide="wrench" class="w-4 h-4"></i> Soporte
+                                </h4>
                                 <div class="dropped-cards flex flex-col gap-2"></div>
                             </div>
                         </div>
